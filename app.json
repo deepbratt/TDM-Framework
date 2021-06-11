@@ -1,0 +1,12 @@
+{
+  "name": "tez-Dealz",
+  "displayName": "tez-Dealz",
+  "expo": {
+    "name": "tez-Dealz",
+    "slug": "tez-Dealz",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
