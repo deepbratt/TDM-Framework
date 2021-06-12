@@ -5,7 +5,7 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { SignIn } from './Screens/SignIn';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { Splash } from './Screens/SignIn/splash';
+import { Splash } from './Screens/splash';
 export default function App() {
 
   //  for initalize custom font

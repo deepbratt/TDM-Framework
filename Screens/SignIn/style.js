@@ -15,15 +15,21 @@ export const loginStyle = StyleSheet.create({
     marginTop: 56,
   },
   mid: {
-    flex: 3,
+    flex: 2,
     justifyContent: "center",
-    marginTop: 6,
+    marginTop: 0,
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginBottom: 26,
   },
   img: {
-    // marginHorizontal: 30,
-    marginVertical: 20,
+    marginHorizontal: 30,
+    marginVertical: 5,
     width: 320,
-    // height: 200,
+    height:180,
+    aspectRatio:1*1.4,
     padding: 0,
   },
   head: {
@@ -52,7 +58,6 @@ export const loginStyle = StyleSheet.create({
     alignItems: "center",
     borderColor: "#313131",
     borderWidth: 1,
-
     padding: 5,
     borderRadius: 2,
   },
@@ -71,15 +76,17 @@ export const loginStyle = StyleSheet.create({
     fontSize: 12,
     color: "#6dc0fc",
   },
-  bottom: {
-    flex: 1,
-    justifyContent: "flex-end",
-    marginBottom: 26,
+  account: {
+    color: "rgba(49, 49, 49, 1)",
+    fontWeight: "500",
+    letterSpacing: 1,
+    fontSize: 12,
+ 
   },
   underline: {
     borderBottomWidth: 1,
-    borderBottomColor: "#666666",
-    fontFamily: "IBMPlexSans-Medium",
+    color: "rgba(49, 49, 49, 1)",
+    textDecorationLine:"underline",
     fontWeight: "500",
     letterSpacing: 1,
     fontSize: 12,

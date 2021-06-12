@@ -1,12 +1,15 @@
 import React from 'react'
 import {  View ,Text,Image} from 'react-native'
-import {loginStyle} from "./style"
+import {loginStyle} from "./SignIn/style"
 
-import {  text1, text2, } from './constant';
+import {  text1, text2, } from './SignIn/constant';
 export const Splash = () => {
     return (
      <View style={loginStyle.container}>
-       <Image style={{width:200,height:90}}  source={require('../../assets/tezDealzzz.png')}  />
+     <View style={{width:200,height:90}}>
+     <Image style={{width:"100%",height:"100%"}}  source={require('../assets/tezDealzzz.png')}  />
+     </View>
+   
       <View style={{marginVertical:20}}>
       <Text style={loginStyle.detail}>{text1}</Text>
        <Text style={loginStyle.detail}> {text2}</Text>

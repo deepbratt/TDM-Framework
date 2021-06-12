@@ -13,8 +13,9 @@ export const SignIn = () => {
     
        </View>
        <View style={loginStyle.mid}>
-       <Image style={loginStyle.img} source={require('../../assets/signin.png')}  />
-     
+       <View style={loginStyle.img}>
+       <Image style={{width:"100%",height:"100%"}} source={require('../../assets/signin.png')}  />
+       </View>
      {data.map((item)=>{
        return(
     <TouchableOpacity key={item.id} style={loginStyle.button}>
@@ -25,7 +26,7 @@ export const SignIn = () => {
 </TouchableOpacity>
        );
      })}
-     <TouchableOpacity><Text style={{textAlign:"right",marginHorizontal:15}}>{alreadyAccount} <Text style={loginStyle.signUp}>{signUp}</Text> </Text></TouchableOpacity>
+     <TouchableOpacity><Text style={{textAlign:"right",marginHorizontal:15}} > <Text style={loginStyle.account}>{alreadyAccount}</Text><Text style={loginStyle.signUp}>{signUp}</Text> </Text></TouchableOpacity>
      </View>
  
       <View style={loginStyle.bottom}>
