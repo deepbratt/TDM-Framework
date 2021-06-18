@@ -117,7 +117,7 @@ const Routes = () => {
         }}
       >
         <AppStack.Screen name="BeforeLogin" component={StackNavigator} />
-        {/* <AppStack.Screen name="AfterLogin" component={DrawerNavigator} /> */}
+        <AppStack.Screen name="AfterLogin" component={DrawerNavigator} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
