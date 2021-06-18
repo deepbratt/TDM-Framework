@@ -49,7 +49,7 @@ const customStyle = isActive ? signInStyles.inputField : signInStyles.activeFiel
                             <CustomButton text={Login} 
                              buttonStyle={signInStyles.SignInButton}
                               textStyle={signInStyles.loginText}
-                               onPress={() => navigation.navigate("SignIn")}/>
+                               onPress={() => navigation.navigate("AfterLogin")}/>
                             </View>  
  </View>
  <View >

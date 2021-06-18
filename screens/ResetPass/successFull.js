@@ -8,7 +8,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function RestPassword2 ({ navigation }){
     return (
     <View style={globalStyle.container}>
-  
     <TouchableOpacity  onPress={() => navigation.goBack()}  style={resetStyle.nav}>
     <Avatar.Icon  style={resetStyle.Avataricon}   size={40} icon="arrow-left" />
     </TouchableOpacity> 
@@ -21,7 +20,7 @@ export default function RestPassword2 ({ navigation }){
     <Text  style={resetStyle.detail}>{ResetYourPass}</Text>
     </View>
        <View style={resetStyle.bottom}>
-       <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+       <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
                             <LinearGradient colors={['#F04148', '#C20000']}
                                start={{x: 0, y: .4}} end={{x: 0, y: 1}}
                                 style={resetStyle.loginButton} >

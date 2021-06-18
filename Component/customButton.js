@@ -22,10 +22,7 @@ const CustomButton = function(props) {
         props.disabled ? styles.disabled : {},
       ]}>
      {props.leftImg &&
-    
      <Image fadeDuration={0} style={{marginHorizontal:20}} source={props.Img}  />
-    
-    
      }
       <Text style={props.textStyle}>{props.text}</Text>
     </TouchableOpacity>

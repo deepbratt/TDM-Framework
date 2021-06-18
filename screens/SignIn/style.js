@@ -11,17 +11,26 @@ export const loginStyle = StyleSheet.create({
 
     marginTop: 56,
   },
+  head: {
+    // fontFamily: "IBMPlexSans-Bold",
+    color: "rgba(49, 49, 49, 1)",
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 35,
+    textAlign: "center",
+  },
+  detail: {
+    // fontFamily: "IBMPlexSans-Light",
+    textAlign: "center",
+    color: "rgba(102, 102, 102, 1)",
+    letterSpacing: 1,
+    fontSize: 12,
+  },
   mid: {
     flex: 2,
     justifyContent: "center",
     marginTop: 0,
   },
-  bottom: {
-    height:80,
-        justifyContent: "flex-end",
-        alignItems:"center",
-      marginBottom:10,
-      },
   img: {
     marginHorizontal: 30,
     marginVertical: 20,
@@ -30,21 +39,14 @@ export const loginStyle = StyleSheet.create({
     aspectRatio:1*1.4,
     padding: 0,
   },
-  head: {
-    fontFamily: "IBMPlexSans-Bold",
-    color: "rgba(49, 49, 49, 1)",
-    fontWeight: "500",
-    fontSize: 16,
-    lineHeight: 35,
-    textAlign: "center",
-  },
-  detail: {
-    fontFamily: "IBMPlexSans-Light",
-    textAlign: "center",
-    color: "rgba(102, 102, 102, 1)",
-    letterSpacing: 1,
-    fontSize: 12,
-  },
+  bottom: {
+    height:80,
+        justifyContent: "flex-end",
+        alignItems:"center",
+      marginBottom:10,
+      },
+ 
+ 
   button: {
     marginHorizontal: 20,
     marginTop: 8,
@@ -62,15 +64,9 @@ export const loginStyle = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    fontFamily: "IBMPlexSans-Medium",
+    // fontFamily: "IBMPlexSans-Medium",
     fontWeight: "500",
     fontSize: 12,
-  },
-  signUp: {
-    fontFamily: "IBMPlexSans-Medium",
-    fontWeight: "500",
-    fontSize: 12,
-    color: "#6dc0fc",
   },
   account: {
     color: "rgba(49, 49, 49, 1)",
@@ -79,6 +75,13 @@ export const loginStyle = StyleSheet.create({
     fontSize: 12,
  
   },
+  signUp: {
+    // fontFamily: "IBMPlexSans-Medium",
+    fontWeight: "500",
+    fontSize: 12,
+    color: "#6dc0fc",
+  },
+ 
   underline: {
     borderBottomWidth: 1,
     color: "rgba(49, 49, 49, 1)",
@@ -88,13 +91,12 @@ export const loginStyle = StyleSheet.create({
     fontSize: 12,
   },
   forgetButton:{
-   
     marginTop:20,
       alignItems:"center",
       justifyContent:"center",
     },
     forgetText:{
-      fontFamily: "IBMPlexSans-Medium",
+      // fontFamily: "IBMPlexSans-Medium",
       fontSize: 14,
       fontWeight:"500",
       textAlign: "center",

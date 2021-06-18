@@ -6,9 +6,11 @@ import SignUp from './SignUp/index';
 import Verify from './SignUp/verifyAccount';
 import RestPassword from './ResetPass/index';
 import RestPassword2 from './ResetPass/successFull';
+import Notification from './Notification/index';
+import Settings from "./Settings";
 
 
 
 
 
-export { Home, Page,SignIn,SignUpLog,SignUp,Verify,RestPassword,RestPassword2};
+export { Home, Page,SignIn,SignUpLog,SignUp,Verify,RestPassword,RestPassword2,Notification,Settings};
