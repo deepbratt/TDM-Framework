@@ -37,6 +37,6 @@ export const And="and";
 export const PrivacyPolicy ="Privacy Policy ";
 
 export const VerifyYourAccount="Verify Your Account";
-export const EnteryourNumber="Enter your  Number";
+export const EnteryourNumber="Enter your Number";
 export const EnterdigitCode="Enter 6 digit Code";
 export const ForgotPassword="Forgot password?";

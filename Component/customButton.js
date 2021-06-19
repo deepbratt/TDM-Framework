@@ -46,9 +46,8 @@ CustomButton.defaultProps = {
 CustomButton.propTypes = {
   type: PropTypes.oneOf(['default', 'link']).isRequired,
   buttonStyle: ViewPropTypes.style,
-
   textStyle: Text.propTypes.style,
-  Img: Image.propTypes.source.isRequired,
+  Img: Image.propTypes.source,
   leftImg: PropTypes.bool,
   disabled: PropTypes.bool,
   onPress: PropTypes.func,

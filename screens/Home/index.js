@@ -5,13 +5,12 @@ import CustomHeader from "../../Component/CustomHeader";
 export default function Home({navigation,}) {
   return (
     
-    <View style={styles.container}>
-    <CustomHeader isHome={true} title="Home" onPress={()=>navigation.openDrawer()}></CustomHeader>
-    
+  
+    <CustomHeader isHome={true} title="Home" onPress={()=>navigation.openDrawer()}>
       <Text> to start working on your app!</Text>
       <StatusBar style="auto" />
 
-    </View>
+    </CustomHeader>
   );
 }
 
@@ -19,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+   
     alignItems: "center",
   
   },

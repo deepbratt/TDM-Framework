@@ -58,5 +58,6 @@ export const sideBar=[
 link:"notification",
         color:"rgba(194, 0, 0, 1)"
 
-    }
+    },
+    
 ]

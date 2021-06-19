@@ -98,7 +98,7 @@ let input="123451230345";
 <View style={resetStyle.digit}>
 <Text style={resetStyle.digitalText}>{PleaseEnterDigit}</Text>
 </View>  
-        <TouchableOpacity onPress={() => navigation.navigate("RestPassword2")}>
+        <TouchableOpacity onPress={() => navigation.navigate("RestPassword2") }>
                             <LinearGradient colors={['#F04148', '#C20000']}
                                start={{x: 0, y: .4}} end={{x: 0, y: 1}}
                                 style={resetStyle.loginButton} >

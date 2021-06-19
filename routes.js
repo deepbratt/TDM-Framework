@@ -6,16 +6,14 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 import TabNavigator from "./Component/CustomBottomTab";
-import { SignIn, SignUp ,Settings,Verify,Home,RestPassword,RestPassword2} from './screens';
-
-
+import { SignIn, SignUp ,Settings,Verify,Home,RestPassword,RestPassword2,} from './screens';
+import { Notification } from "./screens";
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Routes = () => {
   const isLoggedIn = useSelector((state) => state.userReducer.isLoggedin);
   const Stack = createStackNavigator();
   const AppStack = createStackNavigator();
-
   const Drawers = createDrawerNavigator();
 
   function DrawerNavigator() {
@@ -30,7 +28,6 @@ const Routes = () => {
         drawerContent={(props) => Settings(props)}
         InitialRouteName="tab"
       >
-      
         <Drawers.Screen
           name="tab"
           component={TabNavigator}
@@ -105,7 +102,6 @@ const Routes = () => {
   //   return ( <LinearGradient colors={['#f5f5f5', '#DBDBDB']} start={[1, 0]} end={[0, 0]}>
   //   <TabNavigator  /> </LinearGradient> );
   // }
-  
   return (
     <NavigationContainer>
       <AppStack.Navigator
@@ -120,6 +116,7 @@ const Routes = () => {
         <AppStack.Screen name="AfterLogin" component={DrawerNavigator} />
       </AppStack.Navigator>
     </NavigationContainer>
+    
   );
 };
 export default Routes;

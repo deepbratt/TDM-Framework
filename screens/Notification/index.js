@@ -4,11 +4,18 @@ import CustomHeader from '../../Component/CustomHeader'
 
 export default function Notification({navigation}) {
     return (
-       <View style={{ flex: 1, alignItems: 'center', }}>
-       <CustomHeader  isHome={true} title="Notification" onPress={()=>navigation.openDrawer()}/>
+        
+      
+       <CustomHeader  isHome={true} title="Notification" onPress={()=>navigation.openDrawer()}>
+        <View style={{ flex:1,justifyContent:"center",alignItems:"center" }}>
 <Text >
     Notifications
 </Text>
-       </View>
+<Text >
+    Notifications
+</Text>
+</View>
+       </CustomHeader>
+      
     )
 }
