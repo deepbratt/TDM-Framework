@@ -1,6 +1,0 @@
-module Pods_dcorp {
-  umbrella header "Pods-dcorp-umbrella.h"
-
-  export *
-  module * { export * }
-}
