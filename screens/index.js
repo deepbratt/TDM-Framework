@@ -1,3 +1,5 @@
 import Home from "./Home";
 import Page from "./Page";
-export { Home, Page };
+import SignUp from "./SignUp/index";
+import Verify from "./SignUp/verifyAccount";
+export { Home, Page,SignUp,Verify};
