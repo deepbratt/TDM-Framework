@@ -5,10 +5,12 @@ const CustomLink = ({underlayColor,to,text,Linkstyle,style}) => {
     return (
         <Link to={to} underlayColor={underlayColor}
         style={Linkstyle} >
+        <View>
             <Text  style={style} >
              {text}
             
-    </Text>                
+    </Text>
+    </View>                
     </Link>
     )
 }
