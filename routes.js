@@ -11,12 +11,12 @@ const Routes = () => {
   return (
     <NativeRouter>
       {/* <Route path="/" exact component={SignUp} /> */}
-      <AfterLogin>
+      {/* <AfterLogin>
       <Route path="/" exact component={Home} />
       <Route path="/page" exact component={Page} />
-      </AfterLogin>
+      </AfterLogin> */}
      
-      {/* <Route path="/" component={Home} /> */}
+      <Route path="/" component={SignUp} />
     </NativeRouter>
   );
 };
