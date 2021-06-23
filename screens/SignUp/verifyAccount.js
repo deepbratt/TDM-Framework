@@ -16,9 +16,9 @@ import {
   EnteryourNumber,
   EnterdigitCode,
 } from "../../utils/en/constant";
-import { CustomInput } from "../../Component/CustomInput";
+import { CustomInput } from "../../Component/CustomInput/CustomInput";
 import { ForgetYourPassword, Login } from "../../utils/en/ResetPwconstant";
-import CustomButton from "../../Component/customButton";
+import CustomButton from "../../Component/CustomButton/customButton";
 import { NativeRouter, Route, Link } from "react-router-native";
 export default function Verify({ navigation }) {
   const [isActive, setisActive] = useState(false);

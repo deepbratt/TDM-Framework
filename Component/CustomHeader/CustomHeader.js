@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Appbar } from "react-native-paper";
 import { StyleSheet,View } from "react-native";
+import DropDown from "../CustomDropDown/CustomDropDown";
 
-const CustomHeader = ({ title, onPress, isHome,headerStyle }) => {
+const CustomHeader = ({ title, onPress,location, isHome,headerStyle }) => {
   const _handleMore = () => console.log("Shown more");
 
   return (
@@ -11,14 +12,19 @@ const CustomHeader = ({ title, onPress, isHome,headerStyle }) => {
       <Appbar.Action
         icon={
           isHome
-            ? require("../assets/sideBar/menu.png")
-            : require("../assets/sideBar/profiles.png")
+            ? require("../../assets/sideBar/menu.png")
+            : require("../../assets/sideBar/profiles.png")
         }
         onPress={onPress}
       />
+   {   title &&
       <Appbar.Content style={styles.Text} title={title} />
+   }
+   {location && 
+   <DropDown/>
+   }
       <Appbar.Action
-        icon={require("../assets/sideBar/profiles.png")}
+        icon={require("../../assets/sideBar/profiles.png")}
         onPress={_handleMore}
       />
     </Appbar.Header>

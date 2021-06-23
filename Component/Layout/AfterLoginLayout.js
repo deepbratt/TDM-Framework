@@ -9,20 +9,20 @@ import {
   Text,
   Alert,
 } from "react-native";
-import CustomHeader from "../CustomHeader";
+import CustomHeader from "../CustomHeader/CustomHeader";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "react-router-native";
-import style from "../style";
+
 
 export default function AfterLogin({ children }) {
   return (
     <View style={styles.container}>
       <CustomHeader
         isHome={true}
-        title="home"
+       location
         headerStyle={{ backgroundColor: "#F8F8F8" }}
       />
       <ScrollView>{children}</ScrollView>
@@ -33,7 +33,9 @@ export default function AfterLogin({ children }) {
           end={{ x: 0, y: 1 }}
           style={styles.button}
         >
+         <Link to="/" underlayColor="none">
           <MaterialCommunityIcons name="plus" size={24} color="white" />
+          </Link>
         </LinearGradient>
       </View>
       <LinearGradient
@@ -42,19 +44,19 @@ export default function AfterLogin({ children }) {
         end={{ x: 0, y: 1 }}
         style={[styles.mainContainer,{ x:0,y:0,bottom:0}]}
       >
-        <Link to="/">
+        <Link to="/" underlayColor="none">
           <View style={styles.flex}>
             <MaterialIcons name="home" size={24} color="white" />
             <Text style={styles.textIcon}>Home</Text>
           </View>
         </Link>
-        <Link to="/page">
+        <Link to="/page" underlayColor="none">
           <View style={[styles.flex,{marginLeft:20}]}>
             <MaterialIcons name="notifications" size={24} color="white" />
             <Text style={styles.textIcon}>Notification</Text>
           </View>
         </Link>
-        <Link to="/chat">
+        <Link to="/chat" underlayColor="none">
           <View
             style={{
               flexDirection: "column",
@@ -78,7 +80,7 @@ export default function AfterLogin({ children }) {
             </Text>
           </View>
         </Link>
-        <Link to="/cart">
+        <Link to="/cart" underlayColor="none">
           <View
             style={{
               flexDirection: "column",

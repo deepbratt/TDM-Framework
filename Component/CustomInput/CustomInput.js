@@ -9,8 +9,12 @@ export const CustomInput = ({
     leftIcon,
     rightIcon,
     value,
-    onChange
+    onChange,
+    multiline,
+    numberOfLines,
+    onClick
 }) => {
+
     return (
         <TextInput
         placeholder={placeholder}
@@ -22,9 +26,11 @@ export const CustomInput = ({
         right={rightIcon}
         value={value} 
         onChangeText={onChange}
+        multiline={multiline}
+        numberOfLines={numberOfLines}
         theme={{ colors: { primary: "white" } }}
         underlineColor={"transparent"}
-        
+        onClick={onClick}
       />
     )
 }
