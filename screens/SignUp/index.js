@@ -5,6 +5,7 @@ import { Button, TextInput } from 'react-native-paper';
 import { data,SignUpHead, text1, text2,ByContinuingyou,TermsOfuse,And,PrivacyPolicy, EnterPassword, enterEmail, signUp } from '../../utils/en/constant';
 import { CustomInput } from '../../Component/CustomInput/CustomInput';
 import { Link } from "react-router-native";
+
 export default function SignUp (){
    
     const [isActive, setisActive] = useState(false);

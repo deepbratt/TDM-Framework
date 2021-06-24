@@ -4,19 +4,19 @@ import { NativeRouter, Route,Link } from "react-router-native";
 import { BeforeLogin, Layout } from "./Component/Layout/index.js";
 import { Home, Page, SignIn, SignUp, Verify } from "./screens";
 import AfterLogin from "./Component/Layout/AfterLoginLayout.js";
-
+import DrawerNavigator from "./Component/CustomDrawer/index.js";
 const Routes = () => {
   const isLoggedIn = useSelector((state) => state.userReducer.isLoggedin);
 
   return (
     <NativeRouter>
       {/* <Route path="/" exact component={SignUp} /> */}
-      {/* <AfterLogin>
-      <Route path="/" exact component={Home} />
-      <Route path="/page" exact component={Page} />
-      </AfterLogin> */}
+  
+  <DrawerNavigator/>
+
+      {/* npm install @react-navigation/native */}
+      {/* <Route path="/" component={SignUp} /> */}
      
-      <Route path="/" component={SignUp} />
     </NativeRouter>
   );
 };
