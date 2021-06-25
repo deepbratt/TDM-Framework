@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 
 import {
   data,
-  SignUpHead,
+  SignInHead,
   text1,
   text2,
   ByContinuingyou,
@@ -24,6 +24,7 @@ import {
   EnterPassword,
   enterEmail,
   signUp,
+  Login,
 } from "../../utils/en/constant";
 import { CustomInput } from "../../Component/CustomInput/CustomInput";
 import { Link } from "react-router-native";
@@ -33,7 +34,7 @@ import { setUserSession } from "../../utils/general.utils";
 import { userLoginApi } from "../../utils/api/api";
 import { connect, useDispatch } from "react-redux";
 
- function SignUp() {
+ function SignIn() {
   
   const history = useHistory();
   const [isActive, setisActive] = useState(false);
@@ -88,7 +89,7 @@ await userLoginApi (requestBody)
   return (
     <ScrollView style={signInStyles.container}>
       <View style={signInStyles.top}>
-        <Text style={signInStyles.head}>{SignUpHead}</Text>
+        <Text style={signInStyles.head}>{SignInHead}</Text>
         <Text style={signInStyles.detail}>{text1}</Text>
         <Text style={signInStyles.detail}> {text2}</Text>
       </View>
@@ -146,7 +147,7 @@ await userLoginApi (requestBody)
               onPress={()=>login()}
               style={signInStyles.SignInButton}
             >
-              <Text style={signInStyles.loginText}>{signUp}</Text>
+              <Text style={signInStyles.loginText}>{Login}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -162,4 +163,4 @@ await userLoginApi (requestBody)
     </ScrollView>
   );
 }
-export default connect()( SignUp);
+export default connect()( SignIn);

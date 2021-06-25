@@ -7,8 +7,10 @@
     "reset": "rm -rf node_modules && yarn"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.5",
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
+    "axios": "^0.21.1",
     "expo": "~38.0.8",
     "expo-splash-screen": "^0.5.0",
     "expo-status-bar": "^1.0.2",

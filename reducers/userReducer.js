@@ -1,3 +1,5 @@
+import { removeUserSession } from "../utils/general.utils";
+
 const initialNewsState = {
   user: {},
   isLoggedin: false,
@@ -11,6 +13,7 @@ const userReducer = (state = initialNewsState, action) => {
         isLoggedin: true,
       };
     case "LOGOUT":
+      removeUserSession();
       return {
         ...state,
         user: null,
