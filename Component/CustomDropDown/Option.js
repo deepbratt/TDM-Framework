@@ -8,7 +8,7 @@ import {
   Text,
   Dimensions,
 } from "react-native";
-
+import {optStyles} from "./Optionstyles";
 
   const Option = ({changeVisbility,setData}) => {
     const list = [
@@ -23,10 +23,10 @@ import {
     };
     const option = list.map((item) =>  <TouchableOpacity
           key={item.id}
-          style={styles.option}
+          style={optStyles.option}
           onPress={() => onPressItem(item.label)}
         >
-          <Text style={styles.text}>{item.label}</Text>
+          <Text style={optStyles.text}>{item.label}</Text>
         </TouchableOpacity>
      
     );
@@ -36,9 +36,9 @@ import {
     return (
       <TouchableOpacity
         onPress={() => changeVisbility}
-        style={styles.container}
+        style={optStyles.container}
       >
-        <View style={[styles.modal, { width: WIDTH - 190, height: HEIGHT / 3 }]}>
+        <View style={[optStyles.modal, { width: WIDTH - 190, height: HEIGHT / 3 }]}>
        
           <ScrollView>{option}</ScrollView>
         </View>
@@ -46,50 +46,5 @@ import {
   
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems:"center",
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  modal: {
-    margin: 45,
-    padding: 1,
-    borderRadius: 20,
-    backgroundColor: "white",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 1,
-    borderRadius: 2,
-  },
-  option: {
-    alignItems: "flex-start",
-    borderBottomColor:"#000",
-    borderBottomWidth:.4,
-  },
-  text: {
-    margin: 20,
-   
-  },
 
-});
 export default Option;

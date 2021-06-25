@@ -11,16 +11,27 @@ import {
   ScrollView,
 } from "react-native";
 import { sideBar } from "../../utils/en/BottomNavigation";
-import { Avatar,Title, } from "react-native-paper";
+import { Avatar, Title } from "react-native-paper";
 import { Link } from "@react-navigation/native";
+import { styles } from "../../Component/CustomHeader/style";
 
 const Settings = (props) => {
+  const {
+    container,
+    Image,
+    section1,
+    location,
+    locationText,
+    chngLocation,
+    DrawerButton,
+    LinearImage,
+  } = styles;
   return (
     <View style={{ flex: 1, zIndex: 1 }}>
       <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.section1}>
-            <View style={styles.Image}>
+        <View style={container}>
+          <View style={section1}>
+            <View style={Image}>
               <Avatar.Image
                 source={require("../../assets/sideBar/profile.png")}
               ></Avatar.Image>
@@ -35,32 +46,30 @@ const Settings = (props) => {
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Image
-                  style={styles.location}
+                  style={location}
                   source={require("../../assets/sideBar/location.png")}
                 />
-                <Text style={styles.locationText}>Islamabad</Text>
+                <Text style={locationText}>Islamabad</Text>
               </View>
-              <Text style={styles.chngLocation}>Change location</Text>
+              <Text style={chngLocation}>Change location</Text>
             </View>
           </View>
         </View>
         <View style={{ marginTop: 15 }}>
           {sideBar.map((item) => {
             return (
-            
               <TouchableOpacity
                 onPress={() => {
                   props.navigation.navigate();
                 }}
                 key={item.id}
-                style={styles.DrawerButton}
+                style={DrawerButton}
               >
-             
                 <LinearGradient
                   colors={["#F04148", "#C20000"]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
-                  style={styles.LinearImage}
+                  style={LinearImage}
                 >
                   <Image
                     style={{
@@ -77,7 +86,6 @@ const Settings = (props) => {
                   </View>
                 </View>
               </TouchableOpacity>
-            
             );
           })}
         </View>
@@ -86,43 +94,3 @@ const Settings = (props) => {
   );
 };
 export default Settings;
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 15,
-    borderBottomWidth: 0,
-  },
-  section1: {
-    marginVertical: 30,
-    flexDirection: "row",
-    width: "100%",
-    height: 40,
-  },
-  Image: { 
-      width: "20%",
-   marginHorizontal: 20 
-},
-  location: { marginHorizontal: 5, width: 10, height: 13.5 },
-  locationText: { fontWeight: "500", fontSize: 14 },
-  chngLocation: { marginHorizontal: 20, fontSize: 12, color: "#3A82E2" },
-  DrawerButton: {
-    borderBottomColor: "rgba(190, 199, 197, 1)",
-    marginHorizontal: 30,
-    paddingVertical: 15,
-    flexDirection: "row",
-    width: "100%",
-    borderBottomColor: "rgba(190, 199, 197, 1)",
-    borderBottomWidth: 0.5,
-  },
-  LinearImage: {
-    width: "20%",
-    marginHorizontal: 5,
-    marginRight: 20,
-    backgroundColor: "red",
-    justifyContent: "center",
-    borderRadius: 4,
-    color: "white",
-    height: 30,
-    width: 30,
-  },
-});

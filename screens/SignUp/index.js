@@ -34,6 +34,7 @@ import { userLoginApi } from "../../utils/api/api";
 import { connect, useDispatch } from "react-redux";
 
  function SignUp() {
+  const {container,top,bottom,detail,SignInButton,head,img,loginText,underline}=signInStyles;
   
   const history = useHistory();
   const [isActive, setisActive] = useState(false);
@@ -46,54 +47,74 @@ import { connect, useDispatch } from "react-redux";
     : signInStyles.activeField;
 
     const [data, setdata] = useState({
-      userName: "",
+      firstName: "",
+      lastName: "",
+email:"",
+phone:"",
       password: "",
-      errorNum: "",
-      errorPass: "",
-      secureTextEntry: true
-      // showPassword:true,
+      cnPassword:"",
+     
   });
-  const handleInput = (val) => {
-    setdata({ ...data, userName: val, }) //dyamic 
+  const handleEmail = (val) => {
+
+    setdata({ ...data, email: val, }) //dyamic 
 
 };
 const handlePassword = (val) => {
-    setdata({ ...data, password: val, }) //dyamic 
+  setdata({ ...data, password: val, }) //dyamic 
+
+};
+const handleCnPassword = (val) => {
+  setdata({ ...data, cnPassword: val, }) //dyamic 
+
+};
+const handleFn = (val) => {
+  setdata({ ...data, firstName: val, }) //dyamic 
+
+};
+const handleLn = (val) => {
+  setdata({ ...data, lastName: val, }) //dyamic 
+
+};
+const handlePhone = (val) => {
+  setdata({ ...data, phone: val, }) //dyamic 
+
+};
+ const dispatch = useDispatch();
+const Register = async()=>{
+  const {email,firstName,lastName,phone,password,cnPassword}=data;
+const requestBody={
+  "firstName":firstName,
+  "lastName":lastName,
+  "phone":phone,
+  "email": email,
+  "password": password,
+  "passwordConfirm":cnPassword,
+}
+await axios.post("http://3.133.81.44/v1/users/signup",requestBody)
+.then( res =>{
+    console.log("response",res);
+history.push("/page");
+  }
+).catch(error=>{
+
+  console.log("response=",error.message);
+     alert("Signup page faild");  
+})
 
 };
 
- const dispatch = useDispatch();
-const login = async()=>{
-  const {userName,password}=data;
-const requestBody={
-  "email": userName,
-  "password": password
-}
-await userLoginApi (requestBody)
-    .then(response  => {
-      console.log(response,"dsd")
-          alert(response.message);
-          // dispatch({type:'LOGIN', requestBody});
-          // console.log( requestBody,"d requestBody")
-          setUserSession(response.data.token, response.data.user)
-        alert("login successful");
-        history.push("/page");
-        }
-    ).catch(error=>{
-      if (error.status === 401) return alert("user and password incorrect");
-       
-     })  
-      };
+
 
   return (
-    <ScrollView style={signInStyles.container}>
-      <View style={signInStyles.top}>
-        <Text style={signInStyles.head}>{SignUpHead}</Text>
-        <Text style={signInStyles.detail}>{text1}</Text>
-        <Text style={signInStyles.detail}> {text2}</Text>
+    <ScrollView style={container}>
+      <View style={top}>
+        <Text style={head}>{SignUpHead}</Text>
+        <Text style={detail}>{text1}</Text>
+        <Text style={detail}> {text2}</Text>
       </View>
       <View>
-        <View style={signInStyles.img}>
+        <View style={img}>
           <Image
             fadeDuration={0}
             style={{ width: "100%", height: "100%" }}
@@ -102,17 +123,68 @@ await userLoginApi (requestBody)
         </View>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <CustomInput
-            placeholder={enterEmail}
+            placeholder="Enter First Name"
             style={cstomStyle}
             onFocus={() => setActive(true)}
             onBlur={() => setActive(false)}
-            value={data.userName}
-            onChange={(val) => handleInput(val)}
+            value={data.firstName}
+            onChange={(val) => handleFn(val)}
             leftIcon={
               <TextInput.Icon
                 size={18}
                 color={Active ? "#C20000" : "#ACABB1"}
                 name="email"
+              />
+            }
+            theme={{ colors: { primary: "white" } }}
+            underlineColor="transparent"
+          />
+            <CustomInput
+            placeholder="Enter Last Name"
+            style={cstomStyle}
+            onFocus={() => setActive(true)}
+            onBlur={() => setActive(false)}
+            value={data.lastName}
+            onChange={(val) => handleLn(val)}
+            leftIcon={
+              <TextInput.Icon
+                size={18}
+                color={Active ? "#C20000" : "#ACABB1"}
+                name="email"
+              />
+            }
+            theme={{ colors: { primary: "white" } }}
+            underlineColor="transparent"
+          />
+            <CustomInput
+            placeholder={enterEmail}
+            style={cstomStyle}
+            onFocus={() => setActive(true)}
+            onBlur={() => setActive(false)}
+            value={data.email}
+            onChange={(val) => handleEmail(val)}
+            leftIcon={
+              <TextInput.Icon
+                size={18}
+                color={Active ? "#C20000" : "#ACABB1"}
+                name="email"
+              />
+            }
+            theme={{ colors: { primary: "white" } }}
+            underlineColor="transparent"
+          />
+           <CustomInput
+            placeholder="Enter phone Number"
+            style={cstomStyle}
+            onFocus={() => setActive(true)}
+            onBlur={() => setActive(false)}
+            value={data.phone}
+            onChange={(val) => handlePhone(val)}
+            leftIcon={
+              <TextInput.Icon
+                size={18}
+                color={Active ? "#C20000" : "#ACABB1"}
+                name="phone"
               />
             }
             theme={{ colors: { primary: "white" } }}
@@ -134,6 +206,22 @@ await userLoginApi (requestBody)
               />
             }
           />
+          <CustomInput
+            placeholder="Confirm Password"
+            style={customStyle}
+            onFocus={() => setisActive(true)}
+            onBlur={() => setisActive(false)}
+            secureTextEntry
+            value={data.cnPassword}
+            onChange={(val) => handleCnPassword(val)}
+            leftIcon={
+              <TextInput.Icon
+                size={18}
+                color={isActive ? "#C20000" : "#ACABB1"}
+                name="lock"
+              />
+            }
+          />
           <View
             style={{
               alignItems: "center",
@@ -143,23 +231,23 @@ await userLoginApi (requestBody)
           >
             <TouchableOpacity
               underlayColor="#fff4f7"
-              onPress={()=>login()}
-              style={signInStyles.SignInButton}
+              onPress={()=>Register()}
+              style={SignInButton}
             >
-              <Text style={signInStyles.loginText}>{signUp}</Text>
+              <Text style={loginText}>{signUp}</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
-      <View style={signInStyles.bottom}>
-        <Text style={signInStyles.detail}>{ByContinuingyou}</Text>
+      <View style={bottom}>
+        <Text style={detail}>{ByContinuingyou}</Text>
         <Text>
-          <Text style={signInStyles.underline}>{TermsOfuse}</Text>{" "}
-          <Text style={signInStyles.detail}>{And} </Text>
-          <Text style={signInStyles.underline}>{PrivacyPolicy}</Text>{" "}
+          <Text style={underline}>{TermsOfuse}</Text>{" "}
+          <Text style={detail}>{And} </Text>
+          <Text style={underline}>{PrivacyPolicy}</Text>{" "}
         </Text>
       </View>
     </ScrollView>
   );
 }
-export default connect()( SignUp);
+export default SignUp;

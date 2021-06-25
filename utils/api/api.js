@@ -9,9 +9,22 @@ const axiosInstance = axios.create({
     }
 })
 const USERS = {
+  SIGNUP: `users/signup`,
     LOGIN: `users/login`,
   };
-
+  export const userSignUpApi = async(data)=>{
+    try {
+    let result = await axios.post("http://3.133.81.44/v1/users/signup",data);
+    return result.data;
+    }
+    catch(error){
+        console.log(error);
+        if (error.response === undefined) {
+            return { status: 403, message: "Something Went Wrong!" };
+          }
+          return error.response.data;
+        }
+      };
 export const userLoginApi = async(data)=>{
     try {
     let result = await axios.post("http://3.133.81.44/v1/users/login",data);

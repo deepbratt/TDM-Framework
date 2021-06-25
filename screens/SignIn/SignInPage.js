@@ -35,7 +35,7 @@ import { userLoginApi } from "../../utils/api/api";
 import { connect, useDispatch } from "react-redux";
 
  function SignIn() {
-  
+  const {container,top,bottom,detail,SignInButton,head,img,loginText,underline}=signInStyles;
   const history = useHistory();
   const [isActive, setisActive] = useState(false);
   const [Active, setActive] = useState(false);
@@ -87,14 +87,14 @@ await userLoginApi (requestBody)
       };
 
   return (
-    <ScrollView style={signInStyles.container}>
-      <View style={signInStyles.top}>
-        <Text style={signInStyles.head}>{SignInHead}</Text>
-        <Text style={signInStyles.detail}>{text1}</Text>
-        <Text style={signInStyles.detail}> {text2}</Text>
+    <ScrollView style={container}>
+      <View style={top}>
+        <Text style={head}>{SignInHead}</Text>
+        <Text style={detail}>{text1}</Text>
+        <Text style={detail}> {text2}</Text>
       </View>
       <View>
-        <View style={signInStyles.img}>
+        <View style={img}>
           <Image
             fadeDuration={0}
             style={{ width: "100%", height: "100%" }}
@@ -145,19 +145,19 @@ await userLoginApi (requestBody)
             <TouchableOpacity
               underlayColor="#fff4f7"
               onPress={()=>login()}
-              style={signInStyles.SignInButton}
+              style={SignInButton}
             >
-              <Text style={signInStyles.loginText}>{Login}</Text>
+              <Text style={loginText}>{Login}</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
-      <View style={signInStyles.bottom}>
-        <Text style={signInStyles.detail}>{ByContinuingyou}</Text>
+      <View style={bottom}>
+        <Text style={detail}>{ByContinuingyou}</Text>
         <Text>
-          <Text style={signInStyles.underline}>{TermsOfuse}</Text>{" "}
-          <Text style={signInStyles.detail}>{And} </Text>
-          <Text style={signInStyles.underline}>{PrivacyPolicy}</Text>{" "}
+          <Text style={underline}>{TermsOfuse}</Text>{" "}
+          <Text style={detail}>{And} </Text>
+          <Text style={underline}>{PrivacyPolicy}</Text>{" "}
         </Text>
       </View>
     </ScrollView>
