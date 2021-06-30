@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import LoginScreen from "./screens/Login";
-import Navigation from "./navigation/index"
+import LoginScreen from "./src/screens/Login";
+import Navigation from "./src/navigation/index"
 const AuthRoute = ({ component: Component, isLoggedIn, ...rest }) => {
   console.log(isLoggedIn,"log");
   return (
