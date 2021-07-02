@@ -7,6 +7,7 @@ import * as React from 'react';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import DrawerNavigator from './drawerNavigation/drawerNavigator';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,7 +19,7 @@ export default function BottomTabNavigator() {
       tabBarOptions={{ activeTintColor: "blue" }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneNavigator}
+        component={DrawerNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
