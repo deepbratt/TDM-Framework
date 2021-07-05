@@ -9,7 +9,7 @@ import CustomBottomTab from "../component/CustomBottomTab/customTab";
 const MainLayout=({children,navigation})=>{
     return(
         <>
-        <CustomHeader onPress={()=>navigation.openDrawer()} />
+        <CustomHeader pressBtn={()=>navigation.openDrawer()} />
      <ScrollView>{children}</ScrollView>  
         <CustomBottomTab/>
  </> )
