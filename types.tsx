@@ -19,3 +19,8 @@ export type TabTwoParamList = {
 export type LayoutProps = {
   children?:React.ReactNode 
 };
+export type HeaderProps = {
+  Headtitle:string,
+  pressBtn?:() => void  ;
+};
+

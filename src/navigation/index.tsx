@@ -5,7 +5,7 @@ import * as React from 'react';
 import { RootStackParamList } from '../../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration'
-
+import MyDrawer from "./Customdrawer/index";
 export default function Navigation() {
   return (
     <NavigationContainer
@@ -21,7 +21,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen name="Root" component={MyDrawer} />
   
     </Stack.Navigator>
   );

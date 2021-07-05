@@ -1,9 +1,11 @@
 import React,{FC} from "react";
-import { View,Text } from "react-native";
+import { View,Text, TouchableOpacity ,Button} from "react-native";
+import { HeaderProps } from "../../../types";
 
-const CustomHeader:FC=()=>{
-    return <View>
-        <Text> Head Section</Text>
+const CustomHeader:FC<HeaderProps>=({pressBtn,Headtitle})=>{
+    return <View style={{backgroundColor:"blue",width:"100%",height:70,flexDirection:"row",justifyContent:"space-around",alignItems:"center"}}>
+        <Text style={{color:"white"}}> {Headtitle}</Text>
+      <Button title="menu"></Button>  
     </View>;
 }
 export default CustomHeader;
