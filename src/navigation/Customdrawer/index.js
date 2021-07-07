@@ -1,10 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useWindowDimensions } from 'react-native';
-import TabOneScreen from '../../screens/TabOneScreen';
 import TabTwoScreen from '../../screens/TabTwoScreen';
-import BottomTabNavigator from '../BottomTabNavigator';
-import CustomBottomTab from '../../component/CustomBottomTab/customTab';
 import { AppRoute } from '../AppRoute';
 const Drawer = createDrawerNavigator();
 

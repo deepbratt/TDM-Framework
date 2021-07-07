@@ -1,19 +1,19 @@
 import React from 'react'
-import {View,Text,Button} from "react-native"
+import {View,Text,Button, TouchableOpacity} from "react-native"
 import { Link } from 'react-router-native'
  const CustomBottomTab = () => {
 
     return (
        <View style={{ width: "100%",
-       height: 70,backgroundColor:"red",flexDirection:"row", alignItems: "center",
+       height: 70,backgroundColor:"#e8e8e8",flexDirection:"row", alignItems: "center",
       justifyContent: "space-around"}}>
-      <Link to="/" >
+      <Link to="/" component={TouchableOpacity} underlayColor="none" >
       <View style={{ width: 60,
       height: 30,
       alignItems: "center",
       justifyContent: "center",}}><Text> Tab One</Text></View>
       </Link>
-      <Link  to="/two" >
+      <Link  to="/two" component={TouchableOpacity} underlayColor="none" >
 <View style={{ width: 60,
       height: 60,
       alignItems: "center",

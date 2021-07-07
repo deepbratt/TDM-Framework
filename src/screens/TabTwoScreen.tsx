@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, StyleSheet } from 'react-native';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Text, View } from 'react-native';
 import {  logout } from "../redux/reducers/authSlice";
 

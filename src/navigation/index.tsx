@@ -3,13 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { RootStackParamList } from '../../types';
-import BottomTabNavigator from './BottomTabNavigator';
-import LinkingConfiguration from './LinkingConfiguration'
 import MyDrawer from "./Customdrawer/index";
 export default function Navigation() {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration}
       >
       <RootNavigator />
     </NavigationContainer>

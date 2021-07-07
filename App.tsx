@@ -15,7 +15,7 @@ export default function App() {
         <Provider store={store}>
       <SafeAreaProvider>
     <AuthRoute />
-    <StatusBar />
+    <StatusBar style="dark"/>
   </SafeAreaProvider>
             
           </Provider>
