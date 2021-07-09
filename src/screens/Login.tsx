@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { Button, StyleSheet } from 'react-native';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Text, View } from 'react-native';
-import {  logout } from "../redux/reducers/authSlice";
+import { login } from "../redux/reducers/authSlice";
 
-export default function TabTwoScreen() {
+export default function LoginScreen() {
   const dispatch = useDispatch();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Screen Two</Text>
-    
-      <Button onPress={() => dispatch(logout())} title='Logout'/>
+      <Text style={styles.title}>LoginScreen</Text>
+      <Button onPress={() => dispatch(login())} title='Login' />
 
     </View>
   );
@@ -26,5 +25,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
- 
 });

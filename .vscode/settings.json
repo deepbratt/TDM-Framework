@@ -1,4 +1,4 @@
 {
-  "eslint.codeActionsOnSave.mode": "problems",
-  "files.autoSave": "afterDelay"
-}
+    "eslint.codeActionsOnSave.mode": "problems",
+    "files.autoSave": "afterDelay"
+  }

@@ -16,3 +16,11 @@ export type TabOneParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+export type LayoutProps = {
+  children?:React.ReactNode 
+};
+export type HeaderProps = {
+  Headtitle:string,
+  pressBtn?:() => void  ;
+};
+
