@@ -23,4 +23,10 @@ export type HeaderProps = {
   Headtitle:string,
   pressBtn?:() => void  ;
 };
+export type SmsButtonProps = {
+  pressBtn?: () => void;
+};
+export type customGradientButtonProps = {
+  // GradientButton?: any;
+}
 
