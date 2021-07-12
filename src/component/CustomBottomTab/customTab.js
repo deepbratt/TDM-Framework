@@ -13,7 +13,7 @@ import { Link } from 'react-router-native'
       alignItems: "center",
       justifyContent: "center",}}><Text> Tab One</Text></View>
       </Link>
-      <Link  to="/two" component={TouchableOpacity} underlayColor="none" >
+      <Link  to="/one" component={TouchableOpacity} underlayColor="none" >
 <View style={{ width: 60,
       height: 60,
       alignItems: "center",

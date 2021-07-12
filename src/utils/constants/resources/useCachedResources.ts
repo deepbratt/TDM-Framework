@@ -14,7 +14,13 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'space-mono': require('../../../../assets/fonts/SpaceMono-Regular.ttf'),
+          'IBMPlexSans-ExtraLight': require('../../../../assets/fonts/IBMPlexSans-ExtraLight.ttf'), //200
+          'IBMPlexSans-Light': require('../../../../assets/fonts/IBMPlexSans-Light.ttf'), //300
+          'IBMPlexSans-Regular': require('../../../../assets/fonts/IBMPlexSans-Regular.ttf'), //400
+          'IBMPlexSans-Medium': require('../../../../assets/fonts/IBMPlexSans-Medium.ttf'), //500
+          'IBMPlexSans-SemiBold': require('../../../../assets/fonts/IBMPlexSans-SemiBold.ttf'), //600
+          'IBMPlexSans-Bold': require('../../../../assets/fonts/IBMPlexSans-Bold.ttf'), //700
+          'IBMPlexSans-Italic': require('../../../../assets/fonts/IBMPlexSans-Italic.ttf'),
         });
       } catch (e) {
         console.warn(e);
