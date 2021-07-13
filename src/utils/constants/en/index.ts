@@ -51,4 +51,9 @@ export const VerifyYourAccount="Verify Your Account";
 export const EnteryourNumber="Enter your Number";
 export const EnterdigitCode="Enter 6 digit Code";
 export const ForgotPassword="Forgot password?";
-
+export const Locationlist = [
+    { id: 1,label: "Islamabad", value: "Islamabad" },
+  {id: 2, label: "Lahore", value: "Lahore" },
+  {id: 3, label: "Bahawalpur", value: "Bahawalpur" },
+  { id: 4,label: "Others", value: "others" },
+];

@@ -24,9 +24,17 @@ export type LayoutProps = {
   text2:string;
 };
 export type HeaderProps = {
-  Headtitle:string,
-  pressBtn?:() => void  ;
+  title:string;
+  onPress ?:() => void  ;
+  location?:() => void  ;
+  isHome?:boolean; headerStyle?:any;
+   color?:any; 
 };
+export type DropDownProps={
+  color?:any;textcolor?:any;
+  changeVisbility?:() => void;
+   setData?:() => void ;
+}
 export type SignInProp={
   onPress:()=>void;
   login:boolean;
