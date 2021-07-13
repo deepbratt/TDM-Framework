@@ -10,7 +10,6 @@ interface layout{
 const MainLayout:FC<layout>=({children,navigation})=>{
     return(
         <>
-        <CustomHeader headerStyle={{  backgroundColor:"#F8F8F8"}}  color="#313131" isHome={true} title="Home" onPress={()=>navigation.openDrawer()} />
      <ScrollView>{children}</ScrollView>  
         <CustomBottomTab/>
  </> )

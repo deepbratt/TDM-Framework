@@ -3,9 +3,7 @@ import { Appbar } from "react-native-paper";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
-  Dimensions,
 } from "react-native";
 import DropDown from "../CustomDropDown/CustomDropDown";
 import { styles } from "./style";
@@ -27,7 +25,7 @@ const CustomHeader: FC<HeaderProps> = ({ title, onPress, location, isHome, heade
 
       </TouchableOpacity>
 
-      {isHome && <View style={item2}>
+      {title && <View style={item2}>
         <Text style={text}>{title}</Text>
       </View>}
 
