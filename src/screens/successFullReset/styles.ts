@@ -7,11 +7,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     img: {
-        height: 44.24,
-        width: 44,
+        height: 48,
+        width: 48,
         marginTop: 53,
         marginLeft: 29,
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
+        resizeMode: 'contain',
     },
     textContainer: {
         width: 138,
@@ -45,7 +46,8 @@ export const styles = StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         flexDirection: 'row',
-        justifyContent:'center'
+        justifyContent: 'center',
+        alignSelf:'center'
     },
     gradientTextStyle: {
         fontSize: 16,

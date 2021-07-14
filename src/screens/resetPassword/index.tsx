@@ -47,14 +47,14 @@ const ResetPassword = () => {
                 onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle1}
                 source={require('../../../assets/images/email.png')}
-                text1={"Via SMS"}
+                text1={"Via Email"}
                 textStyle1={styles.textStyleOne}
                 textContainerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
                 text2={"****"}
                 textStyle2={styles.textStyleTwo}
-                text3={"****"}
+                text3={"**al"}
                 textStyle3={styles.textStyleTwo}
-                text4={"0345"}
+                text4={"@gmail.com"}
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>

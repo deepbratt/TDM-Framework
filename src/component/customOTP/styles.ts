@@ -34,12 +34,12 @@ export const styles = StyleSheet.create({
   },
   textStyle: {
     width: 311,
-    height: 60,
+    height: 80,
     fontSize: 16,
     fontWeight: '400',
     color: '#96A7AF',
-    paddingTop: 23,
-    alignSelf: 'center'
+    paddingTop: 20,
+    alignSelf: 'center',
   },
   gradientStyle: {
     width: 315,

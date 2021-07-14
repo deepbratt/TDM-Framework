@@ -7,11 +7,12 @@ export const styles = StyleSheet.create({
         justifyContent:'flex-start'
     },
     img: {
-        height: 44.24,
-        width: 44,
+        height: 48,
+        width: 48,
         marginTop: 53,
         marginLeft: 29,
-        alignSelf: 'flex-start'
+        alignSelf: 'flex-start',
+        resizeMode: 'contain',
     },
     textContainer: {
         width: 185,
@@ -47,6 +48,7 @@ export const styles = StyleSheet.create({
         marginRight: 30,
         backgroundColor: '#FFFFFF',
         borderColor: '#1A75FF',
+        alignSelf:'center',
         borderWidth: 1,
         borderRadius: 11,
         shadowColor: '#CCCCCC',
@@ -66,6 +68,7 @@ export const styles = StyleSheet.create({
         marginRight: 30,
         backgroundColor: '#FFFFFF',
         borderColor: '#FFF',
+        alignSelf:'center',
         borderWidth: 1,
         borderRadius: 11,
         shadowColor: '#CCCCCC',
@@ -82,14 +85,16 @@ export const styles = StyleSheet.create({
         width: 30.25,
         marginLeft: 141.88,
         marginTop: 21,
-        tintColor: '#1A75FF'
+        tintColor: '#1A75FF',
+        resizeMode:'cover'
     },
     imageStyle1: {
         height: 48,
-        width: 30.25,
-        marginLeft: 141.88,
+        width: 50,
+        marginLeft: 131.88,
         marginTop: 21,
-        tintColor: '#C20000'
+        tintColor: '#C20000',
+        resizeMode:'cover'
     },
     textStyleOne: {
         fontWeight: '600',
@@ -101,14 +106,16 @@ export const styles = StyleSheet.create({
     textStyleTwo: {
         fontSize: 14,
         fontWeight: '400',
-        padding: 9,
+        paddingTop: 9,
+        
         textAlign: 'center',
         color: '#313131'
     },
     textStyleThree: {
         fontSize: 14,
         fontWeight: '400',
-        padding: 9,
+        paddingTop: 9,
+        paddingLeft:4,
         textAlign: 'center',
         color: '#666666'
     },

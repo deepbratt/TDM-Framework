@@ -9,6 +9,12 @@ import useCachedResources from './src/utils/constants/resources/useCachedResourc
 import SuccessFullReset from './src/screens/successFullReset';
 import ResetPassword from './src/screens/resetPassword';
 import BottomSheetComponent from './src/component/BottomSheet';
+import CarDetails from './src/screens/carDetails';
+import CustomTopBar from './src/component/customTopTab';
+import TokenAmount from './src/screens/tokenAmount';
+import ConfirmPayment from './src/screens/confirmPayment';
+import PaymentError from './src/screens/paymentError';
+import PayTokenAmount from './src/screens/payTokenAmount';
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
@@ -21,7 +27,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <ResetPassword/>
+        <SuccessFullReset/>
         
           </Provider>
            
