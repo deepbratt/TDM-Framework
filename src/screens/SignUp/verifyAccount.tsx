@@ -65,8 +65,6 @@ const Verify: FC = () => {
                 name="phone"
               />
             }
-            theme={{ colors: { primary: "white" } }}
-            underlineColor="transparent"
           />
           <CustomInput
           disabled={Verify ? false: true}
@@ -103,7 +101,7 @@ const Verify: FC = () => {
             text={ForgotPassword}
             buttonStyle={signInStyles.forgetButton}
             textStyle={signInStyles.forgetText}
-            onPress={() => console.log("REST")}
+            linkTo="/forget"
           ></CustomButton>
         </View>
       </View>

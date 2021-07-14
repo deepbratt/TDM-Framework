@@ -8,12 +8,13 @@ import { Link } from 'react-router-native'
     buttonStyle,
     textStyle,
     onPress,
+    linkTo,
     leftImg,
     Img,
     text,
     })=>{
     return (
-        <Link to={onPress} underlayColor="none" component={TouchableOpacity}   style={
+        <Link onPress={onPress} to={linkTo} underlayColor="none" component={TouchableOpacity}   style={
             buttonStyle
           }>
       

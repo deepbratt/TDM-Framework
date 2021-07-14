@@ -1,5 +1,5 @@
-import { SignIn, SignUp, SignInWithEmail, Verify } from "../../screens";
-import TabOneScreen from "../../screens/TabOneScreen";
+
+import { SignIn, SignUp, SignInWithEmail, Verify, HomePage } from "../../screens";
 import TabTwoScreen from "../../screens/TabTwoScreen";
 
 export const Public=[
@@ -28,12 +28,14 @@ export const protectedroute=[
     {
         id:1,
         path:"/",
-        component:TabOneScreen,
+        component:HomePage,
     },
     {
         id:2,
         path:"/one",
         component:TabTwoScreen,
     },
+   
+  
    
 ];

@@ -31,7 +31,7 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
           {data.map((item) => {
             return (
               <CustomButton
-                onPress={login ? item.path : item.route}
+                linkTo={login ? item.path : item.route}
                 leftImg={true}
                 key={item.id}
                 buttonStyle={loginStyle.button}
@@ -51,7 +51,7 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
         <View >
           <CustomButton text={ForgotPassword}
             buttonStyle={loginStyle.forgetButton}
-            textStyle={loginStyle.forgetText} onPress="/forgot" />
+            textStyle={loginStyle.forgetText} linkTo="/forgot" />
         </View>
       }
     </SimpleLayout>

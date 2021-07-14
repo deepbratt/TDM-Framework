@@ -4,6 +4,7 @@ import { Link } from "react-router-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { tabStyles } from "./style";
+import { Cart, Chat, Home, Notification } from "../../utils/constants/HomeConstant";
  const CustomBottomTab = () => {
   const { mainContainer, flex, textIcon, plusButton, button } = tabStyles;
   return (
@@ -17,13 +18,13 @@ import { tabStyles } from "./style";
       <Link to="/" component={TouchableOpacity} underlayColor="none">
         <View style={flex}>
           <MaterialIcons name="home" size={24} color="white" />
-          <Text style={textIcon}>Home</Text>
+          <Text style={textIcon}>{Home}</Text>
         </View>
       </Link>
       <Link to="/one" component={TouchableOpacity} underlayColor="none">
         <View style={[flex, { marginLeft: 20 }]}>
           <MaterialIcons name="notifications" size={24} color="white" />
-          <Text style={textIcon}>Notification</Text>
+          <Text style={textIcon}>{Notification}</Text>
         </View>
       </Link>
       <View style={plusButton}>
@@ -55,7 +56,7 @@ import { tabStyles } from "./style";
             containerStyle={{ marginHorizontal: 10 }}
           />
 
-          <Text style={textIcon}>Chat </Text>
+          <Text style={textIcon}>{Chat} </Text>
         </View>
       </Link>
       <Link to="/cart" component={TouchableOpacity} underlayColor="none">
@@ -73,7 +74,7 @@ import { tabStyles } from "./style";
             style={{ marginHorizontal: 36, width: 30, height: 30 }}
             containerStyle={{ marginHorizontal: 16 }}
           />
-          <Text style={textIcon}>Cart</Text>
+          <Text style={textIcon}>{Cart}</Text>
         </View>
       </Link>
     </LinearGradient>

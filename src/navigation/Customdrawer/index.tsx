@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
     const dimensions = useWindowDimensions();
   return (
-    <Drawer.Navigator initialRoute="/"
+    <Drawer.Navigator initialRouteName="/"
     drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
 
     >

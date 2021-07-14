@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import LoginScreen from "./src/screens/Login";
-import { SignUp, SignUpWithEmail, Splash,SignIn, LogComponent, Verify } from "./src/screens";
-import { protectedroute, Public } from "./src/utils/constants/path";
+import {Public } from "./src/utils/constants/path";
 import Navigation from "./src/navigation/index"
 import { BackButton, NativeRouter, Route } from "react-router-native";
 import PublicRoute from "./src/Route/publicRoute";

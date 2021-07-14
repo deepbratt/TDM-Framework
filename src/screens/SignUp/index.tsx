@@ -81,8 +81,6 @@ function SignUp() {
                 name="email"
               />
             }
-            theme={{ colors: { primary: "white" } }}
-            underlineColor="transparent"
           />
           <CustomInput
             placeholder="Enter Last Name"
@@ -98,8 +96,6 @@ function SignUp() {
                 name="email"
               />
             }
-            theme={{ colors: { primary: "white" } }}
-            underlineColor="transparent"
           />
           <CustomInput
             placeholder={enterEmail}
@@ -107,7 +103,7 @@ function SignUp() {
             onFocus={() => ActiveFocus(true)}
             onBlur={() => ActiveFocus(false)}
             value={data.email}
-            onChange={(val) => handleChange(val)}
+            onChange={(val: any) => handleChange(val)}
             leftIcon={
               <TextInput.Icon
                 size={18}
@@ -115,8 +111,6 @@ function SignUp() {
                 name="email"
               />
             }
-            theme={{ colors: { primary: "white" } }}
-            underlineColor="transparent"
           />
           <CustomInput
             placeholder={EnterPassword}
