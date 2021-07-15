@@ -3,6 +3,11 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
+import {
+    loginButtonText,
+    successFull,
+    successFUllResetDetails,
+} from '../../utils/constants/successFullReset/successFullReset';
 
 const SuccessFullReset = () => {
     return (
@@ -13,22 +18,22 @@ const SuccessFullReset = () => {
             </TouchableOpacity>
             <View style={styles.textContainer}>
                 <CustomText textStyle={styles.text}
-                    text={"Password Reset Successfully"}>
+                    text={successFull}>
                 </CustomText>
             </View>
             <View style={styles.textContainer1}>
                 <CustomText textStyle={styles.text1}
-                    text={"Select which contact details should use to reset your password "}>
+                    text={successFUllResetDetails}>
                 </CustomText>
             </View>
             <CustomLinearGradient
                 colors={['#F04148', '#C20000']}
                 GradientButtonStyle={styles.gradientStyle}
-                text="LogIn"
+                text={loginButtonText}
                 textstyle={styles.gradientTextStyle}
                 imgStyle={styles.gradientImageStyle}
                 source={require('../../../assets/images/Shape.png')}
-                // onPress={}
+                onPress={() => console.log("Works!")}
             />
         </View>
     )

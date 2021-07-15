@@ -1,5 +1,5 @@
-import React,{useCallback} from 'react';
-import { View, StyleSheet, FlatList, Image } from 'react-native';
+import React from 'react';
+import { View, FlatList, Image } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomAvatar from '../../component/Avatar';
 import CustomText from '../../component/customText';

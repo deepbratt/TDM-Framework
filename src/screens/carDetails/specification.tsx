@@ -2,6 +2,20 @@ import React from 'react';
 import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomText from '../../component/customText';
+import {
+    engineHead,
+    specificationDriveDetails,
+    specificationDriveHead,
+    specificationEngineDetails,
+    specificationFuelDetails,
+    specificationFuelHead,
+    specificationMileageDetails,
+    specificationMileageHead,
+    specificationPowerDetails,
+    specificationPowerhead,
+    specificationRangeDetails,
+    specificationRangeHead
+} from '../../utils/constants/specification/specification';
 
 const Specification = () => {
     return (
@@ -11,12 +25,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="Engine"
+                            text={engineHead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="2998 cc, 6 Cylinders Inline"
+                            text={specificationEngineDetails}
                             textStyle={styles.subText}
                         />
                     </View>
@@ -28,12 +42,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="Fuel Type"
+                            text={specificationFuelHead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="Petrol"
+                            text={specificationFuelDetails}
                             textStyle={styles.subText}
                         />
                     </View>
@@ -45,12 +59,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="MaxPower (bhp@rpm)"
+                            text={specificationPowerhead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="375 bhp @ 5000 rpm"
+                            text={specificationPowerDetails}
                             textStyle={styles.subText}
                         />
                     </View>
@@ -62,12 +76,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="Mileage (RAI) (kmpl)"
+                            text={specificationMileageHead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="11.29"
+                            text={specificationMileageDetails}
                             textStyle={styles.subText}
                         />
                     </View>
@@ -79,12 +93,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="Driving Range (Km)"
+                            text={specificationRangeHead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="587.08"
+                            text={specificationRangeDetails}
                             textStyle={styles.subText}
                         />
                     </View>
@@ -96,12 +110,12 @@ const Specification = () => {
                     <View style={styles.infoView}>
                         <View style={{flexDirection:'column',justifyContent:'flex-start'}}>
                         <CustomText
-                            text="Drivetrain"
+                            text={specificationDriveHead}
                             textStyle={styles.headingText}
                             />
                         </View>
                         <CustomText
-                            text="RWD"
+                            text={specificationDriveDetails}
                             textStyle={styles.subText}
                         />
                     </View>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { View} from 'react-native';
 import { styles } from './styles';
 import { BottomSheet } from 'react-native-btr';

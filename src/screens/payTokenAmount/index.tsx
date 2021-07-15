@@ -1,9 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Text,TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
+import {
+    discountText,
+    paiedLocation,
+    payChatButton,
+    payNowButton, 
+    payPriceText
+} from '../../utils/constants/payTokenAmount/PayTokenAmount';
 
 const PayTokenAmount = () => {
     return (
@@ -16,7 +23,7 @@ const PayTokenAmount = () => {
                         source={require('../../../assets/images/Back_Button.png')} />
                 </TouchableOpacity>
                 <CustomText
-                    text="Pay 10% Token Amount"
+                    text={discountText}
                     textStyle={styles.headingText}
                 />
                 <Image style={styles.image}
@@ -27,7 +34,7 @@ const PayTokenAmount = () => {
                             source={require('../../../assets/images/Vector.png')}
                         />
                         <CustomText
-                            text="Rs. 50 lakh "
+                            text={payPriceText}
                             textStyle={styles.amountText}
                         />
                     </View>
@@ -36,7 +43,7 @@ const PayTokenAmount = () => {
                             source={require('../../../assets/images/place.png')}
                         />
                         <CustomText
-                            text="Islamabad "
+                            text={paiedLocation}
                             textStyle={styles.locationText}
                         />
                     </View>
@@ -44,18 +51,17 @@ const PayTokenAmount = () => {
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle}
-                    text="Pay Now"
+                    text={payNowButton}
                     textstyle={styles.gradientTextStyle}
-                // onPress={}
+                    onPress={() => console.log("Works!")}
                 />
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle1}
-                    text="Chat With Seller"
+                    text={payChatButton}
                     textstyle={styles.gradientTextStyle}
-                // onPress={}
+                    onPress={() => console.log("Works!")}
                 />
-
             </View>
         </LinearGradient>
     )

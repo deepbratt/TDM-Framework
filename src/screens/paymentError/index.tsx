@@ -4,6 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
+import {
+    contactButton,
+    detailErrorMessage,
+    ErrorMessage,
+    tryAgainButton
+} from '../../utils/constants/paymentError/paymentError';
 
 const PaymentError = () => {
     return (
@@ -16,23 +22,23 @@ const PaymentError = () => {
                         source={require('../../../assets/images/close.png')} />
                 </TouchableOpacity>
                 <CustomText
-                    text="Payment Error!"
+                    text={ErrorMessage}
                     textStyle={styles.paymentErrorText}
                 />
                 <CustomText
-                    text="Something went wrong with the payment. Try again or contact support."
+                    text={detailErrorMessage}
                     textStyle={styles.detailText}
                 />
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle}
-                    text="Try Again"
+                    text={tryAgainButton}
                     textstyle={styles.gradientTextStyle}
-                // onPress={}
+                    onPress={() => console.log("Works!")}
                 />
                 <TouchableOpacity style={styles.TouchableStyle}>
                     <CustomText
-                        text="Contact Support"
+                        text={contactButton}
                         textStyle={styles.supportText}
                     />
                 </TouchableOpacity>

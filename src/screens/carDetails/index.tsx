@@ -11,6 +11,28 @@ import CustomCarousel from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
 import CustomCarouselFeature from '../../component/customCarouselFeature';
+import {
+    carPrice,
+    company,
+    compareText,
+    DescriptionHead, 
+    descriptionT, 
+    distance,
+    fuel,
+    locationText,
+    make,
+    modelHeading,
+    modelName,
+    payAmount,
+    productLocation,
+    productStatus,
+    sellerText,
+    shortListText,
+    subModel,
+    userName,
+    year,
+    yearHeading
+} from '../../utils/constants/carDetails/carDetails';
 
 const CarDetails = () => {
     return (
@@ -21,7 +43,7 @@ const CarDetails = () => {
                 </View>
                 <View style={styles.amountMainContainer}>
                     <CustomText
-                        text='Rs. 50 lakh'
+                        text={carPrice}
                         textStyle={styles.amountText}
                     />
                     <View style={styles.buttonContainer}>
@@ -37,12 +59,12 @@ const CarDetails = () => {
                 </View>
                 <View style={styles.brandTextView}>
                     <CustomText
-                        text='Toyota Yaris iA'
+                        text={modelName}
                         textStyle={styles.brandNameText}
                     />
                     <View style={styles.brandStatusView}>
                         <CustomText
-                            text="Used"
+                            text={productStatus}
                             textStyle={styles.brandStatusText}
                         />
                     </View>
@@ -53,7 +75,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/place.png')} />
                             <CustomText
-                                text="Islamabad"
+                                text={productLocation}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -61,7 +83,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/road.png')} />
                             <CustomText
-                                text="47392 KM"
+                                text={distance}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -69,7 +91,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/diesal.png')} />
                             <CustomText
-                                text="Diesel"
+                                text={fuel}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -77,48 +99,48 @@ const CarDetails = () => {
                     <View style={styles.productInfoSubView}>
                         <View style={styles.infoView}>
                             <CustomText
-                                text="Toyota"
+                                text={company}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
-                                text="Make"
+                                text={make}
                                textStyle={styles.infoHeading}
                             />
                         </View>
                         <View style={styles.infoView}>
                             <CustomText
-                                text="Yaris iA"
+                                text= {subModel}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
-                                text="Model"
+                                text={modelHeading}
                                 textStyle={styles.infoHeading}
                             />
                         </View>
                         <View style={styles.infoView}>
                             <CustomText
-                                text="2018"
+                                text={year}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
-                                text="Year"
+                                text={yearHeading}
                                 textStyle={styles.infoHeading}
                             />
                         </View>
                     </View>
                 </View>
                 <CustomText
-                    text="Description:"
+                    text={DescriptionHead}
                     textStyle={styles.descriptionHeading}
                 />
                 <CustomText
-                    text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    text={descriptionT}
                     textStyle={styles.descriptionText}
                 />
                 <View style={styles.dealMainContainer}>
                     <View style={styles.dealView}>
                         <CustomText
-                            text="Pay 2 lac Best Match Amount"
+                            text={payAmount}
                             textStyle={styles.dealText}
                         />
                     </View>
@@ -127,7 +149,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/layer.png')} />
                             <CustomText
-                                text="Compare"
+                                text={compareText}
                                 textStyle={styles.comparisonButtonText}
                             />
                         </TouchableOpacity>
@@ -135,7 +157,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/safety-car.png')} />
                             <CustomText
-                                text="Shortlist"
+                                text={shortListText}
                                 textStyle={styles.comparisonButtonText}
                             />
                         </TouchableOpacity>
@@ -144,7 +166,7 @@ const CarDetails = () => {
                 <View style={styles.profileBorderView}>
                     <View style={{ flexDirection: 'column', justifyContent: 'flex-start' }}>
                         <CustomText
-                            text="Seller: Indivisual Seller"
+                            text={sellerText}
                             textStyle={styles.profileHeading}
                         />
                         <View style={styles.profileMainView}>
@@ -160,7 +182,7 @@ const CarDetails = () => {
                                 />
                             </View>
                             <CustomText
-                                text="Alice Smith"
+                                text={userName}
                                 textStyle={styles.userNameText}
                             />
                             <Image style={styles.buttonIcon}
@@ -169,7 +191,7 @@ const CarDetails = () => {
                     </View>
                 </View>
                 <CustomText
-                    text="Ad Posted At"
+                    text={locationText}
                     textStyle={styles.AddPostedText}
                 />
                 <CustomMapView
@@ -189,7 +211,6 @@ const CarDetails = () => {
                     />
                 </View>
                 <CustomCarouselFeature/>
-
             </ScrollView>
         </SafeAreaView>
     )

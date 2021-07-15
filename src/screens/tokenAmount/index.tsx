@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text,TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
+import { payTokenAmountText, payTokenConfirmButton, payTokenLocationText, payTokenModelText } from '../../utils/constants/tokenAmount/tokenAmount';
 
 const TokenAmount = () => {
     return (
@@ -20,7 +21,7 @@ const TokenAmount = () => {
                     source={require('../../../assets/images/car.jpg')}
                 />
                 <CustomText
-                    text="Toyota Yaris iA"
+                    text={payTokenAmountText}
                     textStyle={styles.modelText}
                 />
                 <View style={styles.detailView}>
@@ -28,7 +29,7 @@ const TokenAmount = () => {
                         source={require('../../../assets/images/Vector.png')}
                     />
                     <CustomText
-                        text="Rs. 50 lakh "
+                        text={payTokenModelText}
                         textStyle={styles.amountText}
                     />
                 </View>
@@ -37,16 +38,16 @@ const TokenAmount = () => {
                         source={require('../../../assets/images/place.png')}
                     />
                     <CustomText
-                        text="Islamabad "
+                        text={payTokenLocationText}
                         textStyle={styles.locationText}
                     />
                 </View>
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle}
-                    text="Confirm Booking"
+                    text={payTokenConfirmButton}
                     textstyle={styles.gradientTextStyle}
-                // onPress={}
+                    onPress={() => console.log("Works!")}
                 />
             </View>
         </LinearGradient>

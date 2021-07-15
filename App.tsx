@@ -28,7 +28,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <Notification/>
+        <CarDetails/>
         
           </Provider>
            

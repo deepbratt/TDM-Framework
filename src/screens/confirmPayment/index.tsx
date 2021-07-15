@@ -4,6 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
+import {
+    buttonText,
+    donePayment,
+    orderMessage
+} from '../../utils/constants/confirmPayment/confirmPayment';
 
 const ConfirmPayment = () => {
     return (
@@ -20,19 +25,19 @@ const ConfirmPayment = () => {
                     source={require('../../../assets/images/Thumb.png')}
                 />
                 <CustomText
-                    text="Payment Successful!"
+                    text={donePayment}
                     textStyle={styles.paymentSuccessText}
                 />
                 <CustomText
-                    text="Your order was placed successfully. We’re working hard to get it to you soon."
+                    text={orderMessage}
                     textStyle={styles.detailText}
                 />
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle}
-                    text="Chat With Seller"
+                    text={buttonText}
                     textstyle={styles.gradientTextStyle}
-                // onPress={}
+                    onPress={() => console.log("Works!")}
                 />
             </View>
         </LinearGradient>       

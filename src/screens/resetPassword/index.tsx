@@ -3,9 +3,16 @@ import { View, Image,TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import CustomForgotButton from '../../component/customForgotButton';
 import CustomText from '../../component/customText';
-import { BottomSheet } from 'react-native-btr';
-import CustomOTP from '../../component/customOTP';
 import BottomSheetComponent from '../../component/BottomSheet';
+import {
+    emailText,
+    forgotDetail,
+    forgotText,
+    number,
+    staric,
+    viaEmail,
+    viaSms
+} from '../../utils/constants/resetPassword/resetPassword';
 
 const ResetPassword = () => {
     const [visible, setVisible] = useState(false);
@@ -20,26 +27,26 @@ const ResetPassword = () => {
             </TouchableOpacity>
             <View style={styles.textContainer}>
                 <CustomText textStyle={styles.text}
-                    text={"Forgot Your Password"}>
+                    text={forgotText}>
                 </CustomText>
             </View>
             <View style={styles.textContainer1}>
                 <CustomText textStyle={styles.text1}
-                    text={"Select which contact details should use to reset your password "}>
+                    text={forgotDetail}>
                 </CustomText>
             </View>
             <CustomForgotButton containerStyle={styles.buttonContainerStyle}
                 onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle}
                 source={require('../../../assets/images/a.png')}
-                text1={"Via SMS"}
+                text1={viaSms}
                 textStyle1={styles.textStyleOne}
                 textContainerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
-                text2={"****"}
+                text2={staric}
                 textStyle2={styles.textStyleTwo}
-                text3={"****"}
+                text3={staric}
                 textStyle3={styles.textStyleTwo}
-                text4={"0345"}
+                text4={number}
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>
@@ -47,14 +54,14 @@ const ResetPassword = () => {
                 onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle1}
                 source={require('../../../assets/images/email.png')}
-                text1={"Via Email"}
+                text1={viaEmail}
                 textStyle1={styles.textStyleOne}
                 textContainerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
-                text2={"****"}
+                text2={staric}
                 textStyle2={styles.textStyleTwo}
-                text3={"**al"}
+                text3={staric}
                 textStyle3={styles.textStyleTwo}
-                text4={"@gmail.com"}
+                text4={emailText}
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>
