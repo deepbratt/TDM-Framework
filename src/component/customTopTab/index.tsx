@@ -1,32 +1,28 @@
 import * as React from 'react';
 import {FC} from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Specification from '../../screens/carDetails/specification';
-import Features from '../../screens/carDetails/features';
+import { TopTabProps } from '../../../types';
 
 const Tab = createMaterialTopTabNavigator();
-interface Props{
-  tabBarOptions: any;
-  labelStyle: any;
-  style: any;
-  activeTintColor: any;
-  indicatorStyle: any;
-  name: string;
-  component: any;
-  name1: string;
-  component1: any;
-}
-const CustomTopBar:FC<Props>=(Props)=> {
+const CustomTopBar: FC<TopTabProps> = ({
+  tabBarOtions,
+  labelStyle,
+  style,
+  activeTintColor,
+  indicatorStyle,
+  name1,
+  name,
+  component1,
+  component,
+}) => {
     return (
       <NavigationContainer>
       <Tab.Navigator
-      tabBarOptions={Props.tabBarOptions}
+          tabBarOptions={tabBarOtions}
       >
-          <Tab.Screen name="Specification" component={Specification} />
-          <Tab.Screen name="Features" component={Features} />
+          <Tab.Screen name={name} component={component} />
+          <Tab.Screen name={name1} component={component1} />
             </Tab.Navigator>
             </NavigationContainer>
   );

@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         backgroundColor: '#E5E5E5',
-        marginBottom:wp('3%')
     },
     mainContaier: {
         width: wp('95%'),

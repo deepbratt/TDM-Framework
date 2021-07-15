@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-interface Props{
-    style: any;
-    provider:any
-}
-const CustomMapView: FC<Props> = (Props)=>{
+import MapView from 'react-native-maps';
+import { MapViewProps } from '../../../types';
+
+const CustomMapView: FC<MapViewProps> = ({
+    provider,
+    style,
+}) => {
     return (
         <MapView
-            provider={Props.provider}
-            style={Props.style}
+            provider={provider}
+            style={style}
         >
         </MapView>
     )

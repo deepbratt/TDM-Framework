@@ -187,5 +187,21 @@ export const styles = StyleSheet.create({
         marginTop: hp('1.5%'),
         borderColor: '#E0E0E0',
         marginBottom: hp('1.5%'),
+    },
+    TopBarLabelStyle: {
+        fontSize: 12,
+        fontWeight: '500',
+        textTransform: 'none',
+        color: '#313131'
+    },
+    TopBarIndicatorStyle: {
+        height: 3,
+        alignSelf: 'center',
+    },
+    AddPostedText: {
+        width: wp('95%'),
+        alignSelf: 'center',
+        fontSize: 14,
+        fontWeight: '700'
     }
 })

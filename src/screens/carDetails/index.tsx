@@ -10,6 +10,7 @@ import Features from './features';
 import CustomCarousel from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
+import CustomCarouselFeature from '../../component/customCarouselFeature';
 
 const CarDetails = () => {
     return (
@@ -152,9 +153,10 @@ const CarDetails = () => {
                                     overlayContainerStyle={{ backgroundColor: 'gray' }}
                                     size={hp('7%')}
                                     rounded
-                                    title="PIC"
                                     onPress={() => console.log("Works!")}
                                     activeOpacity={0.8}
+                                    source={require('../../../assets/images/Base.png')}
+                                    imageProps={{resizeMode:'contain',margin:15}}
                                 />
                             </View>
                             <CustomText
@@ -168,7 +170,7 @@ const CarDetails = () => {
                 </View>
                 <CustomText
                     text="Ad Posted At"
-                    textStyle={{width:wp('95%'),alignSelf:'center',fontSize:14,fontWeight:'700'}}
+                    textStyle={styles.AddPostedText}
                 />
                 <CustomMapView
                     provider={PROVIDER_GOOGLE}
@@ -176,18 +178,18 @@ const CarDetails = () => {
                 />
                 <View style={styles.borderView}>
                     <CustomTopBar
-                        labelStyle={{ fontSize: 12, fontWeight: '500', textTransform: 'none', color: '#313131' }}
+                        labelStyle={styles.TopBarLabelStyle}
                         style={{ backgroundColor: '#FFFFFF' }}
                         activeTintColor="#62ADF4"
-                        indicatorStyle={{ height: 3, alignSelf: 'center', }}
+                        indicatorStyle={styles.TopBarIndicatorStyle}
                         name="Specification"
                         component={Specification}
                         name1="Features"
                         component1={Features}
-                        tabBarOptions={{}}
                     />
                 </View>
-                
+                <CustomCarouselFeature/>
+
             </ScrollView>
         </SafeAreaView>
     )

@@ -1,23 +1,25 @@
 import React,{FC} from 'react';
 import { Avatar } from "react-native-elements";
+import { AvatarProps } from '../../../types';
 
-interface Props{
-    overlayContainerStyle: any;
-    size: any;
-    rounded: boolean;
-    title: string;
-    onPress: () => void;
-    activeOpacity: any;
-}
-const CustomAvatar: FC<Props> = (Props) => {
+const CustomAvatar: FC<AvatarProps> = ({
+    overlayContainerStyle,
+    size,
+    rounded,
+    onPress,
+    activeOpacity,
+    source,
+    imageProps
+}) => {
     return (
         <Avatar
-            overlayContainerStyle={Props.overlayContainerStyle}
-            size={Props.size}
-            rounded={Props.rounded}
-            title={Props.title}
-            onPress={Props.onPress}
-            activeOpacity={Props.activeOpacity}
+            overlayContainerStyle={overlayContainerStyle}
+            size={size}
+            rounded={rounded}
+            source={source}
+            onPress={onPress}
+            imageProps={imageProps}
+            activeOpacity={activeOpacity}
         />
     )
 }

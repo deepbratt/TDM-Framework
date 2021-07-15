@@ -15,6 +15,7 @@ import TokenAmount from './src/screens/tokenAmount';
 import ConfirmPayment from './src/screens/confirmPayment';
 import PaymentError from './src/screens/paymentError';
 import PayTokenAmount from './src/screens/payTokenAmount';
+import Notification from './src/screens/notification';
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
@@ -27,7 +28,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <SuccessFullReset/>
+        <Notification/>
         
           </Provider>
            

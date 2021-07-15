@@ -1,14 +1,14 @@
 import React,{FC} from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import { TextProps } from '../../../types';
 
-interface Props{
-    text: any;
-    textStyle: any;
-}
-const CustomText: FC<Props> = (Props) => {
+const CustomText: FC<TextProps> = ({
+    text,
+    textStyle,
+}) => {
     return (
-        <Text style={Props.textStyle}>
-            {Props.text}
+        <Text style={textStyle}>
+            {text}
         </Text>
     )
 }

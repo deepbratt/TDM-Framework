@@ -1,25 +1,26 @@
 import React, { FC } from 'react';
 import { Text,TouchableOpacity,Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-interface Props{
-    colors: any;
-    GradientButtonStyle: any;
-    textstyle: any;
-    text: string;
-    imgStyle: any;
-    source: any;
-    onPress: () => void;
-}
-const CustomLinearGradient:FC<Props> = (Props) => {
+import { LinearGradientProps } from '../../../types';
+
+const CustomLinearGradient: FC<LinearGradientProps> = ({
+    colors,
+    GradientButtonStyle,
+    text,
+    textstyle,
+    imgStyle,
+    source,
+    onPress,
+}) => {
     return (
-        <TouchableOpacity onPress={Props.onPress}>
+        <TouchableOpacity onPress={onPress}>
             <LinearGradient
-                colors={Props.colors}
-                style={Props.GradientButtonStyle}
+                colors={colors}
+                style={GradientButtonStyle}
             >
-                <Text style={Props.textstyle}>{Props.text}</Text>
-                <Image style={Props.imgStyle}
-                    source={Props.source}
+                <Text style={textstyle}>{text}</Text>
+                <Image style={imgStyle}
+                    source={source}
                 />
             </LinearGradient>
         </TouchableOpacity>
