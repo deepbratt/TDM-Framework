@@ -42,6 +42,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "react-native-btr": "^2.1.2",
     "react-native-confirmation-code-field": "^7.1.0",
+    "react-native-dropdown-picker": "^5.1.21",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-gradient-buttons": "^2.0.2",

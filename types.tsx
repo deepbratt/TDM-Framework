@@ -46,6 +46,12 @@ export type BottomSheetProps = {
   onBackdropPress: () => void;
 };
 
+export type SearchBottomSheetProps = {
+  visible: boolean;
+  onBackButtonPress: () => void;
+  onBackdropPress: () => void;
+};
+
 export type TopTabProps = {
   tabBarOtions: any;
   labelStyle: any;

@@ -16,6 +16,7 @@ import ConfirmPayment from './src/screens/confirmPayment';
 import PaymentError from './src/screens/paymentError';
 import PayTokenAmount from './src/screens/payTokenAmount';
 import Notification from './src/screens/notification';
+import Search from './src/screens/search';
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
@@ -28,7 +29,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <CarDetails/>
+        <Search/>
         
           </Provider>
            

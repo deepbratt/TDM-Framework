@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import { Text, View, SafeAreaView, Image, StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { styles } from './styles';
 import Carousel from "react-native-snap-carousel";
 import CustomText from "../customText";
 
@@ -21,22 +22,23 @@ const exampleItems = [
     title: "Toyota Yaris iA",
     text: "Text 1",
     src: require('../../../assets/images/car.jpg'),
+
   },
   {
     title: "Toyota Yaris iA",
     text: "Text 2",
-      src: require('../../../assets/images/car1.jpeg'),
+    src: require('../../../assets/images/car1.jpeg'),
 
 
   },
   {
     title: "Toyota Yaris iA",
     text: "Text 3",
-      src: require('../../../assets/images/car.jpg'),
+    src: require('../../../assets/images/car.jpg'),
 
-    
+
   },
-  
+
 ];
 
 const CustomCarouselFeature: React.SFC<CustomCarouselProps> = () => {
@@ -46,35 +48,68 @@ const CustomCarouselFeature: React.SFC<CustomCarouselProps> = () => {
 
   const renderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
-      <View style={{ backgroundColor: "floralwhite", borderRadius: 5, width: wp('68%'), marginLeft: 5, }}>
-        <Image style={{ width: wp('68%'), height: 200, borderRadius: 8, alignSelf: 'center' }}
+      <View style={styles.mainView}>
+        <Image style={styles.productImage}
           source={item.src}
             />
-            <View style={{ width: wp('68%'), alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between',padding:wp('2%') }}>
-                <CustomText
-                    text={item.title}
-                    textStyle={{fontSize:14,fontWeight:'700',color:'#212121'}}
-                />
-                <View style={{width: wp('10%'),backgroundColor: '#5AC8FA',borderRadius: 6}}>
-                        <CustomText
-                            text="Used"
-                            textStyle={{fontSize: 12,fontWeight: '500',color: '#FFFFFF',textAlign: 'center'}}
-                        />
-                    </View>
-
-            </View>
-        <Text>{item.text}</Text>
+        <View style={styles.nameStatusContainer}>
+          <CustomText
+            text={item.title}
+            textStyle={styles.titleText}
+          />
+          <View style={styles.statusSubView}>
+            <CustomText
+              text="Used"
+              textStyle={styles.statusText}
+            />
+          </View>
+        </View>
+        <View style={styles.priceContainer}>
+          <Image style={styles.priceIcon}
+            source={require('../../../assets/images/Vector.png')}
+          />
+          <CustomText
+            text="$1,50,000 "
+            textStyle={styles.priceText}
+          />
+        </View>
+        <View style={styles.productInfoSubView}>
+          <View style={styles.infoView}>
+            <Image style={styles.buttonIcon}
+              source={require('../../../assets/images/place.png')} />
+            <CustomText
+              text={"Islamabad"}
+              textStyle={styles.infoText}
+            />
+          </View>
+          <View style={styles.infoView}>
+            <Image style={styles.buttonIcon}
+              source={require('../../../assets/images/road.png')} />
+            <CustomText
+              text={"1200 KM"}
+              textStyle={styles.infoText}
+            />
+          </View>
+          <View style={styles.infoView}>
+            <Image style={styles.buttonIcon}
+              source={require('../../../assets/images/diesal.png')} />
+            <CustomText
+              text={"Diesel"}
+              textStyle={styles.infoText}
+            />
+          </View>
+        </View>
       </View>
     );
   }, []);
 
   return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#E5E5E5", paddingTop: hp('3%') }}>
+      <SafeAreaView style={styles.safeAreaContainer}>
           <CustomText
               text="Featured Products"
-              textStyle={{width:wp('95%'),alignSelf:'center',fontSize:18,fontWeight:'500',color:'#212121'}}
+              textStyle={styles.featureHeadingText}
           />
-      <View style={{ flex: 1, flexDirection: "row", justifyContent: "center",marginTop:hp('3%') }}>
+      <View style={styles.carouselView}>
         <Carousel
           layout={"default"}
           ref={ref}
@@ -88,10 +123,5 @@ const CustomCarouselFeature: React.SFC<CustomCarouselProps> = () => {
     </SafeAreaView>
   );
 };
-const sytles = StyleSheet.create({
-    brandStatusView: {
-        
-    },
-})
 
 export default CustomCarouselFeature;

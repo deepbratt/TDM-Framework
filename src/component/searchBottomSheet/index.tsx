@@ -3,9 +3,10 @@ import { View} from 'react-native';
 import { styles } from './styles';
 import { BottomSheet } from 'react-native-btr';
 import CustomOTP from '../customOTP';
-import { BottomSheetProps } from '../../../types';
+import { SearchBottomSheetProps } from '../../../types';
+import SearchSheet from '../searchSheet';
 
-const BottomSheetComponent: FC<BottomSheetProps> = ({
+const SearchBottomSheetComponent: FC<SearchBottomSheetProps> = ({
   visible,
   onBackButtonPress,
   onBackdropPress,
@@ -17,9 +18,9 @@ const BottomSheetComponent: FC<BottomSheetProps> = ({
           onBackdropPress={onBackdropPress}
         >
           <View style={styles.bottomNavigationView}>
-            <CustomOTP/>
+            <SearchSheet/>
           </View>
         </BottomSheet>
   );
 };
-export default BottomSheetComponent;
+export default SearchBottomSheetComponent;
