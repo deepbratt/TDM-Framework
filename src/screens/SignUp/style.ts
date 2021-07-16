@@ -1,25 +1,12 @@
 import { StyleSheet, Dimensions } from "react-native";
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const signInStyles = StyleSheet.create({
   container: {
     height:100,
     backgroundColor: "white",
   },
-  top: {
-    justifyContent: "flex-start",
-    marginTop: 56,
-  },
-  mid: {
-    justifyContent: "center",
-    marginTop: 0,
-  },
-  bottom: {
-height:100,
-    justifyContent: "flex-end",
-    alignItems:"center",
-  marginBottom:10,
-  },
+
   img: {
     marginHorizontal: 30,
     marginVertical: 20,
@@ -41,14 +28,6 @@ height:100,
     color: "rgba(49, 49, 49, 1)",
     lineHeight: 50,
     textAlign: "center",
-  },
-  detail: {
-    fontFamily: "IBMPlexSans-Light",
-    fontSize: 12,
-    textAlign: "center",
-    color: "rgba(102, 102, 102, 1)",
-    letterSpacing: .5,
-  
   },
   button: {
     marginHorizontal: 20,
@@ -86,28 +65,32 @@ height:100,
     fontSize: 12,
  
   },
-
-inputField:{
+activeField:{
   marginVertical:10,
-  width: 258,
-height: 40,
+  width:wp('71%'),
+  height:hp('6%'),
 backgroundColor: "#FFFFFF",
 borderColor:"#C20000",
   borderWidth:2,
 borderRadius: 2,
 },
-activeField:{
+inputField:{
   marginVertical:10,
-  width: 258,
-height: 40,
+  width: wp('71%'),
+  height:hp('6%'),
 backgroundColor: "#FFFFFF",
 borderColor:"rgba(49, 49, 49, 1)",
   borderWidth:2,
 borderRadius: 2,
 },
+SubmitView:{
+  alignItems: "center",
+  justifyContent: "center",
+  marginVertical: 20,
+},
   SignInButton:{
-      width: 210,
-  height:45,
+      width:  wp('58%'),
+  height:hp('6.3%'),
   borderColor:"#C20000",
   borderWidth:2,
   flexDirection:"row",

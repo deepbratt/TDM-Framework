@@ -7,8 +7,6 @@ import AuthRoute from "./route";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './src/utils/constants/resources/useCachedResources';
 
-
-
 export default function App() {
 
     const isLoadingComplete = useCachedResources();
@@ -18,7 +16,7 @@ export default function App() {
     return (
         <Provider store={store}>
       <SafeAreaProvider>
-<AuthRoute/>
+      <AuthRoute/>
     <StatusBar style="light" translucent={true} backgroundColor={'black'}/>
   </SafeAreaProvider>
             

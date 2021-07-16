@@ -4,4 +4,5 @@ import SignUp from "./SignUp/index";
 import SignIn from "./SignIn/SignIn";
 import Verify from "./SignUp/verifyAccount";
 import HomePage from "./Home";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage}
+import Settings from "./Settings";
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings}

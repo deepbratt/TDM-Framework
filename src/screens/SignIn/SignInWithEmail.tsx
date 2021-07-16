@@ -23,15 +23,34 @@ import { connect, useDispatch } from "react-redux";
 function SignUpWithEmail() {
   const dispatch = useDispatch();
   const {  SignInButton, img, loginText } = loginStyle;
+  const [Active, setActive] = useState("");
+    const [input, setinput] = useState({
+      userName: "",
+      password: "",
+      errorNum: "",
+      errorPass: "",
+      secureTextEntry: true
+      // showPassword:true,
+  });
+  const inputField=[
+      {
+          id:1,
+          IconName:"email",
+          value:input.userName,
+          placeholder:enterEmail,
+          onChange:(userName: any) => setinput({ ...input, userName}) 
+  
+          },
+          {
+              id:2,
+              IconName:"lock",
+              value:input.password,
+              placeholder:EnterPassword,
+              onChange:(password: any) => setinput({ ...input, password}) 
+              },
+      
+  ]
 
-  const [isActive, setisActive] = useState(false);
-  const [Active, setActive] = useState(false);
-  const customStyle1 = Active
-    ? loginStyle.inputField
-    : loginStyle.activeField;
-  const customStyle = isActive
-    ? loginStyle.inputField
-    : loginStyle.activeField;
   return (
 
     <SimpleLayout header={SignInHead} text1={text1} text2={text2}>
@@ -43,39 +62,27 @@ function SignUpWithEmail() {
         />
       </View>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <CustomInput
-          placeholder={enterEmail}
-          style={customStyle1}
-          onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
-          // value={data.userName}
-          // onChange={(val) => handleInput(val)}
-          leftIcon={
-            <TextInput.Icon
-              size={18}
-              color={Active ? "#C20000" : "#ACABB1"}
-              name="email"
-            />
-          }
-          theme={{ colors: { primary: "white" } }}
-          underlineColor="transparent"
-        />
-        <CustomInput
-          placeholder={EnterPassword}
-          style={customStyle}
-          onFocus={() => setisActive(true)}
-          onBlur={() => setisActive(false)}
-          secureTextEntry
-          // value={data.password}
-          // onChange={(val) => handlePassword(val)}
-          leftIcon={
-            <TextInput.Icon
-              size={18}
-              color={isActive ? "#C20000" : "#ACABB1"}
-              name="lock"
-            />
-          }
-        />
+        {inputField.map((input,index)=>{
+          let ID = "TextInput"+index
+          return(
+            <CustomInput
+            placeholder={input.placeholder}
+            style={[Active === ID ? loginStyle.activeField : loginStyle.inputField]}
+            onFocus={() => setActive(ID)}
+            onBlur={() => setActive("")}
+            value={input.value}
+            onChange={input.onChange}
+            leftIcon={
+              <TextInput.Icon
+                size={18}
+                color={Active === ID ? "#C20000" : "#ACABB1"}
+                name={input.IconName}
+              />
+            }
+          />
+          )
+        })}
+      
         <View
           style={{
             alignItems: "center",
@@ -91,9 +98,6 @@ function SignUpWithEmail() {
           </TouchableOpacity>
         </View>
       </View>
-
-
-
     </SimpleLayout>
   );
 }

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
   top: {
     flex: 1,
     justifyContent: "flex-start",
-    marginTop: 56,
+    marginTop: hp('9%'),
   },
   head: {
     fontFamily: "IBMPlexSans-SemiBold",
@@ -23,17 +24,13 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     color: "rgba(102, 102, 102, 1)",
     letterSpacing: .5,
-  
   },
   bottom: {
-    height:55,
-        justifyContent: "flex-end",
-        alignItems:"center",
-      marginBottom:10,
+    height:hp('9.5%'),
+    justifyContent: "flex-end",
+    alignItems:"center",
+      marginBottom:hp('.5%'),
       },
- 
-
-
   underline: {
     color:"#666666",
     borderBottomWidth: 1,

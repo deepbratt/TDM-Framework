@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
       fontFamily: "IBMPlexSans-Bold",
     fontSize:18,
       textAlign: "center",
-lineHeight:25,
+     lineHeight:25,
       color: "rgba(49, 49, 49, 1)",
       fontWeight: "600",
       justifyContent: "center",

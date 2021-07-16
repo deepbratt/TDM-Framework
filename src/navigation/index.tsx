@@ -5,7 +5,7 @@ import * as React from 'react';
 import { RootStackParamList } from '../../types';
 import { DrawerActions } from '@react-navigation/native';
 import MyDrawer from "./Customdrawer/index";
-import TopBar from './TopBar';
+
 
 const navigationRef = React.createRef<any>();
 export function openDrawer() {
@@ -28,7 +28,6 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={MyDrawer} />
-      <Stack.Screen name="top" component={TopBar} />
   
     </Stack.Navigator>
   );

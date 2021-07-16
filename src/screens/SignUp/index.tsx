@@ -14,32 +14,17 @@ import {
   EnterPassword,
   enterEmail,
   signUp,
+  enterFirst,
+  enterLast,
+  ConfirmPassword,
 } from "../../utils/constants/en/index";
 import CustomInput from "../../component/CustomInput/CustomInput";
 import SimpleLayout from "../../layout/simpleLayout";
 import { Link } from "react-router-native";
 function SignUp() {
   const { SignInButton, imgDiv, loginText } = signInStyles;
-  const [isActive, setisActive] = useState(false);
-  const [Active, setActive] = useState(false);
-  const [isActive2, setisActive2] = useState(false);
-  const [Active2, ActiveFocus] = useState(false);
-  const [isActive3, setisActive3] = useState(false);
-  const cstomStyle = Active
-    ? signInStyles.inputField
-    : signInStyles.activeField;
-  const customStyle = isActive
-    ? signInStyles.inputField
-    : signInStyles.activeField;
-  const cstomStyle2 = Active2
-    ? signInStyles.inputField
-    : signInStyles.activeField;
-  const customStyle2 = isActive2
-    ? signInStyles.inputField
-    : signInStyles.activeField;
-  const customStyle3 = isActive3
-    ? signInStyles.inputField
-    : signInStyles.activeField;
+  const [Active, setActive] = useState("");
+  
 
   const [data, setdata] = useState({
     firstName: "",
@@ -50,6 +35,45 @@ function SignUp() {
     cnPassword: "",
 
   });
+  const inputField=[
+    {
+        id:1,
+        IconName:"email",
+        value:data.firstName,
+        placeholder:enterFirst,
+        onChange:(firstName: any) => setdata({ ...data, firstName}) 
+
+        },
+        {
+            id:2,
+            IconName:"lock",
+            value:data.lastName,
+            placeholder:enterLast,
+            onChange:(lastName: any) => setdata({ ...data, lastName}) 
+            },
+            {
+              id:3,
+              IconName:"email",
+              value:data.email,
+              placeholder:enterEmail,
+              onChange:(email: any) => setdata({ ...data, email}) 
+              },
+            {
+              id:4,
+              IconName:"lock",
+              value:data.password,
+              placeholder:EnterPassword,
+              onChange:(password: any) => setdata({ ...data, password}) 
+              },
+              {
+                id:4,
+                IconName:"lock",
+                value:data.cnPassword,
+                placeholder:ConfirmPassword,
+                onChange:(cnPassword: any) => setdata({ ...data, cnPassword}) 
+                },
+    
+]
   const handleChange = (val: any) => {
     console.log("press", val);
 
@@ -67,83 +91,26 @@ function SignUp() {
           />
         </View>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <CustomInput
-            placeholder="Enter First Name"
-            style={cstomStyle}
-            onFocus={() => setActive(true)}
-            onBlur={() => setActive(false)}
-            value={data.firstName}
-            onChange={(val: any) => handleChange(val)}
+        {inputField.map((input,index)=>{
+          let ID = "TextInput"+index
+          return(
+            <CustomInput
+            placeholder={input.placeholder}
+            style={[Active === ID ? signInStyles.activeField : signInStyles.inputField]}
+            onFocus={() => setActive(ID)}
+            onBlur={() => setActive("")}
+            value={input.value}
+            onChange={input.onChange}
             leftIcon={
               <TextInput.Icon
                 size={18}
-                color={Active ? "#C20000" : "#ACABB1"}
-                name="email"
+                color={Active === ID ? "#C20000" : "#ACABB1"}
+                name={input.IconName}
               />
             }
           />
-          <CustomInput
-            placeholder="Enter Last Name"
-            style={customStyle}
-            onFocus={() => setisActive(true)}
-            onBlur={() => setisActive(false)}
-            value={data.lastName}
-            onChange={(val: any) => handleChange(val)}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                color={isActive ? "#C20000" : "#ACABB1"}
-                name="email"
-              />
-            }
-          />
-          <CustomInput
-            placeholder={enterEmail}
-            style={cstomStyle2}
-            onFocus={() => ActiveFocus(true)}
-            onBlur={() => ActiveFocus(false)}
-            value={data.email}
-            onChange={(val: any) => handleChange(val)}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                color={Active2 ? "#C20000" : "#ACABB1"}
-                name="email"
-              />
-            }
-          />
-          <CustomInput
-            placeholder={EnterPassword}
-            style={customStyle2}
-            onFocus={() => setisActive2(true)}
-            onBlur={() => setisActive2(false)}
-            secureTextEntry
-            value={data.password}
-            onChange={(val: any) => handleChange(val)}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                color={isActive2 ? "#C20000" : "#ACABB1"}
-                name="lock"
-              />
-            }
-          />
-          <CustomInput
-            placeholder="Confirm Password"
-            style={customStyle3}
-            onFocus={() => setisActive3(true)}
-            onBlur={() => setisActive3(false)}
-            secureTextEntry
-            value={data.cnPassword}
-            onChange={(val: any) => handleChange(val)}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                color={isActive3 ? "#C20000" : "#ACABB1"}
-                name="lock"
-              />
-            }
-          />
+          )
+        })}
           <View
             style={{
               alignItems: "center",

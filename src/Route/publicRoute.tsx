@@ -8,7 +8,7 @@ interface Public{
 }
  const PublicRoute:FC<Public> = ({ component: Component, isLoggedIn, ...rest }) => {
     const history = useHistory();
-    console.log(isLoggedIn);
+    console.log(isLoggedIn,"Pubicroute=",history.location.pathname);
     return (
       <Route
         {...rest}

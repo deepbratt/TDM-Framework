@@ -11,6 +11,7 @@ import { InputProp } from '../../../types';
     leftIcon,
     rightIcon,
     value,
+    name,
     onChange,
     multiline,
     numberOfLines,
@@ -21,9 +22,10 @@ import { InputProp } from '../../../types';
     return (
         <TextInput
         placeholder={placeholder}
+        name={name}
          style={style}
         onFocus={onFocus}
-      onBlur={onBlur}
+        onBlur={onBlur}
         secureTextEntry={secureTextEntry}
         left={leftIcon}
         right={rightIcon}

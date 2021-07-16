@@ -7,7 +7,8 @@ import { And, ByContinuingyou, PrivacyPolicy, TermsOfuse } from "../utils/consta
 const SimpleLayout: FC<LayoutProps> = ({ children, header, text1, text2, }) => {
     const { container, top, head, detail, bottom, underline } = styles;
     return (
-        <ScrollView style={container}>
+        <ScrollView >
+            <View style={container}>
             <View style={top}>
                 <Text style={head}>
                     {header}
@@ -19,6 +20,7 @@ const SimpleLayout: FC<LayoutProps> = ({ children, header, text1, text2, }) => {
             <View style={bottom}>
                 <Text style={detail}>{ByContinuingyou}</Text>
                 <Text><Text style={underline}>{TermsOfuse}</Text> <Text style={detail}>{And} </Text><Text style={underline}>{PrivacyPolicy}</Text> </Text>
+            </View>
             </View>
         </ScrollView>)
 }

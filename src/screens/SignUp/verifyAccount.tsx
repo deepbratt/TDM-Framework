@@ -19,17 +19,12 @@ import {login } from "../../redux/reducers/authSlice";
 import SimpleLayout from "../../layout/simpleLayout";
 import LottieView from 'lottie-react-native';
 const Verify: FC = () => {
-  const [isActive, setisActive] = useState(false);
-  const [Active, setActive] = useState(false);
+  const [input, setinput] = useState({
+    phone: "",
+    code: "",
+});
+  const [Active, setActive] = useState("");
   const [Verify, setVerify] = useState(false);
-
-  const cstomStyle = Active
-    ? signInStyles.inputField
-    : signInStyles.activeField;
-
-  const customStyle = isActive
-    ? signInStyles.inputField
-    : signInStyles.activeField;
     const dispatch = useDispatch();
     const handleSubmit=()=>{
       
@@ -38,55 +33,57 @@ const Verify: FC = () => {
 
       dispatch(login() );}
     }
+    const inputField=[
+      {
+          id:1,
+          IconName:"phone",
+          value:input.phone,
+          placeholder:EnteryourNumber,
+          onChange:(phone: any) => setinput({ ...input, phone}),
+          disabled:false
+          },
+          {
+              id:2,
+              IconName:"lock",
+              value:input.code,
+              placeholder:EnterdigitCode,
+              onChange:(code: any) => setinput({ ...input, code}),
+              disabled:Verify ? false: true
+              },
+  ]
   return (
 
     <SimpleLayout header={VerifyYourAccount} text1={text1} text2={text2}>
       <View>
         <View style={signInStyles.img}>
            <LottieView
-          style={{
-            // width: 400,
-            // height: 400,
-          }}
           autoPlay
           source={require('../../../assets/sign.json')}
                 />
         </View>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <CustomInput
-            placeholder={EnteryourNumber}
-            style={cstomStyle}
-            onFocus={() => setActive(true)}
-            onBlur={() => setActive(false)}
+        {inputField.map((input,index)=>{
+          let ID = "TextInput"+index
+          return(
+            <CustomInput
+            placeholder={input.placeholder}
+            style={[Active === ID ? signInStyles.activeField : signInStyles.inputField]}
+            onFocus={() => setActive(ID)}
+            onBlur={() => setActive("")}
+            value={input.value}
+            onChange={input.onChange}
             leftIcon={
               <TextInput.Icon
                 size={18}
-                color={Active ? "#C20000" : "#ACABB1"}
-                name="phone"
+                color={Active === ID ? "#C20000" : "#ACABB1"}
+                name={input.IconName}
               />
             }
           />
-          <CustomInput
-          disabled={Verify ? false: true}
-            placeholder={EnterdigitCode}
-            style={customStyle}
-            onFocus={() => setisActive(true)}
-            onBlur={() => setisActive(false)}
-            secureTextEntry
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                color={isActive ? "#C20000" : "#ACABB1"}
-                name="lock"
-              />
-            }
-          />
+          )
+        })}
           <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              marginVertical: 20,
-            }}
+            style={signInStyles.SubmitView}
           >
             <TouchableOpacity
               onPress={handleSubmit}

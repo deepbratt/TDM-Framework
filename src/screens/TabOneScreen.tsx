@@ -13,9 +13,6 @@ export default function TabOneScreen() {
         onPress={()=>openDrawer()} />
    <View style={styles.container}>
       <Text style={styles.title}>screen One</Text>
-     
-  
-
     </View>
     </View>
   );

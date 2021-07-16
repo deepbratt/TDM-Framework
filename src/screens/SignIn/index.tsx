@@ -41,9 +41,10 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
               />
             );
           })}
-        </View>
-        <Text style={{ textAlign: "right", marginHorizontal: 40, marginVertical: 2 }} > <Text style={loginStyle.account}>{alreadyAccount} </Text><Text onPress={onClick} style={loginStyle.signUp} >{login ? Login : signUp}</Text> </Text>
+                <Text style={loginStyle.accountButton} > <Text style={loginStyle.account}>{alreadyAccount} </Text><Text onPress={onClick} style={loginStyle.signUp} >{login ? Login : signUp}</Text> </Text>
 
+        </View>
+  
       </View>
 
       {

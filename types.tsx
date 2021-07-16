@@ -61,6 +61,7 @@ export type InputProp={
   leftIcon?:any;
   rightIcon?:any;
   value?:any;
+  name?:string;
   onChange?:any;
   multiline?:any;
   numberOfLines?:any;

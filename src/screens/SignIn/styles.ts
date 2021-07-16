@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 export const loginStyle = StyleSheet.create({
 
   mid: {
@@ -7,56 +8,54 @@ export const loginStyle = StyleSheet.create({
     marginTop: 0,
   },
   img: {
-    marginHorizontal: 30,
-    marginVertical: 20,
-    width: 300,
-   
+    marginHorizontal: wp('10%'),
+    marginVertical: hp('4%'),
+    width: wp('81%'),
     aspectRatio:1*1.4,
     padding: 0,
   },
   SignInButton:{
-    width: 210,
-height:45,
-borderColor:"#C20000",
-borderWidth:2,
-flexDirection:"row",
-alignItems:"center",
-justifyContent:"center",
-borderRadius:6,
+    width: wp('58%'),
+    height:hp('6.3%'),
+    borderColor:"#C20000",
+    borderWidth:2,
+    flexDirection:"row",
+   alignItems:"center",
+   justifyContent:"center",
+   borderRadius:6,
     
 },
-loginText:{
-  fontFamily: "IBMPlexSans-Medium",
-  fontSize: 14,
-  textAlign: "center",
-  lineHeight: 17,
-  color: "#C20000",
-
+  loginText:{
+      fontFamily: "IBMPlexSans-Medium",
+      fontSize: 14,
+      textAlign: "center",
+      lineHeight: 17,
+      color: "#C20000",
 },
-inputField:{
-  marginVertical:10,
-  width: 258,
-height: 40,
-backgroundColor: "#FFFFFF",
-borderColor:"#C20000",
-  borderWidth:2,
-borderRadius: 2,
+  activeField:{
+      marginVertical:10,
+      width: wp('71%'),
+      height:hp('6%'),
+      backgroundColor: "#FFFFFF",
+      borderColor:"#C20000",
+      borderWidth:2,
+      borderRadius: 2,
 },
-activeField:{
-  marginVertical:10,
-  width: 258,
-height: 40,
-backgroundColor: "#FFFFFF",
-borderColor:"rgba(49, 49, 49, 1)",
-  borderWidth:2,
-borderRadius: 2,
+  inputField:{
+     marginVertical:10,
+     width:wp('71%'),
+     height:hp('6%'),
+     backgroundColor: "#FFFFFF",
+     borderColor:"rgba(49, 49, 49, 1)",
+     borderWidth:2,
+     borderRadius: 2,
 },
   button: {
-    marginHorizontal: 20,
-    marginTop: 10,
+    marginHorizontal: wp('5%'),
+    marginTop:  hp('1%'),
     backgroundColor: "white",
-    width: 258,
-    height:45,
+    width: wp('76%'),
+    height:hp('6.5%'),
     display: "flex",
     flexDirection: "row",
     // justifyContent:"center",
@@ -72,12 +71,18 @@ borderRadius: 2,
     fontWeight: "500",
     fontSize: 12,
   },
+  accountButton:{ 
+    textAlign: "right",
+    marginHorizontal: wp('5%'),
+    width: wp('76%'),
+    marginVertical: 2
+ },
   account: {
     color: "#666",
-      fontFamily: "IBMPlexSans-Light",
+    fontFamily: "IBMPlexSans-Light",
     letterSpacing: .6,
     fontSize: 12,
- 
+
   },
   signUp: {
     fontFamily: "IBMPlexSans-Regular",
@@ -87,7 +92,7 @@ borderRadius: 2,
   },
 
   forgetButton:{
-    marginTop:20,
+    marginTop:hp('3%'),
       alignItems:"center",
       justifyContent:"center",
     },

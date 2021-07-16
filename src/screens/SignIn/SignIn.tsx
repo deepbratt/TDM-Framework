@@ -5,7 +5,7 @@ import LogComponent from '.';
 
 export default function SignIn() {
 
-  const [Flipped, setFlipped] = useState(false);
+  const [Flipped, setFlipped] = useState(true);
   return (   
     Flipped ? ( 
       <LogComponent login={true} 

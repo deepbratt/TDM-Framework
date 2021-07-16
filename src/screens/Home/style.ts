@@ -1,101 +1,104 @@
-import { StyleSheet, Dimensions } from "react-native";
-const HEIGHT = Dimensions.get("window").height;
-const WIDTH = Dimensions.get("window").width;
+import { StyleSheet } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 export const HomeStyle = StyleSheet.create({
 container:{
     flex:1,
     backgroundColor:"#ffff",
 },
-
 inputView:{
-flex:1,
-justifyContent:"center",
-alignItems:"center",
-marginTop:25,
-marginBottom:5,
-
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    marginTop:hp('3%'),
+    marginBottom:hp('1%')
 },
 searchStyle:{
-  height:HEIGHT/12.1,
-  width:WIDTH /1.1,
+    height:hp('8%'), 
+    width:wp('91%'), 
     backgroundColor: "rgba(33, 33, 33, 0.08)",
-borderRadius: 6,
+    borderRadius: 6,
 },
 title:{
     textAlign:"left",
-         fontFamily: "IBMPlexSans-Medium",
-         marginVertical:5,
-         marginHorizontal:10,
-         marginBottom:10,
-     fontSize:18,
+    fontFamily: "IBMPlexSans-Medium",
+    marginTop:hp('1%'),
+    marginHorizontal:wp('4.6%'), 
+    marginBottom:hp('3%'),
+    fontSize:18,
 },
 categoryBox:{
     flexDirection:"row",
     justifyContent:"space-around"
 },
 sellView:{
-    width:200,
+    width:wp('55%'), //200
     position:"absolute",
     left:"41%",
     top:"8%"},
     carsView:{
-        flexDirection:"row",
-    paddingVertical:15,
-    marginVertical:15,
+    flexDirection:"row",
+    paddingVertical:  hp('2%'), //15
+    marginVertical: hp('2%'),
     backgroundColor:"#E4F6FF"
 },
 head:{
     fontFamily: "IBMPlexSans-Medium",
     color:"#C20000",
-fontSize:18,
-lineHeight:23,
-textAlign:"right"
+    fontSize:18,
+    lineHeight:23,
+    textAlign:"right"
 },
 bannerimage:{
-   width:240,
-   height:150 ,
+   width:wp('63%'), //240
+   height:hp('21%'), //150
 },
 buttonView:{
     alignItems:"flex-end",
-justifyContent:"center",
-marginVertical:30
+    justifyContent:"center",
+    marginVertical:hp('4.2%'), 
 },
 button:{
     backgroundColor: "#F6AE39",
-borderRadius: 6,
-width:102,
-height:35,
-justifyContent:"center",
-alignItems:"center"
+    borderRadius: 6,
+    width:wp('28%'),
+    height:hp('5%'), 
+    justifyContent:"center",
+    alignItems:"center"
 },
 buttonText:{
     fontFamily: "IBMPlexSans-Medium",
     color:"#ffff",
-fontSize:14,
-lineHeight:18,
+    fontSize:14,
+    lineHeight:18,
 },
 paragraph:{
     fontFamily: "IBMPlexSans-Light",
     color:"#666666",
-fontSize:14,
-textAlign:"right"
+    fontSize:14,
+    textAlign:"right"
 },
-flexRow:{ flexDirection: "row", justifyContent: "space-between",marginVertical:8 },
-VerticalMargin:{marginVertical:15,},
+flexRow:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical:8 },
+VerticalMargin:{
+    marginVertical:hp('2%'), 
+},
 activeStyle:{
-    marginHorizontal:4,
-    width:166,
-    height:42,
+    marginLeft:wp('2%'),  
+    width:wp('49%'), 
+    height:hp('6.1%'), 
     backgroundColor:"#C20000",
-    borderRadius:20,
+    borderRadius:22,
     justifyContent:"center"
 },
 inActiveStyle:{
-    marginHorizontal:4,
-    width:166,
-    height:42,
+    marginLeft: wp('2%'),  
+    width:wp('49%'),  
+    height:hp('6.1%'), 
     backgroundColor:"rgba(33, 33, 33, 0.08)",
-    borderRadius:20,
+    borderRadius:22,
     justifyContent:"center"
 },
 activeText:{
