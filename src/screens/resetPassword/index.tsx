@@ -13,6 +13,7 @@ import {
     viaEmail,
     viaSms
 } from '../../utils/constants/resetPassword/resetPassword';
+import CustomOTP from '../../component/customOTP';
 
 const ResetPassword = () => {
     const [visible, setVisible] = useState(false);
@@ -70,6 +71,7 @@ const ResetPassword = () => {
                 onBackButtonPress={toggleBottomNavigationView}
                 onBackdropPress={toggleBottomNavigationView}
             >
+                <CustomOTP></CustomOTP>
             </BottomSheetComponent>
         </View>
     )

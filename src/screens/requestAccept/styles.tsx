@@ -131,60 +131,17 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: wp('5%'),
         borderRadius: 6,
-        paddingTop: hp('1.5%'),
-        paddingBottom: hp('1.5%')
+        paddingTop: hp('3%'),
+        paddingBottom: hp('3%')
     },
-    dealText: {
+    acceptCancelButtonView: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    acceptButtonText: {
         fontSize: 16,
         fontWeight: '500',
-        color: '#313131',
-        textAlign: 'center',
-    },
-    comparisonButtonMainView: {
-        width: wp('60%'),
-        alignSelf: 'center',
-        paddingTop: hp('1%'),
-        paddingBottom: hp('3%'),
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    comparisonTouchable: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    comparisonButtonText: {
-        fontSize: 12,
-        fontWeight: '500',
-        color: '#FFFFFF',
-        alignSelf: 'center',
-        paddingLeft: wp('2%')
-    },
-    profileMainView: {
-        width: wp('95%'),
-        alignSelf: 'center',
-        flexDirection: "row",
-        justifyContent: 'flex-start',
-        paddingTop: hp('1.5%'),
-        paddingBottom:hp('1.5%')
-    },
-    avatarView: {
-        width: wp('16%'),
-        alignSelf:'center',
-    },
-    profileHeading: {
-        width: wp('95%'),
-        alignSelf: 'center',
-        fontSize: 14,
-        fontWeight: '500',
-        color: '#313131',
-        paddingTop: hp('1%')
-    },
-    userNameText: {
-        alignSelf: 'center',
-        fontSize: 16,
-        fontWeight: '400',
-        color: '#313131',
-        marginLeft: wp('2%')
+        color: '#313131'
     },
     mapStyle: {
         height: hp('30%'),
@@ -197,13 +154,6 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         marginTop: hp('3%'),
         borderColor: '#E0E0E0'
-    },
-    profileBorderView: {
-        width: wp('100%'),
-        borderWidth: 1,
-        marginTop: hp('1.5%'),
-        borderColor: '#E0E0E0',
-        marginBottom: hp('1.5%'),
     },
     TopBarLabelStyle: {
         fontSize: 12,
@@ -219,7 +169,8 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 14,
-        fontWeight: '700'
+        fontWeight: '700',
+        marginTop:hp('2%')
     },
     FeatureProductText: {
         width: wp('95%'),

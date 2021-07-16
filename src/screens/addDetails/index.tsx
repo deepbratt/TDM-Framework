@@ -5,8 +5,8 @@ import { PROVIDER_GOOGLE } from 'react-native-maps';
 import CustomText from '../../component/customText';
 import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
-import Specification from './specification';
-import Features from './features';
+import Specification from '../carDetails/specification';
+import Features from '../carDetails/features';
 import CustomCarousel from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
@@ -38,7 +38,7 @@ import {
     featureProductLocation,
     featureProductDistance,
     featureProductFuelType,
-} from '../../utils/constants/carDetails/carDetails';
+} from '../../utils/constants/addDetails/addDetails';
 
 interface ItemProps {
     src: any;
@@ -50,7 +50,7 @@ interface ItemProps {
     index: number;
 }
   
-const CarDetails = () => {
+const AddDetails = () => {
     const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
       <View style={styles.imageRandomItemView}>
@@ -225,32 +225,6 @@ const CarDetails = () => {
                     text={descriptionT}
                     textStyle={styles.descriptionText}
                 />
-                <View style={styles.dealMainContainer}>
-                    <View style={styles.dealView}>
-                        <CustomText
-                            text={payAmount}
-                            textStyle={styles.dealText}
-                        />
-                    </View>
-                    <View style={styles.comparisonButtonMainView}>
-                        <TouchableOpacity style={styles.comparisonTouchable}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/layer.png')} />
-                            <CustomText
-                                text={compareText}
-                                textStyle={styles.comparisonButtonText}
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.comparisonTouchable}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/safety-car.png')} />
-                            <CustomText
-                                text={shortListText}
-                                textStyle={styles.comparisonButtonText}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
                 <View style={styles.profileBorderView}>
                     <View style={{ flexDirection: 'column', justifyContent: 'flex-start' }}>
                         <CustomText
@@ -314,4 +288,4 @@ const CarDetails = () => {
     )
 }
 
-export default CarDetails;
+export default AddDetails;

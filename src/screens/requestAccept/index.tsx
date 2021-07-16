@@ -5,8 +5,8 @@ import { PROVIDER_GOOGLE } from 'react-native-maps';
 import CustomText from '../../component/customText';
 import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
-import Specification from './specification';
-import Features from './features';
+import Specification from '../carDetails/specification';
+import Features from '../carDetails/features';
 import CustomCarousel from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
@@ -38,7 +38,7 @@ import {
     featureProductLocation,
     featureProductDistance,
     featureProductFuelType,
-} from '../../utils/constants/carDetails/carDetails';
+} from '../../utils/constants/RequestAccept/RequestAccept';
 
 interface ItemProps {
     src: any;
@@ -50,7 +50,7 @@ interface ItemProps {
     index: number;
 }
   
-const CarDetails = () => {
+const RequestAccept = () => {
     const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
       <View style={styles.imageRandomItemView}>
@@ -227,57 +227,23 @@ const CarDetails = () => {
                 />
                 <View style={styles.dealMainContainer}>
                     <View style={styles.dealView}>
-                        <CustomText
-                            text={payAmount}
-                            textStyle={styles.dealText}
-                        />
-                    </View>
-                    <View style={styles.comparisonButtonMainView}>
-                        <TouchableOpacity style={styles.comparisonTouchable}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/layer.png')} />
-                            <CustomText
-                                text={compareText}
-                                textStyle={styles.comparisonButtonText}
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.comparisonTouchable}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/safety-car.png')} />
-                            <CustomText
-                                text={shortListText}
-                                textStyle={styles.comparisonButtonText}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.profileBorderView}>
-                    <View style={{ flexDirection: 'column', justifyContent: 'flex-start' }}>
-                        <CustomText
-                            text={sellerText}
-                            textStyle={styles.profileHeading}
-                        />
-                        <View style={styles.profileMainView}>
-                            <View style={styles.avatarView}>
-                                <CustomAvatar
-                                    overlayContainerStyle={{ backgroundColor: 'gray' }}
-                                    size={hp('7%')}
-                                    rounded
-                                    onPress={() => console.log("Works!")}
-                                    activeOpacity={0.8}
-                                    source={require('../../../assets/images/Base.png')}
-                                    imageProps={{resizeMode:'contain',margin:15}}
+                        <View style={styles.acceptCancelButtonView}>
+                            <TouchableOpacity>
+                                <CustomText
+                                    text="Accept"
+                                    textStyle={styles.acceptButtonText}
                                 />
-                            </View>
-                            <CustomText
-                                text={userName}
-                                textStyle={styles.userNameText}
-                            />
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/check.png')} />
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <CustomText
+                                    text="Cancel"
+                                    textStyle={{fontSize:16,fontWeight:'500',color:'#313131'}}
+                                />
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
+                <View style={styles.borderView}></View>
                 <CustomText
                     text={locationText}
                     textStyle={styles.AddPostedText}
@@ -314,4 +280,4 @@ const CarDetails = () => {
     )
 }
 
-export default CarDetails;
+export default RequestAccept;

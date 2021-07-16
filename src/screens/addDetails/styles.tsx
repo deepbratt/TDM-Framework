@@ -119,46 +119,6 @@ export const styles = StyleSheet.create({
         color: '#979797',
         textAlign: 'justify'
     },
-    dealMainContainer: {
-        width: wp('100%'),
-        backgroundColor: '#2B8EFE',
-        marginTop: hp('3%'),
-    },
-    dealView: {
-        width: '90%',
-        backgroundColor: '#ffffff',
-        marginTop: wp('5%'),
-        alignSelf: 'center',
-        marginBottom: wp('5%'),
-        borderRadius: 6,
-        paddingTop: hp('1.5%'),
-        paddingBottom: hp('1.5%')
-    },
-    dealText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: '#313131',
-        textAlign: 'center',
-    },
-    comparisonButtonMainView: {
-        width: wp('60%'),
-        alignSelf: 'center',
-        paddingTop: hp('1%'),
-        paddingBottom: hp('3%'),
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    comparisonTouchable: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    comparisonButtonText: {
-        fontSize: 12,
-        fontWeight: '500',
-        color: '#FFFFFF',
-        alignSelf: 'center',
-        paddingLeft: wp('2%')
-    },
     profileMainView: {
         width: wp('95%'),
         alignSelf: 'center',

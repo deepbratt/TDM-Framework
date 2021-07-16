@@ -44,6 +44,7 @@ export type BottomSheetProps = {
   visible: boolean;
   onBackButtonPress: () => void;
   onBackdropPress: () => void;
+  children: any;
 };
 
 export type SearchBottomSheetProps = {
@@ -99,4 +100,25 @@ export type ForgotButtonProps = {
   textContainerStyle: any;
   onPress: () => void;
 }
+
+export type CustomCarouselProps={ 
+  layout?:string;
+  layoutCardOffset?:string;
+  autoplay?:boolean;
+  loop?:boolean;
+  enableMomentum?:boolean;
+  enableSnap?:boolean;
+  autoplayDelay?:number;
+  sliderWidth?:number;
+  activeAnimationType?:string;
+  itemWidth?:number;
+  inactiveSlideScale?:number;
+  inactiveSlideOpacity?:number;
+  renderItems:()=>void;
+  autoplayInterval?:number;
+  contentContainerCustomStyle?: any;
+  containerCustomStyle?: any;
+  listItems: any
+}
+
 

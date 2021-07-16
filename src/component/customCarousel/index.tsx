@@ -1,74 +1,56 @@
-import React, { useState, useCallback, useRef } from "react";
-import { Text, View, SafeAreaView, Image } from "react-native";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import React, { useState, useRef,FC } from "react";
+import {  SafeAreaView,} from "react-native";
 import Carousel from "react-native-snap-carousel";
 
-interface ItemProps {
-  title: string;
-  text: string;
-  src:any
+interface Props{
+  renderItems: any,
+  listItems: any,
+  layout:any,
+  layoutCardOffset:any,
+  autoplay:any,
+  loop:any,
+  enableMomentum:any,
+  enableSnap:any,
+  autoplayDelay:any,
+  sliderWidth:any,
+  activeAnimationType:any,
+  itemWidth:any,
+  inactiveSlideScale:any,
+  inactiveSlideOpacity:any,
+  autoplayInterval:any,
+  contentContainerCustomStyle:any,
+  containerCustomStyle: any,
+  ref: any;
 }
 
-interface CustomCarouselProps {}
-interface RenderItemProps {
-  item: ItemProps;
-  index: number;
-}
-
-const exampleItems = [
-  {
-    title: "Item 1",
-    text: "Text 1",
-    src: require('../../../assets/images/car.jpg'),
-  },
-  {
-    title: "Item 2",
-    text: "Text 2",
-      src: require('../../../assets/images/car1.jpeg'),
-
-
-  },
-  {
-    title: "Item 3",
-    text: "Text 3",
-      src: require('../../../assets/images/car.jpg'),
-
-    
-  },
-  
-];
-
-const CustomCarousel: React.SFC<CustomCarouselProps> = () => {
+const CustomCarousel: FC<Props> = (Props) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [carouselItems, setCarouselItems] = useState<ItemProps[]>(exampleItems);
+  const [carouselItems, setCarouselItems] = useState(Props.listItems);
   const ref = useRef(null);
 
-  const renderItem = useCallback(({ item, index }: RenderItemProps) => {
-    return (
-      <View style={{ backgroundColor: "floralwhite", borderRadius: 5, width: wp('68%'), marginLeft: 5, }}>
-        <Image style={{ width: wp('68%'), height: 200, borderRadius: 8, alignSelf: 'center' }}
-          source={item.src}
-        />
-        {/* <Text style={{ fontSize: 30,backgroundColor:'red' }}>{item.title}</Text>
-        <Text>{item.text}</Text> */}
-      </View>
-    );
-  }, []);
-
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#E5E5E5", paddingTop: 50 }}>
-      <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", }}>
-        <Carousel
-          layout={"default"}
-          ref={ref}
-          data={carouselItems}
-          sliderWidth={wp("70%")}
-          itemWidth={wp('70%')}
-          renderItem={renderItem}
-          onSnapToItem={(index: number) => setActiveIndex(index)}
-        />
-      </View>
+    <SafeAreaView>
+      <Carousel
+        layout={Props.layout}
+        layoutCardOffset={Props.layoutCardOffset}
+        ref={Props.ref}
+        autoplay={Props.autoplay}
+        loop={Props.loop}
+        autoplayDelay={Props.autoplayDelay}
+        enableMomentum={Props.enableMomentum}
+        enableSnap={Props.enableSnap}
+        data={carouselItems}
+        sliderWidth={ Props.sliderWidth}
+        activeAnimationType={Props.activeAnimationType}
+        itemWidth={Props.itemWidth}
+        inactiveSlideScale={Props.inactiveSlideScale}
+        inactiveSlideOpacity={Props.inactiveSlideOpacity}
+        renderItem={Props.renderItems}
+        onSnapToItem={(index: number) => setActiveIndex(index)}
+        autoplayInterval={Props.autoplayDelay}
+        contentContainerCustomStyle={Props.contentContainerCustomStyle}
+        containerCustomStyle={Props.containerCustomStyle}
+      />
     </SafeAreaView>
   );
 };

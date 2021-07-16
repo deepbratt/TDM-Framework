@@ -17,6 +17,8 @@ import PaymentError from './src/screens/paymentError';
 import PayTokenAmount from './src/screens/payTokenAmount';
 import Notification from './src/screens/notification';
 import Search from './src/screens/search';
+import AddDetails from './src/screens/addDetails';
+import RequestAccept from './src/screens/requestAccept';
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
@@ -29,7 +31,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <Search/>
+        <RequestAccept/>
         
           </Provider>
            

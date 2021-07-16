@@ -9,16 +9,15 @@ const BottomSheetComponent: FC<BottomSheetProps> = ({
   visible,
   onBackButtonPress,
   onBackdropPress,
+  children,
 }) => {
   return (
         <BottomSheet
           visible={visible}
           onBackButtonPress={onBackButtonPress}
           onBackdropPress={onBackdropPress}
-        >
-          <View style={styles.bottomNavigationView}>
-            <CustomOTP/>
-          </View>
+    >
+      {children}
         </BottomSheet>
   );
 };
