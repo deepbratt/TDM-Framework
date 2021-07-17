@@ -5,4 +5,7 @@ import SignIn from "./SignIn/SignIn";
 import Verify from "./SignUp/verifyAccount";
 import HomePage from "./Home";
 import Settings from "./Settings";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings}
+import YourFav from "./YourFav";
+import Orders from "./Orders";
+import FindCar from "./findCar";
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar}

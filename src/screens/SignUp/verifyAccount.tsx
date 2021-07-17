@@ -18,6 +18,7 @@ import CustomButton from "../../component/CustomButton/index";
 import {login } from "../../redux/reducers/authSlice";
 import SimpleLayout from "../../layout/simpleLayout";
 import LottieView from 'lottie-react-native';
+import { globalStyle } from "../../Styles";
 const Verify: FC = () => {
   const [input, setinput] = useState({
     phone: "",
@@ -67,7 +68,7 @@ const Verify: FC = () => {
           return(
             <CustomInput
             placeholder={input.placeholder}
-            style={[Active === ID ? signInStyles.activeField : signInStyles.inputField]}
+            style={[Active === ID ? globalStyle.activeField : globalStyle.inputField]}
             onFocus={() => setActive(ID)}
             onBlur={() => setActive("")}
             value={input.value}
@@ -83,21 +84,16 @@ const Verify: FC = () => {
           )
         })}
           <View
-            style={signInStyles.SubmitView}
-          >
-            <TouchableOpacity
-              onPress={handleSubmit}
-              style={signInStyles.SignInButton}
-            >
-              <Text style={signInStyles.loginText}>{Verify ? Login:Submit}</Text>
-            </TouchableOpacity>
+            style={signInStyles.SubmitView}> 
+            <CustomButton buttonStyle={globalStyle.SignInButton} 
+          textStyle={globalStyle.loginText}  onPress={handleSubmit} text={Verify ? Login:Submit} />
           </View>
         </View>
         <View>
           <CustomButton
             text={ForgotPassword}
-            buttonStyle={signInStyles.forgetButton}
-            textStyle={signInStyles.forgetText}
+            buttonStyle={globalStyle.forgetButton}
+            textStyle={globalStyle.forgetText}
             linkTo="/forget"
           ></CustomButton>
         </View>

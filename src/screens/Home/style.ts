@@ -2,23 +2,6 @@ import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export const HomeStyle = StyleSheet.create({
-container:{
-    flex:1,
-    backgroundColor:"#ffff",
-},
-inputView:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center",
-    marginTop:hp('3%'),
-    marginBottom:hp('1%')
-},
-searchStyle:{
-    height:hp('8%'), 
-    width:wp('91%'), 
-    backgroundColor: "rgba(33, 33, 33, 0.08)",
-    borderRadius: 6,
-},
 title:{
     textAlign:"left",
     fontFamily: "IBMPlexSans-Medium",

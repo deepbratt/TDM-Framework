@@ -14,42 +14,6 @@ export const loginStyle = StyleSheet.create({
     aspectRatio:1*1.4,
     padding: 0,
   },
-  SignInButton:{
-    width: wp('58%'),
-    height:hp('6.3%'),
-    borderColor:"#C20000",
-    borderWidth:2,
-    flexDirection:"row",
-   alignItems:"center",
-   justifyContent:"center",
-   borderRadius:6,
-    
-},
-  loginText:{
-      fontFamily: "IBMPlexSans-Medium",
-      fontSize: 14,
-      textAlign: "center",
-      lineHeight: 17,
-      color: "#C20000",
-},
-  activeField:{
-      marginVertical:10,
-      width: wp('71%'),
-      height:hp('6%'),
-      backgroundColor: "#FFFFFF",
-      borderColor:"#C20000",
-      borderWidth:2,
-      borderRadius: 2,
-},
-  inputField:{
-     marginVertical:10,
-     width:wp('71%'),
-     height:hp('6%'),
-     backgroundColor: "#FFFFFF",
-     borderColor:"rgba(49, 49, 49, 1)",
-     borderWidth:2,
-     borderRadius: 2,
-},
   button: {
     marginHorizontal: wp('5%'),
     marginTop:  hp('1%'),
@@ -103,5 +67,14 @@ export const loginStyle = StyleSheet.create({
       textAlign: "center",
       lineHeight: 24,
       color: "#CCCC",
-    }
+    },
+    SubmitView:{
+      alignItems: "center",
+      justifyContent: "center",
+      marginVertical: 20,
+  }, 
+    alignCenter:{ 
+      alignItems: "center",
+      justifyContent: "center" 
+  }
 });

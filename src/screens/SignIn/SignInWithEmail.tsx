@@ -19,10 +19,12 @@ import {
 import CustomInput from "../../component/CustomInput/CustomInput";
 import SimpleLayout from "../../layout/simpleLayout";
 import { connect, useDispatch } from "react-redux";
+import { globalStyle } from "../../Styles";
+import CustomButton from "../../component/CustomButton";
 
 function SignUpWithEmail() {
   const dispatch = useDispatch();
-  const {  SignInButton, img, loginText } = loginStyle;
+  const {img,alignCenter,SubmitView} = loginStyle;
   const [Active, setActive] = useState("");
     const [input, setinput] = useState({
       userName: "",
@@ -61,13 +63,13 @@ function SignUpWithEmail() {
           source={require("../../../assets/images/signin.png")}
         />
       </View>
-      <View style={{ alignItems: "center", justifyContent: "center" }}>
+      <View style={alignCenter}>
         {inputField.map((input,index)=>{
           let ID = "TextInput"+index
           return(
             <CustomInput
             placeholder={input.placeholder}
-            style={[Active === ID ? loginStyle.activeField : loginStyle.inputField]}
+            style={[Active === ID ? globalStyle.activeField : globalStyle.inputField]}
             onFocus={() => setActive(ID)}
             onBlur={() => setActive("")}
             value={input.value}
@@ -83,19 +85,9 @@ function SignUpWithEmail() {
           )
         })}
       
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            marginVertical: 20,
-          }}
-        >
-          <TouchableOpacity
-           onPress={() => dispatch(login())}
-            style={SignInButton}
-          >
-            <Text style={loginText}>{Login}</Text>
-          </TouchableOpacity>
+        <View style={SubmitView}>
+           <CustomButton buttonStyle={globalStyle.SignInButton} 
+          textStyle={globalStyle.loginText} onPress={() => dispatch(login())} text={Login} />
         </View>
       </View>
     </SimpleLayout>

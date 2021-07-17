@@ -21,8 +21,10 @@ import {
 import CustomInput from "../../component/CustomInput/CustomInput";
 import SimpleLayout from "../../layout/simpleLayout";
 import { Link } from "react-router-native";
+import { globalStyle } from "../../Styles";
+import CustomButton from "../../component/CustomButton";
 function SignUp() {
-  const { SignInButton, imgDiv, loginText } = signInStyles;
+  const { imgDiv,SubmitView,alignCenter } = signInStyles;
   const [Active, setActive] = useState("");
   
 
@@ -90,13 +92,13 @@ function SignUp() {
             source={require("../../../assets/images/signup2.png")}
           />
         </View>
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <View style={alignCenter}>
         {inputField.map((input,index)=>{
           let ID = "TextInput"+index
           return(
             <CustomInput
             placeholder={input.placeholder}
-            style={[Active === ID ? signInStyles.activeField : signInStyles.inputField]}
+            style={[Active === ID ? globalStyle.activeField : globalStyle.inputField]}
             onFocus={() => setActive(ID)}
             onBlur={() => setActive("")}
             value={input.value}
@@ -111,21 +113,9 @@ function SignUp() {
           />
           )
         })}
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              marginVertical: 20,
-            }}
-          >
-            <Link
-              underlayColor="#fff4f7"
-              to="/verify"
-              style={SignInButton}
-              component={TouchableOpacity}
-            >
-              <Text style={loginText}>{signUp}</Text>
-            </Link>
+          <View style={SubmitView} >
+            <CustomButton buttonStyle={globalStyle.SignInButton} 
+            textStyle={globalStyle.loginText} linkTo="/verify" text={signUp} />
           </View>
         </View>
       </View>

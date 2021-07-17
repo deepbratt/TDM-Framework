@@ -5,16 +5,6 @@ export type RootStackParamList = {
   top:any;
   NotFound: undefined;
 };
-
-export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
-};
-
-export type TabOneParamList = {
-  TabOneScreen: undefined;
-};
-
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
@@ -104,5 +94,21 @@ export type CustomCarouselProps={
 contentContainerCustomStyle?:any;
 containerCustomStyle?:any;
 listItems:any
-
+}
+export type HeadSectionProp={
+  children?:React.ReactNode;
+  Heading?:string;
+  SubHeading?:string;
+};
+export type PBoxProps={
+  src?:any;
+  Price?:string;
+  Title?:string;
+  year?:string;
+  KMeter:string;
+  onPress:()=>void;
+  status:string;
+  date?:string;
+  Location?:string;
+  color?:string
 }

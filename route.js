@@ -10,10 +10,8 @@ const AuthRoute = ({ component: Component, isLoggedIn, ...rest }) => {
   console.log(isLoggedIn,"log");
   return (
     <NativeRouter>
-      {
-        isLoggedIn ? (
           <Navigation/>
-        ):(
+      {
           Public.map((route) => {
             return(
               <BackButton>
@@ -26,7 +24,7 @@ const AuthRoute = ({ component: Component, isLoggedIn, ...rest }) => {
              </BackButton>)
   
           })
-        )
+       
       }
     
   

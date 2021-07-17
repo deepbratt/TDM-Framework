@@ -10,7 +10,7 @@ import { Surface, TextInput } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
 import CustomInput from "../../component/CustomInput/CustomInput";
 import { openDrawer } from '../../navigation';
-import { BookNow, categotryList, MostPopular, Par1, popularProduct, SearchedCars, SellYou } from "../../utils/constants/HomeConstant";
+import { BookNow, Browse, categotryList, MostPopular, Par1, popularProduct, SearchedCars, SellYou } from "../../utils/constants/HomeConstant";
 import { HomeStyle } from "./style";
 import Category from "../../component/CategoryBox";
 import CustomButton from "../../component/CustomButton";
@@ -19,14 +19,17 @@ import Hashback from "../../section/HashBack";
 import { ScrollView } from "react-native-gesture-handler";
 import TabTwoScreen from "../TabTwoScreen";
 import { Dimensions } from "react-native";
+import { globalStyle } from "../../Styles";
+import  HeadingSection  from "../../section/CustomHeading/Heading";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const HomePage = () => {
  
 
-  const { container, searchStyle, inputView, categoryBox, title,
-    bannerimage, carsView, head, sellView, buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, activeStyle, inActiveStyle, activeText, inActiveText } = HomeStyle;
+  const { categoryBox, title, bannerimage, carsView, head,sellView, 
+    buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, 
+     activeStyle, inActiveStyle, activeText, inActiveText } = HomeStyle;
   const [searchQuery, setSearchQuery] = useState('');
   const [ActiveIndex, setActiveIndex] = useState(0);
 const toggleButton=(i: React.SetStateAction<number>)=>{
@@ -40,11 +43,11 @@ console.log(i,"some")
         headerStyle={{ backgroundColor: "#C20000" }}
         color="#fff" isHome={true} location
         onPress={() => openDrawer()} />
-      <View style={container}>
-        <View style={inputView}>
+      <View style={globalStyle.container}>
+        <View style={globalStyle.inputView}>
           <CustomInput
             placeholder="Search"
-            style={searchStyle}
+            style={globalStyle.searchStyle}
             value={searchQuery}
             onChange={onChangeSearch}
             leftIcon={
@@ -58,17 +61,12 @@ console.log(i,"some")
                 size={18}
                 name={require('../../../assets/images/homepage/filter.png')}
               />
-
             }
-
           />
-
         </View>
-        <View style={{ justifyContent: "space-between" }}>
-          <View>
-            <Text style={title}>Browse Categories</Text></View>
-          <View style={categoryBox}>
-            {
+        <HeadingSection Heading={Browse}>
+        <View style={categoryBox}>
+        {
               categotryList.map((i) => {
                 return (
                   <Category linkTo={i.onPress}
@@ -79,8 +77,8 @@ console.log(i,"some")
                 )
               })
             }
-          </View>
-        </View>
+            </View>
+        </HeadingSection>
         <View style={carsView}>
           <View style={{ position: "relative" }}>
             <Image
@@ -95,10 +93,8 @@ console.log(i,"some")
               <CustomButton text={BookNow} buttonStyle={button} textStyle={buttonText} linkTo="/" />
             </View>
           </View>
-        </View>
-        <View style={{ justifyContent: "space-between" }}>
-
-          <Text style={title}>{SearchedCars}</Text>
+        </View>      
+        <HeadingSection Heading={SearchedCars}>
           <Surface style={{ elevation: 5, marginVertical: 10, justifyContent: "center", alignItems: "center", }}>
             <MyTabs />
           </Surface>
@@ -108,8 +104,8 @@ console.log(i,"some")
           <Surface style={VerticalMargin}>
             <Hashback />
           </Surface>
-        </View>
-        <Text style={title}>{MostPopular}</Text>
+          </HeadingSection>
+        <HeadingSection Heading={MostPopular}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={flexRow}>
             {popularProduct.map((u, i) => {
@@ -127,6 +123,7 @@ console.log(i,"some")
           <Hashback />
           </Surface>): null
       }  
+     </HeadingSection>
       </View>
     </View>
   )

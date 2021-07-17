@@ -9,6 +9,7 @@ container:{
     marginRight: wp('1.2%'),
   },
 images:{
+    marginTop:hp('1%'),
      width: "100%", 
      height:hp('20.5%'), 
      borderRadius: 6,

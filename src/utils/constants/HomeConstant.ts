@@ -3,6 +3,8 @@ export const Notification = "Notification";
 export const Chat = "Chat";
 export const Cart = "Cart";
 
+
+export const Browse="Browse Categories";
 export const categotryList = [
     { id: 1,onPress:"/one", viewStyle: "#88DAFF", ProductName: "Cars", ProductImage: require("../../../assets/images/category/car.png") },
     { id: 2, onPress:"/",viewStyle: "#F8D247", ProductName: "Property", ProductImage: require("../../../assets/images/category/houses.png") },
