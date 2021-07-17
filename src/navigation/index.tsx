@@ -3,12 +3,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { RootStackParamList } from '../../types';
+import { DrawerActions } from '@react-navigation/native';
 import MyDrawer from "./Customdrawer/index";
-export default function Navigation() {
+
+
+const navigationRef = React.createRef<any>();
+export function openDrawer() {
+  navigationRef.current.dispatch(DrawerActions.openDrawer());
+}
+const Navigation:React.FC=()=> {
   return (
     <NavigationContainer
+    ref={navigationRef}
       >
       <RootNavigator />
+    
     </NavigationContainer>
   );
 }
@@ -22,4 +31,7 @@ function RootNavigator() {
   
     </Stack.Navigator>
   );
-}
+};
+
+
+  export default Navigation
