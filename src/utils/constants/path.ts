@@ -43,12 +43,12 @@ export const protectedroute=[
     },  
     {
         id:4,
-        path:"/f",
+        path:"/fcavourite",
         component:YourFav,
     },
     {
         id:4,
-        path:"/fav",
+        path:"/orderlist",
         component:Orders,
     },
     {
@@ -58,7 +58,7 @@ export const protectedroute=[
     },
     {
         id:6,
-        path:"/post",
+        path:"/postad",
         component:PostAd,
     },
   

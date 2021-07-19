@@ -22,9 +22,17 @@ export type HeaderProps = {
    color?:any; 
 };
 export type DropDownProps={
-  color?:any;textcolor?:any;
+  color?:any;
+  textcolor?:any;
+  FirstState?:string
   changeVisbility?:() => void;
    setData?:() => void ;
+   visible?:boolean;
+  onRequestClose?:() => void ;
+  onPress?:() => void ;
+  location?:boolean;
+  changeVisbilities?:() => void;
+  setValues?:() => void ;
 }
 export type SignInProp={
   onPress:()=>void;

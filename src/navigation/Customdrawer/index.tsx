@@ -10,10 +10,9 @@ function MyDrawer() {
   return (
     <Drawer.Navigator initialRouteName="/"
     drawerType={dimensions.width >= 768 ? 'permanent' : 'front'}
-drawerContent={Settings}
+    drawerContent={Settings}
     >
       <Drawer.Screen  name="Home" component={AppRoute} />
-
     </Drawer.Navigator>
   );
 }

@@ -16,7 +16,7 @@ const Option: FC<DropDownProps> = ({ changeVisbility, setData }) => {
     setData(option);
   };
   const option =
-    Locationlist.map((item) => (
+    Locationlist.map((item) => ( //here LocationList is array wich show my list item you can style your list here like that 
       <TouchableOpacity
         key={item.id}
         style={optStyles.option}
@@ -31,10 +31,11 @@ const Option: FC<DropDownProps> = ({ changeVisbility, setData }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => changeVisbility}
+      onPress={() => changeVisbility} 
       style={optStyles.container}
     >
-      <View style={[optStyles.modal, { width: WIDTH - 190, height: HEIGHT / 3 }]}>
+      <View style={[optStyles.modal, { width: WIDTH - 190, height: HEIGHT / 3 }]} //here you can set position  of your dropdown list 
+      >  
 
         <ScrollView>{option}</ScrollView>
       </View>

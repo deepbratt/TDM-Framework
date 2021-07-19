@@ -12,7 +12,7 @@ import { DreamCar, Products, Results } from "../../utils/constants/CarsText";
 import ProductBox from "../../component/ProductBox";
 import { BackButton } from "react-router-native";
 import { COLOR } from "../../Theme/Colors";
-import Toast from 'react-native-easy-toast'
+import Toast from 'react-native-simple-toast';
  const FindCar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [favorites, setfavorites] = useState([] as Array<number>);
@@ -31,11 +31,11 @@ import Toast from 'react-native-easy-toast'
     console.log(addArray,"arrayStatus")
     if(addArray){
       array.push(props.id);
-      Toasts.current.show('Item has been added',addArray);
+      Toast.show('Item has been added');
 
     }
     else{
-      Toasts.current.show('Item has been removed',addArray);
+      Toast.show('Item has been removed');
     }
     setfavorites([...array]);
    
@@ -91,9 +91,7 @@ import Toast from 'react-native-easy-toast'
         );
     })
 }
-<Toast ref={Toasts}  position='center'
-                positionValue={200}
-                opacity={0.8}/>
+
 
              </HeadingSection>
            

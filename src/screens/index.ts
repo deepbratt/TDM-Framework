@@ -10,4 +10,5 @@ import Orders from "./Orders";
 import FindCar from "./findCar/index";
 import Inbox from './Chat/Inbox/index'
 import PostAd from "./Seller/Postad";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox,PostAd}
+import TabTwoScreen from "./TabTwoScreen";
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox,PostAd,TabTwoScreen}

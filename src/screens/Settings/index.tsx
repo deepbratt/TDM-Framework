@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import LottieView from 'lottie-react-native';
 import { Avatar, Title } from "react-native-paper";
-import { Link } from "@react-navigation/native";
+import { Link } from "react-router-native";
 import { styles } from "./style";
 import { drawerItem } from "../../utils/constants/drawerContent";
 import { Ionicons } from "@expo/vector-icons";
@@ -61,9 +61,11 @@ const Settings = () => {
         <View style={{ marginTop: 15 }}>
           {drawerItem.map((item) => {
             return (
-              <TouchableOpacity
+              <Link
                 key={item.id}
                 style={DrawerButton}
+                component={TouchableOpacity}
+                to={item.link}
               >
                 <LinearGradient
                   colors={["#F04148", COLOR.primary]}
@@ -85,7 +87,7 @@ const Settings = () => {
                     <Title style={titleName}>{item.name}</Title>
                   </View>
                 </View>
-              </TouchableOpacity>
+              </Link>
             );
           })}
         </View>

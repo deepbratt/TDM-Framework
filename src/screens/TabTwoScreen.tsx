@@ -7,9 +7,6 @@ import { logout } from "../redux/reducers/authSlice";
 import { useHistory } from "react-router-native";
 import CustomHeader from '../component/customHeader/CustomHeader';
 import { openDrawer } from '../navigation';
-import CustomCarousel from '../component/CustomTabs/carousel';
-import { Items } from "../utils/constants/HomeConstant";
-import CustomButton from "../component/CustomButton";
 import { COLOR } from "../Theme/Colors";
 
 export default function TabTwoScreen() {

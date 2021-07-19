@@ -22,11 +22,20 @@ import { Dimensions } from "react-native";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-native";
+import { logout } from "../../redux/reducers/authSlice";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const HomePage = () => {
- 
+   let history = useHistory();
+  const dispatch = useDispatch();
+  const handle = () => {
+    dispatch(logout());
+    history.push("/SignIn");
+
+  }
 
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
     buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, 
@@ -114,7 +123,7 @@ console.log(i,"some")
             {popularProduct.map((u, i) => {
               return (
                 <CustomButton text={u.title}
-                  onPress={()=>toggleButton(i)}
+                  onPress={handle}
                   key={u.id} buttonStyle={i === ActiveIndex ? activeStyle : inActiveStyle}
                   textStyle={i === ActiveIndex ? activeText : inActiveText} />
               )

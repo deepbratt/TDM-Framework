@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import { View,Text, TouchableOpacity } from 'react-native'
-import { TextInput } from 'react-native-paper'
 import Category from '../../../component/CategoryBox'
 import CustomHeader from '../../../component/customHeader/CustomHeader'
-import CustomInput from '../../../component/CustomInput/CustomInput'
-import InboxBox from '../../../component/inboxBox'
 import { openDrawer } from '../../../navigation'
-import HeadingSection from '../../../section/CustomHeading/Heading'
 import { globalStyle } from '../../../Styles'
 import { COLOR } from '../../../Theme/Colors'
-import { chatList } from '../../../utils/constants/CarsText'
-import { categotryList, Choosewhat, sellList } from '../../../utils/constants/HomeConstant'
+import {  Choosewhat, sellList } from '../../../utils/constants/HomeConstant'
 import { postAdStyle } from './style'
  const PostAd = () => {
  const {boxstyle,Flex,title}=postAdStyle;

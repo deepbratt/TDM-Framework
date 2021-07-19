@@ -6,40 +6,58 @@ import { View, Modal, TouchableOpacity, Text } from "react-native";
 import { MaterialIcons, Ionicons, } from "@expo/vector-icons";
 import { dropdownStyle } from "./style";
 
-const DropDown: FC<DropDownProps> = ({ color, textcolor }) => {
+const DropDown: FC<DropDownProps> = ({ color, textcolor,FirstState,onRequestClose,onPress,location,visible,changeVisbilities,setValues}) => {
 
-  const [showDropDown, setShowDropDown] = useState(false);
-  const [chooseData, setchooseData] = useState('Select City');
-  const changeVisbility = (bool: boolean | ((prevState: boolean) => boolean)) => {
-    setShowDropDown(bool)
-  }
-  const setData = (option: React.SetStateAction<string>) => {
-    setchooseData(option)
-  }
+ 
   return (
 
     <View style={dropdownStyle.containerStyle}>
-      <TouchableOpacity style={dropdownStyle.touchableOpacity} onPress={() => changeVisbility(true)}>
+
+     {location && 
+      <TouchableOpacity style={dropdownStyle.touchableOpacity} onPress={onPress}>
         <Ionicons style={{marginTop: 3 }} name="location-sharp" size={14} color={color} />
         <Text style={[dropdownStyle.text, textcolor]} >
-          {chooseData}
+          {FirstState}
         </Text>
         <MaterialIcons style={{ marginTop: 3 }} name="keyboard-arrow-down" size={25} color={color} />
       </TouchableOpacity>
-      <TouchableOpacity style={dropdownStyle.changeView}>
+     }
+      {
+        location && 
+        <TouchableOpacity style={dropdownStyle.changeView}>
         <Text style={[dropdownStyle.changetext, textcolor]}>Change location</Text>
       </TouchableOpacity>
+      }
+        {/* create here for filter search what do you want to show for first 
+       example such as
+       {
+         filter && <TouchableOpacity style={dropdownStyle.touchableOpacity} onPress={onPress}>
+        <Text style={[dropdownStyle.text, textcolor]} >
+          {yourState} // this will be your firststate such as All
+        </Text>
+        <MaterialIcons style={{ marginTop: 3 }} name="keyboard-arrow-down" size={25} color={color} />
+      </TouchableOpacity>
+       }
+      
+       */}
       <Modal
         animationType="none"
-        visible={showDropDown}
+        visible={visible}
         transparent={true}
-        onRequestClose={() => changeVisbility(false)}
+        onRequestClose={onRequestClose}
       >
-        <Option
-          changeVisbility={changeVisbility}
-          setData={setData}
+       {/* create here for filter search another option component and pass these parameter of fuction same as below ...please use different name  
+       example such as
+       {
+         filter && <yourDropdownlistcomponent  visiblity ={checkvisibilty} listItem={selectItem}/>
+       }
+      
+       */}
+       { location && <Option
+          changeVisbility={changeVisbilities}
+          setData={setValues}
         />
-
+       }
       </Modal>
     </View>
 

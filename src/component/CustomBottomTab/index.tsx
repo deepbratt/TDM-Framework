@@ -35,7 +35,7 @@ import { COLOR } from "../../Theme/Colors";
           end={{ x: 0, y: 1 }}
           style={button}
         >
-          <Link to="/" component={TouchableOpacity} underlayColor="none">
+          <Link to="/postad" component={TouchableOpacity} underlayColor="none">
             <MaterialCommunityIcons name="plus" size={24} color={COLOR.White} />
           </Link>
         </LinearGradient>
