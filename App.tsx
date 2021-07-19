@@ -31,7 +31,7 @@ export default function App() {
     <AuthRoute />
     <StatusBar style="dark"/>
   </SafeAreaProvider> */}
-        <RequestAccept/>
+        <CarDetails/>
         
           </Provider>
            

@@ -146,7 +146,7 @@ export const styles = StyleSheet.create({
         paddingTop: hp('1%'),
         paddingBottom: hp('3%'),
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     comparisonTouchable: {
         flexDirection: 'row',
