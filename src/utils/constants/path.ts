@@ -1,5 +1,5 @@
 
-import { SignIn, SignUp, SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders } from "../../screens";
+import { SignIn, SignUp, SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders, Inbox } from "../../screens";
 
 import TabTwoScreen from "../../screens/TabTwoScreen";
 
@@ -50,6 +50,11 @@ export const protectedroute=[
         id:4,
         path:"/fav",
         component:Orders,
+    },
+    {
+        id:5,
+        path:"/chat",
+        component:Inbox,
     },
   
    

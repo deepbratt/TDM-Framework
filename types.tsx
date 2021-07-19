@@ -112,3 +112,18 @@ export type PBoxProps={
   Location?:string;
   color?:string
 }
+export type InboxBoxProps={
+  src?:any;
+  User?:string;
+  Msg?:string;
+  onPress:()=>void;
+  status?:any;
+  time?:string;
+  count?:string;
+  color?:string;
+  Time?:string;
+  attach?:string;
+  seen?:boolean;
+  Incoming?:boolean;
+  Audio?:string;
+}

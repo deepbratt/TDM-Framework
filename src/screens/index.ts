@@ -7,5 +7,6 @@ import HomePage from "./Home";
 import Settings from "./Settings";
 import YourFav from "./YourFav";
 import Orders from "./Orders";
-import FindCar from "./findCar";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar}
+import FindCar from "./findCar/index";
+import Inbox from './Chat/Inbox/index'
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox}

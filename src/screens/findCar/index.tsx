@@ -14,7 +14,6 @@ import { BackButton } from "react-router-native";
 import { COLOR } from "../../Theme/Colors";
 import Toast from 'react-native-easy-toast'
  const FindCar = () => {
-
     const [searchQuery, setSearchQuery] = useState('');
     const [favorites, setfavorites] = useState([] as Array<number>);
 
