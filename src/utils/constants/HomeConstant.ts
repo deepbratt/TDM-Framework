@@ -13,6 +13,13 @@ export const categotryList = [
     { id: 3,onPress:"/", viewStyle: COLOR.MiddleGreen, ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
 
 ];
+export const sellList = [
+  { id: 1,onPress:"/one", viewStyle: COLOR.PaleCyan, ProductName: "AutoMobiles", ProductImage: require("../../../assets/images/category/car.png") },
+  { id: 2, onPress:"/",viewStyle: COLOR.Maize, ProductName: "Property", ProductImage: require("../../../assets/images/category/houses.png") },
+  { id: 3,onPress:"/", viewStyle: COLOR.MiddleGreen, ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
+
+];
+export const Choosewhat="Choose what do you want to sell";
 export const SellYou="Sell You Car from Home";
 export const Par1="Lorem Ipsum is simply dummy text of the printing and typesetting industry. ";
 export const BookNow="Book Now";

@@ -37,6 +37,10 @@ bannerimage:{
    width:wp('63%'), //240
    height:hp('21%'), //150
 },
+divSize:{
+    width: wp('28.7%'),
+    height: hp('13.5%'),
+},
 buttonView:{
     alignItems:"flex-end",
     justifyContent:"center",

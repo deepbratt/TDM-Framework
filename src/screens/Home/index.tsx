@@ -30,7 +30,7 @@ const HomePage = () => {
 
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
     buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, 
-     activeStyle, inActiveStyle, activeText, inActiveText } = HomeStyle;
+     activeStyle, inActiveStyle, activeText, inActiveText,divSize } = HomeStyle;
   const [searchQuery, setSearchQuery] = useState('');
   const [ActiveIndex, setActiveIndex] = useState(0);
 const toggleButton=(i: React.SetStateAction<number>)=>{
@@ -74,7 +74,9 @@ console.log(i,"some")
                     key={i.id}
                     ProductImage={i.ProductImage}
                     ProductName={i.ProductName}
-                    viewStyle={i.viewStyle} />
+                    viewStyle={i.viewStyle}
+                    divStyle={divSize}
+                    />
                 )
               })
             }
@@ -91,7 +93,7 @@ console.log(i,"some")
             <Text style={head}>{SellYou}</Text>
             <Text style={paragraph}>{Par1}</Text>
             <View style={buttonView}>
-              <CustomButton text={BookNow} buttonStyle={button} textStyle={buttonText} linkTo="/" />
+              <CustomButton text={BookNow} buttonStyle={button} textStyle={buttonText} linkTo="/post" />
             </View>
           </View>
         </View>      

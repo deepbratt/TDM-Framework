@@ -64,6 +64,7 @@ export type categoryProp={
   ProductName?:string;
   ProductImage?:any;
   linkTo?:string;
+  divStyle?:any
 
 }
 export type tabProps={

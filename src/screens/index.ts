@@ -9,4 +9,5 @@ import YourFav from "./YourFav";
 import Orders from "./Orders";
 import FindCar from "./findCar/index";
 import Inbox from './Chat/Inbox/index'
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox}
+import PostAd from "./Seller/Postad";
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox,PostAd}

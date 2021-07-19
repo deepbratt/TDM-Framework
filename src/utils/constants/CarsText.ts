@@ -196,7 +196,7 @@ export const chatList=[
         User:"Alice Smith",
         Msg:"Great. I will have a look",
         Audio:"Sent a voice message",
-        status: "attach",
+        status: "audio",
         Time:"4:20 PM",
         attach:"Sent an attachment",
         count:"2",
