@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { createRef, FC,useState } from "react";
 import {
+  Button,
   View, 
 } from "react-native";
 import { TextInput } from "react-native-paper";
@@ -10,7 +11,8 @@ import HeadingSection from "../../section/CustomHeading/Heading";
 import { DreamCar, Products, Results } from "../../utils/constants/CarsText";
 import ProductBox from "../../component/ProductBox";
 import { BackButton } from "react-router-native";
-
+import { COLOR } from "../../Theme/Colors";
+import Toast from 'react-native-easy-toast'
  const FindCar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -30,20 +32,26 @@ import { BackButton } from "react-router-native";
     console.log(addArray,"arrayStatus")
     if(addArray){
       array.push(props.id);
+      Toasts.current.show('Item has been added',addArray);
 
     }
+    else{
+      Toasts.current.show('Item has been removed',addArray);
+    }
     setfavorites([...array]);
+   
     // from  here we will send items to favorites through api
   }
+  const Toasts = createRef();
     const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
     return (
         <View>
         <CustomHeader
-          headerStyle={{ backgroundColor: "#C20000" }}
-          color="#fff" isHome={false} location
+          headerStyle={{ backgroundColor: COLOR.primary }}
+          color={COLOR.White} isHome={false} location
           onPress={()=><BackButton/>} />
-      <View style={globalStyle.container}>
-        <View style={globalStyle.inputView}>
+         <View style={globalStyle.container}>
+           <View style={globalStyle.inputView}>
           <CustomInput
             placeholder="Search"
             style={globalStyle.searchStyle}
@@ -78,14 +86,19 @@ import { BackButton } from "react-router-native";
            src={i.src}
            status={i.status}
            onPress={()=>addFav(i)}
-           color={favorites.includes(i.id) ?  "#C20000" : "#979797"}
+           color={favorites.includes(i.id) ?  COLOR.primary : COLOR.secondary}
           />
 
         );
     })
 }
-             </HeadingSection>
+<Toast ref={Toasts}  position='center'
+                positionValue={200}
+                opacity={0.8}/>
 
+             </HeadingSection>
+           
+            
            </View>
 
           </View>

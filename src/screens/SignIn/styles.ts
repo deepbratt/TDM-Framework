@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const loginStyle = StyleSheet.create({
 
   mid: {
@@ -17,14 +18,14 @@ export const loginStyle = StyleSheet.create({
   button: {
     marginHorizontal: wp('5%'),
     marginTop:  hp('1%'),
-    backgroundColor: "white",
+    backgroundColor: COLOR.White,
     width: wp('76%'),
     height:hp('6.5%'),
     display: "flex",
     flexDirection: "row",
     // justifyContent:"center",
     alignItems: "center",
-    borderColor: "#313131",
+    borderColor: COLOR.DarkCharcoal,
     borderWidth: 1,
     padding: 5,
     borderRadius: 2,
@@ -42,7 +43,7 @@ export const loginStyle = StyleSheet.create({
     marginVertical: 2
  },
   account: {
-    color: "#666",
+    color: COLOR.GraniteGray,
     fontFamily: "IBMPlexSans-Light",
     letterSpacing: .6,
     fontSize: 12,
@@ -52,7 +53,7 @@ export const loginStyle = StyleSheet.create({
     fontFamily: "IBMPlexSans-Regular",
     fontSize: 12,
     letterSpacing: .6,
-    color: "#6dc0fc",
+    color: COLOR.SIGNBlue,
   },
 
   forgetButton:{
@@ -66,7 +67,7 @@ export const loginStyle = StyleSheet.create({
       fontWeight:"500",
       textAlign: "center",
       lineHeight: 24,
-      color: "#CCCC",
+      color: COLOR.ChineseSilver,
     },
     SubmitView:{
       alignItems: "center",

@@ -1,10 +1,11 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { COLOR } from "../../Theme/Colors";
 export const tabStyles = StyleSheet.create({
   
     plusButton: {
       // position: "absolute",
       alignSelf: "center",
-      backgroundColor: "white",
+      backgroundColor: COLOR.White,
       width: 70,
       height: 70,
       borderRadius: 35,
@@ -50,13 +51,13 @@ export const tabStyles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
     },
-    textIcon: { justifyContent: "center", alignItems: "center", color: "white" },
+    textIcon: { justifyContent: "center", alignItems: "center", color: COLOR.White },
     actionBtn: {
-      backgroundColor: "#1E90FF",
+      backgroundColor: COLOR.BlueDodge,
       textShadowOffset: { width: 5, height: 5 },
       textShadowRadius: 10,
       borderWidth: 2,
-      borderColor: "#fff",
+      borderColor: COLOR.White,
     },
   });
   

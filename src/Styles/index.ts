@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../Theme/Colors";
 
 export const globalStyle = StyleSheet.create({
 container:{
     flex:1,
-    backgroundColor:"#E5E5E5",
+    backgroundColor:COLOR.background,
 },
 inputView:{
     flex:1,
@@ -16,15 +17,15 @@ inputView:{
 searchStyle:{
     height:hp('8%'), 
     width:wp('91%'), 
-    backgroundColor: "rgba(33, 33, 33, 0.08)",
+    backgroundColor: COLOR.LightGrey,
     borderRadius: 6,
 },
 activeField:{
     marginVertical:10,
     width: wp('71%'),
     height:hp('6%'),
-    backgroundColor: "#FFFFFF",
-    borderColor:"#C20000",
+    backgroundColor: COLOR.White,
+    borderColor:COLOR.primary,
     borderWidth:2,
     borderRadius: 2,
 },
@@ -32,15 +33,15 @@ inputField:{
    marginVertical:10,
    width:wp('71%'),
    height:hp('6%'),
-   backgroundColor: "#FFFFFF",
-   borderColor:"rgba(49, 49, 49, 1)",
+   backgroundColor: COLOR.White,
+   borderColor:COLOR.DarkCharcoal,
    borderWidth:2,
    borderRadius: 2,
 },
 SignInButton:{
     width: wp('58%'),
     height:hp('6.3%'),
-    borderColor:"#C20000",
+    borderColor:COLOR.primary,
     borderWidth:2,
     flexDirection:"row",
    alignItems:"center",
@@ -53,7 +54,7 @@ loginText:{
     fontSize: 14,
     textAlign: "center",
     lineHeight: 17,
-    color: "#C20000",
+    color: COLOR.primary,
   
 },
 forgetButton:{
@@ -66,7 +67,7 @@ forgetButton:{
       fontSize: 14,
       textAlign: "center",
       lineHeight: 24,
-      color: "#CCCC",
+      color: COLOR.ChineseSilver,
     },
 
 

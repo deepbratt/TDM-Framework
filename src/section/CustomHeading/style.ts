@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 
 export const sectionStyle = StyleSheet.create({
 titleView:{
@@ -14,7 +15,7 @@ title:{
 },
 subTitle:{
     fontFamily: "IBMPlexSans-Light",
-    color:"#666666",
+    color:COLOR.GraniteGray,
     fontSize:12,
     lineHeight:25,
     textAlign:"left",

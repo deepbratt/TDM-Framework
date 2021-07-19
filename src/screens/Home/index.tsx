@@ -21,6 +21,7 @@ import TabTwoScreen from "../TabTwoScreen";
 import { Dimensions } from "react-native";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
+import { COLOR } from "../../Theme/Colors";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
@@ -40,8 +41,8 @@ console.log(i,"some")
   return (
     <View>
       <CustomHeader
-        headerStyle={{ backgroundColor: "#C20000" }}
-        color="#fff" isHome={true} location
+        headerStyle={{ backgroundColor: COLOR.primary }}
+        color={COLOR.White} isHome={true} location
         onPress={() => openDrawer()} />
       <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>

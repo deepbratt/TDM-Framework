@@ -21,6 +21,7 @@ import SimpleLayout from "../../layout/simpleLayout";
 import { connect, useDispatch } from "react-redux";
 import { globalStyle } from "../../Styles";
 import CustomButton from "../../component/CustomButton";
+import { COLOR } from "../../Theme/Colors";
 
 function SignUpWithEmail() {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ function SignUpWithEmail() {
             leftIcon={
               <TextInput.Icon
                 size={18}
-                color={Active === ID ? "#C20000" : "#ACABB1"}
+                color={Active === ID ? COLOR.primary : COLOR.Silver}
                 name={input.IconName}
               />
             }

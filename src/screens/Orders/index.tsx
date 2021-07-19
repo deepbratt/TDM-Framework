@@ -4,13 +4,14 @@ import CustomHeader from '../../component/customHeader/CustomHeader';
 import ProductBox from '../../component/ProductBox';
 import { openDrawer } from '../../navigation';
 import HeadingSection from '../../section/CustomHeading/Heading';
+import { COLOR } from '../../Theme/Colors';
 import { orderList } from '../../utils/constants/CarsText';
 
  const Orders = () => {
     return (
        <View>
-          <CustomHeader headerStyle={{  backgroundColor:"#F8F8F8"}}
-           color="#313131" isHome={true} title="Your Orders" 
+          <CustomHeader headerStyle={{  backgroundColor:COLOR.Cultured}}
+           color={COLOR.DarkCharcoal} isHome={true} title="Your Orders" 
           onPress={()=>openDrawer()} />
   <HeadingSection>
 {

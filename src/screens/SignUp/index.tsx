@@ -23,6 +23,7 @@ import SimpleLayout from "../../layout/simpleLayout";
 import { Link } from "react-router-native";
 import { globalStyle } from "../../Styles";
 import CustomButton from "../../component/CustomButton";
+import { COLOR } from "../../Theme/Colors";
 function SignUp() {
   const { imgDiv,SubmitView,alignCenter } = signInStyles;
   const [Active, setActive] = useState("");
@@ -106,7 +107,7 @@ function SignUp() {
             leftIcon={
               <TextInput.Icon
                 size={18}
-                color={Active === ID ? "#C20000" : "#ACABB1"}
+                color={Active === ID ? COLOR.primary : COLOR.Silver}
                 name={input.IconName}
               />
             }

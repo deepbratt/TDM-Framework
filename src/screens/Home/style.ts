@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 
 export const HomeStyle = StyleSheet.create({
 title:{
@@ -23,11 +24,11 @@ sellView:{
     flexDirection:"row",
     paddingVertical:  hp('2%'), //15
     marginVertical: hp('2%'),
-    backgroundColor:"#E4F6FF"
+    backgroundColor:COLOR.Bubbles
 },
 head:{
     fontFamily: "IBMPlexSans-Medium",
-    color:"#C20000",
+    color:COLOR.primary,
     fontSize:18,
     lineHeight:23,
     textAlign:"right"
@@ -42,7 +43,7 @@ buttonView:{
     marginVertical:hp('4.2%'), 
 },
 button:{
-    backgroundColor: "#F6AE39",
+    backgroundColor: COLOR.YellowOrange,
     borderRadius: 6,
     width:wp('28%'),
     height:hp('5%'), 
@@ -51,13 +52,13 @@ button:{
 },
 buttonText:{
     fontFamily: "IBMPlexSans-Medium",
-    color:"#ffff",
+    color:COLOR.White,
     fontSize:14,
     lineHeight:18,
 },
 paragraph:{
     fontFamily: "IBMPlexSans-Light",
-    color:"#666666",
+    color:COLOR.GraniteGray,
     fontSize:14,
     textAlign:"right"
 },
@@ -72,7 +73,7 @@ activeStyle:{
     marginLeft:wp('2%'),  
     width:wp('49%'), 
     height:hp('6.1%'), 
-    backgroundColor:"#C20000",
+    backgroundColor:COLOR.primary,
     borderRadius:22,
     justifyContent:"center"
 },
@@ -80,7 +81,7 @@ inActiveStyle:{
     marginLeft: wp('2%'),  
     width:wp('49%'),  
     height:hp('6.1%'), 
-    backgroundColor:"rgba(33, 33, 33, 0.08)",
+    backgroundColor:COLOR.LightGrey,
     borderRadius:22,
     justifyContent:"center"
 },
@@ -90,7 +91,7 @@ activeText:{
     letterSpacing: .6,
     lineHeight: 20,
     textAlign: "center",
-    color: "#ffff",
+    color: COLOR.White,
   },
   inActiveText:{
     fontFamily: "IBMPlexSans-Regular",
@@ -98,7 +99,7 @@ activeText:{
     letterSpacing: .6,
     lineHeight: 20,
     textAlign: "center",
-    color: "#313131",
+    color: COLOR.DarkCharcoal,
   }
 
 

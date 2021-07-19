@@ -5,6 +5,7 @@ import CustomHeader from '../../component/customHeader/CustomHeader';
 import CustomInput from '../../component/CustomInput/CustomInput';
 import { openDrawer } from '../../navigation';
 import { globalStyle } from '../../Styles';
+import { COLOR } from '../../Theme/Colors';
 
  const YourFav = () => {
       const [favorites, setfavorites] = useState([] as Array<number>);
@@ -12,8 +13,8 @@ import { globalStyle } from '../../Styles';
     return (
        <View>
          <CustomHeader
-           headerStyle={{  backgroundColor:"#F8F8F8"}}
-           color="#313131" isHome={true} title="Your Favorites" 
+           headerStyle={{  backgroundColor:COLOR.Cultured}}
+           color={COLOR.DarkCharcoal} isHome={true} title="Your Favorites" 
           onPress={()=>openDrawer()} />
            <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>

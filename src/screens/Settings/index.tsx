@@ -13,6 +13,7 @@ import { Link } from "@react-navigation/native";
 import { styles } from "./style";
 import { drawerItem } from "../../utils/constants/drawerContent";
 import { Ionicons } from "@expo/vector-icons";
+import { COLOR } from "../../Theme/Colors";
 
 const Settings = () => {
   const {
@@ -65,7 +66,7 @@ const Settings = () => {
                 style={DrawerButton}
               >
                 <LinearGradient
-                  colors={["#F04148", "#C20000"]}
+                  colors={["#F04148", COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   style={LinearImage}

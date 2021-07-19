@@ -5,6 +5,7 @@ import { tabProps } from '../../../types';
 import { Link } from '@react-navigation/native';
 import { Dimensions } from "react-native";
 import Hashback from '../../section/HashBack';
+import { COLOR } from '../../Theme/Colors';
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
@@ -25,11 +26,11 @@ interface Props{
     <Tab.Navigator
    initialRouteName="one"
    tabBarOptions={{
-    style: { backgroundColor: '#ffff' , height:HEIGHT/12.1,elevation:5,
+    style: { backgroundColor: COLOR.White , height:HEIGHT/12.1,elevation:5,
     width:WIDTH /1.1,},
-    indicatorStyle:{ backgroundColor: "#C20000",width:WIDTH/3.3,textAlign:"center"},
-    activeTintColor:"#313131",
-    inactiveTintColor:"#979797",
+    indicatorStyle:{ backgroundColor: COLOR.primary,width:WIDTH/3.3,textAlign:"center"},
+    activeTintColor:COLOR.DarkCharcoal,
+    inactiveTintColor:COLOR.secondary,
     labelStyle:{
     fontFamily: "IBMPlexSans-Medium",
     fontSize: 14,

@@ -4,6 +4,7 @@ import React,{FC} from 'react'
 import { TouchableOpacity } from 'react-native';
 import {View,Text,Image} from "react-native"
 import { PBoxProps } from '../../../types';
+import { COLOR } from '../../Theme/Colors';
 import CustomButton from '../CustomButton';
 import { boxStyle } from './style'
  const ProductBox:FC<PBoxProps>= ({src,Price,Title,year,KMeter,onPress,status,date,Location,color}) => {
@@ -26,7 +27,7 @@ import { boxStyle } from './style'
                <Text style={KmText}>{year} <Text> {KMeter}</Text></Text>
             </View>
          <View >
-             <Text  style={location}><Ionicons name="location-outline" size={14} color="#979797" />{Location}</Text>
+             <Text  style={location}><Ionicons name="location-outline" size={14} color={COLOR.secondary} />{Location}</Text>
         </View>
         </View>
         <View style={div3}>
@@ -40,7 +41,7 @@ import { boxStyle } from './style'
                  text={status}
                     />
                ): status === "Pending" ? ( <LinearGradient
-                  colors={["#F04148", "#C20000"]}
+                  colors={["#F04148", COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   onPress={onPress}

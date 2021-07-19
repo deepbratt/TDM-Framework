@@ -1,3 +1,5 @@
+import { COLOR } from "../../Theme/Colors";
+
 export const Home = "Home";
 export const Notification = "Notification";
 export const Chat = "Chat";
@@ -6,9 +8,9 @@ export const Cart = "Cart";
 
 export const Browse="Browse Categories";
 export const categotryList = [
-    { id: 1,onPress:"/one", viewStyle: "#88DAFF", ProductName: "Cars", ProductImage: require("../../../assets/images/category/car.png") },
-    { id: 2, onPress:"/",viewStyle: "#F8D247", ProductName: "Property", ProductImage: require("../../../assets/images/category/houses.png") },
-    { id: 3,onPress:"/", viewStyle: "#B0D46C", ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
+    { id: 1,onPress:"/one", viewStyle: COLOR.PaleCyan, ProductName: "Cars", ProductImage: require("../../../assets/images/category/car.png") },
+    { id: 2, onPress:"/",viewStyle: COLOR.Maize, ProductName: "Property", ProductImage: require("../../../assets/images/category/houses.png") },
+    { id: 3,onPress:"/", viewStyle: COLOR.MiddleGreen, ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
 
 ];
 export const SellYou="Sell You Car from Home";

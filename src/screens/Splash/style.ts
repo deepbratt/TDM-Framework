@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import { COLOR } from '../../Theme/Colors';
 export const styles = StyleSheet.create({
     container: {
    flex:1,
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
           textAlign:"center",
         justifyContent:"center",
         alignItems:"center",
-          color:"#666666",
+          color:COLOR.GraniteGray,
           
       }
 

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import AuthRoute from "./route";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './src/utils/constants/resources/useCachedResources';
+import { COLOR } from './src/Theme/Colors';
 
 export default function App() {
 
@@ -17,7 +18,7 @@ export default function App() {
         <Provider store={store}>
       <SafeAreaProvider>
       <AuthRoute/>
-    <StatusBar style="light" translucent={true} backgroundColor={'black'}/>
+    <StatusBar style="light" translucent={true} backgroundColor={COLOR.Black}/>
   </SafeAreaProvider>
             
           </Provider>
