@@ -6,33 +6,20 @@ import { Provider } from "react-redux";
 import AuthRoute from "./route";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './src/utils/constants/resources/useCachedResources';
-import SuccessFullReset from './src/screens/successFullReset';
-import ResetPassword from './src/screens/resetPassword';
-import BottomSheetComponent from './src/component/BottomSheet';
-import CarDetails from './src/screens/carDetails';
-import CustomTopBar from './src/component/customTopTab';
-import TokenAmount from './src/screens/tokenAmount';
-import ConfirmPayment from './src/screens/confirmPayment';
-import PaymentError from './src/screens/paymentError';
-import PayTokenAmount from './src/screens/payTokenAmount';
-import Notification from './src/screens/notification';
-import Search from './src/screens/search';
-import AddDetails from './src/screens/addDetails';
-import RequestAccept from './src/screens/requestAccept';
 
 export default function App() {
+
     const isLoadingComplete = useCachedResources();
     if (!isLoadingComplete) {
       return null;
     } else {
     return (
         <Provider store={store}>
-      {/* <SafeAreaProvider>
-    <AuthRoute />
-    <StatusBar style="dark"/>
-  </SafeAreaProvider> */}
-        <CarDetails/>
-        
+      <SafeAreaProvider>
+      <AuthRoute/>
+    <StatusBar style="light" translucent={true} backgroundColor={'black'}/>
+  </SafeAreaProvider>
+            
           </Provider>
            
           );

@@ -23,7 +23,7 @@ interface Props{
   ref: any;
 }
 
-const CustomCarousel: FC<Props> = (Props) => {
+const CustomCarouselSaim40: FC<Props> = (Props) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [carouselItems, setCarouselItems] = useState(Props.listItems);
   const ref = useRef(null);
@@ -55,4 +55,4 @@ const CustomCarousel: FC<Props> = (Props) => {
   );
 };
 
-export default CustomCarousel;
+export default CustomCarouselSaim40;

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { View, StyleSheet, TouchableOpacity,Text } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import SearchBottomSheetComponent from '../../component/searchBottomSheet';
+// import SearchBottomSheetComponent from '../../component/searchBottomSheet';
 
 const Search = () => {
     const [visible, setVisible] = useState(false);
@@ -15,11 +15,11 @@ const Search = () => {
             Search Button
           </Text>
         </TouchableOpacity>
-            <SearchBottomSheetComponent
+            {/* <SearchBottomSheetComponent
                 visible={visible}
                 onBackButtonPress={toggleBottomNavigationView}
                 onBackdropPress={toggleBottomNavigationView}
-            />
+            /> */}
         </View>
     )
 }

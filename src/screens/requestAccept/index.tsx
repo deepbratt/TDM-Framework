@@ -7,7 +7,7 @@ import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
 import Specification from '../carDetails/specification';
 import Features from '../carDetails/features';
-import CustomCarousel from '../../component/customCarousel';
+import CustomCarouselSaim40 from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
 import {
@@ -121,7 +121,7 @@ const RequestAccept = () => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.imageCarouselView}>
-                    <CustomCarousel
+                    <CustomCarouselSaim40
                         layout={"default"}
                         listItems={Items}
                         sliderWidth={wp("100%")}
@@ -268,7 +268,7 @@ const RequestAccept = () => {
                     text="Feature Product"
                     textStyle={styles.FeatureProductText}
                 />
-                <CustomCarousel
+                <CustomCarouselSaim40
                     layout={"default"}
                     listItems={FeatureItems}
                     sliderWidth={wp("100%")}
