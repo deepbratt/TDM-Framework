@@ -33,7 +33,7 @@ import { InputProp } from '../../../types';
         onChangeText={onChange}
         multiline={multiline}
         numberOfLines={numberOfLines}
-        theme={{ colors: { primary: "white" } }}
+        theme={{ colors: { primary: "transparent" } }}
         underlineColor={"transparent"}
         onClick={onClick}
         disabled={disabled}

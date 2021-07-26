@@ -19,46 +19,57 @@ export const Products=[
     {
         id:2,
         src:require('../../../assets/images/carlist/img2.png'),
-        Price:"Rs. 50 lakh ",
-        Title:"Toyota Yaris iA",
-        year:"2010,",
+        Price:"Rs. 90 lakh ",
+        Title:"Honda city",
+        year:"2017,",
         KMeter:" 4556Km",
         status: "like",
         date:"11 June",
-        location:"Islamabad"
+        location:"Lahore"
     },
     {
         id:3,
         src:require("../../../assets/images/carlist/img3.png"),
-        Price:"Rs. 50 lakh ",
-        Title:"Toyota Yaris iA",
-        year:"2010,",
-        KMeter:" 4556Km",
+        Price:"Rs. 30 lakh ",
+        Title:"Corrola",
+        year:"2014,",
+        KMeter:"234Km",
         status: "like",
         date:"11 June",
-        location:"Islamabad"
+        location:"Karachi"
     },
     {
         id:4,
         src:require("../../../assets/images/carlist/img4.png"),
-        Price:"Rs. 50 lakh ",
-        Title:"Toyota Yaris iA",
-        year:"2010,",
+        Price:"Rs. 20 lakh ",
+        Title:"BMW",
+        year:"2020,",
         KMeter:" 4556Km",
         status: "like",
         date:"11 June",
-        location:"Islamabad"
+        location:"Faisalabad"
     },
     {
         id:5,
         src:require("../../../assets/images/carlist/img5.png"),
-        Price:"Rs. 50 lakh ",
-        Title:"Toyota Yaris iA",
-        year:"2010,",
+        Price:"Rs. 80 lakh ",
+        Title:"Audi 90",
+        year:"2005,",
         KMeter:" 4556Km",
         status: "like",
         date:"11 June",
-        location:"Islamabad"
+        location:"Multan"
+    },
+    {
+        id:6,
+        src:require('../../../assets/images/carlist/img5.png'),
+        Price:"Rs. 95 lakh ",
+        Title:"Honda Aspire",
+        year:"2013,",
+        KMeter:" 5656Km",
+        status: "like",
+        date:"17 June",
+        location:"Peshawar"
     },
 ]
 

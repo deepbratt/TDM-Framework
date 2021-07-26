@@ -66,45 +66,9 @@ paragraph:{
     fontSize:14,
     textAlign:"right"
 },
-flexRow:{
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical:8 },
 VerticalMargin:{
     marginVertical:hp('2%'), 
 },
-activeStyle:{
-    marginLeft:wp('2%'),  
-    width:wp('49%'), 
-    height:hp('6.1%'), 
-    backgroundColor:COLOR.primary,
-    borderRadius:22,
-    justifyContent:"center"
-},
-inActiveStyle:{
-    marginLeft: wp('2%'),  
-    width:wp('49%'),  
-    height:hp('6.1%'), 
-    backgroundColor:COLOR.LightGrey,
-    borderRadius:22,
-    justifyContent:"center"
-},
-activeText:{
-    fontFamily: "IBMPlexSans-Regular",
-    fontSize: 14,
-    letterSpacing: .6,
-    lineHeight: 20,
-    textAlign: "center",
-    color: COLOR.White,
-  },
-  inActiveText:{
-    fontFamily: "IBMPlexSans-Regular",
-    fontSize: 14,
-    letterSpacing: .6,
-    lineHeight: 20,
-    textAlign: "center",
-    color: COLOR.DarkCharcoal,
-  }
 
 
 

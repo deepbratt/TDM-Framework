@@ -10,5 +10,7 @@ import Orders from "./Orders";
 import FindCar from "./findCar/index";
 import Inbox from './Chat/Inbox/index'
 import PostAd from "./Seller/Postad";
-import TabTwoScreen from "./TabTwoScreen";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox,PostAd,TabTwoScreen}
+import SearchCompare from "./Compare";
+import CompareProduct from "./Compare/Compare";
+
+export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings ,YourFav,Orders,FindCar,Inbox,PostAd,SearchCompare,CompareProduct}

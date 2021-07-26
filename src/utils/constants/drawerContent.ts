@@ -21,7 +21,7 @@ export const drawerItem=[
     },
     {
         id:2,
-        name:"Compairsion ",
+        name:"Comparision ",
         img:require('../../../assets/images/drawer/comparison.png'),
         color:"rgba(194, 0, 0, 1)",
         link:"/compare",

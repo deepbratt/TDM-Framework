@@ -54,5 +54,11 @@ export const popularProduct = [
   { id: 3, title: "more than" },
 
 ];
+export const compareProduct = [
+  { id: 1, title: "Specification" },
+  { id: 2, title: "Features" },
+  { id: 3, title: "Review" },
+
+];
 
 

@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: {
-  },
+  user: {},
   isLoggedIn: true,
+  SelectedItem:[]as Array<any>,
+  activeCompare: false
 };
 
 const authSlice = createSlice({
@@ -16,9 +17,23 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isLoggedIn = false;
     },
+    compare: (state,{ payload }: PayloadAction) =>{ 
+       const existingCartItem = state.SelectedItem.find(item => item.id === payload.id);
+       (state.SelectedItem.length === 2 || existingCartItem !== undefined )
+        ? 
+        null 
+        : ( state.SelectedItem=[...state.SelectedItem,payload]),
+         
+         (state.SelectedItem.length === 2) ? state.activeCompare=true :   state.activeCompare=false
+         console.warn("existingiTEM=",existingCartItem,"length=",state.SelectedItem.length,"activeCompare=",state.activeCompare,"Array=",state.SelectedItem) ;
+    },
+    remove: (state,{ payload }: PayloadAction) =>{    
+     state.SelectedItem=state.SelectedItem.filter((item) => item.id!== payload.id);     
+      console.warn("remove",payload.id) ;
+    }
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout,compare ,remove} = authSlice.actions;
 
 export default authSlice.reducer;

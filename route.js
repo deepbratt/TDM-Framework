@@ -5,7 +5,7 @@ import Navigation from "./src/navigation/index"
 import { BackButton, NativeRouter, Route } from "react-router-native";
 import PublicRoute from "./src/Route/publicRoute";
 
-const AuthRoute = ({ component: Component, isLoggedIn, ...rest }) => {
+const AuthRoute = ({ component: Component, isLoggedIn,...rest }) => {
  
   console.log(isLoggedIn,"log");
   return (

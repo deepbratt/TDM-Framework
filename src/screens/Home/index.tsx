@@ -22,24 +22,15 @@ import { Dimensions } from "react-native";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-native";
-import { logout } from "../../redux/reducers/authSlice";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const HomePage = () => {
-   let history = useHistory();
-  const dispatch = useDispatch();
-  const handle = () => {
-    dispatch(logout());
-    history.push("/SignIn");
 
-  }
 
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
-    buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, 
-     activeStyle, inActiveStyle, activeText, inActiveText,divSize } = HomeStyle;
+    buttonView, button, buttonText, paragraph,VerticalMargin, 
+  divSize } = HomeStyle;
   const [searchQuery, setSearchQuery] = useState('');
   const [ActiveIndex, setActiveIndex] = useState(0);
 const toggleButton=(i: React.SetStateAction<number>)=>{
@@ -119,13 +110,13 @@ console.log(i,"some")
           </HeadingSection>
         <HeadingSection Heading={MostPopular}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={flexRow}>
+          <View style={globalStyle.flexRow}>
             {popularProduct.map((u, i) => {
               return (
                 <CustomButton text={u.title}
-                  onPress={handle}
-                  key={u.id} buttonStyle={i === ActiveIndex ? activeStyle : inActiveStyle}
-                  textStyle={i === ActiveIndex ? activeText : inActiveText} />
+                  onPress={()=>toggleButton(i)}
+                  key={u.id} buttonStyle={i === ActiveIndex ? globalStyle.activeStyle : globalStyle.inActiveStyle}
+                  textStyle={i === ActiveIndex ? globalStyle.activeText : globalStyle.inActiveText} />
               )
             })}
           </View>

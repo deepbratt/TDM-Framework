@@ -115,7 +115,8 @@ export type PBoxProps={
   Title?:string;
   year?:string;
   KMeter:string;
-  onPress:()=>void;
+  onPress?:()=>void;
+  onSelect?:()=>void;
   status:string;
   date?:string;
   Location?:string;

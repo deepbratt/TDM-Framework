@@ -1,5 +1,6 @@
 
-import { SignIn, SignUp, SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders, Inbox, PostAd } from "../../screens";
+import { SignIn, SignUp,SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct } from "../../screens";
+
 
 import TabTwoScreen from "../../screens/TabTwoScreen";
 
@@ -43,7 +44,7 @@ export const protectedroute=[
     },  
     {
         id:4,
-        path:"/fcavourite",
+        path:"/favourite",
         component:YourFav,
     },
     {
@@ -61,6 +62,16 @@ export const protectedroute=[
         path:"/postad",
         component:PostAd,
     },
-  
+    {
+        id:7,
+        path:"/compare",
+        component:SearchCompare,
+    },
+    {
+        id:8,
+        path:"/compareProduct",
+        component:CompareProduct,
+    },
+   
    
 ];

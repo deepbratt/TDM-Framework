@@ -7,11 +7,11 @@ import { PBoxProps } from '../../../types';
 import { COLOR } from '../../Theme/Colors';
 import CustomButton from '../CustomButton';
 import { boxStyle } from './style'
- const ProductBox:FC<PBoxProps>= ({src,Price,Title,year,KMeter,onPress,status,date,Location,color}) => {
+ const ProductBox:FC<PBoxProps>= ({src,Price,Title,year,KMeter,onPress,onSelect,status,date,Location,color}) => {
     const {boxView,main,Div,img,div2,price,name,KmText,location,
         div3,icon,dateText,pending,pText,payed,center}=boxStyle;
     return (
-  <View style={boxView}> 
+  <TouchableOpacity style={boxView} onPress={onSelect} > 
    <View style={main}>
         <View style={Div}>
            <Image
@@ -59,7 +59,7 @@ import { boxStyle } from './style'
              </View>
         </View>
       </View>
- </View>
+ </TouchableOpacity>
     )
 }
 export default ProductBox;
