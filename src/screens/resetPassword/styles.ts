@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     mainContainer: {
         flex:1,
         backgroundColor: '#E5E5E5',
-        justifyContent:'flex-start'
+        justifyContent:'flex-start',
     },
     img: {
         height: 48,
@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
         color: '#313131'
     },
     textContainer1: {
+        flex:1,
         width: wp('65%'),
         alignSelf: 'center',
         marginTop:hp('2%'),

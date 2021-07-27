@@ -5,10 +5,12 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import DropDown from "../customDropDown/CustomDropDown";
+import DropDown from "../CustomDropDown/CustomDropDown";
 import { styles } from "./style";
 import { HeaderProps } from "../../../types";
 import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";
+import CustomButton from "../CustomButton";
+import { Link } from "react-router-native";
 
 const CustomHeader: FC<HeaderProps> = ({ title, onPress, location, isHome, headerStyle, color }) => {
   const { container, item, text, item2, item3 } = styles;
@@ -31,10 +33,9 @@ const CustomHeader: FC<HeaderProps> = ({ title, onPress, location, isHome, heade
 
       {location && <View style={item2}><DropDown textcolor={{ color: color }} color={color} />
       </View>}
-
-      <View onPress={_handleMore} style={item3}>
-        <Ionicons name="person-circle" size={30} color={color} />
-      </View>
+      <Link component={TouchableOpacity} to="/post-details" style={item3}>
+      <Ionicons name="person-circle" size={30} color={color} />
+      </Link>
     </View>
   );
 };

@@ -1,17 +1,6 @@
 
-import { SignIn, SignUp, SignInWithEmail, Verify, HomePage } from "../../screens";
-import AddDetails from "../../screens/addDetails";
-import CarDetails from "../../screens/carDetails";
-import ConfirmPayment from "../../screens/confirmPayment";
-import Notification from "../../screens/notification";
-import PaymentError from "../../screens/paymentError";
-import PayTokenAmount from "../../screens/payTokenAmount";
-import RequestAccept from "../../screens/requestAccept";
-import ResetPassword from "../../screens/resetPassword";
-import Search from "../../screens/search";
-import SuccessFullReset from "../../screens/successFullReset";
+import { SignIn, SignUp, SignInWithEmail, Verify, HomePage, PostDetails, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
 import TabTwoScreen from "../../screens/TabTwoScreen";
-import TokenAmount from "../../screens/tokenAmount";
 
 export const Public=[
     {
@@ -34,6 +23,21 @@ export const Public=[
         path:"/Verify",
         component:Verify,
     },
+    {
+        id:5,
+        path:"/forget-pass",
+        component:ResetPassword,
+    },
+    {
+        id:5,
+        path:"/success-pass",
+        component:SuccessFullReset,
+    },
+    {
+        id:6,
+        path:"/verify-num",
+        component:VerificationNumber,
+    },
 ];
 export const protectedroute=[
     {
@@ -47,61 +51,44 @@ export const protectedroute=[
         component:TabTwoScreen,
     },
     {
-        id: 3,
-        path: "/notification",
-        Component: Notification,
+        id:12,
+        path:"/post-details",
+        component:PostDetails,
     },
     {
-        id: 4,
-        path: "/addDetails",
-        Component:AddDetails
+        id:13,
+        path:"/notify",
+        component:Notification,
     },
     {
-        id: 5,
-        path: "/carDetails",
-        Component: CarDetails,
+        id:14,
+        path:"/token-amount",
+        component:TokenAmount,
     },
     {
-        id: 6,
-        path: "/confirmPayment",
-        Component:ConfirmPayment,
+        id:15,
+        path:"/car-Details",
+        component:CarDetails,
     },
     {
-        id: 7,
-        path: "/paymentError",
-        Component:PaymentError,
+        id:16,
+        path:"/add-Details",
+        component:AddDetails,
     },
     {
-        id: 8,
-        path: '/payTokenAmount',
-        Component:PayTokenAmount,
-    },
-    {
-        id: 9,
-        path: "/requestAccept",
+        id:17,
+        path:"/request-accept",
         component:RequestAccept,
     },
     {
-        id: 10,
-        path: "/resetPasword",
-        Component:ResetPassword,
+        id:18,
+        path:"/pay-token",
+        component:PayTokenAmount,
     },
     {
-        id: 11,
-        path: '/search',
-        Component:Search,
+        id:19,
+        path:"/payment-error",
+        component:PaymentError,
     },
-    {
-        id: 12,
-        path: '/successFullReset',
-        Component: SuccessFullReset,
-    },
-    {
-        id: 13,
-        path: '/tokenAmount',
-        component:TokenAmount,
-    }
-   
-  
    
 ];

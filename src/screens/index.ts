@@ -5,4 +5,31 @@ import SignIn from "./SignIn/SignIn";
 import Verify from "./SignUp/verifyAccount";
 import HomePage from "./Home";
 import Settings from "./Settings";
-export {Splash,SignInWithEmail,SignUp,SignIn,Verify,HomePage,Settings}
+import PostDetails from "./postDetails";
+import Notification from "./notification";
+import TokenAmount from "./tokenAmount";
+import CarDetails from "./carDetails";
+import AddDetails from "./addDetails";
+import ResetPassword from "./resetPassword";
+import SuccessFullReset from "./successFullReset";
+import RequestAccept from "./requestAccept";
+import VerificationNumber from "./verificationNumber";
+import PaymentError from "./paymentError";
+import PayTokenAmount from "./payTokenAmount";
+export {
+    Splash,
+    SignInWithEmail,
+    SignUp,SignIn,
+    Verify,
+    HomePage,
+    Settings,
+    PostDetails,
+    Notification,
+    TokenAmount,
+    CarDetails,
+    AddDetails,
+    ResetPassword,
+    SuccessFullReset,
+    RequestAccept,
+    VerificationNumber,PayTokenAmount,PaymentError
+}

@@ -52,7 +52,7 @@ export type ButtonProps={
   disabled?: boolean,
   onPress?: ()=>void,
   linkTo?: string,
-  text: string,
+  text?: string,
 };
 export type InputProp={
   placeholder?:string;

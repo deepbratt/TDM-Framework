@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { View, Image,TouchableOpacity } from 'react-native';
+import { View, Image,TouchableOpacity, ScrollView } from 'react-native';
 import { styles } from './styles';
 import CustomForgotButton from '../../component/customForgotButton';
 import CustomText from '../../component/customText';
@@ -14,6 +14,7 @@ import {
     viaSms
 } from '../../utils/constants/resetPassword/resetPassword';
 import CustomOTP from '../../component/customOTP';
+import SimpleLayout from '../../layout/simpleLayout';
 
 const ResetPassword = () => {
     const [visible, setVisible] = useState(false);
@@ -21,6 +22,7 @@ const ResetPassword = () => {
     setVisible(!visible);
   };
     return (
+        <ScrollView style={{ backgroundColor: '#E5E5E5',}} >
         <View style={styles.mainContainer}>
             <TouchableOpacity>
                 <Image style={styles.img}
@@ -36,6 +38,7 @@ const ResetPassword = () => {
                     text={forgotDetail}>
                 </CustomText>
             </View>
+            <View style={{marginBottom:130}}>
             <CustomForgotButton containerStyle={styles.buttonContainerStyle}
                 onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle}
@@ -66,6 +69,7 @@ const ResetPassword = () => {
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>
+            </View>
             <BottomSheetComponent
                 visible={visible}
                 onBackButtonPress={toggleBottomNavigationView}
@@ -74,6 +78,7 @@ const ResetPassword = () => {
                 <CustomOTP></CustomOTP>
             </BottomSheetComponent>
         </View>
+        </ScrollView>
     )
 }
 export default ResetPassword;

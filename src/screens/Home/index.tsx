@@ -19,12 +19,16 @@ import Hashback from "../../section/HashBack";
 import { ScrollView } from "react-native-gesture-handler";
 import TabTwoScreen from "../TabTwoScreen";
 import { Dimensions } from "react-native";
+import BottomSheetComponent from "../../component/BottomSheet";
+import CustomSearch from "../../component/search";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const HomePage = () => {
- 
-
+  const [visible, setVisible] = useState(false);
+  const toggleBottomNavigationView = () => {
+    setVisible(!visible);
+  };
   const { container, searchStyle, inputView, categoryBox, title,
     bannerimage, carsView, head, sellView, buttonView, button, buttonText, paragraph,flexRow,VerticalMargin, activeStyle, inActiveStyle, activeText, inActiveText } = HomeStyle;
   const [searchQuery, setSearchQuery] = useState('');
@@ -57,10 +61,9 @@ console.log(i,"some")
               <TextInput.Icon
                 size={18}
                 name={require('../../../assets/images/homepage/filter.png')}
+                onPress={toggleBottomNavigationView}
               />
-
             }
-
           />
 
         </View>
@@ -128,6 +131,13 @@ console.log(i,"some")
           </Surface>): null
       }  
       </View>
+      <BottomSheetComponent
+          visible={visible}
+          onBackButtonPress={toggleBottomNavigationView}
+          onBackdropPress={toggleBottomNavigationView}
+        >
+          <CustomSearch/>
+        </BottomSheetComponent>
     </View>
   )
 }

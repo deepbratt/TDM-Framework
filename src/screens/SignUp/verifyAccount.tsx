@@ -98,7 +98,7 @@ const Verify: FC = () => {
             text={ForgotPassword}
             buttonStyle={signInStyles.forgetButton}
             textStyle={signInStyles.forgetText}
-            linkTo="/forget"
+            linkTo="/forget-pass"
           ></CustomButton>
         </View>
       </View>

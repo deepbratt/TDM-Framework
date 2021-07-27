@@ -8,11 +8,16 @@ import {
     successFull,
     successFUllResetDetails,
 } from '../../utils/constants/successFullReset/successFullReset';
+import { useHistory } from 'react-router';
 
 const SuccessFullReset = () => {
+    const history=useHistory();
+    const handleClick=()=>{
+        history.push('/SignInWithEmail')
+    }
     return (
         <View style={styles.mainContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleClick}>
                 <Image style={styles.img}
                     source={require('../../../assets/images/Back_Button.png')} />
             </TouchableOpacity>

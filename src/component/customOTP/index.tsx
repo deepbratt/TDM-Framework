@@ -4,6 +4,8 @@ import { styles } from './styles';
 import {CodeField,Cursor,useBlurOnFulfill,useClearByFocusCell,} from 'react-native-confirmation-code-field';
 import CustomText from '../customText';
 import CustomLinearGradient from '../customLinearGradient';
+import { Link, useHistory } from 'react-router-native';
+
 
 const CELL_COUNT = 4;
 const CustomOTP = () => {
@@ -13,7 +15,11 @@ const CustomOTP = () => {
     value,
     setValue,
   });
-
+  const history=useHistory();
+   const handleClick=()=>{
+console.log("otp");
+history.push("/success-pass");
+     }
   return (
     <SafeAreaView style={styles.root}>
       <CodeField
@@ -40,6 +46,7 @@ const CustomOTP = () => {
         text="Please, enter 4-digit code we sent on your number as SMS"
         textStyle={styles.textStyle}
       />
+      
       <CustomLinearGradient
         colors={['#F04148', '#C20000']}
         GradientButtonStyle={styles.gradientStyle}
@@ -47,8 +54,9 @@ const CustomOTP = () => {
         textstyle={styles.gradientTextStyle}
         imgStyle={styles.gradientImageStyle}
         source={require('../../../assets/images/Shape.png')}
-                // onPress={}
+        onPress={handleClick}
       />
+     
     </SafeAreaView>
   );
 };
