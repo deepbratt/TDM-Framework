@@ -54,7 +54,7 @@ export const protectedroute=[
     },
     {
         id:6,
-        path:"/chat",
+        path:"/inbox",
         component:Inbox,
     },
     {

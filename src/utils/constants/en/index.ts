@@ -23,7 +23,7 @@ img:require("../../../../assets/images/buttonIcon/fb.png")
 },
 {id :4,
     path:"/SignInWithEmail",
-    route:"/SignUp",
+    route:"/SignInWithEmail",
     name:"Continue with Email",
 img:require("../../../../assets/images/buttonIcon/email.png")
 },

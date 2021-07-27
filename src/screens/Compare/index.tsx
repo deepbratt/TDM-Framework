@@ -88,7 +88,7 @@ import { compareStyle } from './style'
 
                     }
                     {/* {
-                       SelectedItem.length === 2 ? alert("only two items can be compare"):null
+                       SelectedItem.length ===2 ? alert("only two items can be compare"):null
                     } */}
            </View>
     }

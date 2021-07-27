@@ -40,7 +40,7 @@ import { COLOR } from "../../Theme/Colors";
           </Link>
         </LinearGradient>
       </View>
-      <Link to="/chat" component={TouchableOpacity} underlayColor="none">
+      <Link to="/inbox" component={TouchableOpacity} underlayColor="none">
         <View
           style={{
             flexDirection: "column",

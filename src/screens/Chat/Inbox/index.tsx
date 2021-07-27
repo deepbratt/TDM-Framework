@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { View,Text } from 'react-native'
+import { View} from 'react-native'
 import { TextInput } from 'react-native-paper'
 import CustomInput from '../../../component/CustomInput/CustomInput'
 import InboxBox from '../../../component/inboxBox'
-import HeadingSection from '../../../section/CustomHeading/Heading'
 import { globalStyle } from '../../../Styles'
 import { chatList } from '../../../utils/constants/CarsText'
 import { inboxStyle } from './style'
@@ -50,9 +49,8 @@ import { inboxStyle } from './style'
            color={i.color}
            Incoming={i.Incoming}
            seen={i.seen}
-           onPress={()=>console.log("press")}
+           onPress={()=>console.log("pressz")}
           />
-
         );
     })
 }

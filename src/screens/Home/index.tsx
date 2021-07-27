@@ -93,7 +93,7 @@ console.log(i,"some")
             <Text style={head}>{SellYou}</Text>
             <Text style={paragraph}>{Par1}</Text>
             <View style={buttonView}>
-              <CustomButton text={BookNow} buttonStyle={button} textStyle={buttonText} linkTo="/post" />
+              <CustomButton text={BookNow} buttonStyle={button} textStyle={buttonText} linkTo="/chat" />
             </View>
           </View>
         </View>      
