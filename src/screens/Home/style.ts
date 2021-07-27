@@ -66,8 +66,16 @@ paragraph:{
     fontSize:14,
     textAlign:"right"
 },
+surfaceMargin:{
+          marginVertical: 7,
+          height:300, 
+          justifyContent: "center",
+         alignItems: "center",
+         width:"100%",
+         backgroundColor:"white" 
+        },
 VerticalMargin:{
-    marginVertical:hp('2%'), 
+     marginVertical:hp('2%'), 
 },
 
 

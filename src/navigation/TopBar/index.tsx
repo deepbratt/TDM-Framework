@@ -27,8 +27,8 @@ interface Props{
    initialRouteName="one"
    tabBarOptions={{
     style: { backgroundColor: COLOR.White , height:HEIGHT/12.1,elevation:5,
-    width:WIDTH /1.1,},
-    indicatorStyle:{ backgroundColor: COLOR.primary,width:WIDTH/3.3,textAlign:"center"},
+    width:WIDTH /1.02,},
+    indicatorStyle:{ backgroundColor: COLOR.primary,textAlign:"center",alignSelf:"center"},
     activeTintColor:COLOR.DarkCharcoal,
     inactiveTintColor:COLOR.secondary,
     labelStyle:{

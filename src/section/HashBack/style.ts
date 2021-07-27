@@ -4,14 +4,15 @@ import { COLOR } from "../../Theme/Colors";
 export const Style = StyleSheet.create({
 container:{
     backgroundColor: COLOR.White,
-    borderRadius: 6,
+    // borderRadius: 6,
+    marginTop:hp('3%'),
     height: hp('30%'), 
-    marginLeft: wp('1.2%'),
-    marginRight: wp('1.2%'),
+    // marginLeft: wp('1.2%'),
+    // marginRight: wp('1.2%'),
   },
 images:{
     marginTop:hp('1%'),
-     width: "100%", 
+     width: "95.6%", 
      height:hp('20.5%'), 
      borderRadius: 6,
      },

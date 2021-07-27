@@ -48,27 +48,27 @@ export const protectedroute=[
         component:YourFav,
     },
     {
-        id:4,
+        id:5,
         path:"/orderlist",
         component:Orders,
     },
     {
-        id:5,
+        id:6,
         path:"/chat",
         component:Inbox,
     },
     {
-        id:6,
+        id:7,
         path:"/postad",
         component:PostAd,
     },
     {
-        id:7,
+        id:8,
         path:"/compare",
         component:SearchCompare,
     },
     {
-        id:8,
+        id:9,
         path:"/compareProduct",
         component:CompareProduct,
     },

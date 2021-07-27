@@ -29,7 +29,7 @@ const HomePage = () => {
 
 
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
-    buttonView, button, buttonText, paragraph,VerticalMargin, 
+    buttonView, button, buttonText, paragraph,surfaceMargin,VerticalMargin, 
   divSize } = HomeStyle;
   const [searchQuery, setSearchQuery] = useState('');
   const [ActiveIndex, setActiveIndex] = useState(0);
@@ -98,12 +98,9 @@ console.log(i,"some")
           </View>
         </View>      
         <HeadingSection Heading={SearchedCars}>
-          <Surface style={{ elevation: 5, marginVertical: 10, justifyContent: "center", alignItems: "center", }}>
+          <View style={surfaceMargin}>
             <MyTabs />
-          </Surface>
-          <Surface style={VerticalMargin}>
-            <Hashback />
-          </Surface>
+          </View>
           <Surface style={VerticalMargin}>
             <Hashback />
           </Surface>
