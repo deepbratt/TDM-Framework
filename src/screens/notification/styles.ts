@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     },
     applicationNameText: {
         fontSize: 12,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#C20000'
     },
     dotImageStyle: {
@@ -43,12 +43,12 @@ export const styles = StyleSheet.create({
     },
     timeText: {
         fontSize: 12,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#313131'
     },
     userNameText: {
         fontSize: 15,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#313131',
         marginTop:hp('0.5%')
     }

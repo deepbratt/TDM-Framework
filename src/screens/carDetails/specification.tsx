@@ -148,13 +148,13 @@ const styles = StyleSheet.create({
     headingText: {
         fontSize: 14,
         width:88,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#212121',
         marginTop: hp('2%'),
     },
     subText: {
         fontSize: 14,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         width:193,
         color: '#979797',
         paddingTop: hp('2%'),

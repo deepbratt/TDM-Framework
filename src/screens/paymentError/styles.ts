@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
         width: wp('80%'),
         alignSelf: 'center',
         fontSize: 18,
-        fontWeight: "700",
+        fontFamily: 'IBMPlexSans-Bold',
         textAlign: 'center',
         marginTop: hp('7%'),
         color: '#EE4B4B'
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     detailText: {
         width: wp('70%'),
         fontSize: 12,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         alignSelf: 'center',
         textAlign: 'center',
         color: '#A3A3A3',
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     },
     gradientTextStyle: {
         fontSize: 16,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
         color: '#FFFFFF'
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     supportText: {
         textAlign: 'center',
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#3A3A3A',
     }
 })

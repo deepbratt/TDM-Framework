@@ -39,6 +39,7 @@ import {
     featureProductDistance,
     featureProductFuelType,
 } from '../../utils/constants/carDetails/carDetails';
+import ResetPassword from '../resetPassword';
 
 interface ItemProps {
     src: any;
@@ -72,11 +73,17 @@ const CarDetails = () => {
                     text={item.title}
                     textStyle={styles.CarouselFeaturetitleText}
                 />
-                <View style={styles.CarouselFeaturestatusSubView}>
+                <View style={{flexDirection:'row'}}>
+                    <View style={styles.CarouselFeaturestatusSubView}>
                     <CustomText
                         text={featureproductStatus}
                         textStyle={styles.CarouselFeaturestatusText}
                     />
+                </View>
+                <TouchableOpacity style={styles.CarouselFeatureshareTouchableStyle}>
+                    <Image style={styles.CarouselFeaturefavouriteButton}
+                        source={require('../../../assets/images/like.png')} />
+                </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.CarouselFeaturepriceContainer}>
@@ -286,22 +293,23 @@ const CarDetails = () => {
                     provider={PROVIDER_GOOGLE}
                     style={styles.mapStyle}
                 />
-                <View style={styles.borderView}>
-                    <CustomTopBar
-                        labelStyle={styles.TopBarLabelStyle}
-                        style={{ backgroundColor: '#FFFFFF' }}
-                        activeTintColor="#62ADF4"
-                        indicatorStyle={styles.TopBarIndicatorStyle}
-                        name="Specification"
-                        component={Specification}
-                        name1="Features"
-                        component1={Features}
-                    />
-                </View>
+                <View style={styles.borderView}></View>
+                    <View style={{width:wp('100%'),height:hp("48%"),backgroundColor:"green"}}>
+                        <CustomTopBar
+                            labelStyle={styles.TopBarLabelStyle}
+                            style={{ backgroundColor: '#FFFFFF', }}
+                            activeTintColor="#62ADF4"
+                            indicatorStyle={styles.TopBarIndicatorStyle}
+                            name="Specification"
+                            component={Specification}
+                            name1="Features"
+                            component1={Features}
+                        />
+                    </View>
                 <CustomText
                     text="Feature Product"
                     textStyle={styles.FeatureProductText}
-                />
+                    />
                 <CustomCarouselSaim40
                     layout={"default"}
                     listItems={FeatureItems}

@@ -4,29 +4,14 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import CustomAvatar from '../../component/Avatar';
 import CustomText from '../../component/customText';
 import { styles } from './styles';
-
-const exampleItems = [
-    { id: '1', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '2', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '3', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '4', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '5', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '6', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '7', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '8', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '9', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '10', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '11', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '12', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-    { id: '13', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
-];
+import { ListData } from '../../utils/constants/notification';
 
 const Notification = () => {
     return (
         <View style={styles.main}>
             <FlatList
                 style={{ marginTop: hp('5%') }}
-                data={exampleItems}
+                data={ListData}
                 keyExtractor={(item) => item.id.toString()}
                 // ItemSeparatorComponent={() => <View style={styles.separatorView}></View>}
                 renderItem={({ item }) => (

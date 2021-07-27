@@ -15,37 +15,30 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     textContainer: {
-        width: 185,
-        height: 23,
-        marginTop: 20.38,
-        marginLeft: 96,
-        marginRight:94
+        width: wp('65%'),
+        alignSelf: 'center',
+        marginTop:hp('5%'),
     },
     text: {
         fontSize: 18,
-        fontWeight: '600',
+        fontFamily: 'IBMPlexSans-SemiBold',
         textAlign: "center",
         color: '#313131'
     },
     textContainer1: {
-        width: 269,
-        height: 37,
-        marginTop: 8,
-        marginLeft: 59,
-        marginRight:47
+        width: wp('65%'),
+        alignSelf: 'center',
+        marginTop:hp('2%'),
     },
     text1: {
         fontSize: 14,
-        fontWeight: '300',
+        fontFamily: 'IBMPlexSans-Light',
         textAlign: "center",
         color: '#666666'
     },
     buttonContainerStyle: {
-        width: 316,
-        height: 146,
-        marginTop: 30,
-        marginLeft: 29,
-        marginRight: 30,
+        width: wp('80%'),
+        marginTop:hp('3%'),
         backgroundColor: '#FFFFFF',
         borderColor: '#1A75FF',
         alignSelf:'center',
@@ -61,11 +54,8 @@ export const styles = StyleSheet.create({
         elevation:5
     },
     buttonContainerStyle1: {
-        width: 316,
-        height: 146,
-        marginTop: 17,
-        marginLeft: 29,
-        marginRight: 30,
+        width: wp('80%'),
+        marginTop:hp('3%'),
         backgroundColor: '#FFFFFF',
         borderColor: '#FFF',
         alignSelf:'center',
@@ -97,7 +87,7 @@ export const styles = StyleSheet.create({
         resizeMode:'cover'
     },
     textStyleOne: {
-        fontWeight: '600',
+        fontFamily: 'IBMPlexSans-SemiBold',
         fontSize: 18,
         textAlign: 'center',
         color: '#313131',
@@ -105,27 +95,28 @@ export const styles = StyleSheet.create({
     },
     textStyleTwo: {
         fontSize: 14,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         paddingTop: 9,
-        
+        paddingBottom:9,
         textAlign: 'center',
         color: '#313131'
     },
     textStyleThree: {
         fontSize: 14,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         paddingTop: 9,
+        paddingBottom:9,
         paddingLeft:4,
         textAlign: 'center',
         color: '#666666'
     },
     bottomNavigationView: {
-    backgroundColor: '#fff',
-    width: wp('100%'),
-    height: 263,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius:24,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
+        backgroundColor: '#fff',
+        width: wp('100%'),
+        height: 263,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
 })

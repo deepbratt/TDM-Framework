@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     },
     amountText: {
         fontSize: 18,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: "#C20000"
     },
     buttonContainer: {
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     },
     brandNameText: {
         fontSize: 14,
-        fontWeight: '700',
+        fontFamily: 'IBMPlexSans-Bold',
         color: '#212121'
     },
     brandStatusView: {
@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     },
     brandStatusText: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#FFFFFF',
         textAlign: 'center'
     },
@@ -93,13 +93,13 @@ export const styles = StyleSheet.create({
     },
     infoText: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#979797',
         paddingTop: hp('0.5%')
     },
     infoHeading: {
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: "#313131",
         paddingTop: hp('0.5%')
     },
@@ -107,7 +107,7 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#313131',
         marginTop: hp('3%')
     },
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 14,
-        fontWeight: '300',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#979797',
         textAlign: 'justify'
     },
@@ -135,14 +135,14 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#313131',
         paddingTop: hp('1%')
     },
     userNameText: {
         alignSelf: 'center',
         fontSize: 16,
-        fontWeight: '400',
+        fontFamily: 'IBMPlexSans-Light',
         color: '#313131',
         marginLeft: wp('2%')
     },
@@ -167,7 +167,7 @@ export const styles = StyleSheet.create({
     },
     TopBarLabelStyle: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         textTransform: 'none',
         color: '#313131'
     },
@@ -179,13 +179,13 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 14,
-        fontWeight: '700'
+        fontFamily: 'IBMPlexSans-Bold',
     },
     FeatureProductText: {
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 18,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#212121',
         marginTop:hp('2%')
     },
@@ -213,7 +213,7 @@ export const styles = StyleSheet.create({
     },
     CarouselFeaturetitleText: {
         fontSize: 14,
-        fontWeight: '700',
+        fontFamily: 'IBMPlexSans-Bold',
         color: '#212121'
     },
     CarouselFeaturestatusSubView: {
@@ -223,7 +223,7 @@ export const styles = StyleSheet.create({
     },
     CarouselFeaturestatusText: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#FFFFFF',
         textAlign: 'center'
     },
@@ -243,7 +243,7 @@ export const styles = StyleSheet.create({
     },
     CarouselFeaturepriceText: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#C20000',
         paddingLeft: wp('2%')
     },
@@ -262,13 +262,13 @@ export const styles = StyleSheet.create({
     },
     CarouselFeatureinfoText: {
         fontSize: 12,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#979797',
         paddingTop: hp('0.5%')
     },
     CarouselFeatureinfoHeading: {
         fontSize: 14,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: "#313131",
         paddingTop: hp('0.5%')
     },
@@ -276,7 +276,24 @@ export const styles = StyleSheet.create({
         width: wp('95%'),
         alignSelf: 'center',
         fontSize: 18,
-        fontWeight: '500',
+        fontFamily: 'IBMPlexSans-Medium',
         color: '#212121'
+    },
+    CarouselFeaturefavouriteButton: {
+        padding: wp('2%'),
+        height: hp('1.5%'),
+        width:wp('1.5%'),
+        alignSelf: 'center',
+        resizeMode: 'cover',
+        tintColor:'#FFFFFF'
+    },
+    CarouselFeatureshareTouchableStyle: {
+        height: hp('3%'),
+        width: wp('6%'),
+        alignSelf: 'center',
+        marginLeft: wp('2%'),
+        backgroundColor: '#C20000',
+        borderRadius: 50,
+        justifyContent: 'center',
     },
 })

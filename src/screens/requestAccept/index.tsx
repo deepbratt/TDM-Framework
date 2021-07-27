@@ -8,12 +8,10 @@ import CustomTopBar from '../../component/customTopTab';
 import Specification from '../carDetails/specification';
 import Features from '../carDetails/features';
 import CustomCarouselSaim40 from '../../component/customCarousel';
-import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
 import {
     carPrice,
     company,
-    compareText,
     DescriptionHead, 
     descriptionT, 
     distance,
@@ -22,13 +20,9 @@ import {
     make,
     modelHeading,
     modelName,
-    payAmount,
     productLocation,
     productStatus,
-    sellerText,
-    shortListText,
     subModel,
-    userName,
     year,
     yearHeading,
     Items,
@@ -72,11 +66,17 @@ const RequestAccept = () => {
                     text={item.title}
                     textStyle={styles.CarouselFeaturetitleText}
                 />
-                <View style={styles.CarouselFeaturestatusSubView}>
+                <View style={{flexDirection:'row'}}>
+                    <View style={styles.CarouselFeaturestatusSubView}>
                     <CustomText
                         text={featureproductStatus}
                         textStyle={styles.CarouselFeaturestatusText}
                     />
+                </View>
+                <TouchableOpacity style={styles.CarouselFeatureshareTouchableStyle}>
+                    <Image style={styles.CarouselFeaturefavouriteButton}
+                        source={require('../../../assets/images/like.png')} />
+                </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.CarouselFeaturepriceContainer}>
@@ -252,10 +252,11 @@ const RequestAccept = () => {
                     provider={PROVIDER_GOOGLE}
                     style={styles.mapStyle}
                 />
-                <View style={styles.borderView}>
+                <View style={styles.borderView}></View>
+                <View style={{ width: wp('100%'), height: hp("48%"), backgroundColor: "green" }}>
                     <CustomTopBar
                         labelStyle={styles.TopBarLabelStyle}
-                        style={{ backgroundColor: '#FFFFFF' }}
+                        style={{ backgroundColor: '#FFFFFF', }}
                         activeTintColor="#62ADF4"
                         indicatorStyle={styles.TopBarIndicatorStyle}
                         name="Specification"

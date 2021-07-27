@@ -6,7 +6,7 @@ import { View, Modal, TouchableOpacity, Text } from "react-native";
 import { MaterialIcons, Ionicons, } from "@expo/vector-icons";
 import { dropdownStyle } from "./style";
 
-const DropDown: FC<DropDownProps> = ({ color, textcolor }) => {
+const DropDown: FC<DropDownProps> = ({ color, textcolor, }) => {
 
   const [showDropDown, setShowDropDown] = useState(false);
   const [chooseData, setchooseData] = useState('Select City');

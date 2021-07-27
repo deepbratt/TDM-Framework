@@ -36,7 +36,7 @@ export type HeaderProps = {
 export type DropDownProps={
   color?:any;textcolor?:any;
   changeVisbility?:() => void;
-   setData?:() => void ;
+  setData?: () => void;
 }
 export type SignInProp={
   onPress:()=>void;
@@ -181,5 +181,18 @@ export type ForgotButtonProps = {
   textStyle4: any;
   textContainerStyle: any;
   onPress: () => void;
+};
+export type DropDownSaim40Props = {
+  color?:any;
+  textcolor?:any;
+  FirstState?: any;
+  changeVisbility?:any;
+  setData?: any;
+  visible?: boolean;
+  onRequestClose?:() => void ;
+  onPress?:() => void ;
+  location?:boolean;
+  changeVisbilities?:() => void;
+  setValues?: () => void;
+  dummydata: any;
 }
-

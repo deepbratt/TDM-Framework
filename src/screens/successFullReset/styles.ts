@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        fontWeight: '600',
+        fontFamily: 'IBMPlexSans-SemiBold',
         textAlign: "center",
         color: '#313131'
     },
@@ -34,9 +34,10 @@ export const styles = StyleSheet.create({
     },
     text1: {
         fontSize: 14,
-        fontWeight: '300',
+        fontFamily: 'IBMPlexSans-Light',
         textAlign: "center",
-        color: '#666666'
+        color: '#666666',
+        marginTop:hp('2%'),
     },
     gradientStyle: {
         width: 315,
@@ -51,7 +52,7 @@ export const styles = StyleSheet.create({
     },
     gradientTextStyle: {
         fontSize: 16,
-        fontWeight: '500',
+        fontFamily:'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
         color: '#FFFFFF'
