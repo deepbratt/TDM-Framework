@@ -3,20 +3,20 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 export const styles = StyleSheet.create({
   root: {
     width: wp("100%"),
-    height:263,
+    height:hp('30%'),
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 24,
     borderTopRightRadius:24,
   },
   codeFiledRoot: {
-    marginTop: 26,
-    width: 311,
+    marginTop: hp('3%'),
+    width: wp('80%'),
     marginLeft: 'auto',
     marginRight: 'auto',
   },
   cellRoot: {
-    width: 60,
-    height: 60,
+    width: wp('15%'),
+    height: hp('5%'),
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomColor: '#475E69',
@@ -26,33 +26,32 @@ export const styles = StyleSheet.create({
     color: '#313131',
     fontSize: 24,
     textAlign: 'center',
-    fontWeight:'500',
+    fontFamily: 'IBMPlexSans-Medium',
   },
   focusCell: {
     borderBottomColor: '#007AFF',
     borderBottomWidth: 2,
   },
   textStyle: {
-    width: 311,
-    height: 80,
+    width:wp('80%'),
     fontSize: 16,
-    fontWeight: '400',
+    fontFamily: 'IBMPlexSans-Light',
     color: '#96A7AF',
-    paddingTop: 20,
+    paddingTop: hp('3%'),
     alignSelf: 'center',
   },
   gradientStyle: {
-    width: 315,
-    height: 58,
+    width: wp('80%'),
+    paddingVertical:hp('1.5%'),
     borderRadius: 6,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 17,
+    marginTop: hp('2%'),
     alignSelf:'center'
   },
   gradientTextStyle: {
     fontSize: 16,
-    fontWeight: '500',
+    fontFamily: 'IBMPlexSans-Medium',
     textAlign: 'center',
     alignSelf: 'center',
     color: '#FFFFFF'
@@ -62,6 +61,6 @@ export const styles = StyleSheet.create({
     width: 16,
     tintColor: '#FFFFFF',
     alignSelf: 'center',
-    marginLeft: 10,
+    marginLeft: wp('2%'),
   }
 })

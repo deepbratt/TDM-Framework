@@ -13,3 +13,6 @@ export const ListData=[
     { id: '12', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
     { id: '13', name: "Application name", time: "now", userName: 'Hi Anastassia!' },
 ];
+
+export const OvalIcon = require('../../../../assets/images/extra/Oval.png')
+export const PersonIcon=require('../../../../assets/images/extra/person.png')

@@ -36,8 +36,12 @@ export default function TabTwoScreen() {
         {/* <CustomButton linkTo="/verify-num" text="verification" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/> */}
         <CustomButton linkTo="/request-accept" text="request Accept" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/pay-token" text="payMENT token" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
-        <CustomButton linkTo="/payment-error" text="payment error" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
-
+        <CustomButton linkTo="/payment-error" text="payment error" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
+        <CustomButton linkTo="/verification-number" text="verificaiton" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
+        <CustomButton linkTo="/successfullrest" text="successfullreset" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
+        <CustomButton linkTo="/resetpassword" text="resetpassword" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
+        <CustomButton linkTo="/confirmpayment" text="confirmpayment" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
+        <CustomButton linkTo="/postdetails" text="postdetails" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />
       </View>
     </View>
   );

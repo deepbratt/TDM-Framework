@@ -2,22 +2,23 @@ import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 export const styles = StyleSheet.create({
     mainContainer: {
-        flex:1,
+        height: hp('100%'),
+        width:wp('100%'),
         backgroundColor: '#E5E5E5',
-        justifyContent:'flex-start',
+        justifyContent: 'flex-start',
     },
     img: {
-        height: 48,
-        width: 48,
-        marginTop: 53,
-        marginLeft: 29,
+        height: hp('5%'),
+        width: wp('10%'),
+        marginTop: hp('5%'),
+        marginLeft: hp('5%'),
         alignSelf: 'flex-start',
         resizeMode: 'contain',
     },
     textContainer: {
         width: wp('65%'),
         alignSelf: 'center',
-        marginTop:hp('5%'),
+        marginTop: hp('5%'),
     },
     text: {
         fontSize: 18,
@@ -26,10 +27,9 @@ export const styles = StyleSheet.create({
         color: '#313131'
     },
     textContainer1: {
-        flex:1,
         width: wp('65%'),
         alignSelf: 'center',
-        marginTop:hp('2%'),
+        marginTop: hp('2%'),
     },
     text1: {
         fontSize: 14,
@@ -39,85 +39,76 @@ export const styles = StyleSheet.create({
     },
     buttonContainerStyle: {
         width: wp('80%'),
-        marginTop:hp('3%'),
+        marginTop: hp('3%'),
         backgroundColor: '#FFFFFF',
         borderColor: '#1A75FF',
-        alignSelf:'center',
+        alignSelf: 'center',
         borderWidth: 1,
         borderRadius: 11,
         shadowColor: '#CCCCCC',
         shadowRadius: 14,
         shadowOffset: {
             width: 0,
-            height:1,
+            height: 1,
         },
         shadowOpacity: 0.25,
-        elevation:5
+        elevation: 5
     },
     buttonContainerStyle1: {
         width: wp('80%'),
-        marginTop:hp('3%'),
+        marginTop: hp('3%'),
         backgroundColor: '#FFFFFF',
         borderColor: '#FFF',
-        alignSelf:'center',
+        alignSelf: 'center',
         borderWidth: 1,
         borderRadius: 11,
         shadowColor: '#CCCCCC',
         shadowRadius: 14,
         shadowOffset: {
             width: 0,
-            height:1,
+            height: 1,
         },
         shadowOpacity: 0.25,
-        elevation:5
+        elevation: 5
     },
     imageStyle: {
-        height: 48,
-        width: 30.25,
-        marginLeft: 141.88,
-        marginTop: 21,
+        height: hp('5%'),
+        width: wp('10%'),
+        alignSelf: 'center',
+        marginTop: hp('2%'),
         tintColor: '#1A75FF',
-        resizeMode:'cover'
+        resizeMode: 'cover'
     },
     imageStyle1: {
-        height: 48,
-        width: 50,
-        marginLeft: 131.88,
-        marginTop: 21,
+        height: hp('5%'),
+        width: wp('10%'),
+        alignSelf: 'center',
+        marginTop: hp('2%'),
         tintColor: '#C20000',
-        resizeMode:'cover'
+        resizeMode: 'cover'
     },
     textStyleOne: {
         fontFamily: 'IBMPlexSans-SemiBold',
         fontSize: 18,
         textAlign: 'center',
         color: '#313131',
-        paddingTop: 17
+        paddingTop: hp('2%')
     },
     textStyleTwo: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
-        paddingTop: 9,
-        paddingBottom:9,
+        paddingTop: hp('2%'),
+        paddingBottom:hp('2%'),
         textAlign: 'center',
         color: '#313131'
     },
     textStyleThree: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
-        paddingTop: 9,
-        paddingBottom:9,
-        paddingLeft:4,
+        paddingTop: hp('1.7%'),
+        paddingBottom:hp('2%'),
+        paddingLeft:wp('1%'),
         textAlign: 'center',
         color: '#666666'
-    },
-    bottomNavigationView: {
-        backgroundColor: '#fff',
-        width: wp('100%'),
-        height: 263,
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
     },
 })

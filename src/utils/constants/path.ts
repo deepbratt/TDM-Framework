@@ -1,5 +1,5 @@
 
-import { SignIn, SignUp, SignInWithEmail, Verify, HomePage, PostDetails, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
+import { SignIn, SignUp, SignInWithEmail, Verify, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
 import TabTwoScreen from "../../screens/TabTwoScreen";
 
 export const Public=[
@@ -89,6 +89,31 @@ export const protectedroute=[
         id:19,
         path:"/payment-error",
         component:PaymentError,
+    },
+    {
+        id: 20,
+        path: "/verification-number",
+        component:VerificationNumber,
+    },
+    {
+        id: 21,
+        path: "/successfullrest",
+        component:SuccessFullReset,
+    },
+    {
+        id: 22,
+        path: "/resetpassword",
+        component:ResetPassword,
+    },
+    {
+        id: 23,
+        path: "/confirmpayment",
+        component:ConfirmPayment,
+    },
+    {
+        id: 24,
+        path: "/postdetails",
+        component:PostDetails,
     },
    
 ];

@@ -9,6 +9,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start'
     },
+    graidentView: {
+        width: wp('100%'),
+        height: hp('100%'),
+        justifyContent: 'center'
+    },
     icon: {
         height: 48,
         width: 48,

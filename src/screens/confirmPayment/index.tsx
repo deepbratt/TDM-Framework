@@ -7,22 +7,24 @@ import { styles } from './styles';
 import {
     buttonText,
     donePayment,
-    orderMessage
+    orderMessage,
+    BackIcon,
+    ThumbIcon
 } from '../../utils/constants/confirmPayment/confirmPayment';
 
 const ConfirmPayment = () => {
     return (
         <LinearGradient
             colors={['#22343C', '#1F2E35']}
-            style={{ flex: 1, justifyContent: 'center' }}>
+            style={styles.gradientMainView}>
             <View style={styles.mainContainer}>
                 <TouchableOpacity>
                     <Image style={styles.icon}
-                        source={require('../../../assets/images/Back_Button.png')} />
+                        source={BackIcon} />
                 </TouchableOpacity>
                 <Image
                     style={styles.image}
-                    source={require('../../../assets/images/Thumb.png')}
+                    source={ThumbIcon}
                 />
                 <CustomText
                     text={donePayment}

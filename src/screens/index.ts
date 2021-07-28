@@ -16,6 +16,8 @@ import RequestAccept from "./requestAccept";
 import VerificationNumber from "./verificationNumber";
 import PaymentError from "./paymentError";
 import PayTokenAmount from "./payTokenAmount";
+import ConfirmPayment from "./confirmPayment";
+
 export {
     Splash,
     SignInWithEmail,
@@ -31,5 +33,5 @@ export {
     ResetPassword,
     SuccessFullReset,
     RequestAccept,
-    VerificationNumber,PayTokenAmount,PaymentError
+    VerificationNumber,PayTokenAmount,PaymentError,ConfirmPayment
 }

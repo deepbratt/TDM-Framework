@@ -10,6 +10,8 @@ import Features from '../carDetails/features';
 import CustomCarouselSaim40 from '../../component/customCarousel';
 import {styles} from './styles'
 import {
+    PlaceIcon,
+    AmountVector,
     carPrice,
     company,
     DescriptionHead, 
@@ -75,13 +77,13 @@ const RequestAccept = () => {
                 </View>
                 <TouchableOpacity style={styles.CarouselFeatureshareTouchableStyle}>
                     <Image style={styles.CarouselFeaturefavouriteButton}
-                        source={require('../../../assets/images/like.png')} />
+                        source={PlaceIcon} />
                 </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.CarouselFeaturepriceContainer}>
                 <Image style={styles.CarouselFeaturepriceIcon}
-                    source={require('../../../assets/images/Vector.png')}
+                    source={AmountVector}
                 />
                 <CustomText
                     text={featureProductAmount}
@@ -91,7 +93,7 @@ const RequestAccept = () => {
             <View style={styles.CarouselFeatureproductInfoSubView}>
                 <View style={styles.CarouselFeatureinfoView}>
                     <Image style={styles.CarouselFeaturebuttonIcon}
-                        source={require('../../../assets/images/place.png')} />
+                        source={PlaceIcon} />
                     <CustomText
                         text={featureProductLocation}
                         textStyle={styles.CarouselFeatureinfoText}
@@ -118,8 +120,9 @@ const RequestAccept = () => {
         );
     }, []);
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+        // <SafeAreaView style={styles.container}>
+        //     <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
                         layout={"default"}
@@ -161,7 +164,7 @@ const RequestAccept = () => {
                     <View style={styles.productInfoSubView}>
                         <View style={styles.infoView}>
                             <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/place.png')} />
+                                source={PlaceIcon} />
                             <CustomText
                                 text={productLocation}
                                 textStyle={styles.infoText}
@@ -252,19 +255,10 @@ const RequestAccept = () => {
                     provider={PROVIDER_GOOGLE}
                     style={styles.mapStyle}
                 />
-                <View style={styles.borderView}></View>
-                <View style={{ width: wp('100%'), height: hp("48%"), backgroundColor: "green" }}>
-                    <CustomTopBar
-                        labelStyle={styles.TopBarLabelStyle}
-                        style={{ backgroundColor: '#FFFFFF', }}
-                        activeTintColor="#62ADF4"
-                        indicatorStyle={styles.TopBarIndicatorStyle}
-                        name="Specification"
-                        component={Specification}
-                        name1="Features"
-                        component1={Features}
-                    />
-                </View>
+            <View style={styles.borderView}></View>
+            <View style={{height:hp('48%')}}>
+                <CustomTopBar/>
+            </View>
                 <CustomText
                     text="Feature Product"
                     textStyle={styles.FeatureProductText}
@@ -276,8 +270,9 @@ const RequestAccept = () => {
                     itemWidth={wp('70%')}
                     renderItems={FeaturerenderItem}
                 />
-            </ScrollView>
-        </SafeAreaView>
+            {/* </ScrollView>
+        </SafeAreaView> */}
+                </View>
     )
 }
 

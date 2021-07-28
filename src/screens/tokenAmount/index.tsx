@@ -4,17 +4,25 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
-import { payTokenAmountText, payTokenConfirmButton, payTokenLocationText, payTokenModelText } from '../../utils/constants/tokenAmount/tokenAmount';
+import {
+    payTokenAmountText,
+    payTokenConfirmButton,
+    payTokenLocationText,
+    payTokenModelText,
+    BackIcon,
+    AmountVector,
+    PlaceIcon
+} from '../../utils/constants/tokenAmount/tokenAmount';
 
 const TokenAmount = () => {
     return (
         <LinearGradient
             colors={['#22343C', '#1F2E35']}
-            style={{ flex: 1, justifyContent: 'center' }}>
+            style={styles.graidentView}>
             <View style={styles.mainContainer}>
                 <TouchableOpacity>
                     <Image style={styles.icon}
-                        source={require('../../../assets/images/Back_Button.png')} />
+                        source={BackIcon} />
                 </TouchableOpacity>
                 <Image
                     style={styles.image}
@@ -26,7 +34,7 @@ const TokenAmount = () => {
                 />
                 <View style={styles.detailView}>
                     <Image style={styles.buttonIcon}
-                        source={require('../../../assets/images/Vector.png')}
+                        source={AmountVector}
                     />
                     <CustomText
                         text={payTokenModelText}
@@ -35,7 +43,7 @@ const TokenAmount = () => {
                 </View>
                 <View style={styles.detailView}>
                     <Image style={styles.buttonIcon}
-                        source={require('../../../assets/images/place.png')}
+                        source={PlaceIcon}
                     />
                     <CustomText
                         text={payTokenLocationText}

@@ -7,6 +7,8 @@ import {
     loginButtonText,
     successFull,
     successFUllResetDetails,
+    BackIcon,
+    ForwardIcon
 } from '../../utils/constants/successFullReset/successFullReset';
 import { useHistory } from 'react-router';
 
@@ -19,25 +21,21 @@ const SuccessFullReset = () => {
         <View style={styles.mainContainer}>
             <TouchableOpacity onPress={handleClick}>
                 <Image style={styles.img}
-                    source={require('../../../assets/images/Back_Button.png')} />
+                    source={BackIcon} />
             </TouchableOpacity>
-            <View style={styles.textContainer}>
                 <CustomText textStyle={styles.text}
                     text={successFull}>
                 </CustomText>
-            </View>
-            <View style={styles.textContainer1}>
                 <CustomText textStyle={styles.text1}
                     text={successFUllResetDetails}>
                 </CustomText>
-            </View>
             <CustomLinearGradient
                 colors={['#F04148', '#C20000']}
                 GradientButtonStyle={styles.gradientStyle}
                 text={loginButtonText}
                 textstyle={styles.gradientTextStyle}
                 imgStyle={styles.gradientImageStyle}
-                source={require('../../../assets/images/Shape.png')}
+                source={ForwardIcon}
                 onPress={() => console.log("Works!")}
             />
         </View>

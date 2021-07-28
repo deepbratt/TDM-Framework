@@ -3,7 +3,6 @@ import { View, Image,TouchableOpacity, ScrollView } from 'react-native';
 import { styles } from './styles';
 import CustomForgotButton from '../../component/customForgotButton';
 import CustomText from '../../component/customText';
-import BottomSheetComponent from '../../component/BottomSheet';
 import {
     emailText,
     forgotDetail,
@@ -11,22 +10,18 @@ import {
     number,
     staric,
     viaEmail,
-    viaSms
+    viaSms,
+    BackIcon,
+    PhoneIcon,
+    EmailIcon
 } from '../../utils/constants/resetPassword/resetPassword';
-import CustomOTP from '../../component/customOTP';
-import SimpleLayout from '../../layout/simpleLayout';
 
 const ResetPassword = () => {
-    const [visible, setVisible] = useState(false);
-  const toggleBottomNavigationView = () => {
-    setVisible(!visible);
-  };
     return (
-        <ScrollView style={{ backgroundColor: '#E5E5E5',}} >
         <View style={styles.mainContainer}>
             <TouchableOpacity>
                 <Image style={styles.img}
-                    source={require('../../../assets/images/Back_Button.png')} />
+                    source={BackIcon} />
             </TouchableOpacity>
             <View style={styles.textContainer}>
                 <CustomText textStyle={styles.text}
@@ -40,9 +35,8 @@ const ResetPassword = () => {
             </View>
             <View style={{marginBottom:130}}>
             <CustomForgotButton containerStyle={styles.buttonContainerStyle}
-                onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle}
-                source={require('../../../assets/images/a.png')}
+                source={PhoneIcon}
                 text1={viaSms}
                 textStyle1={styles.textStyleOne}
                 textContainerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
@@ -55,9 +49,8 @@ const ResetPassword = () => {
             >
             </CustomForgotButton>
             <CustomForgotButton containerStyle={styles.buttonContainerStyle1}
-                onPress={toggleBottomNavigationView}
                 imgStyle={styles.imageStyle1}
-                source={require('../../../assets/images/email.png')}
+                source={EmailIcon}
                 text1={viaEmail}
                 textStyle1={styles.textStyleOne}
                 textContainerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
@@ -70,15 +63,7 @@ const ResetPassword = () => {
             >
             </CustomForgotButton>
             </View>
-            <BottomSheetComponent
-                visible={visible}
-                onBackButtonPress={toggleBottomNavigationView}
-                onBackdropPress={toggleBottomNavigationView}
-            >
-                <CustomOTP></CustomOTP>
-            </BottomSheetComponent>
         </View>
-        </ScrollView>
     )
 }
 export default ResetPassword;

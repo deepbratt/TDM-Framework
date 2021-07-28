@@ -5,6 +5,7 @@ import CustomText from '../../component/customText';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import { styles } from './styles';
 import {
+    closeIcon,
     contactButton,
     detailErrorMessage,
     ErrorMessage,
@@ -15,11 +16,11 @@ const PaymentError = () => {
     return (
         <LinearGradient
             colors={['#22343C', '#1F2E35']}
-            style={{ flex: 1, justifyContent: 'center' }}>
+            style={styles.graidentView}>
             <View style={styles.mainContainer}>
                 <TouchableOpacity>
                     <Image style={styles.icon}
-                        source={require('../../../assets/images/close.png')} />
+                        source={closeIcon} />
                 </TouchableOpacity>
                 <CustomText
                     text={ErrorMessage}

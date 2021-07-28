@@ -53,7 +53,7 @@ history.push("/success-pass");
         text="Next"
         textstyle={styles.gradientTextStyle}
         imgStyle={styles.gradientImageStyle}
-        source={require('../../../assets/images/Shape.png')}
+        source={require('../../../assets/images/extra/Shape.png')}
         onPress={handleClick}
       />
      

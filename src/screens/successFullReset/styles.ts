@@ -2,37 +2,29 @@ import { StyleSheet } from "react-native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export const styles = StyleSheet.create({
     mainContainer: {
-        flex:1,
+        width: wp('100%'),
+        height:hp('100%'),
         backgroundColor: '#E5E5E5',
         justifyContent: 'flex-start'
     },
     img: {
-        height: 48,
-        width: 48,
-        marginTop: 53,
-        marginLeft: 29,
+        height: hp('5%'),
+        width:wp('10%'),
+        marginTop: hp('5%'),
+        marginLeft:wp('5%'),
         alignSelf: 'flex-start',
         resizeMode: 'contain',
-    },
-    textContainer: {
-        width: 138,
-        height: 46,
-        marginTop: 267.38,
-        marginLeft: 119,
     },
     text: {
         fontSize: 18,
         fontFamily: 'IBMPlexSans-SemiBold',
         textAlign: "center",
-        color: '#313131'
-    },
-    textContainer1: {
-        width: 269,
-        height: 37,
-        marginTop: 8,
-        marginLeft: 53,
+        color: '#313131',
+        marginTop:hp('30%'),
     },
     text1: {
+        width: wp('80%'),
+        alignSelf: 'center',
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
         textAlign: "center",
@@ -40,12 +32,10 @@ export const styles = StyleSheet.create({
         marginTop:hp('2%'),
     },
     gradientStyle: {
-        width: 315,
-        height: 58,
+        width: wp('90%'),
+        paddingVertical:hp('1.5%'),
         borderRadius: 6,
-        marginTop: 273,
-        marginLeft: 30,
-        marginRight: 30,
+        marginTop:hp('30%'),
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf:'center'

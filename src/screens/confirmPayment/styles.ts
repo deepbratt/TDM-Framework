@@ -10,11 +10,16 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start'
     },
+    gradientMainView: {
+        width: wp('100%'),
+        height:hp('100%'),
+        justifyContent: 'center'
+    },
     icon: {
-        height: 48,
-        width: 48,
+        height: hp('5%'),
+        width:wp('10%'),
         marginTop: hp('1%'),
-        marginLeft: wp('1%'),
+        marginLeft: wp('2.5%'),
         alignSelf: 'flex-start',
         resizeMode: 'contain',
     },

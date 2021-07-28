@@ -30,3 +30,26 @@ export const PriceRange = [
     { id: 2, label: "3 Million", value: "3 Million" },
     { id: 3, label: "4 Million", value: "4 Million" },
 ];
+
+
+export const LocationLabel = "Location"
+export const CarModelLabel = "Car Model"
+export const CarMakeLabel = "Car Make"
+export const YearLabel = "Year"
+export const ConditionLabel = "Condition"
+export const RegisterCityLabel = "Registration City"
+export const BodyColorLabel = "Body Color"
+export const MileageLabel = "Mileage"
+export const PriceRangeLabel = "Price Range"
+export const DescriptionLabel = "Description"
+export const AddPostButton="Post Your Add"
+
+
+export const PlaceIcon = require('../../../../assets/images/postDetails/location.png')
+export const ModelIcon = require('../../../../assets/images/postDetails/carmodel.png')
+export const AmountIcon = require('../../../../assets/images/postDetails/atm.png')
+export const ConditionIcon = require('../../../../assets/images/postDetails/carcondition.png')
+export const ApartmentIcon = require('../../../../assets/images/postDetails/apartment.png')
+export const PaletteIcon = require('../../../../assets/images/postDetails/palette.png')
+export const MilageIcon = require('../../../../assets/images/postDetails/milage.png')
+export const DescriptionIcon = require('../../../../assets/images/postDetails/description.png')

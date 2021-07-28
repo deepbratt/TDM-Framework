@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#E5E5E5'
     },
+    flatListStyle:{
+        marginTop: hp('5%')
+        
+    },
     container: {
         width: wp('95%'),
         alignSelf: 'center',

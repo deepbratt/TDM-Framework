@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 export const styles = StyleSheet.create({
   heading: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     fontFamily:'IBMPlexSans-SemiBold',
     textAlign: 'center',
     color: '#313131',
-    marginTop: hp('5%')
+    marginTop: hp('10%')
   },
   subHeading: {
     width: wp('95%'),

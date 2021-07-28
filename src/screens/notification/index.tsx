@@ -4,16 +4,15 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import CustomAvatar from '../../component/Avatar';
 import CustomText from '../../component/customText';
 import { styles } from './styles';
-import { ListData } from '../../utils/constants/notification';
+import { ListData,OvalIcon,PersonIcon } from '../../utils/constants/notification/notification';
 
 const Notification = () => {
     return (
         <View style={styles.main}>
             <FlatList
-                style={{ marginTop: hp('5%') }}
+                style={styles.flatListStyle}
                 data={ListData}
                 keyExtractor={(item) => item.id.toString()}
-                // ItemSeparatorComponent={() => <View style={styles.separatorView}></View>}
                 renderItem={({ item }) => (
                     <View style={styles.container}>
                         <View style={styles.avatarView}>
@@ -24,7 +23,7 @@ const Notification = () => {
                                 rounded
                                 onPress={() => console.log("Works!")}
                                 activeOpacity={0.8}
-                                source={require('../../../assets/images/person.png')}
+                                source={PersonIcon}
                             />
                         </View>
                         <View style={styles.infoView}>
@@ -34,7 +33,7 @@ const Notification = () => {
                                     textStyle={styles.applicationNameText}
                                 />
                                 <Image style={styles.dotImageStyle}
-                                    source={require('../../../assets/images/Oval.png')} />
+                                    source={OvalIcon} />
                                 <CustomText
                                     text={item.time}
                                     textStyle={styles.timeText}

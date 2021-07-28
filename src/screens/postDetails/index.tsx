@@ -1,10 +1,36 @@
 import React,{useState} from 'react';
-import { View, StyleSheet,SafeAreaView,ScrollView,Image, TextInput } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import CustomImagePicker from '../../component/imagePicker';
+import { View, StyleSheet, SafeAreaView, ScrollView, Image, TextInput } from 'react-native';
+import { styles } from './styles';
 import DropDownSaim from '../../component/dropDownSaim';
-import { bodyColor, CarModel, Condition, locationList, Milage, PriceRange } from '../../utils/constants/postDetails/postDetails';
 import CustomLinearGradient from '../../component/customLinearGradient';
+import Example from '../../component/imagePicker';
+import {
+    bodyColor,
+    CarModel,
+    Condition,
+    locationList,
+    Milage,
+    PriceRange,
+    PlaceIcon,
+    ModelIcon,
+    AmountIcon,
+    ConditionIcon,
+    ApartmentIcon,
+    PaletteIcon,
+    MilageIcon,
+    DescriptionIcon,
+    LocationLabel,
+    CarModelLabel,
+    CarMakeLabel,
+    YearLabel,
+    ConditionLabel,
+    RegisterCityLabel,
+    BodyColorLabel,
+    MileageLabel,
+    PriceRangeLabel,
+    DescriptionLabel,
+    AddPostButton,
+} from '../../utils/constants/postDetails/postDetails';
 
 const PostDetails = () => {
     const [description, setDescription] = useState("");
@@ -45,19 +71,20 @@ const PostDetails = () => {
         setPriceRange(value);
     };
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scrollView}>
-                <CustomImagePicker />
+        // <SafeAreaView style={styles.container}>
+        //     <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+            <Example/>
                 <View style={styles.borderView}></View>
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/location.png')} />
+                            source={PlaceIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Location"
+                            label={LocationLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={locationList}
                             disableSort={true}
@@ -70,12 +97,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/carmodel.png')} />
+                            source={ModelIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Car Model"
+                            label={CarModelLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={CarModel}
                             disableSort={true}
@@ -88,12 +115,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/carmodel.png')} />
+                            source={ModelIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Car Make"
+                            label={CarMakeLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={CarModel}
                             disableSort={true}
@@ -106,12 +133,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/atm.png')} />
+                            source={AmountIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Year"
+                            label={YearLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={CarModel}
                             disableSort={true}
@@ -124,12 +151,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/carcondition.png')} />
+                            source={ConditionIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Condition"
+                            label={ConditionLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={Condition}
                             disableSort={true}
@@ -142,12 +169,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/apartment.png')} />
+                            source={ApartmentIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Registration City"
+                            label={RegisterCityLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={locationList}
                             disableSort={true}
@@ -160,12 +187,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/palette.png')} />
+                            source={PaletteIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Body Color"
+                            label={BodyColorLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={bodyColor}
                             disableSort={true}
@@ -178,12 +205,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/milage.png')} />
+                            source={MilageIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Mileage (KM)"
+                            label={MileageLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={Milage}
                             disableSort={true}
@@ -196,12 +223,12 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/atm.png')} />
+                            source={AmountIcon} />
                     </View>
                     <View style={styles.MainViewDropDown}>
                         <DropDownSaim
                             itemContainerStyle={styles.itemContainerDropDrown}
-                            label="Price Range"
+                            label={PriceRangeLabel}
                             itemTextStyle={styles.itemTextDropDown}
                             data={PriceRange}
                             disableSort={true}
@@ -214,10 +241,10 @@ const PostDetails = () => {
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
                         <Image style={styles.buttonIcon}
-                            source={require('../../../assets/images/postDetails/description.png')} />
+                            source={DescriptionIcon} />
                     </View>
                     <TextInput
-                        placeholder="Description"
+                        placeholder={DescriptionLabel}
                         style={styles.descriptionInput}
                         maxLength={100}
                         multiline={true}
@@ -228,88 +255,13 @@ const PostDetails = () => {
                 <CustomLinearGradient
                     colors={['#F04148', '#C20000']}
                     GradientButtonStyle={styles.gradientStyle1}
-                    text="Post Your Add"
+                    text={AddPostButton}
                     textstyle={styles.gradientTextStyle}
                     onPress={() => console.log("Works!")}
                 />
-            </ScrollView>
-        </SafeAreaView>
+            {/* </ScrollView>
+        </SafeAreaView> */}
+        </View>
     )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    scrollView: {
-        height: hp('100%'),
-        width: wp('100%'),
-        backgroundColor: '#E5E5E5',
-    },
-    borderView: {
-        width: wp('100%'),
-        backgroundColor: '#EBEBEB',
-        borderWidth: 0.5,
-        marginTop: hp('1%')
-    },
-    dropdownContainer: {
-        width: wp('95%'),
-        alignSelf: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: hp('1%')
-    },
-    iconView: {
-        width: wp('10%'),
-        height: hp('5%'),
-        alignSelf: 'center',
-        justifyContent: 'center',
-        borderRadius: 50,
-        backgroundColor: '#F9F9F9'
-    },
-    buttonIcon: {
-        alignSelf: 'center',
-        resizeMode: 'contain',
-        tintColor: '#313131',
-    },
-    itemContainerDropDrown: {
-        backgroundColor: '#FFFFFF'
-    },
-    MainViewDropDown: {
-        width: wp('80%'),
-    },
-    itemTextDropDown: {
-        fontSize: 14, 
-        fontFamily: 'IBMPlexSans-Light',
-        color: '#979797'
-    },
-    textInputDropDown: {
-        fontSize: 14,
-        fontFamily: 'IBMPlexSans-Medium',
-        color: '#313131'
-    },
-    gradientStyle1: {
-        width:wp('80%'),
-        borderRadius: 6,
-        marginTop:hp('2%'),
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        paddingTop: hp('1.5%'),
-        paddingBottom: hp('1.5%'),
-        marginBottom:hp('2%')
-    },
-    gradientTextStyle: {
-        fontSize: 16,
-        fontFamily: 'IBMPlexSans-Medium',
-        textAlign: 'center',
-        alignSelf: 'center',
-        color: '#FFFFFF'
-    },
-    descriptionInput: {
-        width: wp('80%'),
-        fontSize: 14,
-        fontFamily: 'IBMPlexSans-Light',
-        paddingLeft: wp('2.5%')
-    }
-})
 export default PostDetails;

@@ -30,4 +30,7 @@ export const featureproductStatus = 'used'
 export const featureProductAmount = "$1,50,000 "
 export const featureProductLocation = "Islamabad"
 export const featureProductDistance = "1200 KM"
-export const featureProductFuelType="Diesel"
+export const featureProductFuelType = "Diesel"
+
+export const AmountVector = require('../../../../assets/images/extra/Vector.png')
+export const PlaceIcon = require('../../../../assets/images/extra/place.png')
