@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { ScrollView, View,Text,Image } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
 import CustomButton from '../../component/CustomButton';
 import CustomHeader from '../../component/customHeader/CustomHeader';
 import { openDrawer } from '../../navigation';
@@ -19,12 +20,16 @@ import Table from './table';
     const toggleButton=(i: React.SetStateAction<number>)=>{
         setActiveIndex(i);
       }
+      const history=useHistory();
+      const back=()=>{
+        history.goBack();
+      }
     return (
        <View>
            <CustomHeader
           headerStyle={{ backgroundColor: COLOR.Cultured }}
-          color={COLOR.DarkCharcoal} isHome={true} title="Compare"
-          onPress={()=>openDrawer()} />
+          color={COLOR.DarkCharcoal} isHome={false} title="Compare"
+          onPress={back} />
          <View style={globalStyle.container}>
          <ScrollView style={{marginTop:10}} horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={globalStyle.flexRow}>

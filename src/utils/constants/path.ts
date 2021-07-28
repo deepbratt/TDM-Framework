@@ -1,5 +1,6 @@
 
 import { SignIn, SignUp,SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct } from "../../screens";
+import Chat from "../../screens/Chat/chat";
 
 
 import TabTwoScreen from "../../screens/TabTwoScreen";
@@ -71,6 +72,11 @@ export const protectedroute=[
         id:9,
         path:"/compareProduct",
         component:CompareProduct,
+    },
+    {
+        id:9,
+        path:"/chat",
+        component:Chat,
     },
    
    

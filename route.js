@@ -10,22 +10,31 @@ const AuthRoute = ({ component: Component, isLoggedIn,...rest }) => {
   console.log(isLoggedIn,"log");
   return (
     <NativeRouter>
-          <Navigation/>
       {
-          Public.map((route) => {
-            return(
-              <BackButton>
-            <PublicRoute
-              exact 
-              path={route.path}
-             key={route.id} 
-             component={route.component} 
-             />
-             </BackButton>)
+        isLoggedIn ? 
+(
+  <Navigation/>
+  ):(
+    
+      Public.map((route) => {
+        return(
+          <BackButton>
+        <PublicRoute
+          exact 
+          path={route.path}
+         key={route.id} 
+         component={route.component} 
+         />
+         </BackButton>)
+
+      })
+   
   
-          })
-       
+
+  )
+
       }
+          
     
   
       </NativeRouter>

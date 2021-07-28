@@ -1,14 +1,8 @@
-// import { useDispatch } from "react-redux";
-// import { useHistory } from "react-router-native";
-// import { logout } from "../../redux/reducers/authSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-native";
+import { logout } from "../../redux/reducers/authSlice";
 
-//   let history = useHistory();
-//   const dispatch = useDispatch();
-//   const handle = () => {
-//     dispatch(logout());
-//     history.push("/SignIn");
-
-//   }
+ 
 export const drawerItem=[
     {
         id:1,
@@ -26,7 +20,7 @@ export const drawerItem=[
         color:"rgba(194, 0, 0, 1)",
         link:"/compare",
         width:"50%",height:"33%",
-        onPress:()=>console.log("Drawer press")
+        onPress:()=>console.log("Comparision")
     },
     {
         id:3,
@@ -53,7 +47,7 @@ export const drawerItem=[
         color:"rgba(194, 0, 0, 1)",
         width:"40%",height:"60%",
         link:"/bookedItems",
-        onPress:()=>console.log("Drawer press")
+        onPress:()=>console.log("Booked Items")
     },
     {
         id:6,
@@ -73,15 +67,15 @@ export const drawerItem=[
         color:"rgba(194, 0, 0, 1)",
         onPress:()=>console.log("Drawer press")
     },
-    {
-        id:8,
-        name:"Logout",
-        img:require('../../../assets/images/drawer/logout.png'),
-        width:"58%",height:"57%",
-        link:"notification",
-        color:"rgba(194, 0, 0, 1)",
-      onPress:()=>console.log("Drawer press")
+    // {
+    //     id:8,
+    //     name:"Logout",
+    //     img:require('../../../assets/images/drawer/logout.png'),
+    //     width:"58%",height:"57%",
+    //     link:"notification",
+    //     color:"rgba(194, 0, 0, 1)",
 
-    },
+
+    // },
     
 ]

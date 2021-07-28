@@ -22,6 +22,7 @@ import { connect, useDispatch } from "react-redux";
 import { globalStyle } from "../../Styles";
 import CustomButton from "../../component/CustomButton";
 import { COLOR } from "../../Theme/Colors";
+import { useHistory } from "react-router";
 
 function SignUpWithEmail() {
   const dispatch = useDispatch();
@@ -52,8 +53,43 @@ function SignUpWithEmail() {
               onChange:(password: any) => setinput({ ...input, password}) 
               },
       
-  ]
+  ];
 
+  const [data, setdata] = useState({
+    userName: "",
+    password: "",
+    errorNum: "",
+    errorPass: "",
+    secureTextEntry: true
+    // showPassword:true,
+});
+const history=useHistory();
+  // const LoginButton=()=>{
+  //  history.push('/')
+  //  dispatch(login())
+  // };
+  const LoginButton = async()=>{
+  //   const {userName,password}=data;
+  // const requestBody={
+  //   "email": userName,
+  //   "password": password
+  // }
+  // await userLoginApi (requestBody)
+  //     .then(response  => {
+  //       console.log(response,"dsd")
+  //           alert(response.message);
+  //           // dispatch({type:'LOGIN', requestBody});
+  //           // console.log( requestBody,"d requestBody")
+  //           setUserSession(response.data.token, response.data.user)
+  //         alert("login successful");
+  //         history.push("/page");
+  //         }
+  //     ).catch(error=>{
+  //       if (error.status === 401) return alert("user and password incorrect");
+         
+  //      })  
+        };
+  
   return (
 
     <SimpleLayout header={SignInHead} text1={text1} text2={text2}>
@@ -88,7 +124,7 @@ function SignUpWithEmail() {
       
         <View style={SubmitView}>
            <CustomButton buttonStyle={globalStyle.SignInButton} 
-          textStyle={globalStyle.loginText} onPress={() => dispatch(login())} text={Login} />
+          textStyle={globalStyle.loginText} onPress={LoginButton} text={Login} />
         </View>
       </View>
     </SimpleLayout>

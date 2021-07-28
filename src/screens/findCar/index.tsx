@@ -10,7 +10,7 @@ import { globalStyle } from "../../Styles";
 import HeadingSection from "../../section/CustomHeading/Heading";
 import { DreamCar, Products, Results } from "../../utils/constants/CarsText";
 import ProductBox from "../../component/ProductBox";
-import { BackButton } from "react-router-native";
+import {useHistory } from "react-router-native";
 import { COLOR } from "../../Theme/Colors";
 import Toast from 'react-native-simple-toast';
  const FindCar = () => {
@@ -41,14 +41,17 @@ import Toast from 'react-native-simple-toast';
    
     // from  here we will send items to favorites through api
   }
-  const Toasts = createRef();
+  const history=useHistory();
+  const back=()=>{
+    history.goBack();
+  }
     const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
     return (
         <View>
         <CustomHeader
           headerStyle={{ backgroundColor: COLOR.primary }}
           color={COLOR.White} isHome={false} location
-          onPress={()=><BackButton/>} />
+          onPress={back} />
          <View style={globalStyle.container}>
            <View style={globalStyle.inputView}>
           <CustomInput
@@ -103,6 +106,3 @@ import Toast from 'react-native-simple-toast';
 }
 export default FindCar;
 
-function jsonValue(arg0: string, jsonValue: any) {
-  throw new Error("Function not implemented.");
-}
