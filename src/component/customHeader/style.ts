@@ -38,8 +38,9 @@ export const styles = StyleSheet.create({
       width: 80,
       height: 60,
     },
-    text: {
-      fontFamily: "IBMPlexSans-Bold",
+  text: {
+    width: 200,
+    fontFamily: "IBMPlexSans-Bold",
     fontSize:18,
       textAlign: "center",
      lineHeight:25,

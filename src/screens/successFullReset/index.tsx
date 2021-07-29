@@ -30,6 +30,7 @@ const SuccessFullReset = () => {
                     text={successFUllResetDetails}>
                 </CustomText>
             <CustomLinearGradient
+                linkTo={"/SignIn"}
                 colors={['#F04148', '#C20000']}
                 GradientButtonStyle={styles.gradientStyle}
                 text={loginButtonText}

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Text,TouchableOpacity,Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { LinearGradientProps } from '../../../types';
-
+import { Link } from 'react-router-native';
 const CustomLinearGradient: FC<LinearGradientProps> = ({
     colors,
     GradientButtonStyle,
@@ -10,10 +10,11 @@ const CustomLinearGradient: FC<LinearGradientProps> = ({
     textstyle,
     imgStyle,
     source,
+    linkTo,
     onPress,
 }) => {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <Link to={linkTo} onPress={onPress} component={TouchableOpacity} >
             <LinearGradient
                 colors={colors}
                 style={GradientButtonStyle}
@@ -23,7 +24,7 @@ const CustomLinearGradient: FC<LinearGradientProps> = ({
                     source={source}
                 />
             </LinearGradient>
-        </TouchableOpacity>
+        </Link>
     )
 }
 export default CustomLinearGradient;

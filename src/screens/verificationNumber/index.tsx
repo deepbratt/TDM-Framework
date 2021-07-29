@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, Image, SafeAreaView, ScrollView } from "react-native";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { styles } from './styles';
 import { TextInput } from "react-native-paper";
 import CustomInput from "../../component/CustomInput/CustomInput";
@@ -9,7 +8,6 @@ import CustomLinearGradient from "../../component/customLinearGradient";
 import BottomSheetComponent from "../../component/BottomSheet";
 import CustomOTP from "../../component/customOTP";
 import { heading, subHeading,Button } from "../../utils/constants/verificationNumber";
-
 function VerificationNumber() {
     const [visible, setVisible] = useState(false);
     const toggleBottomNavigationView = () => {
@@ -83,6 +81,7 @@ function VerificationNumber() {
                 >
                     <CustomOTP></CustomOTP>
                 </BottomSheetComponent>
+                
             </ScrollView>
         </SafeAreaView>
     );

@@ -165,6 +165,7 @@ export type LinearGradientProps = {
   imgStyle: any;
   source: any;
   onPress: () => void;
+  linkTo: any;
 };
 
 export type ForgotButtonProps = {
@@ -180,7 +181,7 @@ export type ForgotButtonProps = {
   textStyle3: any;
   textStyle4: any;
   textContainerStyle: any;
-  onPress: () => void;
+  linkTo: any;
 };
 export type DropDownSaim40Props = {
   color?:any;
@@ -195,4 +196,7 @@ export type DropDownSaim40Props = {
   changeVisbilities?:() => void;
   setValues?: () => void;
   dummydata: any;
+}
+export type NewBottomSheetProps = {
+  ref: any;
 }

@@ -92,28 +92,8 @@ export const protectedroute=[
     },
     {
         id: 20,
-        path: "/verification-number",
-        component:VerificationNumber,
-    },
-    {
-        id: 21,
-        path: "/successfullrest",
-        component:SuccessFullReset,
-    },
-    {
-        id: 22,
-        path: "/resetpassword",
-        component:ResetPassword,
-    },
-    {
-        id: 23,
-        path: "/confirmpayment",
-        component:ConfirmPayment,
-    },
-    {
-        id: 24,
-        path: "/postdetails",
-        component:PostDetails,
-    },
+        path: "/confirm-payment",
+        component:ConfirmPayment
+    }
    
 ];

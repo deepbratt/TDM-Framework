@@ -1,7 +1,7 @@
 import React,{FC} from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { ForgotButtonProps } from '../../../types';
-
+import { Link } from 'react-router-native';
 const CustomForgotButton: FC<ForgotButtonProps> = ({
   containerStyle,
   imgStyle,
@@ -15,10 +15,10 @@ const CustomForgotButton: FC<ForgotButtonProps> = ({
   textStyle3,
   textStyle4,
   textContainerStyle,
-  onPress
+  linkTo
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <Link  to={linkTo} component={TouchableOpacity} >
       <View style={containerStyle}>
         <Image style={imgStyle}
           source={source} />
@@ -37,7 +37,7 @@ const CustomForgotButton: FC<ForgotButtonProps> = ({
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </Link>
   )
 }
 export default CustomForgotButton;

@@ -4,6 +4,7 @@ import { styles } from './styles';
 import DropDownSaim from '../../component/dropDownSaim';
 import CustomLinearGradient from '../../component/customLinearGradient';
 import Example from '../../component/imagePicker';
+import CustomHeader from '../../component/customHeader/CustomHeader';
 import {
     bodyColor,
     CarModel,
@@ -74,6 +75,11 @@ const PostDetails = () => {
         // <SafeAreaView style={styles.container}>
         //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
+            <CustomHeader
+                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                title="Post Your Ad Here"
+                color="#313131"
+            />
             <Example/>
                 <View style={styles.borderView}></View>
                 <View style={styles.dropdownContainer}>

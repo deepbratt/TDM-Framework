@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E5E5',
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: hp('5%'),
+    marginTop: hp('2%'),
   },
   container: {
     height: hp('25%'),

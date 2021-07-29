@@ -1,5 +1,5 @@
 
-import React, { FC, useState } from "react";
+import React, { FC, useState} from "react";
 import {
   View,
   Text,
@@ -133,7 +133,7 @@ console.log(i,"some")
       </View>
       <BottomSheetComponent
           visible={visible}
-          onBackButtonPress={toggleBottomNavigationView}
+          onBackButtonPress={toggleBottomNavigationView}ab th
           onBackdropPress={toggleBottomNavigationView}
         >
           <CustomSearch/>

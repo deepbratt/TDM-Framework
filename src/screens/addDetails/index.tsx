@@ -7,13 +7,13 @@ import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
 import CustomCarouselSaim40 from '../../component/customCarousel';
 import CustomAvatar from '../../component/Avatar';
-import {styles} from './styles'
+import { styles } from './styles';
+import CustomHeader from '../../component/customHeader/CustomHeader';
 import {
     PlaceIcon,
     AmountVector,
     carPrice,
     company,
-    compareText,
     DescriptionHead, 
     descriptionT, 
     distance,
@@ -22,11 +22,9 @@ import {
     make,
     modelHeading,
     modelName,
-    payAmount,
     productLocation,
     productStatus,
     sellerText,
-    shortListText,
     subModel,
     userName,
     year,
@@ -127,6 +125,11 @@ const AddDetails = () => {
         // <SafeAreaView style={styles.container}>
         //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
+            <CustomHeader
+                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                title="Add Details"
+                color="#313131"
+            />
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
                         layout={"default"}

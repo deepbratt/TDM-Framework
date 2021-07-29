@@ -33,8 +33,9 @@ const ResetPassword = () => {
                     text={forgotDetail}>
                 </CustomText>
             </View>
-            <View style={{marginBottom:130}}>
-            <CustomForgotButton containerStyle={styles.buttonContainerStyle}
+            <CustomForgotButton
+                linkTo={"/verify-num"}
+                containerStyle={styles.buttonContainerStyle}
                 imgStyle={styles.imageStyle}
                 source={PhoneIcon}
                 text1={viaSms}
@@ -48,7 +49,9 @@ const ResetPassword = () => {
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>
-            <CustomForgotButton containerStyle={styles.buttonContainerStyle1}
+            <CustomForgotButton
+                linkTo={"/verify-num"}
+                containerStyle={styles.buttonContainerStyle1}
                 imgStyle={styles.imageStyle1}
                 source={EmailIcon}
                 text1={viaEmail}
@@ -62,7 +65,6 @@ const ResetPassword = () => {
                 textStyle4={styles.textStyleThree}
             >
             </CustomForgotButton>
-            </View>
         </View>
     )
 }

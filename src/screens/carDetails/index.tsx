@@ -5,6 +5,7 @@ import { PROVIDER_GOOGLE } from 'react-native-maps';
 import CustomText from '../../component/customText';
 import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
+import CustomHeader from '../../component/customHeader/CustomHeader';
 import Specification from './specification';
 import Features from './features';
 import CustomCarouselSaim40 from '../../component/customCarousel';
@@ -130,6 +131,11 @@ const CarDetails = () => {
         // <SafeAreaView style={styles.container}>
         //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
+            <CustomHeader
+                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                title="Car Details"
+                color="#313131"
+            />
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
                         layout={"default"}

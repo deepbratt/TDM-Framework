@@ -2,8 +2,7 @@ import { StyleSheet } from "react-native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 export const styles = StyleSheet.create({
     mainContainer: {
-        width: wp('100%'),
-        height:hp('100%'),
+        flex:1,
         backgroundColor: '#E5E5E5',
         justifyContent: 'flex-start'
     },
@@ -35,7 +34,7 @@ export const styles = StyleSheet.create({
         width: wp('90%'),
         paddingVertical:hp('1.5%'),
         borderRadius: 6,
-        marginTop:hp('30%'),
+        marginTop:hp('45%'),
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf:'center'

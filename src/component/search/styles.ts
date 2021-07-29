@@ -70,12 +70,12 @@ export const styles = StyleSheet.create({
     gradientButtonStyle: {
         width: wp('80%'),
         borderRadius: 6,
-        marginTop: hp('3%'),
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf: 'center',
-        paddingTop: hp('2%'),
-        paddingBottom: hp('1.5%')
+        paddingTop: hp('1.5%'),
+        paddingBottom: hp('1.5%'),
+        marginVertical:hp('3%')
     },
     gradientButtonText: {
         fontSize: 16,

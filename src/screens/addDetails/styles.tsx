@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     imageCarouselView: {
         width: wp('100%'),
         justifyContent: 'flex-start',
-        marginTop: hp('5%'),
+        marginTop: hp('2%'),
     },
     amountMainContainer: {
         width: wp('95%'),
