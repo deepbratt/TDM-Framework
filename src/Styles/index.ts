@@ -20,8 +20,15 @@ searchStyle:{
     backgroundColor: COLOR.LightGrey,
     borderRadius: 6,
 },
+helperText:{
+    textAlign:"left",
+    width:wp('70%'),
+    fontSize:12,
+    lineHeight:10,
+    // backgroundColor:"red"
+},
 activeField:{
-    marginVertical:10,
+    marginVertical:8,
     width: wp('71%'),
     height:hp('6%'),
     backgroundColor: COLOR.White,
@@ -30,7 +37,7 @@ activeField:{
     borderRadius: 2,
 },
 inputField:{
-   marginVertical:10,
+   marginVertical:8,
    width:wp('71%'),
    height:hp('6%'),
    backgroundColor: COLOR.White,

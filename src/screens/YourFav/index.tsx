@@ -3,6 +3,7 @@ import { View,Text } from 'react-native';
 import { TextInput } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
 import CustomInput from '../../component/CustomInput/CustomInput';
+import CustomSearch from '../../component/CustomSearch';
 import { openDrawer } from '../../navigation';
 import { globalStyle } from '../../Styles';
 import { COLOR } from '../../Theme/Colors';
@@ -18,24 +19,10 @@ import { COLOR } from '../../Theme/Colors';
           onPress={()=>openDrawer()} />
            <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>
-          <CustomInput
-            placeholder="Search"
-            style={globalStyle.searchStyle}
-            // value={searchQuery}
-            // onChange={onChangeSearch}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/search.png')}
-              />
-            }
-            rightIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/filter.png')}
-              />
-            }
-          />
+        <CustomSearch    
+        // value={searchQuery}
+        //     onChange={onChangeSearch}
+            />
         </View>
           <Text>Favourites</Text>
           </View>

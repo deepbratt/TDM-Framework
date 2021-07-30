@@ -4,13 +4,13 @@ export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
 export const data= [
     
     {id :1,
-        path:"/verify",
-        route:"/SignUp",
+        path:"/SignIn/phone",
+        route:"/SignUp/phone",
     name:"Continue with Mobile Number",
 img:require("../../../../assets/images/buttonIcon/coolicond.png")
 },
 {id :2,
-    path:"/SignUp",
+    path:"/Verify/phone",
     route:"/SignUp",
     name:"Continue with Google",
 img:require("../../../../assets/images/buttonIcon/Original.png")
@@ -22,8 +22,8 @@ img:require("../../../../assets/images/buttonIcon/Original.png")
 img:require("../../../../assets/images/buttonIcon/fb.png")
 },
 {id :4,
-    path:"/SignInWithEmail",
-    route:"/SignInWithEmail",
+    path:"/SignIn/email",
+    route:"/SignUp/email",
     name:"Continue with Email",
 img:require("../../../../assets/images/buttonIcon/email.png")
 },

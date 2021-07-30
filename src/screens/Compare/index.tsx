@@ -6,6 +6,7 @@ import { connect, useDispatch } from 'react-redux'
 import CustomButton from '../../component/CustomButton'
 import CustomHeader from '../../component/customHeader/CustomHeader'
 import CustomInput from '../../component/CustomInput/CustomInput'
+import CustomSearch from '../../component/CustomSearch'
 import ProductBox from '../../component/ProductBox'
 import { openDrawer } from '../../navigation'
 import { compare ,remove} from '../../redux/reducers/authSlice'
@@ -48,25 +49,8 @@ import { compareStyle } from './style'
           onPress={()=>openDrawer()} />
          <View style={globalStyle.container}>
            <View style={globalStyle.inputView}>
-          <CustomInput
-            placeholder="Search"
-            style={globalStyle.searchStyle}
-            value={searchQuery}
-            onChange={onChangeSearch}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/search.png')}
-              />
-            }
-            rightIcon={
-              <TextInput.Icon
-              onPress={Submit}
-                size={18}
-                name={require('../../../assets/images/homepage/filter.png')}
-              />
-            }
-          />
+          <CustomSearch    value={searchQuery}
+            onChange={onChangeSearch}/>
         </View>
         
         <HeadingSection Heading="Filter Items" SubHeading={`Select Items to be Compare: `}>

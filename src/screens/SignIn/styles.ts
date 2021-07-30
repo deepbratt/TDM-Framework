@@ -77,5 +77,12 @@ export const loginStyle = StyleSheet.create({
     alignCenter:{ 
       alignItems: "center",
       justifyContent: "center" 
-  }
+  },
+  imgDiv: {
+    marginHorizontal: wp('10%'),
+    marginVertical: hp('4%'),
+    width: wp('81%'),
+    aspectRatio:1*1.3,
+    padding: 0,
+  },
 });

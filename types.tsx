@@ -55,7 +55,7 @@ export type InputProp={
   style?:any;
   onBlur?:any;
   onFocus?:any;
-  secureTextEntry?:any;
+  secureTextEntry?:boolean;
   leftIcon?:any;
   rightIcon?:any;
   value?:any;
@@ -65,8 +65,37 @@ export type InputProp={
   numberOfLines?:any;
   onClick?:()=>void;
   disabled?:any;
-  theme?:any
+  theme?:any;
+  error?:boolean;
+  onEndEditing?:any
 };
+export type genralProps={
+  headerName?:string;
+  Imgsrc?:any;
+  view?:string;
+  initialValues?:any;
+  validationSchema?:any;
+  onSubmit?:any;
+  fields?:any;
+  handleShow?:any;
+  ButtonText?:string;
+
+};
+export type SearchProp={
+  value?:any;
+  onChange?:any;
+  onPress?:()=>void;
+  onClick?:()=>void;
+};
+export type fieldForm= { 
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  code?: string; 
+  password?:string;
+  confirmPassword?: string; 
+ }
 export type categoryProp={
   viewStyle?:any;
   ProductName?:string;

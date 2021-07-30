@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { login } from "../../redux/reducers/authSlice";
 import {
   EnterPassword,
-  enterEmail,
   Login,
   SignInHead,
+  EnteryourNumber,
 } from "../../utils/constants/en/index";
 import { connect, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { Fieldnames, loginEmailValidation } from "../../utils/form/validationForm";
+import { Fieldnames, loginNumberValidation } from "../../utils/form/validationForm";
 import GeneralView from "../../section/LoginView/GeneralLoginView";
-import { fieldForm } from "../../../types";
 
-function SignUpWithEmail() {
+function SignInWithPhone() {
   const dispatch = useDispatch();
   const [Loader, setLoader] = useState(false);
     const [input, setinput] = useState({
@@ -23,27 +22,24 @@ function SignUpWithEmail() {
       secureTextEntry:true,
       showPassword:"eye-off",
   });
-   const loginEmail=[
-{
-  id:1,
-  IconName:"email",
-  value:Fieldnames.email,
-  placeholder:enterEmail,
-  disabled:false,
-  type:"email-address"
-    },
-    {
-        id:2,
-        IconName:"lock",
-        eyeName:input.showPassword,
-        value:Fieldnames.password,
-        placeholder:EnterPassword,
-        secureTextEntry:input.secureTextEntry,
-        disabled:false
-        },
-
+  
+const loginNumber=[
+  {
+      id:1,
+      IconName:"phone",
+      value:Fieldnames.phone,
+      placeholder:EnteryourNumber,
+      },
+      {
+          id:2,
+          IconName:"lock",
+          eyeName:input.showPassword,
+          value:Fieldnames.password,
+          placeholder:EnterPassword,
+          secureTextEntry:input.secureTextEntry
+          },
+  
 ];
-
 const handleShow=()=>{
   console.log("show")
   setinput(prev=>({
@@ -61,14 +57,14 @@ const handleShow=()=>{
     view={"login"}
     headerName={SignInHead}
     Imgsrc={require("../../../assets/images/signin.png")}
-    fields={loginEmail}
-    initialValues={input} 
-     validationSchema={loginEmailValidation}
-     onSubmit={(values: fieldForm)=>LoginButton(values)}
+    initialValues={input}
+    fields={loginNumber} 
+     onSubmit={(values)=>LoginButton(values)}
+     validationSchema={loginNumberValidation}
     handleShow={handleShow}
     ButtonText={Loader ? "Loading..." : Login}
   />
   );
 }
-export default connect()(SignUpWithEmail);
+export default connect()(SignInWithPhone);
 

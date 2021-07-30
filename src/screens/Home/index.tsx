@@ -6,9 +6,8 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { Surface, TextInput } from "react-native-paper";
+import { Surface } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
-import CustomInput from "../../component/CustomInput/CustomInput";
 import { openDrawer } from '../../navigation';
 import { BookNow, Browse, categotryList, MostPopular, Par1, popularProduct, SearchedCars, SellYou } from "../../utils/constants/HomeConstant";
 import { HomeStyle } from "./style";
@@ -22,6 +21,7 @@ import { Dimensions } from "react-native";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
+import CustomSearch from "../../component/CustomSearch";
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
@@ -46,24 +46,8 @@ console.log(i,"some")
         onPress={() => openDrawer()} />
       <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>
-          <CustomInput
-            placeholder="Search"
-            style={globalStyle.searchStyle}
-            value={searchQuery}
-            onChange={onChangeSearch}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/search.png')}
-              />
-            }
-            rightIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/filter.png')}
-              />
-            }
-          />
+        <CustomSearch    value={searchQuery}
+            onChange={onChangeSearch}/>
         </View>
         <HeadingSection Heading={Browse}>
         <View style={categoryBox}>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View} from 'react-native'
-import { TextInput } from 'react-native-paper'
-import CustomInput from '../../../component/CustomInput/CustomInput'
+import CustomSearch from '../../../component/CustomSearch'
 import InboxBox from '../../../component/inboxBox'
 import { globalStyle } from '../../../Styles'
 import { chatList } from '../../../utils/constants/CarsText'
@@ -13,24 +12,8 @@ import { inboxStyle } from './style'
     return (
         <View  style={globalStyle.container}>
         <View style={[globalStyle.inputView,Margin]}>
-       <CustomInput
-         placeholder="Search"
-         style={globalStyle.searchStyle}
-         value={searchQuery}
-         onChange={onChangeSearch}
-         leftIcon={
-           <TextInput.Icon
-             size={18}
-             name={require('../../../../assets/images/homepage/search.png')}
-           />
-         }
-         rightIcon={
-           <TextInput.Icon
-             size={18}
-             name={require('../../../../assets/images/homepage/filter.png')}
-           />
-         }
-       />
+        <CustomSearch    value={searchQuery}
+            onChange={onChangeSearch}/>
      </View>
      <View>
      {

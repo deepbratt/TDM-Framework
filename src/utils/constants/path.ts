@@ -1,5 +1,5 @@
 
-import { SignIn, SignUp,SignInWithEmail, Verify, HomePage,FindCar, YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct } from "../../screens";
+import { SignIn, SignUp,SignInWithEmail,SignInWithPhone, VerifywithEmail,VerifywithPhone, HomePage,FindCar, YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct, SignUpwithPhone } from "../../screens";
 import Chat from "../../screens/Chat/chat";
 
 
@@ -8,7 +8,7 @@ import TabTwoScreen from "../../screens/TabTwoScreen";
 export const Public=[
     {
         id:1,
-        path:"/SignUp",
+        path:"/SignUp/email",
         component:SignUp,
     },
     {
@@ -18,14 +18,29 @@ export const Public=[
     },
     {
         id:3,
-        path:"/SignInWithEmail",
+        path:"/SignIn/email",
         component:SignInWithEmail,
     },
     {
         id:4,
-        path:"/Verify",
-        component:Verify,
+        path:"/Verify/email",
+        component:VerifywithEmail,
     },
+    {
+        id:5,
+        path:"/Verify/phone",
+        component:VerifywithPhone,
+    },
+    {
+        id:6,
+        path:"/SignUp/phone",
+        component:SignUpwithPhone,
+    },
+    {
+        id:6,
+        path:"/SignIn/phone",
+        component:SignInWithPhone,
+    }
 ];
 export const protectedroute=[
     {

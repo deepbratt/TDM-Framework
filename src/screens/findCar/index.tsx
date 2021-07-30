@@ -3,9 +3,7 @@ import {
   Button,
   View, 
 } from "react-native";
-import { TextInput } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
-import CustomInput from "../../component/CustomInput/CustomInput";
 import { globalStyle } from "../../Styles";
 import HeadingSection from "../../section/CustomHeading/Heading";
 import { DreamCar, Products, Results } from "../../utils/constants/CarsText";
@@ -13,6 +11,7 @@ import ProductBox from "../../component/ProductBox";
 import {useHistory } from "react-router-native";
 import { COLOR } from "../../Theme/Colors";
 import Toast from 'react-native-simple-toast';
+import CustomSearch from "../../component/CustomSearch";
  const FindCar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [favorites, setfavorites] = useState([] as Array<number>);
@@ -54,24 +53,8 @@ import Toast from 'react-native-simple-toast';
           onPress={back} />
          <View style={globalStyle.container}>
            <View style={globalStyle.inputView}>
-          <CustomInput
-            placeholder="Search"
-            style={globalStyle.searchStyle}
-            value={searchQuery}
-            onChange={onChangeSearch}
-            leftIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/search.png')}
-              />
-            }
-            rightIcon={
-              <TextInput.Icon
-                size={18}
-                name={require('../../../assets/images/homepage/filter.png')}
-              />
-            }
-          />
+           <CustomSearch    value={searchQuery}
+            onChange={onChangeSearch}/>
         </View>
        <HeadingSection Heading={DreamCar} SubHeading={Results}>
 {
