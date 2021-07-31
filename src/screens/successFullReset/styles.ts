@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
         width: wp('90%'),
         paddingVertical:hp('1.5%'),
         borderRadius: 6,
-        marginTop:hp('45%'),
+        marginTop:hp('40%'),
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf:'center'

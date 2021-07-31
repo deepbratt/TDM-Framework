@@ -3,33 +3,35 @@ export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
 
 export const data= [
     
-    {id :1,
+    {
+        id: 1,
         path:"/verify",
         route:"/SignUp",
-    name:"Continue with Mobile Number",
-img:require("../../../../assets/images/buttonIcon/coolicond.png")
-},
-{id :2,
-    path:"/SignUp",
-    route:"/SignUp",
-    name:"Continue with Google",
-img:require("../../../../assets/images/buttonIcon/Original.png")
-},
-{id :3,
-    path:"/SignUp",
-    route:"/SignUp",
-    name:"Continue with Facebook",
-img:require("../../../../assets/images/buttonIcon/fb.png")
-},
-{id :4,
-    path:"/SignInWithEmail",
-    route:"/SignUp",
-    name:"Continue with Email",
-img:require("../../../../assets/images/buttonIcon/email.png")
-},
-
-
-] ;
+        name: "Continue with Mobile Number",
+        img: require("../../../../assets/images/buttonIcon/coolicond.png")
+    },
+    {
+        id: 2,
+        path: "/SignUp",
+        route: "/SignUp",
+        name: "Continue with Google",
+        img: require("../../../../assets/images/buttonIcon/Original.png")
+    },
+    {
+        id: 3,
+        path: "/SignUp",
+        route: "/SignUp",
+        name: "Continue with Facebook",
+        img: require("../../../../assets/images/buttonIcon/fb.png")
+    },
+    {
+        id: 4,
+        path: "/SignInWithEmail",
+        route: "/SignUp",
+        name: "Continue with Email",
+        img: require("../../../../assets/images/buttonIcon/email.png")
+    },
+];
 export const SignUpHead="Sign Up To Continue";
 export const enterEmail="Enter Email";
 export const EnterPassword="Enter Password";
