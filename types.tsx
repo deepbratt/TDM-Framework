@@ -8,12 +8,14 @@ export type RootStackParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
 export type LayoutProps = {
   children?:React.ReactNode;
   header:string;
   text1:string;
   text2:string;
 };
+
 export type HeaderProps = {
   title?:string;
   onPress ?:() => void  ;
@@ -24,10 +26,7 @@ export type HeaderProps = {
 export type DropDownProps={
   color?:any;
   textcolor?:any;
-  FirstState?:string
-  changeVisbility?:() => void;
-   setData?:() => void ;
-   visible?:boolean;
+  setData?:() => void ;
   onRequestClose?:() => void ;
   onPress?:() => void ;
   location?:boolean;
@@ -48,7 +47,7 @@ export type ButtonProps={
   disabled?: boolean,
   onPress?: ()=>void,
   linkTo?: string,
-  text: string,
+  text?: string,
 };
 export type InputProp={
   placeholder?:string;
@@ -114,25 +113,92 @@ export type tabProps={
     children?:React.ReactNode;
     style:any
 }
-export type CustomCarouselProps={ 
-  layout?:string;
-  layoutCardOffset?:string;
-  autoplay?:boolean;
-  loop?:boolean;
-  enableMomentum?:boolean;
-  enableSnap?:boolean;
-  autoplayDelay?:number;
-  sliderWidth?:number;
-  activeAnimationType?:string;
-  itemWidth?:number;
-  inactiveSlideScale?:number;
-  inactiveSlideOpacity?:number;
-  renderItems:()=>void;
-  autoplayInterval?:number;
-contentContainerCustomStyle?:any;
-containerCustomStyle?:any;
-listItems:any
-}
+export type CustomCarouselProps = {
+  layout?: string;
+  layoutCardOffset?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  enableMomentum?: boolean;
+  enableSnap?: boolean;
+  autoplayDelay?: number;
+  sliderWidth?: number;
+  activeAnimationType?: string;
+  itemWidth?: number;
+  inactiveSlideScale?: number;
+  inactiveSlideOpacity?: number;
+  renderItems: () => void;
+  autoplayInterval?: number;
+  contentContainerCustomStyle?: any;
+  containerCustomStyle?: any;
+  listItems: any
+};
+
+export type SmsButtonProps = {
+  pressBtn?: () => void;
+};
+
+export type AvatarProps = {
+  overlayContainerStyle: any;
+  size: any;
+  rounded: boolean;
+  onPress: () => void;
+  activeOpacity: any;
+  source: any;
+  imageProps: any;
+};
+
+export type BottomSheetProps = {
+  visible: boolean;
+  onBackButtonPress: () => void;
+  onBackdropPress: () => void;
+  children: any;
+};
+
+export type SearchBottomSheetProps = {
+  visible: boolean;
+  onBackButtonPress: () => void;
+  onBackdropPress: () => void;
+};
+
+export type TextProps = {
+  text: string;
+  textStyle: any;
+};
+
+export type MapViewProps = {
+  style: any;
+  provider: any;
+};
+
+export type LinearGradientProps = {
+  colors: any;
+  GradientButtonStyle: any;
+  textstyle: any;
+  text: string;
+  imgStyle: any;
+  source: any;
+  onPress: () => void;
+  linkTo: any;
+};
+
+export type ForgotButtonProps = {
+  containerStyle: any;
+  imgStyle: any;
+  source: any;
+  text1: string;
+  text2: string;
+  text3: string;
+  text4: string;
+  textStyle1: any;
+  textStyle2: any;
+  textStyle3: any;
+  textStyle4: any;
+  textContainerStyle: any;
+  linkTo: any;
+};
+export type NewBottomSheetProps = {
+  ref: any;
+};
 export type HeadSectionProp={
   children?:React.ReactNode;
   Heading?:string;

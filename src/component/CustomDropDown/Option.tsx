@@ -9,7 +9,7 @@ import {
 import { DropDownProps } from "../../../types";
 import { optStyles } from "./Optionstyles";
 import { Locationlist } from "../../utils/constants/en";
-const Option: FC<DropDownProps> = ({ changeVisbility, setData }) => {
+const Option: FC<DropDownProps> = ({ changeVisbility, setData, }) => {
 
   const onPressItem = (option: string) => {
     changeVisbility(false);

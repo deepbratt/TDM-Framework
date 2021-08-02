@@ -1,5 +1,5 @@
 
-import { SignIn, SignUp,SignInWithEmail,SignInWithPhone, VerifywithEmail,VerifywithPhone, HomePage,FindCar, YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct, SignUpwithPhone } from "../../screens";
+import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
 import Chat from "../../screens/Chat/chat";
 
 
@@ -37,10 +37,26 @@ export const Public=[
         component:SignUpwithPhone,
     },
     {
-        id:6,
+        id:7,
         path:"/SignIn/phone",
         component:SignInWithPhone,
-    }
+    },
+    {
+        id:8,
+        path:"/forget-pass",
+        component:ResetPassword,
+    },
+    {
+        id:9,
+        path:"/success-pass",
+        component:SuccessFullReset,
+    },
+    {
+        id:10,
+        path:"/verify-num",
+        component:VerificationNumber,
+    },
+        
 ];
 export const protectedroute=[
     {
@@ -89,10 +105,53 @@ export const protectedroute=[
         component:CompareProduct,
     },
     {
-        id:9,
+        id:10,
         path:"/chat",
         component:Chat,
     },
-   
-   
+    {
+        id:11,
+        path:"/post-details",
+        component:PostDetails,
+    },
+    {
+        id:12,
+        path:"/notify",
+        component:Notification,
+    },
+    {
+        id:13,
+        path:"/token-amount",
+        component:TokenAmount,
+    },
+    {
+        id:14,
+        path:"/car-Details",
+        component:CarDetails,
+    },
+    {
+        id:15,
+        path:"/add-Details",
+        component:AddDetails,
+    },
+    {
+        id:16,
+        path:"/request-accept",
+        component:RequestAccept,
+    },
+    {
+        id:17,
+        path:"/pay-token",
+        component:PayTokenAmount,
+    },
+    {
+        id:18,
+        path:"/payment-error",
+        component:PaymentError,
+    },
+    {
+        id: 19,
+        path: "/confirm-payment",
+        component:ConfirmPayment
+    }
 ];

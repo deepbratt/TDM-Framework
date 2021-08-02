@@ -2,7 +2,15 @@ import { StyleSheet, Dimensions } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from "../../Theme/Colors";
 export const loginStyle = StyleSheet.create({
-
+  heading: {
+    width: wp('95%'),
+    alignSelf: 'center',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
+    color: '#313131',
+    marginTop: hp('5%')
+  },
   mid: {
     flex: 2,
     justifyContent: "center",
