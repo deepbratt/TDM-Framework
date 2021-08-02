@@ -13,7 +13,7 @@ interface Public{
       <Route
         {...rest}
         render={(props) =>
-          isLoggedIn ? <Redirect to="/" />   :  <Component {...props} /> 
+          isLoggedIn ? <Redirect to="/SignIn" />   :  <Component {...props} /> 
         }
       />
     );

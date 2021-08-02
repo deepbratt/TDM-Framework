@@ -9,12 +9,15 @@ import {
 } from "react-native";
 import LottieView from 'lottie-react-native';
 import { Avatar, Title } from "react-native-paper";
-import { Link } from "@react-navigation/native";
+import { Link, useHistory } from "react-router-native";
 import { styles } from "./style";
 import { drawerItem } from "../../utils/constants/drawerContent";
 import { Ionicons } from "@expo/vector-icons";
+import { COLOR } from "../../Theme/Colors";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/reducers/authSlice";
 
-const Settings = () => {
+const Settings = (props:any) => {
   const {
     container,
     Images,
@@ -30,6 +33,15 @@ const Settings = () => {
     DrawerButton,
     LinearImage,
   } = styles;
+
+  let history = useHistory();
+  const dispatch = useDispatch();
+  const handle = () => {
+    dispatch(logout());
+    history.push("/SignIn");
+    console.log("logout")
+
+  }
   return (
     <View style={{ flex: 1, zIndex: 1 }}>
       <ScrollView>
@@ -60,15 +72,19 @@ const Settings = () => {
         <View style={{ marginTop: 15 }}>
           {drawerItem.map((item) => {
             return (
-              <TouchableOpacity
+              <Link
                 key={item.id}
                 style={DrawerButton}
+                component={TouchableOpacity}
+                to={item.link}
+                onPress={item.onPress}
               >
                 <LinearGradient
-                  colors={["#F04148", "#C20000"]}
+                  colors={["#F04148", COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   style={LinearImage}
+                 
                 >
                   <Image
                     style={{
@@ -84,9 +100,36 @@ const Settings = () => {
                     <Title style={titleName}>{item.name}</Title>
                   </View>
                 </View>
-              </TouchableOpacity>
+              </Link>
             );
           })}
+            <Link
+                to=""
+                style={DrawerButton}
+                component={TouchableOpacity}
+                onPress={handle}
+              >
+                <LinearGradient
+                  colors={["#F04148", COLOR.primary]}
+                  start={{ x: 0, y: 0.4 }}
+                  end={{ x: 0, y: 1 }}
+                  style={LinearImage}
+                 
+                >
+                  <Image
+                    style={{
+                      marginHorizontal: 7,
+                      width:"58%",height:"57%",
+                    }}
+                    source={require('../../../assets/images/drawer/logout.png')}
+                  />
+                </LinearGradient>
+                <View style={{ width: "50%" }}>
+                  <View style={Row}>
+                    <Title style={titleName}>Logout</Title>
+                  </View>
+                </View>
+              </Link>
         </View>
       </ScrollView>
     </View>

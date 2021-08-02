@@ -19,7 +19,7 @@ import {
     ButtonText,
 } from '../../utils/constants/search';
 
-const CustomSearch = () => {
+const CustomFilter = () => {
     const [sortBy, setSortBy] = useState('');
     const onChangeSortBy = (value: string) => {
         setSortBy(value);
@@ -132,4 +132,4 @@ const CustomSearch = () => {
         </View>
     )
 }
-export default CustomSearch;
+export default CustomFilter;

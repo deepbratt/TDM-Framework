@@ -1,8 +1,11 @@
 import Splash from "./Splash";
 import SignInWithEmail from "./SignIn/SignInWithEmail";
-import SignUp from "./SignUp/index"; 
+import SignInWithPhone from "./SignIn/withPhone";
+import SignUp from "./SignUp/withEmail"; 
+import SignUpwithPhone from "./SignUp/withPhone"; 
 import SignIn from "./SignIn/SignIn";
-import Verify from "./SignUp/verifyAccount";
+import VerifywithEmail from "./VerifyAccount/withEmail";
+import VerifywithPhone from "./VerifyAccount/withPhone";
 import HomePage from "./Home";
 import Settings from "./Settings";
 import PostDetails from "./postDetails";
@@ -17,14 +20,32 @@ import VerificationNumber from "./verificationNumber";
 import PaymentError from "./paymentError";
 import PayTokenAmount from "./payTokenAmount";
 import ConfirmPayment from "./confirmPayment";
+import YourFav from "./YourFav";
+import Orders from "./Orders";
+import FindCar from "./findCar/index";
+import Inbox from './Chat/Inbox/index'
+import PostAd from "./Seller/Postad";
+import SearchCompare from "./Compare";
+import CompareProduct from "./Compare/Compare";
 
 export {
     Splash,
     SignInWithEmail,
-    SignUp,SignIn,
-    Verify,
+    SignInWithPhone,
+    SignUp,
+    SignUpwithPhone,
+    SignIn,
+    VerifywithEmail,
+    VerifywithPhone,
     HomePage,
     Settings,
+    YourFav,
+    Orders,
+    FindCar,
+    Inbox,
+    PostAd,
+    SearchCompare,
+    CompareProduct,
     PostDetails,
     Notification,
     TokenAmount,
@@ -33,5 +54,8 @@ export {
     ResetPassword,
     SuccessFullReset,
     RequestAccept,
-    VerificationNumber,PayTokenAmount,PaymentError,ConfirmPayment
+    VerificationNumber,
+    PayTokenAmount,
+    PaymentError,
+    ConfirmPayment,
 }

@@ -5,16 +5,6 @@ export type RootStackParamList = {
   top:any;
   NotFound: undefined;
 };
-
-export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
-};
-
-export type TabOneParamList = {
-  TabOneScreen: undefined;
-};
-
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
@@ -34,9 +24,14 @@ export type HeaderProps = {
    color?:any; 
 };
 export type DropDownProps={
-  color?:any;textcolor?:any;
-  changeVisbility?:() => void;
-  setData?: () => void;
+  color?:any;
+  textcolor?:any;
+  setData?:() => void ;
+  onRequestClose?:() => void ;
+  onPress?:() => void ;
+  location?:boolean;
+  changeVisbilities?:() => void;
+  setValues?:() => void ;
 }
 export type SignInProp={
   onPress:()=>void;
@@ -59,7 +54,7 @@ export type InputProp={
   style?:any;
   onBlur?:any;
   onFocus?:any;
-  secureTextEntry?:any;
+  secureTextEntry?:boolean;
   leftIcon?:any;
   rightIcon?:any;
   value?:any;
@@ -69,13 +64,43 @@ export type InputProp={
   numberOfLines?:any;
   onClick?:()=>void;
   disabled?:any;
-  theme?:any
+  theme?:any;
+  error?:boolean;
+  onEndEditing?:any
 };
+export type genralProps={
+  headerName?:string;
+  Imgsrc?:any;
+  view?:string;
+  initialValues?:any;
+  validationSchema?:any;
+  onSubmit?:any;
+  fields?:any;
+  handleShow?:any;
+  ButtonText?:string;
+
+};
+export type SearchProp={
+  value?:any;
+  onChange?:any;
+  onPress?:()=>void;
+  onClick?:()=>void;
+};
+export type fieldForm= { 
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  code?: string; 
+  password?:string;
+  confirmPassword?: string; 
+ }
 export type categoryProp={
   viewStyle?:any;
   ProductName?:string;
   ProductImage?:any;
   linkTo?:string;
+  divStyle?:any
 
 }
 export type tabProps={
@@ -135,18 +160,6 @@ export type SearchBottomSheetProps = {
   onBackdropPress: () => void;
 };
 
-export type TopTabProps = {
-  tabBarOtions: any;
-  labelStyle: any;
-  style: any;
-  activeTintColor: any;
-  indicatorStyle: any;
-  name: string;
-  component: any;
-  name1: string;
-  component1: any;
-};
-
 export type TextProps = {
   text: string;
   textStyle: any;
@@ -183,20 +196,39 @@ export type ForgotButtonProps = {
   textContainerStyle: any;
   linkTo: any;
 };
-export type DropDownSaim40Props = {
-  color?:any;
-  textcolor?:any;
-  FirstState?: any;
-  changeVisbility?:any;
-  setData?: any;
-  visible?: boolean;
-  onRequestClose?:() => void ;
-  onPress?:() => void ;
-  location?:boolean;
-  changeVisbilities?:() => void;
-  setValues?: () => void;
-  dummydata: any;
-}
 export type NewBottomSheetProps = {
   ref: any;
+};
+export type HeadSectionProp={
+  children?:React.ReactNode;
+  Heading?:string;
+  SubHeading?:string;
+};
+export type PBoxProps={
+  src?:any;
+  Price?:string;
+  Title?:string;
+  year?:string;
+  KMeter:string;
+  onPress?:()=>void;
+  onSelect?:()=>void;
+  status:string;
+  date?:string;
+  Location?:string;
+  color?:string
+}
+export type InboxBoxProps={
+  src?:any;
+  User?:string;
+  Msg?:string;
+  onPress:()=>void;
+  status?:any;
+  time?:string;
+  count?:string;
+  color?:string;
+  Time?:string;
+  attach?:string;
+  seen?:boolean;
+  Incoming?:boolean;
+  Audio?:string;
 }

@@ -1,9 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../Theme/Colors";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white", 
+    backgroundColor: COLOR.White, 
   },
   top: {
     flex: 1,
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans-SemiBold",
     fontSize:18,
     fontWeight:"600",
-    color: "rgba(49, 49, 49, 1)",
+    color: COLOR.DarkCharcoal,
     lineHeight: 50,
     textAlign: "center",
   },
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans-Light",
     fontSize: 12,
     textAlign: "center",
-    color: "rgba(102, 102, 102, 1)",
+    color: COLOR.GraniteGray,
     letterSpacing: .5,
   },
   bottom: {
@@ -32,7 +33,7 @@ export const styles = StyleSheet.create({
       marginBottom:hp('.5%'),
       },
   underline: {
-    color:"#666666",
+    color:COLOR.GraniteGray,
     borderBottomWidth: 1,
     textDecorationLine:"underline",
     fontWeight: "500",

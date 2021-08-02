@@ -38,20 +38,20 @@ const { container,images,titleText,detail,rate,rating}=Style;
     );
   }, []);
   return (
-    <View>
+   
       <CustomCarousel 
        layout="default"
        autoplay={true}
        loop={true}
        autoplayDelay={2000}
        listItems={Items}
-       sliderWidth={ 370}
-       itemWidth={150}
+       sliderWidth={ 532}
+       itemWidth={177}
        inactiveSlideOpacity={1}
        inactiveSlideScale={1}
        renderItems={renderItem}      
       />
-      </View>
+    
   )}
 
 

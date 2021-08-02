@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLOR } from "../../Theme/Colors";
 export const optStyles = StyleSheet.create({
   container: {
     justifyContent: "center",
@@ -6,11 +7,11 @@ export const optStyles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: COLOR.White,
     borderRadius: 20,
     padding: 35,
     alignItems: "center",
-    shadowColor: "#000",
+    shadowColor: COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 2
@@ -22,9 +23,9 @@ export const optStyles = StyleSheet.create({
   modal: {
     margin: 45,
     padding: 1,
-    borderRadius: 20,
-    backgroundColor: "white",
-    shadowColor: "#000",
+    borderRadius: 6,
+    backgroundColor: COLOR.White,
+    shadowColor: COLOR.Black,
     shadowOffset: {
       width: 0,
       height: 2
@@ -32,11 +33,10 @@ export const optStyles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 2,
     elevation: 1,
-    borderRadius: 2,
   },
   option: {
     alignItems: "flex-start",
-    borderBottomColor: "#000",
+    borderBottomColor: COLOR.Black,
     borderBottomWidth: .4,
   },
   text: {

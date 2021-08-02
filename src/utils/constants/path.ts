@@ -1,11 +1,14 @@
 
-import { SignIn, SignUp, SignInWithEmail, Verify, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
+import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount } from "../../screens";
+import Chat from "../../screens/Chat/chat";
+
+
 import TabTwoScreen from "../../screens/TabTwoScreen";
 
 export const Public=[
     {
         id:1,
-        path:"/SignUp",
+        path:"/SignUp/email",
         component:SignUp,
     },
     {
@@ -15,29 +18,45 @@ export const Public=[
     },
     {
         id:3,
-        path:"/SignInWithEmail",
+        path:"/SignIn/email",
         component:SignInWithEmail,
     },
     {
         id:4,
-        path:"/Verify",
-        component:Verify,
+        path:"/Verify/email",
+        component:VerifywithEmail,
     },
     {
         id:5,
+        path:"/Verify/phone",
+        component:VerifywithPhone,
+    },
+    {
+        id:6,
+        path:"/SignUp/phone",
+        component:SignUpwithPhone,
+    },
+    {
+        id:7,
+        path:"/SignIn/phone",
+        component:SignInWithPhone,
+    },
+    {
+        id:8,
         path:"/forget-pass",
         component:ResetPassword,
     },
     {
-        id:5,
+        id:9,
         path:"/success-pass",
         component:SuccessFullReset,
     },
     {
-        id:6,
+        id:10,
         path:"/verify-num",
         component:VerificationNumber,
     },
+        
 ];
 export const protectedroute=[
     {
@@ -51,49 +70,88 @@ export const protectedroute=[
         component:TabTwoScreen,
     },
     {
-        id:12,
+        id:3,
+        path:"/find-car",
+        component:FindCar,
+    },  
+    {
+        id:4,
+        path:"/favourite",
+        component:YourFav,
+    },
+    {
+        id:5,
+        path:"/orderlist",
+        component:Orders,
+    },
+    {
+        id:6,
+        path:"/inbox",
+        component:Inbox,
+    },
+    {
+        id:7,
+        path:"/postad",
+        component:PostAd,
+    },
+    {
+        id:8,
+        path:"/compare",
+        component:SearchCompare,
+    },
+    {
+        id:9,
+        path:"/compareProduct",
+        component:CompareProduct,
+    },
+    {
+        id:10,
+        path:"/chat",
+        component:Chat,
+    },
+    {
+        id:11,
         path:"/post-details",
         component:PostDetails,
     },
     {
-        id:13,
+        id:12,
         path:"/notify",
         component:Notification,
     },
     {
-        id:14,
+        id:13,
         path:"/token-amount",
         component:TokenAmount,
     },
     {
-        id:15,
+        id:14,
         path:"/car-Details",
         component:CarDetails,
     },
     {
-        id:16,
+        id:15,
         path:"/add-Details",
         component:AddDetails,
     },
     {
-        id:17,
+        id:16,
         path:"/request-accept",
         component:RequestAccept,
     },
     {
-        id:18,
+        id:17,
         path:"/pay-token",
         component:PayTokenAmount,
     },
     {
-        id:19,
+        id:18,
         path:"/payment-error",
         component:PaymentError,
     },
     {
-        id: 20,
+        id: 19,
         path: "/confirm-payment",
         component:ConfirmPayment
     }
-   
 ];

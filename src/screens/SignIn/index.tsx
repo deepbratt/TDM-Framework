@@ -43,7 +43,7 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
               />
             );
           })}
-                <Text style={loginStyle.accountButton} > <Text style={loginStyle.account}>{alreadyAccount} </Text><Text onPress={onClick} style={loginStyle.signUp} >{login ? Login : signUp}</Text> </Text>
+                <Text style={loginStyle.accountButton} > <Text style={loginStyle.account}>{alreadyAccount} </Text><Text onPress={onClick} style={loginStyle.signUp} >{login ? signUp:Login }</Text> </Text>
 
         </View>
         {/* {!googleSubmitting && (

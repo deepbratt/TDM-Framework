@@ -18,7 +18,7 @@ export const AppRoute:React.FC<Nav> = ({ navigation}) => {
           return(
             <BackButton>
           <PrivateRoute
-            exact 
+            exact={true} 
             path={route.path}
            key={route.id} 
            component={route.component} 

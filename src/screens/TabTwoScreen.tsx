@@ -7,10 +7,8 @@ import { logout } from "../redux/reducers/authSlice";
 import { useHistory } from "react-router-native";
 import CustomHeader from '../component/customHeader/CustomHeader';
 import { openDrawer } from '../navigation';
-import CustomCarousel from '../component/CustomTabs/carousel';
-import { Items } from "../utils/constants/HomeConstant";
+import { COLOR } from "../Theme/Colors";
 import CustomButton from "../component/CustomButton";
-
 export default function TabTwoScreen() {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -23,8 +21,8 @@ export default function TabTwoScreen() {
   return (
     <View>
       <CustomHeader
-        headerStyle={{ backgroundColor: "#C20000" }}
-        color="#fff" isHome={true} location={true}
+        headerStyle={{ backgroundColor: COLOR.primary }}
+        color={COLOR.White} isHome={true} location={true}
         onPress={() => openDrawer()} />
       <View style={styles.container}>
         <Text style={styles.title}>Screen Two</Text>
@@ -52,6 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color:COLOR.primary
   },
 
 });

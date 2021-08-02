@@ -1,15 +1,18 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const Style = StyleSheet.create({
 container:{
-    backgroundColor: "#ffff",
-    borderRadius: 6,
+    backgroundColor: COLOR.White,
+    // borderRadius: 6,
+    marginTop:hp('3%'),
     height: hp('30%'), 
-    marginLeft: wp('1.2%'),
-    marginRight: wp('1.2%'),
+    // marginLeft: wp('1.2%'),
+    // marginRight: wp('1.2%'),
   },
 images:{
-     width: "100%", 
+    marginTop:hp('1%'),
+     width: "95.6%", 
      height:hp('20.5%'), 
      borderRadius: 6,
      },
@@ -18,13 +21,13 @@ titleText:{
     fontSize: 14,
     marginTop:wp('1%'),
    lineHeight:20,
-   color:"#C20000"
+   color:COLOR.primary
 },
 detail:{
     fontFamily: "IBMPlexSans-Medium",
     fontSize: 14,
    lineHeight:19,
-   color:"#666666"
+   color:COLOR.GraniteGray
 },
 rate:{
     width:wp('5%'), 
@@ -34,7 +37,7 @@ rating:{
     fontFamily: "IBMPlexSans-Light",
     fontSize: 10,
    lineHeight:13,
-   color:"#666666",
+   color:COLOR.GraniteGray,
    marginLeft:wp('1%'), 
 }
 });

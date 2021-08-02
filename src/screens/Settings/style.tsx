@@ -1,6 +1,7 @@
 
 import {StyleSheet} from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from '../../Theme/Colors';
 export const styles = StyleSheet.create({
     container: {
       marginTop: 15,
@@ -42,11 +43,11 @@ export const styles = StyleSheet.create({
     fontFamily: "IBMPlexSans-Light",
     lineHeight:11, 
     fontSize: 10, 
-    color: "#3A82E2"
+    color: COLOR.TuftsBlue
    },
     
   DrawerButton: {
-      borderBottomColor: "rgba(190, 199, 197, 1)",
+      borderBottomColor: COLOR.SilverSand,
       marginHorizontal: 30,
       paddingVertical: 15,
       flexDirection: "row",
@@ -60,7 +61,7 @@ export const styles = StyleSheet.create({
       backgroundColor: "red",
       justifyContent: "center",
       borderRadius: 4,
-      color: "white",
+      color: COLOR.White,
       height: hp('4%'),
       width: wp('8%'), 
     },
