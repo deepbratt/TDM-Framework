@@ -40,6 +40,8 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
                 textStyle={loginStyle.buttonText}
                 text={item.name}
                 Img={item.img}
+                colorIcon={item.color}
+                size={item.size}
               />
             );
           })}

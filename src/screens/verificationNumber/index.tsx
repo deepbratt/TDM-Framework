@@ -13,6 +13,8 @@ import {
   Button,
 } from "../../utils/constants/verificationNumber";
 import { EnteryourNumber } from "../../utils/constants/en";
+import { globalStyle } from "../../Styles";
+import { COLOR } from "../../Theme/Colors";
 function VerificationNumber() {
   const [visible, setVisible] = useState(false);
   const toggleBottomNavigationView = () => {
@@ -38,7 +40,7 @@ function VerificationNumber() {
       <View style={styles.inputFieldView}>
         <TextInput
           placeholder={EnteryourNumber}
-          style={[Active ? styles.activeField : styles.inputField]}
+          style={[Active ? globalStyle.activeField : globalStyle.inputField]}
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
           value={input.number}
@@ -46,14 +48,14 @@ function VerificationNumber() {
           left={
             <TextInput.Icon
               size={18}
-              color={Active ? "#C20000" : "#ACABB1"}
+              color={Active ? COLOR.primary : COLOR.Silver}
               name="email"
             />
           }
         />
       </View>
       <CustomLinearGradient
-        colors={["#F04148", "#C20000"]}
+        colors={["#F04148", COLOR.primary]}
         GradientButtonStyle={styles.gradientButtonStyle}
         text={Button}
         textstyle={styles.gradientButtonText}

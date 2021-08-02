@@ -11,6 +11,7 @@ import {
     BackIcon,
     ThumbIcon
 } from '../../utils/constants/confirmPayment/confirmPayment';
+import { COLOR } from '../../Theme/Colors';
 
 const ConfirmPayment = () => {
     return (
@@ -35,7 +36,7 @@ const ConfirmPayment = () => {
                     textStyle={styles.detailText}
                 />
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={buttonText}
                     textstyle={styles.gradientTextStyle}

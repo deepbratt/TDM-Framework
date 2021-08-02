@@ -77,8 +77,6 @@ import CustomSearch from "../../component/CustomSearch";
         );
     })
 }
-
-
              </HeadingSection>
            
             

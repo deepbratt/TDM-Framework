@@ -8,7 +8,7 @@ export const loginStyle = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     textAlign: 'center',
-    color: '#313131',
+    color: COLOR.DarkCharcoal,
     marginTop: hp('5%')
   },
   mid: {

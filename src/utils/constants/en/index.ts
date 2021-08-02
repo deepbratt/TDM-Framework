@@ -1,3 +1,5 @@
+import { COLOR } from "../../../Theme/Colors";
+
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
 export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
 
@@ -6,26 +8,35 @@ export const data= [
     {id :1,
         path:"/SignIn/phone",
         route:"/SignUp/phone",
-    name:"Continue with Mobile Number",
-img:require("../../../../assets/images/buttonIcon/coolicond.png")
+        name:"Continue with Mobile Number",
+        size:24,
+        img:require("../../../../assets/images/buttonIcon/coolicond.png"),
+        color:COLOR.DarkCharcoal
 },
 {id :2,
     path:"/Verify/phone",
     route:"/SignUp",
     name:"Continue with Google",
-img:require("../../../../assets/images/buttonIcon/Original.png")
+    size:23,
+    img:require("../../../../assets/images/buttonIcon/Original.png"),
+    color:COLOR.GoogleRed
 },
 {id :3,
     path:"/SignUp",
     route:"/SignUp",
     name:"Continue with Facebook",
-img:require("../../../../assets/images/buttonIcon/fb.png")
+    img:"facebook",
+    size:29,
+    color:COLOR.BlueCrayola
 },
 {id :4,
     path:"/SignIn/email",
     route:"/SignUp/email",
     name:"Continue with Email",
-img:require("../../../../assets/images/buttonIcon/email.png")
+    size:25,
+    img:require("../../../../assets/images/buttonIcon/email.png"),
+    color:COLOR.DarkCharcoal
+
 },
 
 

@@ -11,6 +11,7 @@ import {
     ForwardIcon
 } from '../../utils/constants/successFullReset/successFullReset';
 import { useHistory } from 'react-router';
+import { COLOR } from '../../Theme/Colors';
 
 const SuccessFullReset = () => {
     const history=useHistory();
@@ -31,7 +32,7 @@ const SuccessFullReset = () => {
                 </CustomText>
             <CustomLinearGradient
                 linkTo={"/SignIn"}
-                colors={['#F04148', '#C20000']}
+                colors={['#F04148', COLOR.primary]}
                 GradientButtonStyle={styles.gradientStyle}
                 text={loginButtonText}
                 textstyle={styles.gradientTextStyle}

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
     backgroundColor:'red'
   },
   bottomNavigationView: {
-    backgroundColor: '#fff',
+    backgroundColor: COLOR.White,
     width: wp('100%'),
     height: 263,
     borderTopLeftRadius: 24,

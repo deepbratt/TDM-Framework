@@ -18,6 +18,7 @@ import {
     ToText,
     ButtonText,
 } from '../../utils/constants/search';
+import { COLOR } from '../../Theme/Colors';
 
 const CustomFilter = () => {
     const [sortBy, setSortBy] = useState('');
@@ -123,7 +124,7 @@ const CustomFilter = () => {
                 />
             </View>
             <CustomLinearGradient
-                colors={['#F04148', '#C20000']}
+                colors={['#F04148', COLOR.primary]}
                 GradientButtonStyle={styles.gradientButtonStyle}
                 text={ButtonText}
                 textstyle={styles.gradientButtonText}

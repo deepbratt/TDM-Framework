@@ -48,6 +48,8 @@ export type ButtonProps={
   onPress?: ()=>void,
   linkTo?: string,
   text?: string,
+  colorIcon?:string
+  size?:number
 };
 export type InputProp={
   placeholder?:string;
