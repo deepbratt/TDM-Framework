@@ -1,14 +1,16 @@
-import React, { FC } from 'react'
-import { View, Text, Image} from 'react-native'
+import React, { FC,useState } from 'react'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator} from 'react-native'
 import { loginStyle } from "./styles"
 import { data, SignInHead, text1, text2, alreadyAccount, signUp, Login, SignUpHead, ForgotPassword } from '../../utils/constants/en/index';
 import SimpleLayout from "../../layout/simpleLayout";
 import { SignInProp } from '../../../types';
 import CustomButton from '../../component/CustomButton';
+import { handleGoogleSignin } from '../../utils/api';
 
 
 const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
-
+  // const [googleSubmitting, setGoogleSubmitting] = useState(false);
+  
 
   return (
     <SimpleLayout header={login ? SignInHead : SignUpHead} text1={text1} text2={text2}>
@@ -44,6 +46,18 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
                 <Text style={loginStyle.accountButton} > <Text style={loginStyle.account}>{alreadyAccount} </Text><Text onPress={onClick} style={loginStyle.signUp} >{login ? signUp:Login }</Text> </Text>
 
         </View>
+        {/* {!googleSubmitting && (
+          <TouchableOpacity onPress={handleGoogleSignin}>
+            <Text>
+              google login 
+            </Text>
+          </TouchableOpacity>
+        )}
+        {googleSubmitting && (
+          <TouchableOpacity disabled={true}>
+            <ActivityIndicator size="large" color="red"/>
+          </TouchableOpacity>
+        )} */}
   
       </View>
 
@@ -52,7 +66,7 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
         <View >
           <CustomButton text={ForgotPassword}
             buttonStyle={loginStyle.forgetButton}
-            textStyle={loginStyle.forgetText} linkTo="/forgot" />
+            textStyle={loginStyle.forgetText} linkTo="/forget-pass" />
         </View>
       }
     </SimpleLayout>

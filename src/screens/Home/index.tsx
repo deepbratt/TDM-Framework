@@ -1,5 +1,5 @@
 
-import React, { FC, useState } from "react";
+import React, { FC, useState} from "react";
 import {
   View,
   Text,
@@ -18,6 +18,8 @@ import Hashback from "../../section/HashBack";
 import { ScrollView } from "react-native-gesture-handler";
 import TabTwoScreen from "../TabTwoScreen";
 import { Dimensions } from "react-native";
+import BottomSheetComponent from "../../component/BottomSheet";
+import CustomFilter from "../../component/search";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
@@ -26,8 +28,11 @@ const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
 
 const HomePage = () => {
-
-
+  const [visible, setVisible] = useState(false);
+  const toggleBottomNavigationView = () => {
+    setVisible(!visible);
+  };
+  
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
     buttonView, button, buttonText, paragraph,surfaceMargin,VerticalMargin, 
   divSize } = HomeStyle;
@@ -47,7 +52,9 @@ console.log(i,"some")
       <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>
         <CustomSearch    value={searchQuery}
-            onChange={onChangeSearch}/>
+                onChange={onChangeSearch}
+                onPress={toggleBottomNavigationView}
+              />
         </View>
         <HeadingSection Heading={Browse}>
         <View style={categoryBox}>
@@ -109,6 +116,13 @@ console.log(i,"some")
       }  
      </HeadingSection>
       </View>
+      <BottomSheetComponent
+          visible={visible}
+          onBackButtonPress={toggleBottomNavigationView}
+          onBackdropPress={toggleBottomNavigationView}
+        >
+          <CustomFilter/>
+        </BottomSheetComponent>
     </View>
   )
 }
