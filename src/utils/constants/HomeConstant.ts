@@ -3,7 +3,7 @@ import { COLOR } from "../../Theme/Colors";
 export const Home = "Home";
 export const Notification = "Notification";
 export const Chat = "Chat";
-export const Cart = "Cart";
+export const Favorites = "Favorites";
 
 
 export const Browse="Browse Categories";
