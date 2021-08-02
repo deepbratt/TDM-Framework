@@ -1,4 +1,5 @@
 import {  Dimensions, StyleSheet} from "react-native";
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
 
     container: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
       alignItems:"center",
       justifyContent:"space-between",
       height:  Dimensions.get('window').height - Dimensions.get('window').height / 1.14,
-      shadowColor: '#000',
+      shadowColor: COLOR.Black,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 2,  
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
     alignItems:"center",
       justifyContent:"center",
       top:15,
-      width: 80,
+      // width: 80,
       height: 60,
     },
     item3:{
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
     fontSize:18,
       textAlign: "center",
      lineHeight:25,
-      color: "rgba(49, 49, 49, 1)",
+      color: COLOR.DarkCharcoal,
       fontWeight: "600",
       justifyContent: "center",
       alignItems: "center",

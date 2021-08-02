@@ -1,6 +1,7 @@
 
 import React,{FC} from 'react'
 import {View,Image,Text} from "react-native"
+import { COLOR } from '../../Theme/Colors';
 import { Lorem ,elit} from '../../utils/constants/en';
 import { styles } from "./style"
 const Splash = () => {
@@ -10,7 +11,7 @@ const Splash = () => {
        image
       } = styles;
     return (
-        <View style={{flex:1,  backgroundColor: "#ffffff",
+        <View style={{flex:1,  backgroundColor: COLOR.White,
     }}>
        <View style={container}>
  <Image  

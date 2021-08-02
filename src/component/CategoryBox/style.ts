@@ -4,8 +4,8 @@ const WIDTH = Dimensions.get("window").width;
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 export const boxStyle = StyleSheet.create({
 container:{
-    width: wp('28.7%'),
-    height: hp('13.5%'),
+    // width: wp('28.7%'),
+    // height: hp('13.5%'),
     borderRadius: 6,
     justifyContent:"space-evenly",
     alignItems:"center"

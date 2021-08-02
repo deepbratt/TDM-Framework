@@ -9,10 +9,10 @@ import { Link } from "react-router-native";
 import { categoryProp } from "../../../types";
 import { boxStyle } from "./style";
 
- const Category:FC<categoryProp> = ({viewStyle,ProductName,ProductImage,linkTo}) => {
+ const Category:FC<categoryProp> = ({viewStyle,ProductName,ProductImage,linkTo,divStyle}) => {
      const {container,title,image}=boxStyle;
     return (
-       <Link component={TouchableOpacity} underlayColor="none" to={linkTo} style={[container,{backgroundColor:viewStyle}]}>
+       <Link component={TouchableOpacity} underlayColor="none" to={linkTo} style={[container,divStyle,{backgroundColor:viewStyle,}]}>
            <Image
             fadeDuration={0}
             style={image}

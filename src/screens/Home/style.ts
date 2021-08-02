@@ -1,24 +1,8 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 
 export const HomeStyle = StyleSheet.create({
-container:{
-    flex:1,
-    backgroundColor:"#ffff",
-},
-inputView:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center",
-    marginTop:hp('3%'),
-    marginBottom:hp('1%')
-},
-searchStyle:{
-    height:hp('8%'), 
-    width:wp('91%'), 
-    backgroundColor: "rgba(33, 33, 33, 0.08)",
-    borderRadius: 6,
-},
 title:{
     textAlign:"left",
     fontFamily: "IBMPlexSans-Medium",
@@ -40,11 +24,11 @@ sellView:{
     flexDirection:"row",
     paddingVertical:  hp('2%'), //15
     marginVertical: hp('2%'),
-    backgroundColor:"#E4F6FF"
+    backgroundColor:COLOR.Bubbles
 },
 head:{
     fontFamily: "IBMPlexSans-Medium",
-    color:"#C20000",
+    color:COLOR.primary,
     fontSize:18,
     lineHeight:23,
     textAlign:"right"
@@ -53,13 +37,17 @@ bannerimage:{
    width:wp('63%'), //240
    height:hp('21%'), //150
 },
+divSize:{
+    width: wp('28.7%'),
+    height: hp('13.5%'),
+},
 buttonView:{
     alignItems:"flex-end",
     justifyContent:"center",
     marginVertical:hp('4.2%'), 
 },
 button:{
-    backgroundColor: "#F6AE39",
+    backgroundColor: COLOR.YellowOrange,
     borderRadius: 6,
     width:wp('28%'),
     height:hp('5%'), 
@@ -68,55 +56,27 @@ button:{
 },
 buttonText:{
     fontFamily: "IBMPlexSans-Medium",
-    color:"#ffff",
+    color:COLOR.White,
     fontSize:14,
     lineHeight:18,
 },
 paragraph:{
     fontFamily: "IBMPlexSans-Light",
-    color:"#666666",
+    color:COLOR.GraniteGray,
     fontSize:14,
     textAlign:"right"
 },
-flexRow:{
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical:8 },
+surfaceMargin:{
+          marginVertical: 7,
+          height:300, 
+          justifyContent: "center",
+         alignItems: "center",
+         width:"100%",
+         backgroundColor:"white" 
+        },
 VerticalMargin:{
-    marginVertical:hp('2%'), 
+     marginVertical:hp('2%'), 
 },
-activeStyle:{
-    marginLeft:wp('2%'),  
-    width:wp('49%'), 
-    height:hp('6.1%'), 
-    backgroundColor:"#C20000",
-    borderRadius:22,
-    justifyContent:"center"
-},
-inActiveStyle:{
-    marginLeft: wp('2%'),  
-    width:wp('49%'),  
-    height:hp('6.1%'), 
-    backgroundColor:"rgba(33, 33, 33, 0.08)",
-    borderRadius:22,
-    justifyContent:"center"
-},
-activeText:{
-    fontFamily: "IBMPlexSans-Regular",
-    fontSize: 14,
-    letterSpacing: .6,
-    lineHeight: 20,
-    textAlign: "center",
-    color: "#ffff",
-  },
-  inActiveText:{
-    fontFamily: "IBMPlexSans-Regular",
-    fontSize: 14,
-    letterSpacing: .6,
-    lineHeight: 20,
-    textAlign: "center",
-    color: "#313131",
-  }
 
 
 
