@@ -1,7 +1,41 @@
 import { COLOR } from "../../../Theme/Colors";
-
+import * as Facebook from 'expo-facebook';
+import { Alert } from "react-native";
+import axios from "axios";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
 export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
+
+
+
+
+const loginWithfb=async()=>{
+    // console.log("fb"),
+    try {
+      await Facebook.initializeAsync({
+        appId: '598466794467584',
+      });
+      const {
+        type,
+        token,
+      } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile'],
+      });
+      console.log("fbmsg",type,token);
+      if (type === 'success') {
+        const response =  await axios.post('http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1/Users/facebook-auth')
+        Alert.alert('Logged in!');
+        console.log("response",response)
+      } else if (type === 'cancel') {
+            return console.log("fbcancel",type);
+        }
+      
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  }
+
+
+
 
 export const data= [
     
@@ -11,7 +45,8 @@ export const data= [
         name:"Continue with Mobile Number",
         size:24,
         img:require("../../../../assets/images/buttonIcon/coolicond.png"),
-        color:COLOR.DarkCharcoal
+        color:COLOR.DarkCharcoal,
+        press:''
 },
 {id :2,
     path:"/Verify/phone",
@@ -19,15 +54,17 @@ export const data= [
     name:"Continue with Google",
     size:23,
     img:require("../../../../assets/images/buttonIcon/Original.png"),
-    color:COLOR.GoogleRed
+    color:COLOR.GoogleRed,
+    press:''
 },
 {id :3,
-    path:"/SignUp",
-    route:"/SignUp",
+    // path:"/SignUp",
+    // route:"/SignUp",
     name:"Continue with Facebook",
     img:"facebook",
     size:29,
-    color:COLOR.BlueCrayola
+    color:COLOR.BlueCrayola,
+    press:loginWithfb
 },
 {id :4,
     path:"/SignIn/email",
@@ -35,7 +72,8 @@ export const data= [
     name:"Continue with Email",
     size:25,
     img:require("../../../../assets/images/buttonIcon/email.png"),
-    color:COLOR.DarkCharcoal
+    color:COLOR.DarkCharcoal,
+    press:""
 
 },
 
