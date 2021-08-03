@@ -16,7 +16,7 @@ import { COLOR } from '../../Theme/Colors';
 const SuccessFullReset = () => {
     const history=useHistory();
     const handleClick=()=>{
-        history.push('/SignInWithEmail')
+        history.goBack();
     }
     return (
         <View style={styles.mainContainer}>

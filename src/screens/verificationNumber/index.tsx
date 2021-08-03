@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { View, Image, SafeAreaView, ScrollView } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, Image} from "react-native";
 import { styles } from "./styles";
 import { TextInput } from "react-native-paper";
-import CustomInput from "../../component/CustomInput/CustomInput";
 import CustomText from "../../component/customText";
 import CustomLinearGradient from "../../component/customLinearGradient";
-import BottomSheetComponent from "../../component/BottomSheet";
 import CustomOTP from "../../component/customOTP";
 import {
   heading,
@@ -15,16 +13,14 @@ import {
 import { EnteryourNumber } from "../../utils/constants/en";
 import { globalStyle } from "../../Styles";
 import { COLOR } from "../../Theme/Colors";
+import RBSheet from "react-native-raw-bottom-sheet";
 function VerificationNumber() {
-  const [visible, setVisible] = useState(false);
-  const toggleBottomNavigationView = () => {
-    setVisible(!visible);
-  };
   const { img } = styles;
   const [Active, setActive] = useState(false);
   const [input, setinput] = useState({
     number: "",
   });
+  const refRBSheet = useRef<RBSheet>(null);
  
   return (
     <View>
@@ -59,15 +55,20 @@ function VerificationNumber() {
         GradientButtonStyle={styles.gradientButtonStyle}
         text={Button}
         textstyle={styles.gradientButtonText}
-        onPress={toggleBottomNavigationView}
+        onPress={() => refRBSheet.current?.open()}
       />
-      <BottomSheetComponent
-        visible={visible}
-        onBackButtonPress={toggleBottomNavigationView}
-        onBackdropPress={toggleBottomNavigationView}
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: globalStyle.wrapperStyle,
+          container:globalStyle.containerStyle,
+          draggableIcon: globalStyle.draggableIcon
+        }}
       >
         <CustomOTP></CustomOTP>
-      </BottomSheetComponent>
+      </RBSheet>
     </View>
   );
 }

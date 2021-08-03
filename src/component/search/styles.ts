@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from "../../Theme/Colors";
+
 export const styles = StyleSheet.create({
+
     bottomNavigationView: {
         backgroundColor: COLOR.White,
         width: wp('100%'),
-        height: hp('65%'),
+        height: hp('67%'),
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
         justifyContent: 'flex-start',
@@ -18,7 +20,6 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-SemiBold',
         color: COLOR.DarkCharcoal,
         textAlign: 'center',
-        marginTop: hp('2%')
     },
     subHeading: {
         width: wp('95%'),
@@ -76,7 +77,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         paddingTop: hp('1.5%'),
         paddingBottom: hp('1.5%'),
-        marginVertical:hp('3%')
+        marginVertical:hp('4%')
     },
     gradientButtonText: {
         fontSize: 16,

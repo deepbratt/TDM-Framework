@@ -148,20 +148,6 @@ export type AvatarProps = {
   source: any;
   imageProps: any;
 };
-
-export type BottomSheetProps = {
-  visible: boolean;
-  onBackButtonPress: () => void;
-  onBackdropPress: () => void;
-  children: any;
-};
-
-export type SearchBottomSheetProps = {
-  visible: boolean;
-  onBackButtonPress: () => void;
-  onBackdropPress: () => void;
-};
-
 export type TextProps = {
   text: string;
   textStyle: any;
@@ -197,9 +183,6 @@ export type ForgotButtonProps = {
   textStyle4: any;
   textContainerStyle: any;
   linkTo: any;
-};
-export type NewBottomSheetProps = {
-  ref: any;
 };
 export type HeadSectionProp={
   children?:React.ReactNode;

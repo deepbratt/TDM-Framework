@@ -123,8 +123,6 @@ const AddDetails = () => {
         );
     }, []);
     return (
-        // <SafeAreaView style={styles.container}>
-        //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <CustomHeader
                 headerStyle={{ backgroundColor: COLOR.Cultured }}
@@ -286,8 +284,6 @@ const AddDetails = () => {
                     itemWidth={wp('70%')}
                     renderItems={FeaturerenderItem}
                 />
-            {/* </ScrollView>
-        </SafeAreaView> */}
             </View>
     )
 }
