@@ -1,28 +1,24 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {FC, useEffect, useState } from 'react'
 import { View,Text } from 'react-native';
 import { ActivityIndicator } from 'react-native';
-import CustomButton from '../../../component/CustomButton';
 import CustomHeader from '../../../component/customHeader/CustomHeader';
 import ProductBox from '../../../component/ProductBox';
 import { openDrawer } from '../../../navigation';
 import HeadingSection from '../../../section/CustomHeading/Heading';
 import { COLOR } from '../../../Theme/Colors';
 import { allCars } from '../../../utils/api';
-import { Products } from '../../../utils/constants/CarsText';
 import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
 import { addStyles } from './styles';
 
- const YourAds = () => {
-const {loadingView,} = addStyles;
-    const [Productss, setProducts] = useState([]);
+ const YourAds:FC = () => {
+    const {loadingView} = addStyles;
+    const [Productss, setProducts] = useState<any>([]);
     const [Loader, setLoader] = useState(false);
      useEffect(() => {
     fetchData()
 }, [])
 
     const fetchData = async () => {
-        console.log("fethcinggzx")
         setLoader(true)
         await allCars().then((result) => {
             console.log(result)
@@ -36,7 +32,7 @@ const {loadingView,} = addStyles;
             }
         } 
         ).catch(error=>{
-            if (error.status === 401) return alert("user and password incorrect"); 
+            if (error.status === 401) return alert(error); 
            }) 
     }
     return (
@@ -52,18 +48,17 @@ const {loadingView,} = addStyles;
  ) :
     <HeadingSection >
  {
-     Productss.map((i,index)=>{
+     Productss.map((i:any)=>{
         return(
           <ProductBox 
-          key={index} 
+          key={i._id} 
           Price={i.price} 
           Title={i.model}
           KMeter={i.milage}
-        //    year={i.year}
+           year={i.year}
         //    date={i.date}
            Location={i.location.address}
-           src={i.image.[0]}
-        //    onPress={()=>addFav(i)}
+           src={i.image[0]}
           />
         );
       
