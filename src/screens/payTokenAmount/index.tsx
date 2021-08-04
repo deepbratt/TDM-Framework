@@ -54,14 +54,14 @@ const PayTokenAmount = () => {
                     </View>
                 </View>
                 <CustomLinearGradient
-                    colors={['#F04148', COLOR.primary]}
+                    colors={[COLOR.CarminePink, COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={payNowButton}
                     textstyle={styles.gradientTextStyle}
                     onPress={() => console.log("Works!")}
                 />
                 <CustomLinearGradient
-                    colors={['#F04148', COLOR.primary]}
+                    colors={[COLOR.CarminePink, COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle1}
                     text={payChatButton}
                     textstyle={styles.gradientTextStyle}

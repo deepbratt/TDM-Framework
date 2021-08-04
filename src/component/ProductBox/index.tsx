@@ -41,7 +41,7 @@ import { boxStyle } from './style'
                  text={status}
                     />
                ): status === "Pending" ? ( <LinearGradient
-                  colors={["#F04148", COLOR.primary]}
+                  colors={[COLOR.CarminePink, COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   onPress={onPress}

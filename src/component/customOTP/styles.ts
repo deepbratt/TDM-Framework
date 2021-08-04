@@ -72,7 +72,6 @@ export const styles = StyleSheet.create({
     fontSize:18,
 },
 viewStyle:{
-  // backgroundColor:"red",
   marginBottom:hp('2%')
 }
 })

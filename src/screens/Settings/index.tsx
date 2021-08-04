@@ -80,7 +80,7 @@ const Settings = (props:any) => {
                 onPress={item.onPress}
               >
                 <LinearGradient
-                  colors={["#F04148", COLOR.primary]}
+                  colors={[COLOR.CarminePink, COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   style={LinearImage}
@@ -110,7 +110,7 @@ const Settings = (props:any) => {
                 onPress={handle}
               >
                 <LinearGradient
-                  colors={["#F04148", COLOR.primary]}
+                  colors={[COLOR.CarminePink, COLOR.primary]}
                   start={{ x: 0, y: 0.4 }}
                   end={{ x: 0, y: 1 }}
                   style={LinearImage}

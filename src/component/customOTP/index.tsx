@@ -50,7 +50,7 @@ history.push("/success-pass");
       
       <CustomLinearGradient
         linkTo={"/success-pass"}
-        colors={['#F04148', COLOR.primary]}
+        colors={[COLOR.CarminePink,COLOR.primary]}
         GradientButtonStyle={styles.gradientStyle}
         text="Next"
         textstyle={styles.gradientTextStyle}
