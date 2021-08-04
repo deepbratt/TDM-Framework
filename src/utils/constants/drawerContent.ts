@@ -37,7 +37,7 @@ export const drawerItem=[
         img:require('../../../assets/images/drawer/adds.png'),
         color:"rgba(194, 0, 0, 1)",
         width:"60%",height:"60%",
-        link:"/postad",
+        link:"/your-ads",
         onPress:()=>console.log("Drawer press")
     },
     {

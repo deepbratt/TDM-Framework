@@ -19,6 +19,7 @@ export const sellList = [
   { id: 3,onPress:"/", viewStyle: COLOR.MiddleGreen, ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
 
 ];
+export const YourAdsTitle="Your Ads";
 export const Choosewhat="Choose what do you want to sell";
 export const SellYou="Sell You Car from Home";
 export const Par1="Lorem Ipsum is simply dummy text of the printing and typesetting industry. ";
