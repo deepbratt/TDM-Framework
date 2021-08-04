@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     mainContainer: {
         width: wp('90%'),
         height: hp('55%'),
-        backgroundColor: '#F3F4F9',
+        backgroundColor: COLOR.WhiteOlive,
         alignSelf: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-start'
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
         fontFamily:'IBMPlexSans-Bold',
         textAlign: 'center',
         marginTop: hp('1%'),
-        color: '#212121'
+        color: COLOR.RaisinBlack
     },
     buttonIcon: {
         height: hp('3%'),
@@ -56,12 +57,12 @@ export const styles = StyleSheet.create({
     amountText: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#C20000'
+        color: COLOR.primary
     },
     locationText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#979797',
+        color: COLOR.secondary,
         paddingTop: hp('0.5%'),
         marginRight:wp('2.5%')
     },
@@ -80,6 +81,6 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
-        color: '#FFFFFF'
+        color: COLOR.White,
     },
 })

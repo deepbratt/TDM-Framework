@@ -7,14 +7,15 @@ import CustomAvatar from '../../component/Avatar';
 import CustomText from '../../component/customText';
 import { styles } from './styles';
 import { ListData,OvalIcon,PersonIcon } from '../../utils/constants/notification/notification';
+import { COLOR } from '../../Theme/Colors';
 
 const Notification = () => {
     return (
         <View style={styles.main}>
             <CustomHeader
-                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                headerStyle={{ backgroundColor:COLOR.Cultured}}
                 title="Notification"
-                color="#313131"
+                color={COLOR.DarkCharcoal}
                 isHome={true}
                 onPress={() => openDrawer()}
             />

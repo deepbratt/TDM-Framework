@@ -113,5 +113,17 @@ forgetButton:{
         lineHeight: 20,
         textAlign: "center",
         color: COLOR.DarkCharcoal,
+      },
+      wrapperStyle:{
+        backgroundColor: "rgba(0,0,0,.5)",
+        height:"100%"
+    },
+    containerStyle:{
+         height:"auto",
+    borderTopLeftRadius:24,
+    borderTopRightRadius:24
+    },
+    draggableIcon: {
+        backgroundColor: "transparent"
       }
 });

@@ -5,6 +5,7 @@ import {CodeField,Cursor,useBlurOnFulfill,useClearByFocusCell,} from 'react-nati
 import CustomText from '../customText';
 import CustomLinearGradient from '../customLinearGradient';
 import { Link, useHistory } from 'react-router-native';
+import { COLOR } from '../../Theme/Colors';
 
 
 const CELL_COUNT = 4;
@@ -49,7 +50,7 @@ history.push("/success-pass");
       
       <CustomLinearGradient
         linkTo={"/success-pass"}
-        colors={['#F04148', '#C20000']}
+        colors={['#F04148', COLOR.primary]}
         GradientButtonStyle={styles.gradientStyle}
         text="Next"
         textstyle={styles.gradientTextStyle}

@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     main: {
         width: wp('100%'),
         height:hp('100%'),
-        backgroundColor: '#E5E5E5'
+        backgroundColor:  COLOR.background,
     },
     flatListStyle:{
         marginTop: hp('1%')
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     container: {
         width: wp('95%'),
         alignSelf: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor:COLOR.White,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         borderRadius: 6,
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
     applicationNameText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#C20000'
+        color: COLOR.primary
     },
     dotImageStyle: {
         alignSelf: 'center',
@@ -49,12 +50,12 @@ export const styles = StyleSheet.create({
     timeText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#313131'
+        color: COLOR.DarkCharcoal
     },
     userNameText: {
         fontSize: 15,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         marginTop:hp('0.5%')
     }
 })

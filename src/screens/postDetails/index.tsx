@@ -32,6 +32,7 @@ import {
     DescriptionLabel,
     AddPostButton,
 } from '../../utils/constants/postDetails/postDetails';
+import { COLOR } from '../../Theme/Colors';
 
 const PostDetails = () => {
     const [description, setDescription] = useState("");
@@ -76,9 +77,9 @@ const PostDetails = () => {
         //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <CustomHeader
-                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Post Your Ad Here"
-                color="#313131"
+                color={COLOR.DarkCharcoal}
             />
             <Example/>
                 <View style={styles.borderView}></View>
@@ -259,7 +260,7 @@ const PostDetails = () => {
                     />
                 </View>
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle1}
                     text={AddPostButton}
                     textstyle={styles.gradientTextStyle}

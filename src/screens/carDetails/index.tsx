@@ -43,6 +43,7 @@ import {
     featureProductFuelType,
 } from '../../utils/constants/carDetails/carDetails';
 import ResetPassword from '../resetPassword';
+import { COLOR } from '../../Theme/Colors';
 
 interface ItemProps {
     src: any;
@@ -128,13 +129,11 @@ const CarDetails = () => {
         );
     }, []);
     return (
-        // <SafeAreaView style={styles.container}>
-        //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <CustomHeader
-                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Car Details"
-                color="#313131"
+                color={COLOR.DarkCharcoal}
             />
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
@@ -317,8 +316,6 @@ const CarDetails = () => {
                     itemWidth={wp('70%')}
                     renderItems={FeaturerenderItem}
                 />
-            {/* </ScrollView>
-        </SafeAreaView> */}
             </View>
     )
 }

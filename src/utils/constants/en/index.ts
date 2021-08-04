@@ -1,3 +1,6 @@
+import * as Facebook from 'expo-facebook';
+import { Alert } from "react-native";
+import axios from "axios";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
 export const elit = "adipiscing elit. Aenean commodo ligula eget dolor. ";
 import { COLOR } from "../../../Theme/Colors";
@@ -41,13 +44,48 @@ const signInAsync = async () => {
 
 
 
+
+
+
+const loginWithfb=async()=>{
+    // console.log("fb"),
+    try {
+      await Facebook.initializeAsync({
+        appId: '598466794467584',
+      });
+      const {
+        type,
+        token,
+      } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile'],
+      });
+      console.log("fbmsg",type,token);
+      if (type === 'success') {
+        const response =  await axios.post('http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1/Users/facebook-auth')
+        Alert.alert('Logged in!');
+        console.log("response",response)
+      } else if (type === 'cancel') {
+            return console.log("fbcancel",type);
+        }
+      
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  }
+
+
+
+
 export const data= [
     
     {id :1,
         path:"/SignIn/phone",
         route:"/SignUp/phone",
-    name:"Continue with Mobile Number",
-img:require("../../../../assets/images/buttonIcon/coolicond.png")
+        name:"Continue with Mobile Number",
+        size:24,
+        img:require("../../../../assets/images/buttonIcon/coolicond.png"),
+        color:COLOR.DarkCharcoal,
+        press:''
 },
 {id :2,
     // path:"/SignUp",
@@ -56,18 +94,26 @@ img:require("../../../../assets/images/buttonIcon/coolicond.png")
     img: require("../../../../assets/images/buttonIcon/Original.png"),
     size: 23,
     press:signInAsync,
+    color:COLOR.GoogleRed,
 },
 {id :3,
-    path:"/SignUp",
-    route:"/SignUp",
+    // path:"/SignUp",
+    // route:"/SignUp",
     name:"Continue with Facebook",
-img:require("../../../../assets/images/buttonIcon/fb.png")
+    img:"facebook",
+    size:29,
+    color:COLOR.BlueCrayola,
+    press:loginWithfb
 },
 {id :4,
     path:"/SignIn/email",
     route:"/SignUp/email",
     name:"Continue with Email",
-    img: require("../../../../assets/images/buttonIcon/email.png"),
+    size:25,
+    img:require("../../../../assets/images/buttonIcon/email.png"),
+    color:COLOR.DarkCharcoal,
+    press:""
+
 },
 
 

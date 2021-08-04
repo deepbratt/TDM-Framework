@@ -1,5 +1,12 @@
-import React, { FC, useState, useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import React, { FC, useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+  Alert,
+} from "react-native";
 import { loginStyle } from "./styles";
 import {
   data,
@@ -15,7 +22,12 @@ import {
 import SimpleLayout from "../../layout/simpleLayout";
 import { SignInProp } from "../../../types";
 import CustomButton from "../../component/CustomButton";
+import { handleGoogleSignin } from "../../utils/api";
+import * as Facebook from "expo-facebook";
+
 const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
+  // const [googleSubmitting, setGoogleSubmitting] = useState(false);
+
   return (
     <SimpleLayout
       header={login ? SignInHead : SignUpHead}
@@ -54,6 +66,8 @@ const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {
                 textStyle={loginStyle.buttonText}
                 text={item.name}
                 Img={item.img}
+                colorIcon={item.color}
+                size={item.size}
                 onPress={item.press}
               />
             );
