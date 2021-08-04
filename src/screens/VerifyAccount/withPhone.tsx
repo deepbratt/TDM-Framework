@@ -6,7 +6,7 @@ import {
   EnterdigitCode,
   Submit,
 } from "../../utils/constants/en/index";
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Fieldnames, verificationNumberValidation } from "../../utils/form/validationForm";
 import { userVerifyPhone } from "../../utils/api";
 import Toast from 'react-native-simple-toast';
@@ -14,7 +14,7 @@ import { fieldForm } from "../../../types";
 import GeneralView from "../../section/LoginView/GeneralLoginView";
 
 
-const VerifywithPhone= () => {
+const VerifywithPhone= (alreadyAccount) => {
   const [input, setinput] = useState({
     phone: "",
     code: "",
@@ -41,7 +41,16 @@ const VerifywithPhone= () => {
               type:"numeric"
               },
     ]
-
+    const Field=[
+      {
+          id:1,
+          IconName:"lock",
+          value:Fieldnames.code,
+          placeholder:EnterdigitCode,
+          disabledField:Verify,
+          type:"numeric"
+          },
+]
 
   const handleVerify= async(values: fieldForm)=>{
     const{phone}=values;
@@ -85,7 +94,7 @@ const VerifywithPhone= () => {
           headerName={VerifyYourAccount}
           Imgsrc={require('../../../assets/sign.json')}
           initialValues={input} 
-          fields={NumberField}
+          fields={alreadyAccount ? NumberField: Field}
           onSubmit={(values: fieldForm)=>handleVerify(values)}
           validationSchema={verificationNumberValidation}
           ButtonText={Loader ? "Loading...": Verify ? Submit : Login } 
@@ -93,4 +102,8 @@ const VerifywithPhone= () => {
   
   );
 }
-export default VerifywithPhone;
+const mapStateToProps = (state: { rootReducer: { auth: { alreadyAccount: any; }; }; }) => ({
+  alreadyAccount: state.rootReducer.auth.alreadyAccount,
+});
+
+export default connect(mapStateToProps)(VerifywithPhone);

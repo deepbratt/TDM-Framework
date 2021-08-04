@@ -4,7 +4,7 @@ import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
   root: {
     width: wp("100%"),
-    height:hp('30%'),
+    height:'auto',
     backgroundColor: COLOR.White,
     borderTopLeftRadius: 24,
     borderTopRightRadius:24,
@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: hp('2%'),
+    marginBottom:hp('2%'),
     alignSelf:'center'
   },
   gradientTextStyle: {
@@ -63,5 +64,15 @@ export const styles = StyleSheet.create({
     tintColor: COLOR.White,
     alignSelf: 'center',
     marginLeft: wp('2%'),
-  }
+  },
+  titleStyle:{
+    color:COLOR.DarkCharcoal,
+    textAlign:"center",
+    fontFamily: "IBMPlexSans-Medium",
+    fontSize:18,
+},
+viewStyle:{
+  // backgroundColor:"red",
+  marginBottom:hp('2%')
+}
 })

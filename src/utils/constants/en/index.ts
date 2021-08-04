@@ -22,7 +22,7 @@ const loginWithfb=async()=>{
       });
       console.log("fbmsg",type,token);
       if (type === 'success') {
-        const response =  await axios.post('http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1/Users/facebook-auth')
+        const response =  await axios.post('http://api.tezdealz.com/v1/Users/facebook-auth')
         Alert.alert('Logged in!');
         console.log("response",response)
       } else if (type === 'cancel') {
@@ -100,6 +100,14 @@ export const VerifyYourAccount="Verify Your Account";
 export const EnteryourNumber="Enter your Number";
 export const EnterdigitCode="Enter 6 digit Code";
 export const ForgotPassword="Forgot password?";
+
+export const AlreadySigned="Already signed";
+export const ClickokTo="You are Already signed, Click ok to verify";
+export const Ok="Ok";
+export const Signupsuccessfully="Signup successfully";
+export const YouAre="You are successfully Signup, Click ok to verify";
+
+
 
 export const enterFirst="Enter First Name";
 export const enterLast="Enter Last Name";

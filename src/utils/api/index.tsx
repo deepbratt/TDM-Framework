@@ -1,7 +1,7 @@
 import axios from "axios";
 import { fieldForm } from "../../../types";
 
-const BASE_URL = "http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1";
+const BASE_URL = "http://api.tezdealz.com/v1";
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {

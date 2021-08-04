@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   SignUpHead,
   EnterPassword,
@@ -7,13 +7,21 @@ import {
   enterFirst,
   enterLast,
   ConfirmPassword,
+  Ok,
+  ClickokTo,
+  AlreadySigned,
 } from "../../utils/constants/en/index";
-import { Link, useHistory } from "react-router-native";
+import { useHistory } from "react-router-native";
 import { Fieldnames, signUpValidationSchema } from "../../utils/form/validationForm";
 import { userSignUpApi } from "../../utils/api";
 import { setUserSession } from "../../utils/general.utils";
 import { fieldForm } from "../../../types";
 import GeneralView from "../../section/LoginView/GeneralLoginView";
+import { accountSignUp } from "../../redux/reducers/authSlice";
+import { useDispatch } from "react-redux";
+import { globalStyle } from "../../Styles";
+import RBSheet from "react-native-raw-bottom-sheet";
+import CustomAlert from "../../component/customOTP/customAlert";
 
 function SignUp() {
   const [Loader, setLoader] = useState(false);
@@ -76,6 +84,8 @@ const handleShow=()=>{
   }))
 }
 const history=useHistory();
+const dispatch=useDispatch();
+const refRBSheet = useRef<RBSheet>(null);
 const handleForm= async(values:fieldForm)=>{
     const {
         firstName,
@@ -95,18 +105,17 @@ const handleForm= async(values:fieldForm)=>{
         console.log( requestBody,"hhrequestBody");
   await userSignUpApi (requestBody)
       .then(response  => {    
-        if (response.status === 200) {
+        if (response.status === "success") {
           return (
             setLoader(false),
-            alert("Signup successfully"),
-            history.push('/verify'),
+            dispatch(accountSignUp()),
+            refRBSheet.current?.open(),
             setUserSession(response.data.token, response.data.user)
           )
       } else if (response.status === "fail"){
         return(
           setLoader(false),
-          alert("You are Already signed, Click ok to verify"),
-          history.push('/verify'),
+          refRBSheet.current?.open(),
           setUserSession(response.data.token, response.data.user)
         )}
     },
@@ -121,7 +130,7 @@ const handleForm= async(values:fieldForm)=>{
    };
 
   return (
-
+<>
     <GeneralView 
     view={"signup"}
     headerName={SignUpHead}
@@ -133,6 +142,25 @@ const handleForm= async(values:fieldForm)=>{
     handleShow={handleShow}
     ButtonText={Loader ? "Loading....": signUp}
   />
+   <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        animationType="slide"
+        customStyles={{
+          wrapper: globalStyle.wrapperStyle,
+          container:globalStyle.containerStyle,
+          draggableIcon: globalStyle.draggableIcon
+        }}
+      >
+        <CustomAlert 
+        Title={AlreadySigned}
+        Msg={ClickokTo}
+        onPress={()=>history.push('/Verify/email')}
+        buttonTitle={Ok}
+        />
+      </RBSheet>
+</>
   );
 }
 export default SignUp;
