@@ -3,6 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Specification from '../../screens/carDetails/specification';
 import Features from '../../screens/carDetails/features';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from '../../Theme/Colors';
 
 const Tab = createMaterialTopTabNavigator();
 interface Props{
@@ -21,11 +22,11 @@ interface Props{
     <Tab.Navigator
    initialRouteName="one"
    tabBarOptions={{
-    style: { backgroundColor: '#ffff' , height:hp('6%'),
+    style: { backgroundColor: COLOR.DarkCharcoal , height:hp('6%'),
     width:wp('100%')},
-    indicatorStyle:{ backgroundColor: "#62ADF4",textAlign:"center"},
-    activeTintColor:"#313131",
-    inactiveTintColor:"#313131",
+    indicatorStyle:{ backgroundColor: COLOR.BlueJeans,textAlign:"center"},
+    activeTintColor:COLOR.DarkCharcoal,
+    inactiveTintColor:COLOR.DarkCharcoal,
     labelStyle:{
     fontFamily: "IBMPlexSans-Medium",
     fontSize: 12,

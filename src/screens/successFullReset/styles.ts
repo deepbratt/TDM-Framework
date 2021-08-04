@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native"
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     mainContainer: {
         flex:1,
-        backgroundColor: '#E5E5E5',
+        backgroundColor:  COLOR.background,
         justifyContent: 'flex-start'
     },
     img: {
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'IBMPlexSans-SemiBold',
         textAlign: "center",
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         marginTop:hp('30%'),
     },
     text1: {
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
         textAlign: "center",
-        color: '#666666',
+        color: COLOR.GraniteGray,
         marginTop:hp('2%'),
     },
     gradientStyle: {
@@ -44,12 +45,12 @@ export const styles = StyleSheet.create({
         fontFamily:'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
-        color: '#FFFFFF'
-    },
+        color: COLOR.White,  
+      },
     gradientImageStyle: {
         height: 9,
         width: 16,
-        tintColor: '#FFFFFF',
+        tintColor: COLOR.White,
         alignSelf: 'center',
         marginLeft: 10
     }

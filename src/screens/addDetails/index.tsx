@@ -37,6 +37,7 @@ import {
     featureProductDistance,
     featureProductFuelType,
 } from '../../utils/constants/addDetails/addDetails';
+import { COLOR } from '../../Theme/Colors';
 
 interface ItemProps {
     src: any;
@@ -122,13 +123,11 @@ const AddDetails = () => {
         );
     }, []);
     return (
-        // <SafeAreaView style={styles.container}>
-        //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <CustomHeader
-                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Add Details"
-                color="#313131"
+                color={COLOR.DarkCharcoal}
             />
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
@@ -285,8 +284,6 @@ const AddDetails = () => {
                     itemWidth={wp('70%')}
                     renderItems={FeaturerenderItem}
                 />
-            {/* </ScrollView>
-        </SafeAreaView> */}
             </View>
     )
 }

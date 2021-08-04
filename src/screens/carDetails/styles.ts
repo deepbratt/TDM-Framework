@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native"
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
     scrollView: {
         height: hp('100%'),
         width: wp('100%'),
-        backgroundColor: '#E5E5E5',
+        backgroundColor:  COLOR.background,
     },
     imageRandomItemView: {
         backgroundColor: "floralwhite",
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
     amountText: {
         fontSize: 18,
         fontFamily: 'IBMPlexSans-Medium',
-        color: "#C20000"
+        color: COLOR.primary
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -63,7 +64,7 @@ export const styles = StyleSheet.create({
     brandNameText: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Bold',
-        color: '#212121'
+        color: COLOR.RaisinBlack
     },
     brandStatusView: {
         width: wp('10%'),
@@ -73,7 +74,7 @@ export const styles = StyleSheet.create({
     brandStatusText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#FFFFFF',
+        color: COLOR.White,
         textAlign: 'center'
     },
     productInfoMainView: {
@@ -94,13 +95,13 @@ export const styles = StyleSheet.create({
     infoText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#979797',
+        color: COLOR.secondary,
         paddingTop: hp('0.5%')
     },
     infoHeading: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: "#313131",
+        color: COLOR.DarkCharcoal,
         paddingTop: hp('0.5%')
     },
     descriptionHeading: {
@@ -108,7 +109,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         marginTop: hp('3%')
     },
     descriptionText: {
@@ -116,7 +117,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#979797',
+        color: COLOR.secondary,
         textAlign: 'justify'
     },
     dealMainContainer: {
@@ -126,7 +127,7 @@ export const styles = StyleSheet.create({
     },
     dealView: {
         width: '90%',
-        backgroundColor: '#ffffff',
+        backgroundColor: COLOR.White,
         marginTop: wp('5%'),
         alignSelf: 'center',
         marginBottom: wp('5%'),
@@ -137,7 +138,7 @@ export const styles = StyleSheet.create({
     dealText: {
         fontSize: 16,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         textAlign: 'center',
     },
     comparisonButtonMainView: {
@@ -155,7 +156,7 @@ export const styles = StyleSheet.create({
     comparisonButtonText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#FFFFFF',
+        color: COLOR.White,
         alignSelf: 'center',
         paddingLeft: wp('2%')
     },
@@ -176,14 +177,14 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         paddingTop: hp('1%')
     },
     userNameText: {
         alignSelf: 'center',
         fontSize: 16,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         marginLeft: wp('2%')
     },
     mapStyle: {
@@ -209,7 +210,7 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
         textTransform: 'none',
-        color: '#313131'
+        color: COLOR.DarkCharcoal
     },
     TopBarIndicatorStyle: {
         height: 3,
@@ -226,7 +227,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 18,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#212121',
+        color: COLOR.RaisinBlack,
         marginTop: hp('2%')
     },
     CarouselFeaturemainView: {
@@ -244,14 +245,14 @@ export const styles = StyleSheet.create({
         width:wp('1.5%'),
         alignSelf: 'center',
         resizeMode: 'cover',
-        tintColor:'#FFFFFF'
+        tintColor:COLOR.White
     },
     CarouselFeatureshareTouchableStyle: {
         height: hp('3%'),
         width: wp('6%'),
         alignSelf: 'center',
         marginLeft: wp('2%'),
-        backgroundColor: '#C20000',
+        backgroundColor: COLOR.primary,
         borderRadius: 50,
         justifyContent: 'center',
     },
@@ -271,7 +272,7 @@ export const styles = StyleSheet.create({
     CarouselFeaturetitleText: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Bold',
-        color: '#212121'
+        color: COLOR.RaisinBlack
     },
     CarouselFeaturestatusSubView: {
         width: wp('10%'),
@@ -281,7 +282,7 @@ export const styles = StyleSheet.create({
     CarouselFeaturestatusText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#FFFFFF',
+        color: COLOR.White,
         textAlign: 'center'
     },
     CarouselFeaturepriceContainer: {
@@ -296,12 +297,12 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginLeft: wp('2%'),
         alignSelf: 'center',
-        tintColor: '#C20000'
+        tintColor: COLOR.primary
     },
     CarouselFeaturepriceText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#C20000',
+        color: COLOR.primary,
         paddingLeft: wp('2%')
     },
     CarouselFeaturebuttonIcon: {
@@ -320,13 +321,13 @@ export const styles = StyleSheet.create({
     CarouselFeatureinfoText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#979797',
+        color: COLOR.secondary,
         paddingTop: hp('0.5%')
     },
     CarouselFeatureinfoHeading: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: "#313131",
+        color: COLOR.DarkCharcoal,
         paddingTop: hp('0.5%')
     },
     CarouselFeaturefeatureHeadingText: {
@@ -334,6 +335,6 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 18,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#212121'
+        color: COLOR.RaisinBlack
     },
 })
