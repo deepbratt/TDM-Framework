@@ -11,6 +11,7 @@ import {
     ErrorMessage,
     tryAgainButton
 } from '../../utils/constants/paymentError/paymentError';
+import { COLOR } from '../../Theme/Colors';
 
 const PaymentError = () => {
     return (
@@ -31,7 +32,7 @@ const PaymentError = () => {
                     textStyle={styles.detailText}
                 />
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={tryAgainButton}
                     textstyle={styles.gradientTextStyle}

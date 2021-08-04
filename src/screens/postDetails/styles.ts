@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -7,7 +8,7 @@ export const styles = StyleSheet.create({
     scrollView: {
         height: hp('100%'),
         width: wp('100%'),
-        backgroundColor: '#E5E5E5',
+        backgroundColor:  COLOR.background,
     },
     borderView: {
         width: wp('100%'),
@@ -28,15 +29,15 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         borderRadius: 50,
-        backgroundColor: '#F9F9F9'
+        backgroundColor: COLOR.GhostWhite
     },
     buttonIcon: {
         alignSelf: 'center',
         resizeMode: 'contain',
-        tintColor: '#313131',
+        tintColor: COLOR.DarkCharcoal,
     },
     itemContainerDropDrown: {
-        backgroundColor: '#FFFFFF'
+        backgroundColor: COLOR.White
     },
     MainViewDropDown: {
         width: wp('80%'),
@@ -44,12 +45,12 @@ export const styles = StyleSheet.create({
     itemTextDropDown: {
         fontSize: 14, 
         fontFamily: 'IBMPlexSans-Light',
-        color: '#979797'
+        color: COLOR.secondary
     },
     textInputDropDown: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#313131'
+        color: COLOR.DarkCharcoal
     },
     gradientStyle1: {
         width:wp('80%'),
@@ -67,7 +68,7 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
-        color: '#FFFFFF'
+        color: COLOR.White
     },
     descriptionInput: {
         width: wp('80%'),

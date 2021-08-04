@@ -15,6 +15,7 @@ import {
     payNowButton, 
     payPriceText
 } from '../../utils/constants/payTokenAmount/PayTokenAmount';
+import { COLOR } from '../../Theme/Colors';
 
 const PayTokenAmount = () => {
     return (
@@ -53,14 +54,14 @@ const PayTokenAmount = () => {
                     </View>
                 </View>
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={payNowButton}
                     textstyle={styles.gradientTextStyle}
                     onPress={() => console.log("Works!")}
                 />
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle1}
                     text={payChatButton}
                     textstyle={styles.gradientTextStyle}

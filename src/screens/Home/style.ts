@@ -77,7 +77,4 @@ surfaceMargin:{
 VerticalMargin:{
      marginVertical:hp('2%'), 
 },
-
-
-
 });

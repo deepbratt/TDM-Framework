@@ -37,7 +37,10 @@ interface ColorTheme {
   Bubbles:string
   TuftsBlue:string
   SilverBlue:string
-  AntiFlashWhite: string
+  AntiFlashWhite:string
+  BlackOlive:string
+  WhiteOlive:string
+  GoogleRed:string
 }
 export const COLOR: ColorTheme = {
   primary: '#C20000',
@@ -75,5 +78,8 @@ export const COLOR: ColorTheme = {
   YellowOrange:'#F6AE39',
   Bubbles:'#E4F6FF',
   AntiFlashWhite:'#EDF1FA',
-  TuftsBlue: '#3A82E2',
+  TuftsBlue:'#3A82E2',
+  BlackOlive:"#3A3A3A",
+  WhiteOlive:"#F3F4F9",
+  GoogleRed:"#DB4437"
 };

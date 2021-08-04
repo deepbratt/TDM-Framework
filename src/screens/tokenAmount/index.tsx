@@ -13,6 +13,7 @@ import {
     AmountVector,
     PlaceIcon
 } from '../../utils/constants/tokenAmount/tokenAmount';
+import { COLOR } from '../../Theme/Colors';
 
 const TokenAmount = () => {
     return (
@@ -51,7 +52,7 @@ const TokenAmount = () => {
                     />
                 </View>
                 <CustomLinearGradient
-                    colors={['#F04148', '#C20000']}
+                    colors={['#F04148', COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={payTokenConfirmButton}
                     textstyle={styles.gradientTextStyle}

@@ -3,7 +3,7 @@ import { TouchableOpacity,Text,Image,View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { ButtonProps } from '../../../types';
 import { Link } from 'react-router-native'
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
  const CustomButton:FC<ButtonProps> = ({
     buttonStyle,
     textStyle,
@@ -12,18 +12,22 @@ import { Link } from 'react-router-native'
     leftImg,
     Img,
     text,
+    colorIcon,
+    size
     })=>{
     return (
-        <Link onPress={onPress} to={linkTo} underlayColor="none" component={TouchableOpacity}   style={
-            buttonStyle
-          }>
+        <Link onPress={onPress} to={linkTo} underlayColor="none" component={TouchableOpacity}   
+        style={buttonStyle}>
       
       {leftImg &&
-      <View style={{width:70}}>
-     <Image fadeDuration={0} style={{marginHorizontal:20,width:"41%",height:"100%"}} source={Img}  />
+      <View 
+      style={{width:wp('19%'),backgroundColor:"red",justifyContent:"center",alignItems:"center"}}
+      >
+     <TextInput.Icon size={size} 
+     style={{height:"100%"}}
+      name={Img} color={colorIcon} />
      </View>    }
         <Text style={textStyle}>{text}</Text>
-   
       </Link>
     )
 }

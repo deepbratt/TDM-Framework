@@ -4,7 +4,8 @@ import { Link } from "react-router-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { tabStyles } from "./style";
-import { Cart, Chat, Home, Notification } from "../../utils/constants/HomeConstant";
+import {  Chat, Favorites, Home, Notification } from "../../utils/constants/HomeConstant";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from "../../Theme/Colors";
  const CustomBottomTab = () => {
   const { mainContainer, flex, textIcon, plusButton, button } = tabStyles;
@@ -18,13 +19,13 @@ import { COLOR } from "../../Theme/Colors";
     >
       <Link to="/" component={TouchableOpacity} underlayColor="none">
         <View style={flex}>
-          <MaterialIcons name="home" size={24} color={COLOR.White} />
+          <MaterialIcons name="home" size={24} color={COLOR.White} style={{ height: hp('4%')}} />
           <Text style={textIcon}>{Home}</Text>
         </View>
       </Link>
       <Link to="/one" component={TouchableOpacity} underlayColor="none">
-        <View style={[flex, { marginLeft: 20 }]}>
-          <MaterialIcons name="notifications" size={24} color={COLOR.White} />
+        <View style={[flex, { marginLeft: 20}]}>
+          <MaterialIcons name="notifications" size={24} color={COLOR.White} style={{ height: hp('4%')}} />
           <Text style={textIcon}>{Notification}</Text>
         </View>
       </Link>
@@ -51,9 +52,9 @@ import { COLOR } from "../../Theme/Colors";
         >
           <MaterialIcons
             name="chat-bubble"
-            size={23}
+            size={22}
             color={COLOR.White}
-            style={{ marginHorizontal: 6, width: 30, height: 30 }}
+            style={{ marginHorizontal: wp('3%'),  height: hp('4%')}}
             containerStyle={{ marginHorizontal: 10 }}
           />
 
@@ -69,13 +70,13 @@ import { COLOR } from "../../Theme/Colors";
           }}
         >
           <MaterialIcons
-            name="shopping-cart"
+            name="star"
             size={24}
             color={COLOR.White}
-            style={{ marginHorizontal: 36, width: 30, height: 30 }}
-            containerStyle={{ marginHorizontal: 16 }}
+            style={{ marginHorizontal:wp('8%'), height: hp('4%')}}
+            containerStyle={{ marginHorizontal: 16 ,}}
           />
-          <Text style={textIcon}>{Cart}</Text>
+          <Text style={textIcon}>{Favorites}</Text>
         </View>
       </Link>
     </LinearGradient>

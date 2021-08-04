@@ -36,6 +36,7 @@ import {
     featureProductDistance,
     featureProductFuelType,
 } from '../../utils/constants/RequestAccept/RequestAccept';
+import { COLOR } from '../../Theme/Colors';
 
 interface ItemProps {
     src: any;
@@ -125,9 +126,9 @@ const RequestAccept = () => {
         //     <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
             <CustomHeader
-                headerStyle={{ backgroundColor: "#F8F8F8" }}
+                headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Request Details"
-                color="#313131"
+                color={COLOR.DarkCharcoal}
             />
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
@@ -246,7 +247,7 @@ const RequestAccept = () => {
                             <TouchableOpacity>
                                 <CustomText
                                     text="Cancel"
-                                    textStyle={{fontSize:16,fontWeight:'500',color:'#313131'}}
+                                    textStyle={{fontSize:16,fontWeight:'500',color:COLOR.DarkCharcoal}}
                                 />
                             </TouchableOpacity>
                         </View>

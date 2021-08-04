@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     mainContainer: {
         width: wp('90%'),
         height: hp('55%'),
-        backgroundColor: '#F3F4F9',
+        backgroundColor: COLOR.WhiteOlive,
         alignSelf: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-start'
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
         marginTop: hp('3.2%'),
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Bold',
-        color: '#212121',
+        color:COLOR.RaisinBlack,
         textAlign:'center',
     },
     image: {
@@ -52,7 +53,7 @@ export const styles = StyleSheet.create({
         resizeMode:'contain',
         marginRight:wp('2%'),
         alignSelf: 'center',
-        tintColor:'#FFFFFF',
+        tintColor:COLOR.White,
     },
     detailView: {
         width: wp('80%'),
@@ -64,12 +65,12 @@ export const styles = StyleSheet.create({
     amountText: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#FFFFFF',
+        color: COLOR.White,
     },
     locationText: {
         fontSize: 12,
         fontFamily: 'IBMPlexSans-Medium',
-        color: '#FFFFFF',
+        color: COLOR.White,
         paddingTop: hp('0.5%'),
         marginRight:wp('2.5%')
     },
@@ -98,6 +99,6 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-Medium',
         textAlign: 'center',
         alignSelf: 'center',
-        color: '#FFFFFF'
+        color: COLOR.White
     },
 })

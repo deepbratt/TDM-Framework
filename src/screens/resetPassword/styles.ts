@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../Theme/Colors";
 export const styles = StyleSheet.create({
     mainContainer: {
         flex:1,
-        backgroundColor: '#E5E5E5',
+        backgroundColor:  COLOR.background,
         justifyContent: 'flex-start',
     },
     img: {
@@ -23,7 +24,7 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'IBMPlexSans-SemiBold',
         textAlign: "center",
-        color: '#313131'
+        color: COLOR.DarkCharcoal
     },
     textContainer1: {
         width: wp('65%'),
@@ -34,17 +35,17 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
         textAlign: "center",
-        color: '#666666'
+        color: COLOR.GraniteGray
     },
     buttonContainerStyle: {
         width: wp('80%'),
         marginTop: hp('3%'),
-        backgroundColor: '#FFFFFF',
-        borderColor: '#1A75FF',
+        backgroundColor: COLOR.White,
+        borderColor: COLOR.BlueCrayola,
         alignSelf: 'center',
         borderWidth: 1,
         borderRadius: 11,
-        shadowColor: '#CCCCCC',
+        shadowColor: COLOR.ChineseSilver,
         shadowRadius: 14,
         shadowOffset: {
             width: 0,
@@ -56,12 +57,12 @@ export const styles = StyleSheet.create({
     buttonContainerStyle1: {
         width: wp('80%'),
         marginTop: hp('3%'),
-        backgroundColor: '#FFFFFF',
-        borderColor: '#FFF',
+        backgroundColor: COLOR.White,
+        borderColor:COLOR.White,
         alignSelf: 'center',
         borderWidth: 1,
         borderRadius: 11,
-        shadowColor: '#CCCCCC',
+        shadowColor: COLOR.ChineseSilver,
         shadowRadius: 14,
         shadowOffset: {
             width: 0,
@@ -75,7 +76,7 @@ export const styles = StyleSheet.create({
         width: wp('10%'),
         alignSelf: 'center',
         marginTop: hp('2%'),
-        tintColor: '#1A75FF',
+        tintColor: COLOR.BlueCrayola,
         resizeMode: 'cover'
     },
     imageStyle1: {
@@ -83,14 +84,14 @@ export const styles = StyleSheet.create({
         width: wp('10%'),
         alignSelf: 'center',
         marginTop: hp('2%'),
-        tintColor: '#C20000',
+        tintColor: COLOR.primary,
         resizeMode: 'cover'
     },
     textStyleOne: {
         fontFamily: 'IBMPlexSans-SemiBold',
         fontSize: 18,
         textAlign: 'center',
-        color: '#313131',
+        color: COLOR.DarkCharcoal,
         paddingTop: hp('2%')
     },
     textStyleTwo: {
@@ -99,7 +100,7 @@ export const styles = StyleSheet.create({
         paddingTop: hp('2%'),
         paddingBottom:hp('2%'),
         textAlign: 'center',
-        color: '#313131'
+        color: COLOR.DarkCharcoal
     },
     textStyleThree: {
         fontSize: 14,
@@ -108,6 +109,6 @@ export const styles = StyleSheet.create({
         paddingBottom:hp('2%'),
         paddingLeft:wp('1%'),
         textAlign: 'center',
-        color: '#666666'
+        color: COLOR.GraniteGray
     },
 })

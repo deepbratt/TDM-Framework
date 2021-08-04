@@ -110,7 +110,7 @@ const GeneralView:FC<genralProps>=({
             text={ForgotPassword}
             buttonStyle={globalStyle.forgetButton}
             textStyle={globalStyle.forgetText}
-            linkTo="/forget"
+            linkTo="/verify-num"
           ></CustomButton>
         </View>
   }

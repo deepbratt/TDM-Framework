@@ -18,6 +18,7 @@ import CustomButton from "../../component/CustomButton/index";
 import {login } from "../../redux/reducers/authSlice";
 import SimpleLayout from "../../layout/simpleLayout";
 import LottieView from 'lottie-react-native';
+import { COLOR } from "../../Theme/Colors";
 const Verify: FC = () => {
   const [input, setinput] = useState({
     phone: "",
@@ -75,7 +76,7 @@ const Verify: FC = () => {
             leftIcon={
               <TextInput.Icon
                 size={18}
-                color={Active === ID ? "#C20000" : "#ACABB1"}
+                color={Active === ID ? COLOR.primary : COLOR.Silver}
                 name={input.IconName}
               />
             }

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomText from '../../component/customText';
+import { COLOR } from '../../Theme/Colors';
 import {
     engineHead,
     specificationDriveDetails,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     scrollView: {
-        backgroundColor: '#E5E5E5',
+        backgroundColor:  COLOR.background,
     },
     mainContaier: {
         width: wp('95%'),
@@ -149,14 +150,14 @@ const styles = StyleSheet.create({
         fontSize: 14,
         width:88,
         fontFamily: 'IBMPlexSans-Light',
-        color: '#212121',
+        color: COLOR.RaisinBlack,
         marginTop: hp('2%'),
     },
     subText: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Light',
         width:193,
-        color: '#979797',
+        color: COLOR.secondary,
         paddingTop: hp('2%'),
         alignSelf:'center',
     },

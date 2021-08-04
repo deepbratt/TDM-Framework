@@ -1,10 +1,9 @@
 
-import React, { FC, useState} from "react";
+import React, { FC, useRef, useState} from "react";
 import {
   View,
   Text,
   Image,
-  TouchableOpacity,
 } from "react-native";
 import { Surface } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
@@ -16,32 +15,25 @@ import CustomButton from "../../component/CustomButton";
 import MyTabs from "../../navigation/TopBar";
 import Hashback from "../../section/HashBack";
 import { ScrollView } from "react-native-gesture-handler";
-import TabTwoScreen from "../TabTwoScreen";
-import { Dimensions } from "react-native";
-import BottomSheetComponent from "../../component/BottomSheet";
 import CustomFilter from "../../component/search";
 import { globalStyle } from "../../Styles";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
 import CustomSearch from "../../component/CustomSearch";
-const HEIGHT = Dimensions.get("window").height;
-const WIDTH = Dimensions.get("window").width;
+import RBSheet from "react-native-raw-bottom-sheet";
 
 const HomePage = () => {
-  const [visible, setVisible] = useState(false);
-  const toggleBottomNavigationView = () => {
-    setVisible(!visible);
-  };
-  
   const { categoryBox, title, bannerimage, carsView, head,sellView, 
     buttonView, button, buttonText, paragraph,surfaceMargin,VerticalMargin, 
   divSize } = HomeStyle;
+  const refRBSheet = useRef<RBSheet>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [ActiveIndex, setActiveIndex] = useState(0);
-const toggleButton=(i: React.SetStateAction<number>)=>{
+
+   const toggleButton=(i: React.SetStateAction<number>)=>{
   setActiveIndex(i);
-console.log(i,"some")
-}
+      console.log(i,"some")
+     }
   const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
   return (
     <View>
@@ -51,9 +43,10 @@ console.log(i,"some")
         onPress={() => openDrawer()} />
       <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>
-        <CustomSearch    value={searchQuery}
-                onChange={onChangeSearch}
-                onPress={toggleBottomNavigationView}
+        <CustomSearch   
+         value={searchQuery}
+         onChange={onChangeSearch}
+         onPress={() => refRBSheet.current?.open()}
               />
         </View>
         <HeadingSection Heading={Browse}>
@@ -116,13 +109,18 @@ console.log(i,"some")
       }  
      </HeadingSection>
       </View>
-      <BottomSheetComponent
-          visible={visible}
-          onBackButtonPress={toggleBottomNavigationView}
-          onBackdropPress={toggleBottomNavigationView}
-        >
+         <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: globalStyle.wrapperStyle,
+          container:  globalStyle.containerStyle,
+          draggableIcon:globalStyle.draggableIcon
+        }}
+      >
           <CustomFilter/>
-        </BottomSheetComponent>
+      </RBSheet>
     </View>
   )
 }
