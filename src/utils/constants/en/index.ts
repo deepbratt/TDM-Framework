@@ -1,9 +1,48 @@
-import { COLOR } from "../../../Theme/Colors";
 import * as Facebook from 'expo-facebook';
 import { Alert } from "react-native";
 import axios from "axios";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
-export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
+export const elit = "adipiscing elit. Aenean commodo ligula eget dolor. ";
+import { COLOR } from "../../../Theme/Colors";
+import * as GoogleSignIn from "expo-google-sign-in";
+import { protectedroute } from "../path";
+import { login } from "../../../redux/reducers/authSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-native";
+
+// const initAsyc = async () => {
+//     await GoogleSignIn.initAsync({
+//       clientId: "",
+//     });
+//     syncUserWithAsync();
+//   };
+
+//   const syncUserWithAsync = async () => {
+//       const user = await GoogleSignIn.signInSilentlyAsync();
+// };
+  
+const signInAsync = async () => {
+    // const dispatch = useDispatch();
+    // let history = useHistory();
+    try {
+        const res=await GoogleSignIn.askForPlayServicesAsync();
+        const { type, user } = await GoogleSignIn.signInAsync();
+        if (type === "success") {
+            // return (
+                console.log('response', res)
+            //     dispatch(login()),
+            //     history.push('/')
+            // )
+        }
+        else {
+            alert("Failed to SignIn")
+        }
+    } catch ({ message }) {
+        alert("Login:Error" + message);
+    }
+};
+
+
 
 
 
@@ -49,13 +88,13 @@ export const data= [
         press:''
 },
 {id :2,
-    path:"/Verify/phone",
-    route:"/SignUp",
+    // path:"/SignUp",
+    // route:"/SignUp",
     name:"Continue with Google",
-    size:23,
-    img:require("../../../../assets/images/buttonIcon/Original.png"),
+    img: require("../../../../assets/images/buttonIcon/Original.png"),
+    size: 23,
+    press:signInAsync,
     color:COLOR.GoogleRed,
-    press:''
 },
 {id :3,
     // path:"/SignUp",
