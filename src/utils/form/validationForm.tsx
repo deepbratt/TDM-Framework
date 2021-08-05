@@ -37,11 +37,11 @@ export const loginNumberValidation = yup.object().shape({
 export const signUpValidationSchema = yup.object().shape({
   firstName: yup
       .string()
-      .matches(/\w*[A-Z]\w*/,  "First name must have a capital letter")
+      .matches(/(.*[a-z]){3}/,  "At least 3 characters")
       .required('First name is required'),
       lastName: yup
       .string()
-      .matches(/\w*[A-Z]\w*/,  "Last name must have a capital letter")
+       .matches(/(.*[a-z]){3}/,  "At least 3 characters")
       .required('Last name is required'),
     email: yup
       .string()
@@ -59,11 +59,11 @@ export const signUpValidationSchema = yup.object().shape({
   export const signUpNumberValidation = yup.object().shape({
     firstName: yup
         .string()
-        .matches(/\w*[A-Z]\w*/,  "First name must have a capital letter")
+        .matches(/(.*[a-z]){3}/,  "At least 3 characters")
         .required('First name is required'),
         lastName: yup
         .string()
-        .matches(/\w*[A-Z]\w*/,  "Last name must have a capital letter")
+         .matches(/(.*[a-z]){3}/,  "At least 3 characters")
         .required('Last name is required'),
       phone: yup
         .string()
