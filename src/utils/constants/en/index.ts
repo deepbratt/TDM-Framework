@@ -1,6 +1,5 @@
-import * as Facebook from 'expo-facebook';
-import { Alert } from "react-native";
-import axios from "axios";
+
+import { loginWithfb } from "../../api/fbLogin";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
 export const elit = "adipiscing elit. Aenean commodo ligula eget dolor. ";
 import { COLOR } from "../../../Theme/Colors";
@@ -41,38 +40,6 @@ const signInAsync = async () => {
         alert("Login:Error" + message);
     }
 };
-
-
-
-
-
-
-const loginWithfb=async()=>{
-    // console.log("fb"),
-    try {
-      await Facebook.initializeAsync({
-        appId: '598466794467584',
-      });
-      const {
-        type,
-        token,
-      } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      });
-      console.log("fbmsg",type,token);
-      if (type === 'success') {
-        const response =  await axios.post('http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1/Users/facebook-auth')
-        Alert.alert('Logged in!');
-        console.log("response",response)
-      } else if (type === 'cancel') {
-            return console.log("fbcancel",type);
-        }
-      
-    } catch ({ message }) {
-      alert(`Facebook Login Error: ${message}`);
-    }
-  }
-
 
 
 
@@ -139,6 +106,14 @@ export const VerifyYourAccount="Verify Your Account";
 export const EnteryourNumber="Enter your Number";
 export const EnterdigitCode="Enter 6 digit Code";
 export const ForgotPassword="Forgot password?";
+
+export const AlreadySigned="Already signed";
+export const ClickokTo="You are Already signed, Click ok to verify";
+export const Ok="Ok";
+export const Signupsuccessfully="Signup successfully";
+export const YouAre="You are successfully Signup, Click ok to verify";
+
+
 
 export const enterFirst="Enter First Name";
 export const enterLast="Enter Last Name";

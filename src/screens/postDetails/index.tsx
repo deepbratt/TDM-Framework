@@ -260,7 +260,7 @@ const PostDetails = () => {
                     />
                 </View>
                 <CustomLinearGradient
-                    colors={['#F04148', COLOR.primary]}
+                    colors={[COLOR.CarminePink,COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle1}
                     text={AddPostButton}
                     textstyle={styles.gradientTextStyle}

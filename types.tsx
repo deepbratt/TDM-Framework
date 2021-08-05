@@ -217,3 +217,9 @@ export type InboxBoxProps={
   Incoming?:boolean;
   Audio?:string;
 }
+export type AlertProps={
+  Title?:string;
+  buttonTitle?:string;
+   Msg?:string;
+  onPress:()=>void;
+}

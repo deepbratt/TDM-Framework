@@ -21,7 +21,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
       
       {leftImg &&
       <View 
-      style={{width:wp('19%'),backgroundColor:"red",justifyContent:"center",alignItems:"center"}}
+      style={{width:wp('19%'),justifyContent:"center",alignItems:"center"}}
       >
      <TextInput.Icon size={size} 
      style={{height:"100%"}}

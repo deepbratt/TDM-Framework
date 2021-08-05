@@ -58,7 +58,6 @@ export const styles = StyleSheet.create({
       maxWidth: wp('20%'),
       marginHorizontal: 5,
       marginRight: 20,
-      backgroundColor: "red",
       justifyContent: "center",
       borderRadius: 4,
       color: COLOR.White,

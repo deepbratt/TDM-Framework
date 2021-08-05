@@ -32,7 +32,7 @@ const PaymentError = () => {
                     textStyle={styles.detailText}
                 />
                 <CustomLinearGradient
-                    colors={['#F04148', COLOR.primary]}
+                    colors={[COLOR.CarminePink, COLOR.primary]}
                     GradientButtonStyle={styles.gradientStyle}
                     text={tryAgainButton}
                     textstyle={styles.gradientTextStyle}

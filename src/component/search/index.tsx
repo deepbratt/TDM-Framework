@@ -124,7 +124,7 @@ const CustomFilter = () => {
                 />
             </View>
             <CustomLinearGradient
-                colors={['#F04148', COLOR.primary]}
+                colors={[COLOR.CarminePink, COLOR.primary]}
                 GradientButtonStyle={styles.gradientButtonStyle}
                 text={ButtonText}
                 textstyle={styles.gradientButtonText}
