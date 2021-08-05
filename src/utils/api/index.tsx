@@ -1,7 +1,7 @@
 import axios from "axios";
 import { fieldForm } from "../../../types";
 
-const BASE_URL = "http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1";
+const BASE_URL = "http://api.tezdealz.com/v1";
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -11,12 +11,16 @@ const axiosInstance = axios.create({
   },
 });
 const user='/Users';
+const ads='/ads';
+
 const USERS = {
     LOGIN: `${user}/login`,
     Email_SIGNUP: `${user}/signup-email`,
     Phone_SIGNUP: `${user}/signup-phone`,
     Email_VRIFY: `${user}/send-verification-email`,
     Phone_VRIFY: `${user}/send-verification-phone`,
+    all_Cars: `${ads}/cars/`,
+
   };
 
   
@@ -68,3 +72,15 @@ const USERS = {
                   return error.response.data;
                 }
               };
+              export const allCars = async()=>{
+                try {
+                let result = await axios.get(`${BASE_URL}${USERS.all_Cars}`);
+                return result.data;
+                }
+                catch(error){
+                    if (error.response === undefined) {
+                        return { status: 403, message: "Something Went Wrong!" };
+                      }
+                      return error.response.data;
+                    }
+                  };

@@ -197,7 +197,7 @@ export type PBoxProps={
   KMeter:string;
   onPress?:()=>void;
   onSelect?:()=>void;
-  status:string;
+  status?:string;
   date?:string;
   Location?:string;
   color?:string
