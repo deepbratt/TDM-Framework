@@ -40,7 +40,8 @@ interface ColorTheme {
   AntiFlashWhite:string
   BlackOlive:string
   WhiteOlive:string
-  GoogleRed:string
+  GoogleRed: string
+  RedOlive:string
 }
 export const COLOR: ColorTheme = {
   primary: '#C20000',
@@ -81,5 +82,6 @@ export const COLOR: ColorTheme = {
   TuftsBlue:'#3A82E2',
   BlackOlive:"#3A3A3A",
   WhiteOlive:"#F3F4F9",
-  GoogleRed:"#DB4437"
+  GoogleRed: "#DB4437",
+  RedOlive:"#EE4B4B"
 };

@@ -159,14 +159,14 @@ export type MapViewProps = {
 };
 
 export type LinearGradientProps = {
-  colors: any;
-  GradientButtonStyle: any;
-  textstyle: any;
-  text: string;
-  imgStyle: any;
-  source: any;
-  onPress: () => void;
-  linkTo: any;
+  colors?: any;
+  GradientButtonStyle?: any;
+  textstyle?: any;
+  text?: string;
+  imgStyle?: any;
+  source?: any;
+  onPress?: () => void;
+  linkTo?: any;
 };
 
 export type ForgotButtonProps = {
@@ -217,3 +217,29 @@ export type InboxBoxProps={
   Incoming?:boolean;
   Audio?:string;
 }
+
+export type CustomModalProps = {
+  isVisible: any;
+  onBackButtonPress: () => void;
+  children: any;
+}
+
+export type CustomMessageProps = {
+  isBack?: any;
+  onPress?: () => void;
+  src?: any;
+  bName?: string;
+  tokenamount?: any;
+  amount?: string;
+  location?: string;
+  confirmpayment?: any;
+  Title?: string;
+  subTitle?: string;
+  paymenterror?: any;
+  othermessage?: any;
+  paytokenamount?: any;
+  singlebutton?: any;
+  doublebutton?: any;
+  ButtonText?: any;
+  ButtonText1?: any;
+};
