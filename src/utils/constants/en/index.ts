@@ -1,41 +1,7 @@
 import { COLOR } from "../../../Theme/Colors";
-import * as Facebook from 'expo-facebook';
-import { Alert } from "react-native";
-import axios from "axios";
+import { loginWithfb } from "../../api/fbLogin";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
 export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
-
-
-
-
-const loginWithfb=async()=>{
-    // console.log("fb"),
-    try {
-      await Facebook.initializeAsync({
-        appId: '598466794467584',
-      });
-      const {
-        type,
-        token,
-      } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      });
-      console.log("fbmsg",type,token);
-      if (type === 'success') {
-        const response =  await axios.post('http://api.tezdealz.com/v1/Users/facebook-auth')
-        Alert.alert('Logged in!');
-        console.log("response",response)
-      } else if (type === 'cancel') {
-            return console.log("fbcancel",type);
-        }
-      
-    } catch ({ message }) {
-      alert(`Facebook Login Error: ${message}`);
-    }
-  }
-
-
-
 
 export const data= [
     

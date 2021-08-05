@@ -17,6 +17,7 @@ const USERS = {
     Phone_SIGNUP: `${user}/signup-phone`,
     Email_VRIFY: `${user}/send-verification-email`,
     Phone_VRIFY: `${user}/send-verification-phone`,
+    Fb_Login:`${user}/facebook-auth`,
   };
 
   
@@ -68,3 +69,15 @@ const USERS = {
                   return error.response.data;
                 }
               };
+              export const FbLogin = async()=>{
+                try {
+                let result = await axios.post(`${BASE_URL}${USERS.Fb_Login}`);
+                return result.data;
+                }
+                catch(error){
+                    if (error.response === undefined) {
+                        return { status: 403, message: "Something Went Wrong!" };
+                      }
+                      return error.response.data;
+                    }
+                  };
