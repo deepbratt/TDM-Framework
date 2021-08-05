@@ -22,7 +22,7 @@ import { boxStyle } from './style'
         </View>
         <View style={div2}>
              <View>
-               <Text style={price}>{Price} </Text>
+               <Text style={price}>Rs. {Price} </Text>
                <Text style={name}>{Title} </Text>
                <Text style={KmText}>{year} <Text> {KMeter}</Text></Text>
             </View>

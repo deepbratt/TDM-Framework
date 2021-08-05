@@ -12,17 +12,16 @@ import { COLOR } from './src/Theme/Colors';
 export default function App() {
 
     const isLoadingComplete = useCachedResources();
-    if (!isLoadingComplete) {
-      return null;
-    } else {
+  if (!isLoadingComplete) {
+    return null;
+  } else {
     return (
-        <Provider store={store}>
-      <SafeAreaProvider>
-      <AuthRoute/>
-    <StatusBar style="light" translucent={true} backgroundColor={COLOR.Black}/>
-  </SafeAreaProvider>
-          </Provider>
-           
-          );
-        }
-    }
+      <Provider store={store}>
+        <SafeAreaProvider>
+          <AuthRoute />
+          <StatusBar style="light" translucent={true} backgroundColor={COLOR.Black} />
+        </SafeAreaProvider>
+      </Provider>
+    );
+  }
+}
