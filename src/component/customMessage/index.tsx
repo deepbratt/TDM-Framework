@@ -54,11 +54,11 @@ const CustomMessage: FC<CustomMessageProps> = ({
         {isBack ? (
           <Ionicons
             name="arrow-back-circle-sharp"
-            size={24}
+            size={40}
             color={COLOR.primary}
           />
         ) : (
-          <Ionicons name="close-circle" size={24} color={COLOR.primary} />
+          <Ionicons name="close-circle" size={40} color={COLOR.primary} />
         )}
       </TouchableOpacity>
 

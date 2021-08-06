@@ -19,6 +19,7 @@ export default function Example() {
       return;
     }
     setSelectedImage({ localUri: pickerResult.uri });
+    console.log(pickerResult);
   };
   if (selectedImage !== null) {
     return (

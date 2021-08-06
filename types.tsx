@@ -88,15 +88,15 @@ export type SearchProp={
   onPress?:()=>void;
   onClick?:()=>void;
 };
-export type fieldForm= { 
+export type fieldForm = {
   firstName?: string;
   lastName?: string;
   email?: string;
   phone?: string;
-  code?: string; 
-  password?:string;
-  confirmPassword?: string; 
- }
+  code?: string;
+  password?: string;
+  confirmPassword?: string;
+};
 export type categoryProp={
   viewStyle?:any;
   ProductName?:string;
@@ -165,7 +165,7 @@ export type LinearGradientProps = {
   text?: string;
   imgStyle?: any;
   source?: any;
-  onPress?: () => void;
+  onPress?: any;
   linkTo?: any;
 };
 
@@ -242,4 +242,14 @@ export type CustomMessageProps = {
   doublebutton?: any;
   ButtonText?: any;
   ButtonText1?: any;
+};
+
+export type SeacrhForm = {
+  sortBy?: string;
+  brand?: string;
+  body?: string;
+  yearFrom?: string;
+  yearTo?: string;
+  kilometerFrom?: string;
+  kilometerTo?: string;
 };
