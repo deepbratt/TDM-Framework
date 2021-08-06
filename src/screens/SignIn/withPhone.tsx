@@ -16,6 +16,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { globalStyle } from "../../Styles";
 import { fieldForm } from "../../../types";
 import CustomAlert from "../../component/customOTP/customAlert";
+import { GotoSignUp, InvalidInput, LoginSuccessfuL, PhonePassIncorrect } from "../../utils/constants/alertMsg";
 
 function SignInWithPhone() {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ const handleShow=()=>{
            return (
                    setLoader(false),
                    setinput(prev=>({
-                     ...prev, MsgTitle:"Login Successfully",
+                     ...prev, MsgTitle:LoginSuccessfuL,
                            Msg:``,
                            path:'/'
                     })),
@@ -89,8 +90,8 @@ const handleShow=()=>{
          return(
            setLoader(false),
            setinput(prev=>({
-             ...prev, MsgTitle:"Invalid Input",
-                   Msg:`${response.message}!. Swipe Down to login again OR Click Ok to go to SignUp`,
+             ...prev, MsgTitle:InvalidInput,
+                   Msg:`${response.message}!.${GotoSignUp}`,
                    path:'/SignUp/phone'
             })),
            refRBSheet.current?.open()
@@ -101,14 +102,14 @@ const handleShow=()=>{
              setLoader(false)
                  console.log( err,"errorssy")
                  setinput(prev=>({
-                   ...prev, MsgTitle:"Invalid Input",
+                   ...prev, MsgTitle:InvalidInput,
                          Msg:err,
                          path:"/SignUp/phone"
                   })),
                  refRBSheet.current?.open()
                } 
        ).catch(error=>{
-         if (error.status === 401) return alert("user and password incorrect"); 
+         if (error.status === 401) return alert(PhonePassIncorrect); 
         })  
     };
    

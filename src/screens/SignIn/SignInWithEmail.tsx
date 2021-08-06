@@ -18,6 +18,7 @@ import { setUserSession } from "../../utils/general.utils";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { globalStyle } from "../../Styles";
 import CustomAlert from "../../component/customOTP/customAlert";
+import { EmailPassIncorrect, GotoSignUp, InvalidInput, LoginSuccessfuL } from "../../utils/constants/alertMsg";
 
 function SignUpWithEmail() {
   const dispatch = useDispatch();
@@ -80,7 +81,7 @@ const LoginButton= async(values:fieldForm)=>{
         return (
                 setLoader(false),
                 setinput(prev=>({
-                  ...prev, MsgTitle:"Login Successfully",
+                  ...prev, MsgTitle:LoginSuccessfuL,
                         Msg:``,
                         path:'/'
                  })),
@@ -94,8 +95,8 @@ const LoginButton= async(values:fieldForm)=>{
       return(
         setLoader(false),
         setinput(prev=>({
-          ...prev, MsgTitle:"Invalid Input",
-                Msg:`${response.message}!. Swipe Down to login again OR Click Ok to go to SignUp`,
+          ...prev, MsgTitle:InvalidInput,
+                Msg:`${response.message}!. ${GotoSignUp}`,
                 path:'/SignUp/email'
          })),
         refRBSheet.current?.open()
@@ -106,14 +107,14 @@ const LoginButton= async(values:fieldForm)=>{
           setLoader(false)
               console.log( err,"errorssy")
               setinput(prev=>({
-                ...prev, MsgTitle:"Invalid Input",
+                ...prev, MsgTitle:InvalidInput,
                       Msg:err,
                       path:"/SignUp/email"
                })),
               refRBSheet.current?.open()
             } 
     ).catch(error=>{
-      if (error.status === 401) return alert("email and password incorrect"); 
+      if (error.status === 401) return alert(EmailPassIncorrect); 
      })  
  };
 

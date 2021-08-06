@@ -60,6 +60,7 @@ import CustomAlert from '../../component/customOTP/customAlert';
 import { Ok } from '../../utils/constants/en';
 import { useHistory } from 'react-router';
 import { postForm } from '../../../types';
+import { FormSuccessfuL, GoToHome, InvalidInput, PermissionToAccess, SomethingWrong } from '../../utils/constants/alertMsg';
 
 const PostDetails = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -95,7 +96,7 @@ const PostDetails = () => {
     let openImagePickerAsync = async () => {
       let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
       if (permissionResult.granted === false) {
-        alert('Permission to access camera roll is required!');
+        alert(PermissionToAccess);
         return;
       }
       let pickerResult = await ImagePicker.launchImageLibraryAsync();
@@ -153,16 +154,16 @@ const PostDetails = () => {
          if(response.status === "success"){
             setLoader(false),
             setInput(prev=>({
-              ...prev, MsgTitle:"Form Submit Successfully",
+              ...prev, MsgTitle:FormSuccessfuL,
                     Msg:``,
                     path:'/',
-                    button:"Go to home"
+                    button:GoToHome
              })),
              refRBSheet.current?.open()
          } else if (response.status === "fail"){
             setLoader(false),
              setInput(prev=>({
-                ...prev, MsgTitle:"Invalid Input Date",
+                ...prev, MsgTitle:InvalidInput,
                       Msg:`${response.message}`,
                       path:'/post-details',
                       button:"Ok"
@@ -170,7 +171,7 @@ const PostDetails = () => {
                refRBSheet.current?.open()
          }
      }).catch(error=>{
-        if (error.status === 401) return alert("user and password incorrect"); 
+        if (error.status === 401) return alert(SomethingWrong); 
        })  
    };
     return (
