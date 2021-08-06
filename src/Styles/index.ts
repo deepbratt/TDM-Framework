@@ -45,6 +45,10 @@ inputField:{
    borderWidth:2,
    borderRadius: 2,
 },
+errorText: {
+    fontSize: 13,
+    color: COLOR.primary,
+  },
 SignInButton:{
     width: wp('58%'),
     height:hp('6.3%'),

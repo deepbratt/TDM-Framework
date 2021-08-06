@@ -223,3 +223,24 @@ export type AlertProps={
    Msg?:string;
   onPress:()=>void;
 }
+export type postForm= { 
+  description?: string;
+  location?: string;
+  carModel?: string;
+  carMake?: string;
+  year?: string; 
+  condition?:string;
+  registrationCity?: string; 
+  bodycolor?: string;
+  milage?: number; 
+  priceRange?:number;
+  bodyType?:string;
+  enginType?:string;
+  assembly?:string;
+  transmission?:string;
+  city?: string;
+  province?: string;
+  engineType?: string; 
+   features?: string; 
+  
+ }

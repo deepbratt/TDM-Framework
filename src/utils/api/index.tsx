@@ -1,5 +1,5 @@
 import axios from "axios";
-import { fieldForm } from "../../../types";
+import { fieldForm, postForm } from "../../../types";
 
 const BASE_URL = "http://api.tezdealz.com/v1";
 const axiosInstance = axios.create({
@@ -125,3 +125,15 @@ const CARS={
                       return error.response.data;
                     }
                   };
+                  export const createCars = async(data:postForm)=>{
+                    try {
+                    let result = await axios.post(`${BASE_URL}${CARS.all_Cars}`,data);
+                    return result.data;
+                    }
+                    catch(error){
+                        if (error.response === undefined) {
+                            return { status: 403, message: "Something Went Wrong!" };
+                          }
+                          return error.response.data;
+                        }
+                      };

@@ -3,14 +3,19 @@ import { Image, ScrollView, StyleSheet, View, } from 'react-native';
 import { Dropdown, } from 'sharingan-rn-modal-dropdown';
 
 interface Props{
-    label: string;
-    data: any;
-    value: any;
-    onChange: any;
-    itemContainerStyle: any;
-    textInputStyle: any;
-    disableSort: any;
-    itemTextStyle: any;
+    label?: string;
+    data?: any;
+    value?: any;
+    onChange?: any;
+    itemContainerStyle?: any;
+    textInputStyle?: any;
+    disableSort?: any;
+    itemTextStyle?: any;
+    enableSearch?:any;
+    required?:boolean;
+    error?:any;
+    errorColor?:string;
+    emptySelectionText?:string
 }
 const DropDownSaim: FC<Props> = (Props) => {
 
@@ -23,6 +28,11 @@ const DropDownSaim: FC<Props> = (Props) => {
           value={Props.value}
           onChange={Props.onChange}
           itemContainerStyle={Props.itemContainerStyle}
+          enableSearch={Props.enableSearch}
+          required={Props.required}
+          emptySelectionText={Props.emptySelectionText}
+          error={Props.error}
+          errorColor={Props.errorColor}
           textInputStyle={Props.textInputStyle}
           disableSort={Props.disableSort}
           itemTextStyle={Props.itemTextStyle}

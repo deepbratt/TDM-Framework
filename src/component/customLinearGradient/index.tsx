@@ -14,7 +14,7 @@ const CustomLinearGradient: FC<LinearGradientProps> = ({
     onPress,
 }) => {
     return (
-        <Link to={linkTo} onPress={onPress} component={TouchableOpacity} >
+        <Link to={linkTo} onPress={onPress} component={TouchableOpacity} underlayColor="none" >
             <LinearGradient
                 colors={colors}
                 style={GradientButtonStyle}

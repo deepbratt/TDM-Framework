@@ -96,3 +96,34 @@ export const signUpValidationSchema = yup.object().shape({
       .required('Phone number is required'),
        
       })
+    
+export const DropdownValidation = yup.object().shape({
+  location: yup.string().required(),
+  city: yup.string().required(),
+  carModel: yup
+  .string()
+  .matches(/^[a-zA-Z].*/,"Must be letters")
+  .required(),
+  carMake: yup.string().required(),
+  year: yup
+  .string() 
+  .matches(/^[0-9]{1,45}$/,'Must be in number')
+  .required(),
+  condition: yup.string().required(),
+  registrationCity: yup.string().required(),
+  bodycolor: yup.string().required(),
+  bodyType: yup.string().required(),
+  engineType: yup.string().required(),
+  assembly: yup.string().required(),
+  transmission: yup.string().required(),
+  milage:yup
+  .string() 
+  .matches(/^[0-9]{1,45}$/,'Must be in number')
+  .required("Milage is required"),
+  priceRange: yup
+  .string()
+  .matches(/^[0-9]{1,45}$/,'Must be in number')
+  .required("Price Range is required"),
+  features: yup.string().required("Features is required"),
+  description: yup.string().required("Description is required"),
+});
