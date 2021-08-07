@@ -28,6 +28,7 @@ import PostAd from "./Seller/Postad";
 import SearchCompare from "./Compare";
 import CompareProduct from "./Compare/Compare";
 import YourAds from "./Seller/YourAdd";
+import Profile from "./Profile/index"
 export {
     Splash,
     SignInWithEmail,
@@ -59,4 +60,5 @@ export {
     PaymentError,
     ConfirmPayment,
     YourAds,
+    Profile,
 }

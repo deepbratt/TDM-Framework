@@ -5,5 +5,5 @@ export const EmailPassIncorrect="email and password incorrect"
 export const PhonePassIncorrect="Phon Number and password incorrect"
 export const SomethingWrong="Something Wrong"
 export const FormSuccessfuL="Form Submit Successfully"
-export const GoToHome="Go to home"
+export const GoToHome="Check Car Datails"
 export const PermissionToAccess='Permission to access camera roll is required!'

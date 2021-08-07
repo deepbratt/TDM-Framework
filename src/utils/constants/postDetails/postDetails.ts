@@ -138,6 +138,17 @@ export const TransmissionType = [
     { id: 1, label: "Automatic", value: "Automatic" },
     { id: 2, label: "Manual", value: "Manual" },
 ];
+export const genderList = [
+    { id: 1, label: "Male", value: "Male" },
+    { id: 2, label: "Female", value: "Female" },
+];
+export const countryList = [
+    { id: 1, label: "Pakistan", value: "Pakistan" },
+    { id: 2, label: "India", value: "India" },
+    { id: 3, label: "U.S.A", value: "U.S.A" },
+    { id: 4, label: "Canada", value: "Canada" },
+    { id: 5, label: "U.A.E", value: "U.A.E" },
+];
 export const PostAdhere="Post Your Ad Here"
 export const LocationLabel = "Location"
 export const cityLabel = "City"

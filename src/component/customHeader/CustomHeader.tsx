@@ -31,7 +31,7 @@ const CustomHeader: FC<HeaderProps> = ({ title, onPress, location, isHome, heade
       color={color}
             />
       </View>}
-      <Link component={TouchableOpacity} to="/post-details" style={item3}>
+      <Link component={TouchableOpacity} to="/profile" style={item3}>
       <Ionicons name="person-circle" size={30} color={color} />
       </Link>
     </Appbar>

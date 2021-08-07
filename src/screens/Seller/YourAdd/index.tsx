@@ -16,7 +16,7 @@ import { addStyles } from './styles';
     const [Loader, setLoader] = useState(false);
      useEffect(() => {
     fetchData()
-}, [])
+    }, [])
 
     const fetchData = async () => {
         setLoader(true)

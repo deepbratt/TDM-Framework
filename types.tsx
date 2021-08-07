@@ -140,13 +140,13 @@ export type SmsButtonProps = {
 };
 
 export type AvatarProps = {
-  overlayContainerStyle: any;
-  size: any;
-  rounded: boolean;
-  onPress: () => void;
-  activeOpacity: any;
-  source: any;
-  imageProps: any;
+  overlayContainerStyle?: any;
+  size?: any;
+  rounded?: boolean;
+  onPress?: () => void;
+  activeOpacity?: any;
+  source?: any;
+  imageProps?: any;
 };
 export type TextProps = {
   text: string;
@@ -159,14 +159,14 @@ export type MapViewProps = {
 };
 
 export type LinearGradientProps = {
-  colors: any;
-  GradientButtonStyle: any;
-  textstyle: any;
-  text: string;
-  imgStyle: any;
-  source: any;
-  onPress: () => void;
-  linkTo: any;
+  colors?: any;
+  GradientButtonStyle?: any;
+  textstyle?: any;
+  text?: string;
+  imgStyle?: any;
+  source?: any;
+  onPress?: () => void;
+  linkTo?: any;
 };
 
 export type ForgotButtonProps = {

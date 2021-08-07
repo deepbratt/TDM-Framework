@@ -9,8 +9,6 @@ import {
     CarModel,
     Condition,
     locationList,
-    Milage,
-    PriceRange,
     PlaceIcon,
     ModelIcon,
     AmountIcon,
@@ -50,14 +48,13 @@ import {
 import { COLOR } from '../../Theme/Colors';
 import { createCars } from '../../utils/api';
 import { Field, Formik } from 'formik';
-import { DropdownValidation } from '../../utils/form/validationForm';
+import { DropdownValidation, numeric } from '../../utils/form/validationForm';
 import CustomInput from '../../component/CustomInput/CustomInput';
 import * as ImagePicker from 'expo-image-picker';
 import CustomText from '../../component/customText';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import { globalStyle } from '../../Styles';
 import CustomAlert from '../../component/customOTP/customAlert';
-import { Ok } from '../../utils/constants/en';
 import { useHistory } from 'react-router';
 import { postForm } from '../../../types';
 import { FormSuccessfuL, GoToHome, InvalidInput, PermissionToAccess, SomethingWrong } from '../../utils/constants/alertMsg';
@@ -89,7 +86,9 @@ const PostDetails = () => {
         Msg:"",
         MsgTitle:"",
         path:"",
-        button:""
+        button:"",
+        close:false,
+
     })
    const history=useHistory();
 
@@ -107,7 +106,7 @@ const PostDetails = () => {
       console.log("image",selectedImage)
     };
  
-    const handlePost=async(drop:postForm)=>{
+    const handlePost=async(drop:postForm,{resetForm})=>{
   
         const { 
        description,
@@ -128,6 +127,7 @@ const PostDetails = () => {
        transmission,
        features}=drop;
        const  images=selectedImage.localUri;
+       
         const body={
             "description":description,
             "location":location,
@@ -151,23 +151,29 @@ const PostDetails = () => {
       console.log("pic",images,"values",body);
       setLoader(true),
      await createCars(body).then(response=>{
-         console.log("res",response);
-         if(response.status === "success"){
+            console.log("res",response);
+             resetForm({drop:''});
+             setSelectedImage(null);
+
+     if(response.status === "success"){
             setLoader(false),
+            console.log("res",response),
             setInput(prev=>({
               ...prev, MsgTitle:FormSuccessfuL,
                     Msg:``,
-                    path:'/',
-                    button:GoToHome
+                    path:'/car-Details/:id',
+                    button:GoToHome,
+                    close:true,
              })),
              refRBSheet.current?.open()
-         } else if (response.status === "fail"){
+
+    } else if (response.status === "fail"){
             setLoader(false),
              setInput(prev=>({
                 ...prev, MsgTitle:InvalidInput,
                       Msg:`${response.message}`,
-                      path:'/post-details',
-                      button:"Ok"
+                      button:"Ok",
+                      close:false
                })),
                refRBSheet.current?.open()
          }
@@ -183,39 +189,36 @@ const PostDetails = () => {
                 color={COLOR.DarkCharcoal}
                 onPress={()=>history.goBack()}
             />          
-{
-    selectedImage === null ?
-    (
+     {
+       selectedImage === null ?
+       (
         <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
-        <Image style={{ alignSelf: 'center' }}
-          source={require('../../../assets/images/postDetails/camera.png')} />
-           <CustomText
-        text="Add Photo"
-        textStyle={{ fontSize: 12, textAlign: 'center', fontFamily: 'IBMPlexSans-Light', color: COLOR.GraniteGray }}
-      />
-          </TouchableOpacity>
-    ) :
-    (
-        <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
+         <Image style={{ alignSelf: 'center' }}
+             source={require('../../../assets/images/postDetails/camera.png')} />
+              <CustomText
+          text="Add Photo"
+          textStyle={{ fontSize: 12, textAlign: 'center', fontFamily: 'IBMPlexSans-Light', color: COLOR.GraniteGray }}
+       />
+             </TouchableOpacity>
+        ) : 
+         (
+          <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
             <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-          </TouchableOpacity>   
-    )
-}
-
-                <View style={styles.borderView}></View>
-     <Formik
-         initialValues={dropdown}
-         onSubmit={(values) => { handlePost(values)}}
-         validationSchema={DropdownValidation}
-    //   enableReinitialize
-    >
-      {({ errors, handleSubmit, setFieldValue, values, isSubmitting }) => (
+            </TouchableOpacity>   
+            )  
+        }  
+                    <View style={styles.borderView}></View>
+               <Formik
+              initialValues={dropdown}
+              onSubmit={(values,{resetForm}) => { handlePost(values,{resetForm})}}
+              validationSchema={DropdownValidation}>
+            {({ errors, handleSubmit, setFieldValue, values, isSubmitting }) => (
               <View>
- <View style={styles.dropdownContainer}>
+          <View style={styles.dropdownContainer}>
             <View style={styles.iconView}>
               <Image style={styles.buttonIcon}
                   source={PlaceIcon} />
-          </View> 
+              </View> 
                      <View style={styles.MainViewDropDown}>
                          <DropDownSaim
                              itemContainerStyle={styles.itemContainerDropDrown}
@@ -237,7 +240,7 @@ const PostDetails = () => {
             <View style={styles.iconView}>
               <Image style={styles.buttonIcon}
                   source={PlaceIcon} />
-          </View> 
+           </View> 
                      <View style={styles.MainViewDropDown}>
                          <DropDownSaim
                              itemContainerStyle={styles.itemContainerDropDrown}
@@ -249,7 +252,7 @@ const PostDetails = () => {
                              value={values.city}
                              onChange={(value: any) => setFieldValue('city', value)}
                              required={true}
-                             error={errors.location ? true : false}
+                             error={errors.city ? true : false}
                              errorColor={COLOR.primary}
                              textInputStyle={styles.textInputDropDown}
                          />
@@ -271,33 +274,11 @@ const PostDetails = () => {
                              value={values.province}
                              onChange={(value: any) => setFieldValue('province', value)}
                              required={true}
-                             error={errors.location ? true : false}
+                             error={errors.province ? true : false}
                              errorColor={COLOR.primary}
                              textInputStyle={styles.textInputDropDown}
                          />
                      </View>
-                </View>
-                <View style={styles.dropdownContainer}>
-                    <View style={styles.iconView}>
-                        <Image style={styles.buttonIcon}
-                            source={ModelIcon} />
-                    </View>
-                    <View style={styles.MainViewDropDown}>
-                        <DropDownSaim
-                            itemContainerStyle={styles.itemContainerDropDrown}
-                            label={CarModelLabel}
-                            enableSearch
-                            itemTextStyle={styles.itemTextDropDown}
-                            data={CarModel}
-                            disableSort={true}
-                            value={values.carModel}
-                            onChange={(value: any) => setFieldValue('carModel', value)}
-                            required={true}
-                             error={errors.location ? true : false}
-                            errorColor={COLOR.primary}
-                             textInputStyle={styles.textInputDropDown}
-                        />
-                    </View>
                 </View>
                 <View style={styles.dropdownContainer}>
                     <View style={styles.iconView}>
@@ -316,6 +297,28 @@ const PostDetails = () => {
                             onChange={(value: any) => setFieldValue("carMake", value )}
                              required={true}
                              error={errors.carMake ? true : false}
+                            errorColor={COLOR.primary}
+                             textInputStyle={styles.textInputDropDown}
+                        />
+                    </View>
+                </View>
+                <View style={styles.dropdownContainer}>
+                    <View style={styles.iconView}>
+                        <Image style={styles.buttonIcon}
+                            source={ModelIcon} />
+                    </View>
+                    <View style={styles.MainViewDropDown}>
+                        <DropDownSaim
+                            itemContainerStyle={styles.itemContainerDropDrown}
+                            label={CarModelLabel}
+                            enableSearch
+                            itemTextStyle={styles.itemTextDropDown}
+                            data={CarModel}
+                            disableSort={true}
+                            value={values.carModel}
+                            onChange={(value: any) => setFieldValue('carModel', value)}
+                            required={true}
+                             error={errors.carModel ? true : false}
                             errorColor={COLOR.primary}
                              textInputStyle={styles.textInputDropDown}
                         />
@@ -501,7 +504,7 @@ const PostDetails = () => {
                         inputFieldStyle={styles.Inputs}
                         activeFieldStyle={styles.error}
                         placeholder={MileageLabel}
-                        keyboardType={"numeric"}
+                        keyboardType={numeric}
                         name={"milage"}
                         required
                         errorTextStyle={styles.errorText}
@@ -520,7 +523,7 @@ const PostDetails = () => {
                           activeFieldStyle={styles.error}
                           placeholder={PriceRangeLabel}
                           name={"priceRange"}
-                          keyboardType={"numeric"}
+                          keyboardType={numeric}
                           required
                           errorTextStyle={styles.errorText}
                       />  
@@ -585,15 +588,11 @@ const PostDetails = () => {
         <CustomAlert 
        Title={input.MsgTitle}
        Msg={input.Msg}
-       onPress={()=>history.push(input.path)}
+       onPress={input.close ? ()=>history.push(input.path) : ()=>refRBSheet.current?.close()}
        buttonTitle={input.button}
         />
       </RBSheet>
              </ScrollView>
-    
-        // </View>
-   
-   
    )
 }
 export default PostDetails;
