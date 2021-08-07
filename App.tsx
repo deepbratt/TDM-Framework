@@ -7,7 +7,6 @@ import AuthRoute from "./route";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./src/utils/constants/resources/useCachedResources";
 import { COLOR } from "./src/Theme/Colors";
-import Testing from "./src/screens/testing";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -24,7 +23,6 @@ export default function App() {
             backgroundColor={COLOR.Black}
           />
         </SafeAreaProvider>
-        {/* <Testing/> */}
       </Provider>
     );
   }
