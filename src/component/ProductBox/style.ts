@@ -15,8 +15,7 @@ boxView:{
 },
 main:{
     width:wp('91%'),
-    height:hp('13%'),
-    backgroundColor:"red", 
+    height:hp('13%'), 
     flexDirection:"row",
     justifyContent:"center",
     alignItems:"center",

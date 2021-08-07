@@ -71,27 +71,33 @@ const GeneralView:FC<genralProps>=({
               <View style={alignCenter}>
               {fields.map((input: { placeholder: any; value: any; secureTextEntry: any; IconName: IconSource; eyeName: IconSource; disabled: boolean | undefined;disabledField :boolean | undefined },index: string)=>{
           let ID = "TextInput"+index
-          return(
-         <Field
-         component={CustomInput}
-         placeholder={input.placeholder}
-         name={input.value}
-         secureText={input.secureTextEntry ? input.secureTextEntry :false}
-         onFocus={() => setActive(ID)}
-         onBlur={()=> setActive("")}
-         disabled={input.disabledField}
-         leftIcon={<TextInput.Icon
-          size={18}
-          color={Active === ID ? COLOR.primary : COLOR.Silver}
-          name={input.IconName} />}
-          rightIcon={<TextInput.Icon
-          size={16}
-          color={Active === ID ? COLOR.primary : COLOR.Silver}
-          name={input.eyeName}
-          onPress={handleShow}
-          disabled={input.disabled} />} 
-       />
-          )
+          return (
+            <Field
+              component={CustomInput}
+              placeholder={input.placeholder}
+              name={input.value}
+              secureText={input.secureTextEntry ? input.secureTextEntry : false}
+              onFocus={() => setActive(ID)}
+              onBlur={() => setActive("")}
+              disabled={input.disabledField}
+              leftIcon={
+                <TextInput.Icon
+                  size={18}
+                  color={Active === ID ? COLOR.primary : COLOR.Silver}
+                  name={input.IconName}
+                />
+              }
+              rightIcon={
+                <TextInput.Icon
+                  size={16}
+                  color={Active === ID ? COLOR.primary : COLOR.Silver}
+                  name={input.eyeName}
+                  onPress={handleShow}
+                  disabled={input.disabled}
+                />
+              }
+            />
+          );
         })} 
          <View style={SubmitView}>
          <CustomButton buttonStyle={globalStyle.SignInButton} 
@@ -120,4 +126,3 @@ const GeneralView:FC<genralProps>=({
   );
 }
 export default GeneralView;
-

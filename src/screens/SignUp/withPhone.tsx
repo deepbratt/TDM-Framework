@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   SignUpHead,
   EnterPassword,
@@ -7,6 +7,9 @@ import {
   enterLast,
   ConfirmPassword,
   EnteryourNumber,
+  AlreadySigned,
+  ClickokTo,
+  Ok,
 } from "../../utils/constants/en/index";
 import { Link, useHistory } from "react-router-native";
 import { Fieldnames, signUpNumberValidation } from "../../utils/form/validationForm";
@@ -14,6 +17,9 @@ import { userSignUpwithPhone } from "../../utils/api";
 import { setUserSession } from "../../utils/general.utils";
 import { fieldForm } from "../../../types";
 import GeneralView from "../../section/LoginView/GeneralLoginView";
+import RBSheet from "react-native-raw-bottom-sheet";
+import CustomAlert from "../../component/customOTP/customAlert";
+import { globalStyle } from "../../Styles";
 
 function SignUpwithPhone() {
   const [Loader, setLoader] = useState(false);
@@ -76,6 +82,7 @@ const handleShow=()=>{
   }))
 }
 const history=useHistory();
+const refRBSheet = useRef<RBSheet>(null);
 const handleForm= async(values:fieldForm)=>{
     const {
         firstName,
@@ -98,15 +105,13 @@ const handleForm= async(values:fieldForm)=>{
         if (response.status === 200) {
           return (
             setLoader(false),
-            alert("Signup successfully"),
-            history.push('/verify'),
+            refRBSheet.current?.open(),
             setUserSession(response.data.token, response.data.user)
           )
       } else if (response.status === "fail"){
         return(
           setLoader(false),
-          alert("You are Already signed, Click ok to verify"),
-          history.push('/verify'),
+          refRBSheet.current?.open(),
           setUserSession(response.data.token, response.data.user)
         )}
     },
@@ -121,7 +126,7 @@ const handleForm= async(values:fieldForm)=>{
    };
 
   return (
-
+<>
     <GeneralView 
     view={"signup"}
     headerName={SignUpHead}
@@ -133,6 +138,25 @@ const handleForm= async(values:fieldForm)=>{
     handleShow={handleShow}
     ButtonText={Loader ? "Loading....": signUp}
   />
+  <RBSheet
+  ref={refRBSheet}
+  closeOnDragDown={true}
+  closeOnPressMask={false}
+  animationType="slide"
+  customStyles={{
+    wrapper: globalStyle.wrapperStyle,
+    container:globalStyle.containerStyle,
+    draggableIcon: globalStyle.draggableIcon
+  }}
+>
+  <CustomAlert 
+  Title={AlreadySigned}
+  Msg={ClickokTo}
+  onPress={()=>history.push('/Verify/phone')}
+  buttonTitle={Ok}
+  />
+</RBSheet>
+  </>
   );
 }
 export default SignUpwithPhone;

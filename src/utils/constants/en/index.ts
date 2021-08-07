@@ -1,39 +1,45 @@
-import { COLOR } from "../../../Theme/Colors";
-import * as Facebook from 'expo-facebook';
-import { Alert } from "react-native";
-import axios from "axios";
+
+import { loginWithfb } from "../../api/fbLogin";
 export const Lorem="Lorem ipsum dolor sit amet, consectetuer";
-export const elit="adipiscing elit. Aenean commodo ligula eget dolor. ";
+export const elit = "adipiscing elit. Aenean commodo ligula eget dolor. ";
+import { COLOR } from "../../../Theme/Colors";
+import * as GoogleSignIn from "expo-google-sign-in";
+import { protectedroute } from "../path";
+import { login } from "../../../redux/reducers/authSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-native";
 
+// const initAsyc = async () => {
+//     await GoogleSignIn.initAsync({
+//       clientId: "",
+//     });
+//     syncUserWithAsync();
+//   };
 
-
-
-const loginWithfb=async()=>{
-    // console.log("fb"),
+//   const syncUserWithAsync = async () => {
+//       const user = await GoogleSignIn.signInSilentlyAsync();
+// };
+  
+const signInAsync = async () => {
+    // const dispatch = useDispatch();
+    // let history = useHistory();
     try {
-      await Facebook.initializeAsync({
-        appId: '598466794467584',
-      });
-      const {
-        type,
-        token,
-      } = await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile'],
-      });
-      console.log("fbmsg",type,token);
-      if (type === 'success') {
-        const response =  await axios.post('http://ada93485b9c7f4d93b071069afef8073-bdc392983b881963.elb.us-east-2.amazonaws.com/v1/Users/facebook-auth')
-        Alert.alert('Logged in!');
-        console.log("response",response)
-      } else if (type === 'cancel') {
-            return console.log("fbcancel",type);
+        const res=await GoogleSignIn.askForPlayServicesAsync();
+        const { type, user } = await GoogleSignIn.signInAsync();
+        if (type === "success") {
+            // return (
+                console.log('response', res)
+            //     dispatch(login()),
+            //     history.push('/')
+            // )
         }
-      
+        else {
+            alert("Failed to SignIn")
+        }
     } catch ({ message }) {
-      alert(`Facebook Login Error: ${message}`);
+        alert("Login:Error" + message);
     }
-  }
-
+};
 
 
 
@@ -49,13 +55,13 @@ export const data= [
         press:''
 },
 {id :2,
-    path:"/Verify/phone",
-    route:"/SignUp",
+    // path:"/SignUp",
+    // route:"/SignUp",
     name:"Continue with Google",
-    size:23,
-    img:require("../../../../assets/images/buttonIcon/Original.png"),
+    img: require("../../../../assets/images/buttonIcon/Original.png"),
+    size: 23,
+    press:signInAsync,
     color:COLOR.GoogleRed,
-    press:''
 },
 {id :3,
     // path:"/SignUp",
@@ -100,6 +106,14 @@ export const VerifyYourAccount="Verify Your Account";
 export const EnteryourNumber="Enter your Number";
 export const EnterdigitCode="Enter 6 digit Code";
 export const ForgotPassword="Forgot password?";
+
+export const AlreadySigned="Already signed";
+export const ClickokTo="You are Already signed, Click ok to verify";
+export const Ok="Ok";
+export const Signupsuccessfully="Signup successfully";
+export const YouAre="You are successfully Signup, Click ok to verify";
+
+
 
 export const enterFirst="Enter First Name";
 export const enterLast="Enter Last Name";

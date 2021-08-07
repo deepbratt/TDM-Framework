@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "202707505931",
+    "project_id": "tezdealz-3f505",
+    "storage_bucket": "tezdealz-3f505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202707505931:android:dd39f91e6a0dec705a880e",
+        "android_client_info": {
+          "package_name": "com.test.tezDealz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202707505931-flhnp2r9rre2lc48hibrrnlms279pls2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.tezDealz",
+            "certificate_hash": "347330503a447a5812f94dd96c9f9cfc7f88338f"
+          }
+        },
+        {
+          "client_id": "202707505931-fg4ut2esfdp6a602icoq2tuqgo2hao2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5nU5pl1-16dUQyVINnsILorUvY6gPhwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202707505931-fg4ut2esfdp6a602icoq2tuqgo2hao2a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "202707505931-el11o7903mrqmg8p8abnmm6hda4sda52.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.text.tezDealz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

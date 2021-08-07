@@ -4,7 +4,8 @@ const initialState = {
   user: {},
   isLoggedIn: true,
   SelectedItem:[]as Array<any>,
-  activeCompare: false
+  activeCompare: false,
+  alreadyVerify:false,
 };
 
 const authSlice = createSlice({
@@ -30,10 +31,16 @@ const authSlice = createSlice({
     remove: (state,{ payload }: PayloadAction) =>{    
      state.SelectedItem=state.SelectedItem.filter((item) => item.id!== payload.id);     
       console.warn("remove",payload.id) ;
-    }
+    },
+    accountSignUp: (state) => {
+      state.alreadyVerify = true;
+    },
+    accountNotSignUp: (state) => {
+      state.alreadyVerify = false;
+    },
   },
 });
 
-export const { login, logout,compare ,remove} = authSlice.actions;
+export const { login, logout,compare ,remove,accountSignUp,accountNotSignUp} = authSlice.actions;
 
 export default authSlice.reducer;

@@ -5,6 +5,7 @@ import { styles } from "./style";
 import { HeaderProps } from "../../../types";
 import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";
 import { Link } from "react-router-native";
+import { Appbar } from "react-native-paper";
 
 const CustomHeader: FC<HeaderProps> = ({
   title,
@@ -16,7 +17,7 @@ const CustomHeader: FC<HeaderProps> = ({
 }) => {
   const { container, item, text, item2, item3 } = styles;
   return (
-    <View style={[container, headerStyle]}>
+    <Appbar style={[container, headerStyle]}>
       <TouchableOpacity onPress={onPress} style={item}>
         {isHome ? (
           <MaterialIcons name="menu" size={30} color={color} />
@@ -26,9 +27,7 @@ const CustomHeader: FC<HeaderProps> = ({
       </TouchableOpacity>
 
       {title && (
-        <View style={item2}>
-          <Text style={text}>{title}</Text>
-        </View>
+        <Appbar.Content style={item2} titleStyle={text} title={title} />
       )}
 
       {location && (
@@ -39,7 +38,7 @@ const CustomHeader: FC<HeaderProps> = ({
       <Link component={TouchableOpacity} to="/post-details" style={item3}>
         <Ionicons name="person-circle" size={30} color={color} />
       </Link>
-    </View>
+    </Appbar>
   );
 };
 export default CustomHeader;

@@ -6,16 +6,19 @@ import {
   EnterdigitCode,
   Submit,
   enterEmail,
+  alreadyAccount,
+  SignInHead,
 } from "../../utils/constants/en/index";
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { Fieldnames, verificationValidationSchema } from "../../utils/form/validationForm";
 import { userVerifyEmail } from "../../utils/api";
 import Toast from 'react-native-simple-toast';
 import { fieldForm } from "../../../types";
 import GeneralView from "../../section/LoginView/GeneralLoginView";
+import { Alert } from "react-native";
 
 
-const VerifywithEmail= () => {
+const VerifywithEmail= (alreadyAccount) => {
   const [input, setinput] = useState({
     email: "",
     code: "",
@@ -23,7 +26,7 @@ const VerifywithEmail= () => {
   const [Verify, setVerify] = useState(true);
     const dispatch = useDispatch();
     const [Loader, setLoader] = useState(false);
-
+    
     const EmailField=[
       {
         id:1,
@@ -41,8 +44,17 @@ const VerifywithEmail= () => {
               disabledField:Verify,
               type:"numeric"
               },
+    ];
+    const Field=[
+          {
+              id:1,
+              IconName:"lock",
+              value:Fieldnames.code,
+              placeholder:EnterdigitCode,
+              disabledField:Verify,
+              type:"numeric"
+              },
     ]
- 
   const handleVerify= async(values: fieldForm)=>{
     const{email}=values;
     console.log("verify",email);
@@ -52,18 +64,20 @@ const VerifywithEmail= () => {
       setLoader(true);
   await userVerifyEmail (requestBody) 
    .then(response  => {   
-    if (response.status === "success") {
+    if (response.status === "unverified") {
       return (
         setLoader(false),
+        console.log(response,"res"),
         setVerify((prev)=> prev.Verify === true ?  true:false,
       ),
         Toast.show("Code sent to your email")
       )
   }
-  else {
+  else  if (response.status === "error")  {
     return (
       setLoader(false),
-      Toast.show("Your Email is not register")
+      console.log(response,"res"),
+      Alert.alert(`${response.message}!,Your Email is not register`)
     )
 }
 },
@@ -85,7 +99,7 @@ const VerifywithEmail= () => {
           headerName={VerifyYourAccount}
           Imgsrc={require('../../../assets/sign.json')}
           initialValues={input} 
-          fields={EmailField}
+          fields={alreadyAccount ? EmailField: Field}
           onSubmit={(values: fieldForm)=>handleVerify(values)}
           validationSchema={verificationValidationSchema}
           ButtonText={Loader ? "Loading...": Verify? Submit : Login } 
@@ -93,4 +107,8 @@ const VerifywithEmail= () => {
   
   );
 }
-export default VerifywithEmail;
+const mapStateToProps = (state) => ({
+  alreadyAccount: state.rootReducer.auth.alreadyAccount,
+});
+
+export default connect(mapStateToProps)(VerifywithEmail);

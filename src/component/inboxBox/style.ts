@@ -15,11 +15,9 @@ boxView:{
 },
 main:{
     width:wp('94%'),
-    height:hp('10.5%'), 
-    // backgroundColor:"red",
+    height:hp('10.5%'),
     flexDirection:"row",
     justifyContent:"center",
-    
     alignItems:"center",
 //    borderRadius:6,
   },

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import {
-  SearchValidationSchema,
-} from "../../utils/form/validationForm";
+import { SearchValidationSchema } from "../../utils/form/validationForm";
 import CustomLinearGradient from "../customLinearGradient";
 import CustomText from "../customText";
 import DropDownSaim from "../dropDownSaim";
@@ -37,7 +35,7 @@ const CustomFilter = () => {
     kilometerFrom: "",
     kilometerTo: "",
   });
-  const handleSearch = async (search:SeacrhForm) => {
+  const handleSearch = async (search: SeacrhForm) => {
     console.log("Work");
     const {
       sortBy,
@@ -49,13 +47,13 @@ const CustomFilter = () => {
       kilometerTo,
     } = search;
     const bodySearch = {
-      "sortBy": sortBy,
-      "brand": brand,
-      "body": body,
-      "yearFrom": yearFrom,
-      "yearTo": yearTo,
-      "kilometerFrom": kilometerFrom,
-      "kilometerTo": kilometerTo,
+      sortBy: sortBy,
+      brand: brand,
+      body: body,
+      yearFrom: yearFrom,
+      yearTo: yearTo,
+      kilometerFrom: kilometerFrom,
+      kilometerTo: kilometerTo,
     };
     console.log("values", bodySearch);
   };
@@ -107,15 +105,6 @@ const CustomFilter = () => {
               textStyle={styles.kilometerHeadingText}
             />
             <View style={styles.toFromView}>
-              {/* <Field
-                component={TextInput}
-                placeholder={FromText}
-                style={styles.fromText}
-                name={"yearFrom"}
-                keyboardType="numeric"
-                required
-                errorTextStyle={styles.errorText}
-              /> */}
               <View>
                 <Field
                   component={CustomInput}
@@ -184,7 +173,7 @@ const CustomFilter = () => {
               /> */}
             </View>
             <CustomLinearGradient
-              colors={["#F04148", COLOR.primary]}
+              colors={[COLOR.CarminePink, COLOR.primary]}
               GradientButtonStyle={styles.gradientButtonStyle}
               text={ButtonText}
               textstyle={styles.gradientButtonText}

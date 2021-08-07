@@ -27,7 +27,7 @@ import Inbox from './Chat/Inbox/index'
 import PostAd from "./Seller/Postad";
 import SearchCompare from "./Compare";
 import CompareProduct from "./Compare/Compare";
-
+import YourAds from "./Seller/YourAdd";
 export {
     Splash,
     SignInWithEmail,
@@ -58,4 +58,5 @@ export {
     PayTokenAmount,
     PaymentError,
     ConfirmPayment,
+    YourAds,
 }

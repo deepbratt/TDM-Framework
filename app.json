@@ -19,9 +19,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier":"com.text.tezDealz",
+      "config":{
+        "googleSignIn":{
+          "reservedClientId":"com.googleusercontent.apps.202707505931-el11o7903mrqmg8p8abnmm6hda4sda52"
+        }
+      },
+      "googleServicesFile":"./GoogleService-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.test.tezDealz",
+      "googleServicesFile":"./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
