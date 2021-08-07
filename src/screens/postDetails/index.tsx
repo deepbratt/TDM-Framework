@@ -1,5 +1,5 @@
 import React,{useRef, useState} from 'react';
-import { View, ScrollView, Image, TouchableOpacity,  } from 'react-native';
+import { View, ScrollView, Image, TouchableOpacity  } from 'react-native';
 import { styles } from './styles';
 import DropDownSaim from '../../component/dropDownSaim';
 import CustomLinearGradient from '../../component/customLinearGradient';
@@ -127,6 +127,7 @@ const PostDetails = () => {
         assembly,
        transmission,
        features}=drop;
+       const  images=selectedImage.localUri;
         const body={
             "description":description,
             "location":location,
@@ -145,9 +146,9 @@ const PostDetails = () => {
             "assembly":assembly,
            "transmission":transmission,
            "features":features,
-           "Image":selectedImage,
+           "Images":images,
         };
-      console.log("values",body);
+      console.log("pic",images,"values",body);
       setLoader(true),
      await createCars(body).then(response=>{
          console.log("res",response);
@@ -500,6 +501,7 @@ const PostDetails = () => {
                         inputFieldStyle={styles.Inputs}
                         activeFieldStyle={styles.error}
                         placeholder={MileageLabel}
+                        keyboardType={"numeric"}
                         name={"milage"}
                         required
                         errorTextStyle={styles.errorText}
@@ -518,6 +520,7 @@ const PostDetails = () => {
                           activeFieldStyle={styles.error}
                           placeholder={PriceRangeLabel}
                           name={"priceRange"}
+                          keyboardType={"numeric"}
                           required
                           errorTextStyle={styles.errorText}
                       />  

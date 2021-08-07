@@ -58,7 +58,7 @@ import { addStyles } from './styles';
            year={i.year}
         //    date={i.date}
            Location={i.location.address}
-        //    src={i.image[0]}
+           src={typeof i.images === "string" ? i.images : null}
           />
         );
       
