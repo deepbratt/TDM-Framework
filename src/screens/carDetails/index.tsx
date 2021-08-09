@@ -13,14 +13,12 @@ import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
 import {
     PlaceIcon,
-    carPrice,
     company,
     compareText,
     DescriptionHead, 
     locationText,
     make,
     modelHeading,
-    modelName,
     payAmount,
     productStatus,
     sellerText,
@@ -32,10 +30,14 @@ import {
     FeatureProd,
 } from '../../utils/constants/carDetails/carDetails';
 import { COLOR } from '../../Theme/Colors';
-import { useParams } from 'react-router-native';
-import { AntDesign } from '@expo/vector-icons';
+import { useHistory, useParams } from 'react-router-native';
+import { AntDesign, Entypo } from '@expo/vector-icons';
 import CustomLoader from '../../component/CustomLoader';
-import { carDetailsById } from '../../utils/api/CarsApi';
+import { addToFav, allFavourites, carDetailsById, removeFromFav } from '../../utils/api/CarsApi';
+import Toast from 'react-native-simple-toast';
+import { KM, PriceRegex, RS } from '../../utils/form/validationForm';
+import { Itemadded, Itemremoved } from '../../utils/constants/alertMsg';
+
 
 interface ItemProps {
     src: any;
@@ -52,14 +54,18 @@ const CarDetails = () => {
     const [IndexItems,setIndexItems]=useState<any>([]);
     const [User,setUser]=useState<any>([]);
     const [Loader,setLoader]=useState(false);
-       useEffect(() => {
-   fetchItem()
-     }, [])
+    const [favorites, setfavorites] = useState([] as Array<number>);
+    const [fav, setfav] = useState(false);
+     const history=useHistory();
+     useEffect(() => {
+         AlreadyFav()
+        fetchItem()
+    }, [])
     const fetchItem=async()=>{
         console.log("sss",id);
         setLoader(true);
         await carDetailsById(id).then(res=>{
-            console.log("ressss",res.data.result)
+            // console.log("ressss",res.data.result)
          if(res.status === "success"){
             setLoader(false),
             setIndexItems(res.data.result),
@@ -73,9 +79,86 @@ const CarDetails = () => {
          }
         }).catch(error=>{
         if (error.status === 401) return alert(error);
-        })
+        });
     }
-   
+    const AlreadyFav=async()=>{
+        await allFavourites().then(response=>{
+            setLoader(true);
+            let aa=response.data.result;
+         if(response.status === "success"){
+            setLoader(false);
+            aa.map((items: any)=>{
+                if(items._id === id) {
+                 setfav(true);
+                }
+              });
+         }
+         else if (response.status === "fail"){
+            return (
+                setLoader(false),
+                alert(`${response.message}`)
+            )
+         }
+        }).catch(error=>{
+        if (error.status === 401) return alert(error);
+        })
+    } 
+    const addFav=async(props:any)=>{
+        console.log("favvvv=",fav)
+       
+        let array=favorites;
+        let addArray=true;
+        fav===true ? (setfav(false), addArray=false)
+        :
+        addArray=true;
+        console.log(addArray,"arrayStatus",array,"array")
+       
+        array.map((item,key)=>{
+            if(item === props.id) {
+              array.splice(key,1);
+              addArray=false;
+            }
+          })
+        if(addArray){
+    await addToFav(props.id).then(response=>{
+        console.log("addfav")
+        setLoader(true);
+     if(response.status === "success"){
+        setLoader(false),
+        array.push(props.id),
+        Toast.show(Itemadded)
+     }
+     else if (response.status === "fail"){
+        return (
+            setLoader(false),
+            alert(`${response.message}`)
+        )
+     }
+    }).catch(error=>{
+    if (error.status === 401) return alert(error);
+    })
+       }
+        else{
+            await removeFromFav(props.id).then(response=>{
+                console.log("remofav",addArray,array)
+                setLoader(true);
+             if(response.status === "success"){
+                setLoader(false),
+                Toast.show(Itemremoved);
+             }
+             else if (response.status === "fail"){
+                return (
+                    setLoader(false),
+                    alert(`${response.message}`)
+                )
+             }
+            }).catch(error=>{
+            if (error.status === 401) return alert(error);
+            })
+         
+        }
+        setfavorites([...array]);
+      }
     const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
       <View style={styles.imageRandomItemView}>
@@ -85,13 +168,19 @@ const CarDetails = () => {
       </View>
     );
     }, []);
-
+    const pr=`${IndexItems.price}`.toString();
+    var lastThree = pr.substring(pr.length-3);
+    var otherNumbers = pr.substring(0,pr.length-3);
+    if(otherNumbers != '')
+        lastThree = ',' + lastThree;
+    const Price = otherNumbers.replace(PriceRegex, ",") + lastThree;
     return (
         <View style={styles.container}>
             <CustomHeader
                 headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Car Details"
                 color={COLOR.DarkCharcoal}
+                onPress={()=>history.goBack()}
             />
                      { Loader ? (
                       <CustomLoader/>
@@ -108,22 +197,21 @@ const CarDetails = () => {
                 </View>
                 <View style={styles.amountMainContainer}>
                     <CustomText
-                        text={carPrice}
+                        text={`${RS}${Price}`}
                         textStyle={styles.amountText}
                     />
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.shareTouchableStyle}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/share.png')} />
+                                <Entypo name="share" size={27} color={COLOR.secondary} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.shareTouchableStyle}>
-                                <AntDesign name="heart" size={25} color={COLOR.secondary} />
+                        <TouchableOpacity style={styles.shareTouchableStyle} onPress={()=>addFav(IndexItems)}>
+                                <AntDesign name="heart" size={25} color={fav ===true ?  COLOR.primary:favorites.includes(IndexItems._id) ===true ?  COLOR.primary : COLOR.secondary} />
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.brandTextView}>
                     <CustomText
-                        text={modelName}
+                        text={IndexItems.model}
                         textStyle={styles.brandNameText}
                     />
                     <View style={styles.brandStatusView}>
@@ -147,7 +235,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/road.png')} />
                             <CustomText
-                                text={`${IndexItems.milage} KM`}
+                                text={`${IndexItems.milage} ${KM}`}
                                 textStyle={styles.infoText}
                             />
                         </View>

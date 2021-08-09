@@ -61,7 +61,7 @@ import { COLOR } from "../../Theme/Colors";
           <Text style={textIcon}>{Chat} </Text>
         </View>
       </Link>
-      <Link to="/find-car" component={TouchableOpacity} underlayColor="none">
+      <Link to="/favourite" component={TouchableOpacity} underlayColor="none">
         <View
           style={{
             flexDirection: "column",

@@ -1,16 +1,70 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View,Text } from 'react-native';
-import { TextInput } from "react-native-paper";
+import { useHistory } from 'react-router-native';
 import CustomHeader from '../../component/customHeader/CustomHeader';
-import CustomInput from '../../component/CustomInput/CustomInput';
 import CustomSearch from '../../component/CustomSearch';
+import ProductBox from '../../component/ProductBox';
 import { openDrawer } from '../../navigation';
 import { globalStyle } from '../../Styles';
 import { COLOR } from '../../Theme/Colors';
-
+import Toast from 'react-native-simple-toast';
+import CustomLoader from '../../component/CustomLoader';
+import { allFavourites, removeFromFav } from '../../utils/api/CarsApi';
+import { Itemremoved, NoItems } from '../../utils/constants/alertMsg';
  const YourFav = () => {
       const [favorites, setfavorites] = useState([] as Array<number>);
+      const [Items, setItems] = useState<any>([]);
+      const [Loader, setLoader] = useState(false);
+      const history =useHistory();
+     
+      useEffect(() => {
+         fetchItems()
+      }, [])
 
+      const fetchItems = async () => {
+          setLoader(true)
+            await allFavourites().then((result) => {
+              console.log("result")
+              if (result.status === "success") {
+                  setLoader(false),
+              setItems(result.data.result) 
+              }
+              else {
+                  setLoader(false),
+                  alert(result.message)
+              }
+          } 
+          ).catch(error=>{
+              if (error.status === 401) return alert(error); 
+             }) 
+      }
+     
+      const SelectItem = (id: any) => {
+             console.log("id",id)
+             history.push(`/car-Details/${id}`)
+        };
+
+     const RemoveItem=async(props:any)=>{
+          const newProduct = Items.filter((i) => i._id !== props.id);
+     await removeFromFav(props.id).then(response=>{
+            setLoader(true);
+      if(response.status === "success"){
+            setLoader(false),
+            favorites.push(props.id);
+            Toast.show(Itemremoved);
+            console.log(newProduct.length,"sdd")
+         }
+      else if (response.status === "fail"){
+            return (
+                setLoader(false),
+                alert(`${response.message}`)
+            )
+         }
+        }).catch(error=>{
+        if (error.status === 401) return alert(error);
+        })
+        setfavorites([...favorites]);
+        }
     return (
        <View>
          <CustomHeader
@@ -24,7 +78,39 @@ import { COLOR } from '../../Theme/Colors';
         //     onChange={onChangeSearch}
             />
         </View>
-          <Text>Favourites</Text>
+        {Loader ? (
+          <CustomLoader/>
+              ) : Items.length=== 0 ? ( 
+    <View style={globalStyle.loadingView}>
+        <Text>{NoItems}</Text>
+     </View>) :
+     <> 
+ {
+     Items.map((i:any)=>{
+      const strDate =
+      new Date(i.date).toLocaleString("en", {day: "numeric",month: "short" });
+        return(
+          <ProductBox 
+          key={i._id} 
+          Price={i.price} 
+          Title={i.model}
+          KMeter={i.milage}
+           year={i.year}
+           date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
+           Location={i.location.address}
+           status={"like"}
+           src={typeof i.images === "string" ? i.images : null}
+           onSelect={()=>SelectItem(i._id)}
+           onPress={()=>RemoveItem(i)}
+           color={favorites.includes(i._id) ?  COLOR.secondary: COLOR.primary}
+          />
+        );
+      
+    })
+
+ }
+ </> 
+ }
           </View>
        </View>
     )

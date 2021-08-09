@@ -46,7 +46,7 @@ import {
     cityLabel,
 } from '../../utils/constants/postDetails/postDetails';
 import { COLOR } from '../../Theme/Colors';
-import { createCars } from '../../utils/api';
+import { createCars } from '../../utils/api/CarsApi';
 import { Field, Formik } from 'formik';
 import { DropdownValidation, numeric } from '../../utils/form/validationForm';
 import CustomInput from '../../component/CustomInput/CustomInput';
@@ -67,18 +67,18 @@ const PostDetails = () => {
         location:"",
         city:"",
         province:"",
-        carModel:"",
-        carMake:"",
+        model:"",
+        make:"",
         year:"",
         condition:"",
         registrationCity:"",
-        bodycolor:"",
+        bodyColor:"",
         bodyType:"",
         engineType:"",
         assembly:"",
         transmission:"",
         milage:"",
-        priceRange:"",
+        price:"",
         features:"",
     });
     const refRBSheet = useRef<RBSheet>(null);
@@ -109,44 +109,45 @@ const PostDetails = () => {
     const handlePost=async(drop:postForm,{resetForm})=>{
   
         const { 
-       description,
+        description,
         location,
         city,
         province,
-        carModel,
-        carMake,
+        model,
+        make,
         year,
         condition,
         registrationCity,
-        bodycolor,
+        bodyColor,
         milage,
-        priceRange,
+        price,
         bodyType,
         engineType,
         assembly,
        transmission,
        features}=drop;
-       const  images=selectedImage.localUri;
+      
+       const images=selectedImage.localUri;
        
         const body={
             "description":description,
             "location":location,
             "city":city,
             "province": province,
-            "carModel":carModel,
-            "carMake":carMake,
+            "model":model,
+            "make":make,
             "year":year,
             "condition":condition,
             "registrationCity":registrationCity,
-            "bodycolor":bodycolor,
+            "bodyColor":bodyColor,
             "milage":milage,
-            "priceRange":priceRange,
+            "price":price,
             "bodyType":bodyType,
             "engineType":engineType,
             "assembly":assembly,
            "transmission":transmission,
            "features":features,
-           "Images":images,
+           "images":images,
         };
       console.log("pic",images,"values",body);
       setLoader(true),
@@ -293,10 +294,10 @@ const PostDetails = () => {
                             itemTextStyle={styles.itemTextDropDown}
                             data={CarMake}
                             disableSort={true}
-                            value={values.carMake}
-                            onChange={(value: any) => setFieldValue("carMake", value )}
+                            value={values.make}
+                            onChange={(value: any) => setFieldValue("make", value )}
                              required={true}
-                             error={errors.carMake ? true : false}
+                             error={errors.make ? true : false}
                             errorColor={COLOR.primary}
                              textInputStyle={styles.textInputDropDown}
                         />
@@ -315,10 +316,10 @@ const PostDetails = () => {
                             itemTextStyle={styles.itemTextDropDown}
                             data={CarModel}
                             disableSort={true}
-                            value={values.carModel}
-                            onChange={(value: any) => setFieldValue('carModel', value)}
+                            value={values.model}
+                            onChange={(value: any) => setFieldValue('model', value)}
                             required={true}
-                             error={errors.carModel ? true : false}
+                             error={errors.model ? true : false}
                             errorColor={COLOR.primary}
                              textInputStyle={styles.textInputDropDown}
                         />
@@ -399,10 +400,10 @@ const PostDetails = () => {
                             itemTextStyle={styles.itemTextDropDown}
                             data={bodyColor}
                             disableSort={true}
-                            value={values.bodycolor}
-                            onChange={(value: any) => setFieldValue("bodycolor", value)}
+                            value={values.bodyColor}
+                            onChange={(value: any) => setFieldValue("bodyColor", value)}
                             required={true}
-                            error={errors.bodycolor ? true : false}
+                            error={errors.bodyColor ? true : false}
                             errorColor={COLOR.primary}
                             textInputStyle={styles.textInputDropDown}
                         />
@@ -522,7 +523,7 @@ const PostDetails = () => {
                           inputFieldStyle={styles.Inputs}
                           activeFieldStyle={styles.error}
                           placeholder={PriceRangeLabel}
-                          name={"priceRange"}
+                          name={"price"}
                           keyboardType={numeric}
                           required
                           errorTextStyle={styles.errorText}

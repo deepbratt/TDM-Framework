@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useState } from 'react'
 import { View,Text } from 'react-native';
-import { ActivityIndicator } from 'react-native';
 import { useHistory } from 'react-router-native';
 import CustomHeader from '../../../component/customHeader/CustomHeader';
 import CustomLoader from '../../../component/CustomLoader';
@@ -10,10 +9,9 @@ import HeadingSection from '../../../section/CustomHeading/Heading';
 import { COLOR } from '../../../Theme/Colors';
 import { allCars } from '../../../utils/api/CarsApi';
 import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
-import { addStyles } from './styles';
+
 
  const YourAds:FC = () => {
-    const {loadingView} = addStyles;
     const [Productss, setProducts] = useState<any>([]);
     const [Loader, setLoader] = useState(false);
      useEffect(() => {
@@ -53,15 +51,23 @@ import { addStyles } from './styles';
     <HeadingSection >
  {
      Productss.map((i:any)=>{
+        const strDate =
+        new Date(i.date).toLocaleString("en", {day: "numeric",month: "short" });
+        const pr=`${i.price}`.toString();
+        var lastThree = pr.substring(pr.length-3);
+        var otherNumbers = pr.substring(0,pr.length-3);
+        if(otherNumbers != '')
+            lastThree = ',' + lastThree;
+        const Price = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
         return(
           <ProductBox 
           key={i._id} 
-          Price={i.price} 
+          Price={Price} 
           Title={i.model}
           KMeter={i.milage}
            year={i.year}
-        //    date={i.date}
-           Location={i.location.address}
+           date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
+           Location={`${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)}
            src={typeof i.images === "string" ? i.images : null}
            onSelect={()=>selectItem(i._id)}
           />
@@ -69,6 +75,7 @@ import { addStyles } from './styles';
       
     })
 }
+
  </HeadingSection>
  }
           </View>

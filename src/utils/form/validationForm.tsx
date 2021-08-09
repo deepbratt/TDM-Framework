@@ -12,6 +12,10 @@ export const Fieldnames={
     phone:"phone",
     code:"code",
 }
+export const RS="Rs. "
+export const KM="KM"
+export const PriceRegex=/\B(?=(\d{2})+(?!\d))/g
+export const numeric="numeric"
 const SomethingWrong="Something Went Wrong!"
 const requiredEmail='Email is required'
 const validEmail='Please enter valid email'
@@ -116,18 +120,18 @@ export const signUpValidationSchema = yup.object().shape({
 export const DropdownValidation = yup.object().shape({
   location: yup.string().required(),
   city: yup.string().required(),
-  carModel: yup
+  model: yup
   .string()
   .matches(letterRegex,MUST_Letter)
   .required(),
-  carMake: yup.string().required(),
+  make: yup.string().required(),
   year: yup
   .string() 
   .matches(numRegex,MUST_Number)
   .required(),
   condition: yup.string().required(),
   registrationCity: yup.string().required(),
-  bodycolor: yup.string().required(),
+  bodyColor: yup.string().required(),
   bodyType: yup.string().required(),
   engineType: yup.string().required(),
   assembly: yup.string().required(),
@@ -136,7 +140,7 @@ export const DropdownValidation = yup.object().shape({
   .string() 
   .matches(numRegex,MUST_Number)
   .required(milageRequire),
-  priceRange: yup
+  price: yup
   .string()
   .matches(numRegex,MUST_Number)
   .required(PriceRequire),
