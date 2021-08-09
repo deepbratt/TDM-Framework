@@ -126,7 +126,7 @@ export const protectedroute=[
     },
     {
         id:14,
-        path:"/car-Details",
+        path:"/car-Details/:id",
         component:CarDetails,
     },
     {
