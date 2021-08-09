@@ -1,15 +1,18 @@
 import axios from "axios";
 import { fieldForm, postForm } from "../../../types";
+import { SomethingWrong } from "../constants/alertMsg";
 
 const BASE_URL = "https://api.tezdealz.com/v1";
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
-  headers: {
-    Accept: "multipart/form-data",
-    "Content-Type": "multipart/form-data",
-    "Access-Control-Allow-Origin": "*",
-  },
 });
+const config=  {
+  headers: {
+      Accept: "multipart/form-data",
+    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    'Authorization':'Bearer '
+    }};
 const user='/Users';
 const ads='/ads';
 
@@ -36,7 +39,7 @@ const CARS={
     }
     catch(error){
         if (error.response === undefined) {
-            return { status: 403, message: "Something Went Wrong!" };
+            return { status: 403, message: SomethingWrong };
           }
           return error.response.data;
          }
@@ -48,31 +51,31 @@ const CARS={
         }
         catch(error){
             if (error.response === undefined) {
-                return { status: 403, message: "Something Went Wrong!" };
+                return { status: 403, message: SomethingWrong };
               }
               return error.response.data;
             }
           };
        export const userLoginwithEmail = async(data:fieldForm)=>{
             try {
-            let result = await axios.post(`${BASE_URL}${USERS.Email_LOGIN}`,data);
+            let result = await axiosInstance.post(`${USERS.Email_LOGIN}`,data,config);
             return result.data;
             }
             catch(error){
                 if (error.response === undefined) {
-                    return { status: 403, message: "Something Went Wrong!" };
+                    return { status: 403, message: SomethingWrong };
                   }
                   return error.response.data;
                  }
                };
         export const userLoginwithPhone = async(data:fieldForm)=>{
                 try {
-                let result = await axios.post(`${BASE_URL}${USERS.Phone_LOGIN}`,data);
+                let result = await axiosInstance.post(`${USERS.Phone_LOGIN}`,data,config);
                 return result.data;
                 }
                 catch(error){
                     if (error.response === undefined) {
-                        return { status: 403, message: "Something Went Wrong!" };
+                        return { status: 403, message: SomethingWrong };
                       }
                       return error.response.data;
                     }
@@ -84,7 +87,7 @@ const CARS={
         }
         catch(error){
             if (error.response === undefined) {
-                return { status: 403, message: "Something Went Wrong!" };
+                return { status: 403, message: SomethingWrong };
               }
               return error.response.data;
             }
@@ -96,7 +99,7 @@ const CARS={
             }
             catch(error){
                 if (error.response === undefined) {
-                    return { status: 403, message: "Something Went Wrong!" };
+                    return { status: 403, message: SomethingWrong };
                   }
                   return error.response.data;
                 }
@@ -108,7 +111,7 @@ const CARS={
               }
               catch(error){
                   if (error.response === undefined) {
-                      return { status: 403, message: "Something Went Wrong!" };
+                      return { status: 403, message: SomethingWrong };
                     }
                     return error.response.data;
                   }
@@ -120,7 +123,7 @@ const CARS={
                 }
                 catch(error){
                     if (error.response === undefined) {
-                        return { status: 403, message: "Something Went Wrong!" };
+                        return { status: 403, message: SomethingWrong };
                       }
                       return error.response.data;
                     }
@@ -132,7 +135,7 @@ const CARS={
                     }
                     catch(error){
                         if (error.response === undefined) {
-                            return { status: 403, message: "Something Went Wrong!" };
+                            return { status: 403, message: SomethingWrong };
                           }
                           return error.response.data;
                         }

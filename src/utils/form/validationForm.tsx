@@ -12,6 +12,7 @@ export const Fieldnames={
     phone:"phone",
     code:"code",
 }
+const SomethingWrong="Something Went Wrong!"
 const requiredEmail='Email is required'
 const validEmail='Please enter valid email'
 const requiredPassword='Password is required'
@@ -96,9 +97,6 @@ export const signUpValidationSchema = yup.object().shape({
         .oneOf([yup.ref('password')], donotMatch)
         .required(ConfirmMatch),
     })
-
-
-
   export const verificationValidationSchema = yup.object({
    
     email: yup
