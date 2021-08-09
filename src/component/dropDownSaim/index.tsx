@@ -1,50 +1,43 @@
-import React, { useState,FC } from 'react';
-import { Image, ScrollView, StyleSheet, View, } from 'react-native';
+import React, {FC } from 'react';
 import { Dropdown, } from 'sharingan-rn-modal-dropdown';
+import { COLOR } from '../../Theme/Colors';
 
 interface Props{
-    label: string;
-    data: any;
-    value: any;
-    onChange: any;
-    itemContainerStyle: any;
-    textInputStyle: any;
-    disableSort: any;
-    itemTextStyle: any;
+    label?: string;
+    data?: any;
+    value?: any;
+    onChange?: any;
+    itemContainerStyle?: any;
+    textInputStyle?: any;
+    disableSort?: any;
+    itemTextStyle?: any;
+    enableSearch?:any;
+    required?:boolean;
+    error?:any;
+    errorColor?:string;
+    emptySelectionText?:string
 }
 const DropDownSaim: FC<Props> = (Props) => {
 
   return (
-    <ScrollView>
-      <View>
+   
         <Dropdown
           label={Props.label}
           data={Props.data}
           value={Props.value}
           onChange={Props.onChange}
           itemContainerStyle={Props.itemContainerStyle}
+          enableSearch={Props.enableSearch}
+          required={Props.required}
+          emptySelectionText={Props.emptySelectionText}
+          error={Props.error}
+          activityIndicatorColor={COLOR.secondary}
+          rippleColor={COLOR.secondary}
+          errorColor={Props.errorColor}
           textInputStyle={Props.textInputStyle}
           disableSort={Props.disableSort}
           itemTextStyle={Props.itemTextStyle}
         />
-      </View>
-    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    flex: 1,
-  },
-  buttonView: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-});
-
 export default DropDownSaim;

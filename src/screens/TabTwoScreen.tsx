@@ -29,9 +29,9 @@ export default function TabTwoScreen() {
         <Button onPress={handle} title='Logout' />
         <CustomButton linkTo="/notify" text="notification" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/token-amount" text="token" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}}  textStyle={{color:"white"}}/>
-        <CustomButton linkTo="/car-Details" text="car Detail" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
+        <CustomButton linkTo="/car-Details/:id" text="car Detail" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/add-Details" text="ADD Detail" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
-        {/* <CustomButton linkTo="/verify-num" text="verification" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/> */}
+        <CustomButton linkTo="/post-details" text="Post Details" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/request-accept" text="request Accept" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/pay-token" text="payMENT token" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/>
         <CustomButton linkTo="/payment-error" text="payment error" buttonStyle={{ marginVertical: 10, width: 100, height: 30, backgroundColor: "red" }} textStyle={{ color: "white" }} />

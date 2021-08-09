@@ -18,15 +18,18 @@ const CustomAlert:FC<AlertProps>= ({Title,Msg,buttonTitle,onPress}) => {
         textStyle={styles.textStyle}
       />
      </View>
-      <CustomLinearGradient
-        colors={[COLOR.CarminePink,COLOR.primary]}
-        GradientButtonStyle={styles.gradientStyle}
-        text={buttonTitle}
-        textstyle={styles.gradientTextStyle}
-        imgStyle={styles.gradientImageStyle}
-        source={require('../../../assets/images/extra/Shape.png')}
-        onPress={onPress}
-      />
+    
+     <CustomLinearGradient
+     colors={[COLOR.CarminePink,COLOR.primary]}
+     GradientButtonStyle={styles.gradientStyle}
+     text={buttonTitle}
+     textstyle={styles.gradientTextStyle}
+     imgStyle={styles.gradientImageStyle}
+     source={require('../../../assets/images/extra/Shape.png')}
+     onPress={onPress}
+   />
+     
+      
      
     </SafeAreaView>
   );

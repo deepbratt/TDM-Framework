@@ -10,13 +10,17 @@ interface form{
   leftIcon:any,
   rightIcon:any,
   secureText:boolean;
+  inputFieldStyle:any,
+  activeFieldStyle:any,
+  errorTextStyle:any
 }
 
 const CustomInput:FC<form> = (props: { [x: string]: any; field: { name: any; onFocus:any; onBlur: any; onChange: any; value: any; }; form: { errors: any; touched: any; setFieldTouched: any; }; }) => {
   const {
     field: { name, onBlur,onFocus, onChange, value },
     form: { errors, touched, setFieldTouched },
-    leftIcon,rightIcon,secureText,
+    leftIcon,rightIcon,secureText,inputFieldStyle,
+    activeFieldStyle,errorTextStyle,
     ...inputProps
   } = props
 
@@ -26,8 +30,8 @@ const CustomInput:FC<form> = (props: { [x: string]: any; field: { name: any; onF
     <>
       <TextInput
         style={[
-          globalStyle.inputField,
-          hasError && globalStyle.activeField
+          inputFieldStyle,
+          hasError && activeFieldStyle
         ]}
         value={value}
         onChangeText={(text) => onChange(name)(text)}
@@ -44,18 +48,9 @@ const CustomInput:FC<form> = (props: { [x: string]: any; field: { name: any; onF
         {...inputProps}
              
       />
-      {hasError && <Text style={styles.errorText}>{errors[name]}</Text>}
+      {hasError && <Text style={errorTextStyle}>{errors[name]}</Text>}
     </>
   )
 }
-
-const styles = StyleSheet.create({
- 
-  errorText: {
-    fontSize: 13,
-    color: COLOR.primary,
-  },
- 
-})
 
 export default CustomInput

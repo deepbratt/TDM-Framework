@@ -1,4 +1,4 @@
-import React,{useCallback} from 'react';
+import React,{useCallback, useEffect} from 'react';
 import { View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -44,6 +44,8 @@ import {
 } from '../../utils/constants/carDetails/carDetails';
 import ResetPassword from '../resetPassword';
 import { COLOR } from '../../Theme/Colors';
+import axios from 'axios';
+import { useParams } from 'react-router-native';
 
 interface ItemProps {
     src: any;
@@ -56,6 +58,17 @@ interface ItemProps {
 }
   
 const CarDetails = () => {
+    const {ids}=useParams;
+       useEffect(() => {
+   fetchItem()
+     }, [])
+    const fetchItem=async()=>{
+       const id="610d2a07a96d7a001d6fac7e";
+      const resp=await axios.get(`http://api.tezdealz.com/v1/ads/cars/${id}`);
+      console.log("sss",ids);
+      console.log("fetch");
+      console.log("fetch",resp.data)
+    }
     const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
       <View style={styles.imageRandomItemView}>

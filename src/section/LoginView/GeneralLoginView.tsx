@@ -74,6 +74,9 @@ const GeneralView:FC<genralProps>=({
           return(
          <Field
          component={CustomInput}
+         inputFieldStyle={globalStyle.inputField}
+         activeFieldStyle={globalStyle.activeField}
+         errorTextStyle={globalStyle.errorText}
          placeholder={input.placeholder}
          name={input.value}
          secureText={input.secureTextEntry ? input.secureTextEntry :false}

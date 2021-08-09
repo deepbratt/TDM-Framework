@@ -140,13 +140,13 @@ export type SmsButtonProps = {
 };
 
 export type AvatarProps = {
-  overlayContainerStyle: any;
-  size: any;
-  rounded: boolean;
-  onPress: () => void;
-  activeOpacity: any;
-  source: any;
-  imageProps: any;
+  overlayContainerStyle?: any;
+  size?: any;
+  rounded?: boolean;
+  onPress?: () => void;
+  activeOpacity?: any;
+  source?: any;
+  imageProps?: any;
 };
 export type TextProps = {
   text: string;
@@ -159,14 +159,14 @@ export type MapViewProps = {
 };
 
 export type LinearGradientProps = {
-  colors: any;
-  GradientButtonStyle: any;
-  textstyle: any;
-  text: string;
-  imgStyle: any;
-  source: any;
-  onPress: () => void;
-  linkTo: any;
+  colors?: any;
+  GradientButtonStyle?: any;
+  textstyle?: any;
+  text?: string;
+  imgStyle?: any;
+  source?: any;
+  onPress?: () => void;
+  linkTo?: any;
 };
 
 export type ForgotButtonProps = {
@@ -223,3 +223,24 @@ export type AlertProps={
    Msg?:string;
   onPress:()=>void;
 }
+export type postForm= { 
+  description?: string;
+  location?: string;
+  carModel?: string;
+  carMake?: string;
+  year?: string; 
+  condition?:string;
+  registrationCity?: string; 
+  bodycolor?: string;
+  milage?: number; 
+  priceRange?:number;
+  bodyType?:string;
+  enginType?:string;
+  assembly?:string;
+  transmission?:string;
+  city?: string;
+  province?: string;
+  engineType?: string; 
+   features?: string; 
+  
+ }
