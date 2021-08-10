@@ -11,6 +11,7 @@ import Toast from 'react-native-simple-toast';
 import CustomLoader from '../../component/CustomLoader';
 import { allFavourites, removeFromFav } from '../../utils/api/CarsApi';
 import { Itemremoved, NoItems } from '../../utils/constants/alertMsg';
+import { Yourfavourite } from '../../utils/constants/HomeConstant';
  const YourFav = () => {
       const [favorites, setfavorites] = useState([] as Array<number>);
       const [Items, setItems] = useState<any>([]);
@@ -69,7 +70,7 @@ import { Itemremoved, NoItems } from '../../utils/constants/alertMsg';
        <View>
          <CustomHeader
            headerStyle={{  backgroundColor:COLOR.Cultured}}
-           color={COLOR.DarkCharcoal} isHome={true} title="Your Favorites" 
+           color={COLOR.DarkCharcoal} isHome={true} title={Yourfavourite} 
           onPress={()=>openDrawer()} />
            <View style={globalStyle.container}>
         <View style={globalStyle.inputView}>
@@ -99,7 +100,7 @@ import { Itemremoved, NoItems } from '../../utils/constants/alertMsg';
            date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
            Location={i.location.address}
            status={"like"}
-           src={typeof i.images === "string" ? i.images : null}
+           src={{uri:`${i.images[0]}`}}
            onSelect={()=>SelectItem(i._id)}
            onPress={()=>RemoveItem(i)}
            color={favorites.includes(i._id) ?  COLOR.secondary: COLOR.primary}
