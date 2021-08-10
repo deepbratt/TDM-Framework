@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  Image,
-  TextInput,
-} from "react-native";
+import React, { useRef, useState } from "react";
+import { View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import DropDownSaim from "../../component/dropDownSaim";
 import CustomLinearGradient from "../../component/customLinearGradient";
-import Example from "../../component/imagePicker";
 import CustomHeader from "../../component/customHeader/CustomHeader";
 import {
   bodyColor,
   CarModel,
   Condition,
   locationList,
-  Milage,
-  PriceRange,
   PlaceIcon,
   ModelIcon,
   AmountIcon,
@@ -38,253 +28,579 @@ import {
   PriceRangeLabel,
   DescriptionLabel,
   AddPostButton,
+  BodyTypeLabel,
+  bodyType,
+  EngineTypeLabel,
+  assemblyLabel,
+  Transmission,
+  PostAdhere,
+  CarMake,
+  registerList,
+  TransmissionType,
+  Assembly,
+  years,
+  FeaturesLabel,
+  EngineTypes,
+  provinceList,
+  provinceLabel,
+  cityLabel,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
+import { createCars } from "../../utils/api";
+import { Field, Formik } from "formik";
+import { DropdownValidation, numeric } from "../../utils/form/validationForm";
+import CustomInput from "../../component/CustomInput/CustomInput";
+import * as ImagePicker from "expo-image-picker";
+import CustomText from "../../component/customText";
+import RBSheet from "react-native-raw-bottom-sheet";
+import { globalStyle } from "../../Styles";
+import CustomAlert from "../../component/customOTP/customAlert";
+import { useHistory } from "react-router";
+import { postForm } from "../../../types";
+import {
+  FormSuccessfuL,
+  GoToHome,
+  InvalidInput,
+  PermissionToAccess,
+  SomethingWrong,
+} from "../../utils/constants/alertMsg";
 
 const PostDetails = () => {
-  const [description, setDescription] = useState("");
-  const [location, setlocation] = useState("");
-  const onchangeLocation = (value: string) => {
-    setlocation(value);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [Loader, setLoader] = useState(false);
+  const [dropdown, setDropdown] = useState({
+    description: "",
+    location: "",
+    city: "",
+    province: "",
+    carModel: "",
+    carMake: "",
+    year: "",
+    condition: "",
+    registrationCity: "",
+    bodycolor: "",
+    bodyType: "",
+    engineType: "",
+    assembly: "",
+    transmission: "",
+    milage: "",
+    priceRange: "",
+    features: "",
+  });
+  const refRBSheet = useRef<RBSheet>(null);
+  const [input, setInput] = useState({
+    Msg: "",
+    MsgTitle: "",
+    path: "",
+    button: "",
+    close: false,
+  });
+  const history = useHistory();
+
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissionResult.granted === false) {
+      alert(PermissionToAccess);
+      return;
+    }
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+    setSelectedImage({ localUri: pickerResult.uri });
+    console.log("image", selectedImage);
   };
-  const [carModel, setCarModel] = useState("");
-  const onchangeCarModel = (value: string) => {
-    setCarModel(value);
-  };
-  const [carMake, setCarMake] = useState("");
-  const onchangeCarMake = (value: string) => {
-    setCarMake(value);
-  };
-  const [year, setYear] = useState("");
-  const onchangeYear = (value: string) => {
-    setYear(value);
-  };
-  const [condition, setCondition] = useState("");
-  const onchangeCondition = (value: string) => {
-    setCondition(value);
-  };
-  const [registrationCity, setRegistrationCity] = useState("");
-  const onchangeRegistrationCity = (value: string) => {
-    setRegistrationCity(value);
-  };
-  const [bodycolor, setBodyColor] = useState("");
-  const onchangeBodyColor = (value: string) => {
-    setBodyColor(value);
-  };
-  const [milage, setMilage] = useState("");
-  const onchangeMilage = (value: string) => {
-    setMilage(value);
-  };
-  const [priceRange, setPriceRange] = useState("");
-  const onchangePriceRange = (value: string) => {
-    setPriceRange(value);
+
+  const handlePost = async (drop: postForm, { resetForm }) => {
+    const {
+      description,
+      location,
+      city,
+      province,
+      carModel,
+      carMake,
+      year,
+      condition,
+      registrationCity,
+      bodycolor,
+      milage,
+      priceRange,
+      bodyType,
+      engineType,
+      assembly,
+      transmission,
+      features,
+    } = drop;
+    const images = selectedImage.localUri;
+
+    const body = {
+      description: description,
+      location: location,
+      city: city,
+      province: province,
+      carModel: carModel,
+      carMake: carMake,
+      year: year,
+      condition: condition,
+      registrationCity: registrationCity,
+      bodycolor: bodycolor,
+      milage: milage,
+      priceRange: priceRange,
+      bodyType: bodyType,
+      engineType: engineType,
+      assembly: assembly,
+      transmission: transmission,
+      features: features,
+      Images: images,
+    };
+    console.log("pic", images, "values", body);
+    setLoader(true),
+      await createCars(body)
+        .then((response) => {
+          console.log("res", response);
+          resetForm({ drop: "" });
+          setSelectedImage(null);
+
+          if (response.status === "success") {
+            setLoader(false),
+              console.log("res", response),
+              setInput((prev) => ({
+                ...prev,
+                MsgTitle: FormSuccessfuL,
+                Msg: ``,
+                path: "/car-Details/:id",
+                button: GoToHome,
+                close: true,
+              })),
+              refRBSheet.current?.open();
+          } else if (response.status === "fail") {
+            setLoader(false),
+              setInput((prev) => ({
+                ...prev,
+                MsgTitle: InvalidInput,
+                Msg: `${response.message}`,
+                button: "Ok",
+                close: false,
+              })),
+              refRBSheet.current?.open();
+          }
+        })
+        .catch((error) => {
+          if (error.status === 401) return alert(SomethingWrong);
+        });
   };
   return (
-    // <SafeAreaView style={styles.container}>
-    //     <ScrollView style={styles.scrollView}>
-    <View>
-      <View>
-        <View style={styles.container}>
-          <CustomHeader
-            headerStyle={{ backgroundColor: COLOR.Cultured }}
-            title="Post Your Ad Here"
-            color={COLOR.DarkCharcoal}
+    <ScrollView style={styles.container}>
+      <CustomHeader
+        headerStyle={{ backgroundColor: COLOR.Cultured }}
+        title={PostAdhere}
+        color={COLOR.DarkCharcoal}
+        onPress={() => history.goBack()}
+      />
+      {selectedImage === null ? (
+        <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
+          <Image
+            style={{ alignSelf: "center" }}
+            source={require("../../../assets/images/postDetails/camera.png")}
           />
-          <Example />
-          <View style={styles.borderView}></View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={PlaceIcon} />
+          <CustomText
+            text="Add Photo"
+            textStyle={{
+              fontSize: 12,
+              textAlign: "center",
+              fontFamily: "IBMPlexSans-Light",
+              color: COLOR.GraniteGray,
+            }}
+          />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
+          <Image
+            source={{ uri: selectedImage.localUri }}
+            style={styles.thumbnail}
+          />
+        </TouchableOpacity>
+      )}
+      <View style={styles.borderView}></View>
+      <Formik
+        initialValues={dropdown}
+        onSubmit={(values, { resetForm }) => {
+          handlePost(values, { resetForm });
+        }}
+        validationSchema={DropdownValidation}
+      >
+        {({ errors, handleSubmit, setFieldValue, values, isSubmitting }) => (
+          <View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PlaceIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={LocationLabel}
+                  enableSearch
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={locationList}
+                  disableSort={true}
+                  value={values.location}
+                  onChange={(value: any) => setFieldValue("location", value)}
+                  required={true}
+                  error={errors.location ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={LocationLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={locationList}
-                disableSort={true}
-                value={location}
-                onChange={onchangeLocation}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PlaceIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={cityLabel}
+                  enableSearch
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={locationList}
+                  disableSort={true}
+                  value={values.city}
+                  onChange={(value: any) => setFieldValue("city", value)}
+                  required={true}
+                  error={errors.city ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={ModelIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PlaceIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={provinceLabel}
+                  enableSearch
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={provinceList}
+                  disableSort={true}
+                  value={values.province}
+                  onChange={(value: any) => setFieldValue("province", value)}
+                  required={true}
+                  error={errors.province ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={CarModelLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={CarModel}
-                disableSort={true}
-                value={carModel}
-                onChange={onchangeCarModel}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={ModelIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={CarMakeLabel}
+                  enableSearch
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={CarMake}
+                  disableSort={true}
+                  value={values.carMake}
+                  onChange={(value: any) => setFieldValue("carMake", value)}
+                  required={true}
+                  error={errors.carMake ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={ModelIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={ModelIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={CarModelLabel}
+                  enableSearch
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={CarModel}
+                  disableSort={true}
+                  value={values.carModel}
+                  onChange={(value: any) => setFieldValue("carModel", value)}
+                  required={true}
+                  error={errors.carModel ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={CarMakeLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={CarModel}
-                disableSort={true}
-                value={carMake}
-                onChange={onchangeCarMake}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={AmountIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={YearLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={years}
+                  disableSort={true}
+                  value={values.year}
+                  onChange={(value: any) => setFieldValue("year", value)}
+                  required={true}
+                  error={errors.year ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={AmountIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={ConditionIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={ConditionLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={Condition}
+                  disableSort={true}
+                  value={values.condition}
+                  onChange={(value: any) => setFieldValue("condition", value)}
+                  required={true}
+                  error={errors.condition ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={YearLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={CarModel}
-                disableSort={true}
-                value={year}
-                onChange={onchangeYear}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={ApartmentIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={RegisterCityLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={registerList}
+                  disableSort={true}
+                  value={values.registrationCity}
+                  onChange={(value: any) =>
+                    setFieldValue("registrationCity", value)
+                  }
+                  required={true}
+                  error={errors.registrationCity ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={ConditionIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PaletteIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={BodyColorLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={bodyColor}
+                  disableSort={true}
+                  value={values.bodycolor}
+                  onChange={(value: any) => setFieldValue("bodycolor", value)}
+                  required={true}
+                  error={errors.bodycolor ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={ConditionLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={Condition}
-                disableSort={true}
-                value={condition}
-                onChange={onchangeCondition}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PaletteIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={BodyTypeLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={bodyType}
+                  disableSort={true}
+                  value={values.bodyType}
+                  onChange={(value: any) => setFieldValue("bodyType", value)}
+                  required={true}
+                  error={errors.bodyType ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={ApartmentIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PaletteIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={EngineTypeLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={EngineTypes}
+                  enableSearch
+                  disableSort={true}
+                  value={values.engineType}
+                  onChange={(value: any) => setFieldValue("engineType", value)}
+                  required={true}
+                  error={errors.engineType ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={RegisterCityLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={locationList}
-                disableSort={true}
-                value={registrationCity}
-                onChange={onchangeRegistrationCity}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PaletteIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={assemblyLabel}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={Assembly}
+                  disableSort={true}
+                  value={values.assembly}
+                  onChange={(value: any) => setFieldValue("assembly", value)}
+                  required={true}
+                  error={errors.assembly ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={PaletteIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={PaletteIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={Transmission}
+                  itemTextStyle={styles.itemTextDropDown}
+                  data={TransmissionType}
+                  disableSort={true}
+                  value={values.transmission}
+                  onChange={(value: any) =>
+                    setFieldValue("transmission", value)
+                  }
+                  required={true}
+                  error={errors.transmission ? true : false}
+                  errorColor={COLOR.primary}
+                  textInputStyle={styles.textInputDropDown}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={BodyColorLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={bodyColor}
-                disableSort={true}
-                value={bodycolor}
-                onChange={onchangeBodyColor}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={MileageLabel}
+                  keyboardType={numeric}
+                  name={"milage"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={MilageIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={AmountIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={PriceRangeLabel}
+                  name={"priceRange"}
+                  keyboardType={numeric}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={MileageLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={Milage}
-                disableSort={true}
-                value={milage}
-                onChange={onchangeMilage}
-                textInputStyle={styles.textInputDropDown}
-              />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={AmountIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={FeaturesLabel}
+                  name={"features"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
             </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={AmountIcon} />
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={DescriptionIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  multiline={true}
+                  placeholder={DescriptionLabel}
+                  name={"description"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
             </View>
-            <View style={styles.MainViewDropDown}>
-              <DropDownSaim
-                itemContainerStyle={styles.itemContainerDropDrown}
-                label={PriceRangeLabel}
-                itemTextStyle={styles.itemTextDropDown}
-                data={PriceRange}
-                disableSort={true}
-                value={priceRange}
-                onChange={onchangePriceRange}
-                textInputStyle={styles.textInputDropDown}
-              />
-            </View>
-          </View>
-          <View style={styles.dropdownContainer}>
-            <View style={styles.iconView}>
-              <Image style={styles.buttonIcon} source={DescriptionIcon} />
-            </View>
-            <TextInput
-              placeholder={DescriptionLabel}
-              style={styles.descriptionInput}
-              maxLength={100}
-              multiline={true}
-              onChangeText={setDescription}
-              value={description}
+            <CustomLinearGradient
+              colors={[COLOR.CarminePink, COLOR.primary]}
+              GradientButtonStyle={styles.gradientStyle1}
+              text={Loader ? "Loading..." : AddPostButton}
+              textstyle={styles.gradientTextStyle}
+              onPress={handleSubmit}
             />
           </View>
-          <CustomLinearGradient
-            colors={[COLOR.CarminePink, COLOR.primary]}
-            GradientButtonStyle={styles.gradientStyle1}
-            text={AddPostButton}
-            textstyle={styles.gradientTextStyle}
-            onPress={() => console.log("Works!")}
-          />
-          {/* </ScrollView>
-        </SafeAreaView> */}
-        </View>
-        <TextInput
-          placeholder={DescriptionLabel}
-          style={styles.descriptionInput}
-          maxLength={100}
-          multiline={true}
-          // onChangeText={onChangeData}
-          // value={data.description}
+        )}
+      </Formik>
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        animationType="slide"
+        customStyles={{
+          wrapper: globalStyle.wrapperStyle,
+          container: globalStyle.containerStyle,
+          draggableIcon: globalStyle.draggableIcon,
+        }}
+      >
+        <CustomAlert
+          Title={input.MsgTitle}
+          Msg={input.Msg}
+          onPress={
+            input.close
+              ? () => history.push(input.path)
+              : () => refRBSheet.current?.close()
+          }
+          buttonTitle={input.button}
         />
-      </View>
-      <CustomLinearGradient
-        colors={["#F04148", COLOR.primary]}
-        GradientButtonStyle={styles.gradientStyle1}
-        text={AddPostButton}
-        textstyle={styles.gradientTextStyle}
-        // onPress={submitdata}
-      />
-    </View>
+      </RBSheet>
+    </ScrollView>
   );
 };
 export default PostDetails;

@@ -30,10 +30,15 @@ export const styles = StyleSheet.create({
         marginTop: hp('1%')
     },
     itemContainerDropDrown: {
-        backgroundColor: COLOR.White
+        backgroundColor: COLOR.White,
+        
     },
     MainViewDropDown: {
         width: wp('95%'),
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: hp('1%')
     },
     itemTextDropDown: {
         fontSize: 14, 

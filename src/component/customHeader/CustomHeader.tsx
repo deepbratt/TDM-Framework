@@ -35,7 +35,7 @@ const CustomHeader: FC<HeaderProps> = ({
           <DropDown textcolor={{ color: color }} color={color} />
         </View>
       )}
-      <Link component={TouchableOpacity} to="/post-details" style={item3}>
+      <Link component={TouchableOpacity} to="/profile" style={item3}>
         <Ionicons name="person-circle" size={30} color={color} />
       </Link>
     </Appbar>

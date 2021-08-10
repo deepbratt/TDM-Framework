@@ -1,5 +1,5 @@
 
-import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount, YourAds } from "../../screens";
+import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount, YourAds, Profile } from "../../screens";
 import Chat from "../../screens/Chat/chat";
 
 
@@ -158,5 +158,10 @@ export const protectedroute=[
         id: 20,
         path: "/your-ads",
         component:YourAds
+    },
+    {
+        id: 21,
+        path: "/profile",
+        component:Profile
     }
 ];

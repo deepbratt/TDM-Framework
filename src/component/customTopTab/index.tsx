@@ -22,7 +22,7 @@ interface Props{
     <Tab.Navigator
    initialRouteName="one"
    tabBarOptions={{
-    style: { backgroundColor: COLOR.DarkCharcoal , height:hp('6%'),
+    style: { backgroundColor: COLOR.White , height:hp('6%'),
     width:wp('100%')},
     indicatorStyle:{ backgroundColor: COLOR.BlueJeans,textAlign:"center"},
     activeTintColor:COLOR.DarkCharcoal,

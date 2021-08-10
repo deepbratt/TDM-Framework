@@ -43,8 +43,10 @@ interface ColorTheme {
   RedOlive:string
   GoogleRed:string
   CarminePink:string
+  red:string
 }
 export const COLOR: ColorTheme = {
+  red:"red",
   primary: '#C20000',
   secondary:'#979797',
   Black:'#000',
