@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     bottomNavigationView: {
         backgroundColor: COLOR.White,
         width: wp('100%'),
-        height: hp('72%'),
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
         justifyContent: 'flex-start',
@@ -86,7 +85,7 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-Light',
         paddingLeft: wp('2.5%'),
         borderBottomColor:COLOR.secondary,
-        borderBottomWidth:1.1,
+        borderBottomWidth: hp('0.1%'),
         color: COLOR.primary,
     },
     error: {
@@ -98,7 +97,7 @@ export const styles = StyleSheet.create({
         paddingLeft: wp('2.5%'),
         color:COLOR.primary,
         borderBottomColor:COLOR.primary,
-        borderBottomWidth: hp('0.3%')        
+        borderBottomWidth: hp('0.15%')        
     },
     errorText: {
         fontSize: 12,

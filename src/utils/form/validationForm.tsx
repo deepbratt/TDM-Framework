@@ -32,18 +32,16 @@ export const loginNumberValidation = yup.object().shape({
 export const SearchValidationSchema = yup.object().shape({
   yearFrom: yup
     .string()
-    .matches(/^[\d]{4,}$/, "atleast 4 number")
-    .max(4, () => "Year Should be 4 number")
+    .matches(/^(19|20)\d{2}$/, " Provide Valid year")
     .required("Year From required"),
   yearTo: yup
     .string()
-    .matches(/^[\d]{4,}$/, "atleast 4 number")
-    .max(4, () => "Year Should be 4 number")
+    .matches(/^(19|20)\d{2}$/, " Provide Valid year")
     .required("Year To required"),
   kilometerFrom: yup
     .string()
     .matches(/^[\d]{1,}$/, "atleast 1 number")
-    .max(6, ({ max }) => `KilometerFrom maximum range  ${max} characters`)
+    .max(6, ({ max }) => `Kilometer maximum range  ${max} number`)
     .required("Kilometer required"),
   kilometerTo: yup
     .string()
