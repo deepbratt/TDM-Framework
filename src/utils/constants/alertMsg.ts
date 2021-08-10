@@ -8,5 +8,5 @@ export const FormSuccessfuL="Form Submit Successfully"
 export const GoToHome="Check Car Datails"
 export const PermissionToAccess='Permission to access camera roll is required!'
 export const NoItems="No Items in Favourites";
-export const Itemadded="'Item has been added'";
+export const Itemadded="Item has been added";
 export const Itemremoved='Item has been removed';

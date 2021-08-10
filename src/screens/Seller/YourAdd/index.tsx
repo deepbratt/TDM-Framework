@@ -7,7 +7,7 @@ import ProductBox from '../../../component/ProductBox';
 import { openDrawer } from '../../../navigation';
 import HeadingSection from '../../../section/CustomHeading/Heading';
 import { COLOR } from '../../../Theme/Colors';
-import { allCars } from '../../../utils/api/CarsApi';
+import { myCarsApi } from '../../../utils/api/CarsApi';
 import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
 
 
@@ -20,7 +20,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
 
     const fetchData = async () => {
         setLoader(true)
-        await allCars().then((result) => {
+        await myCarsApi().then((result) => {
             console.log(result)
             if (result.status === "success") {
                 setLoader(false),
@@ -68,7 +68,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
            year={i.year}
            date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
            Location={`${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)}
-           src={typeof i.images === "string" ? i.images : null}
+           src={{uri:`${i.images[0]}`}}
            onSelect={()=>selectItem(i._id)}
           />
         );
