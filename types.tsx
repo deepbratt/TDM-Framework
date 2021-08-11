@@ -226,14 +226,14 @@ export type AlertProps={
 export type postForm= { 
   description?: string;
   location?: string;
-  carModel?: string;
-  carMake?: string;
+  model?: string;
+  make?: string;
   year?: string; 
   condition?:string;
   registrationCity?: string; 
-  bodycolor?: string;
+  bodyColor?: string;
   milage?: number; 
-  priceRange?:number;
+  price?:number;
   bodyType?:string;
   enginType?:string;
   assembly?:string;
