@@ -25,7 +25,7 @@ const USERS = {
     Email_VRIFY: `${user}/send-verification-email`,
     Phone_VRIFY: `${user}/send-verification-phone`,
     Fb_Login:`${user}/facebook-auth`,
-   
+    CURRENT_USER:`${user}/currentUser`
 
   };
 const CARS={
@@ -116,6 +116,18 @@ const CARS={
                     return error.response.data;
                   }
                 };
+                export const getcurrentUser = async()=>{
+                  try {
+                  let result = await axios.get(`${BASE_URL}${USERS.CURRENT_USER}`);
+                  return result.data;
+                  }
+                  catch(error){
+                      if (error.response === undefined) {
+                          return { status: 403, message: "Something Went Wrong!" };
+                        }
+                        return error.response.data;
+                      }
+                    };
            export const allCars = async()=>{
                 try {
                 let result = await axios.get(`${BASE_URL}${CARS.all_Cars}`);
