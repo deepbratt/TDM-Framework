@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { allCarsByPrice } from "../../utils/api";
+import { allCarsByPrice } from "../../utils/api/CarsApi";
 import { Style } from "../HashBack/style";
 import { COLOR } from "../../Theme/Colors";
+import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
   title: string;
@@ -23,6 +24,9 @@ export default function UnderFiveLakh() {
     main,
     flatListView,
     loadingView,
+    background,
+    emptyView,
+    emptyText,
     rate,
     rating,
     ratingView,
@@ -42,7 +46,6 @@ export default function UnderFiveLakh() {
     }
     setLoading(true);
     await allCarsByPrice(url)
-    
       .then((result) => {
         console.log(result);
         console.log(result.status);
@@ -73,9 +76,20 @@ export default function UnderFiveLakh() {
       SetPage(page + 1);
     }
   };
-
+  const ListEmptyView = () => {
+    return (
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
+      </View>
+    );
+  };
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
-    <View>
+    <View style={background}>
       {loading ? (
         <View style={loadingView}>
           <ActivityIndicator size="large" color={COLOR.primary} />
@@ -88,7 +102,10 @@ export default function UnderFiveLakh() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={main}>
-                <TouchableOpacity style={container}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
                   <Image
                     style={images}
                     source={
@@ -113,6 +130,7 @@ export default function UnderFiveLakh() {
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0.1}
+            ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

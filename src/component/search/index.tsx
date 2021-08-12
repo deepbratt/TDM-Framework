@@ -17,14 +17,16 @@ import {
   FromText,
   ToText,
   ButtonText,
-  Year,
   KilometerText,
   dates,
+  BodyType,
+  Location,
 } from "../../utils/constants/search";
 import { COLOR } from "../../Theme/Colors";
 import { Formik, Field } from "formik";
 import { SeacrhForm } from "../../../types";
 import CustomInput from "../CustomInput/CustomInput";
+import { Carfilter } from "../../utils/api/CarsApi";
 const CustomFilter = () => {
   const [search, setSearch] = useState({
     sortBy: "",
@@ -34,6 +36,25 @@ const CustomFilter = () => {
     To:"",
     kilometerFrom: "",
   });
+
+  const [carData, setCarData] = useState<any>([]);
+  const bodyType = { BodyType };
+  const make = { BrandList };
+  const city = { Location };
+  const fetchFilterCar = async () => {
+    await Carfilter()
+      .then((result) => {
+        if (result.status === "success") {
+        setCarData(result.data.result)
+        } else {
+          alert(result.message);
+      }
+    }).catch(error=>{
+            if (error.status === 401) return alert(error); 
+           })
+  }
+
+
   const handleSearch = async (search: SeacrhForm) => {
     console.log("Work");
     const {
@@ -72,7 +93,7 @@ const CustomFilter = () => {
                 itemContainerStyle={styles.itemContainerDropDrown}
                 label={SortLabel}
                 itemTextStyle={styles.itemTextDropDown}
-                data={BrandList}
+                data={Location}
                 disableSort={true}
                 value={values.sortBy}
                 onChange={(value: any) => setFieldValue("sortBy", value)}
@@ -181,7 +202,7 @@ const CustomFilter = () => {
                 itemContainerStyle={styles.itemContainerDropDrown}
                 label={BodyLabel}
                 itemTextStyle={styles.itemTextDropDown}
-                data={Year}
+                data={BodyType}
                 disableSort={true}
                 value={values.body}
                 onChange={(value: any) => setFieldValue("body", value)}

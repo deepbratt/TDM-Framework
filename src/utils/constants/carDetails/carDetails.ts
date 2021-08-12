@@ -18,7 +18,7 @@ export const shortListText = "Shortlist"
 export const sellerText = "Seller: Indivisual Seller"
 export const userName = "Alice Smith"
 export const locationText = "Ad Posted At"
-
+export const FeatureProd="Feature Product"
 export const Items = [
     { src: require('../../../../assets/images/car.jpg'), },
     { src: require('../../../../assets/images/car1.jpeg'), },

@@ -10,6 +10,10 @@ export const Fieldnames = {
   phone: "phone",
   code: "code",
 };
+export const RS = "Rs. ";
+export const KM = "KM";
+export const PriceRegex = /\B(?=(\d{2})+(?!\d))/g;
+export const numeric = "numeric";
 const SomethingWrong = "Something Went Wrong!";
 const requiredEmail = "Email is required";
 const validEmail = "Please enter valid email";
@@ -50,13 +54,13 @@ export const SearchValidationSchema = yup.object().shape({
   body: yup.string().required("Body type required"),
   FromS: yup
     .number()
-    // .lessThan(yup.ref('To'))
-    .equals([yup.ref("To")])
+    .lessThan(yup.ref("To"))
+    // .equals([yup.ref("To")])
     .required("From Year Required"),
   To: yup
     .number()
-    // .moreThan(yup.ref("FromS"))
-    .equals([yup.ref("FromS")])
+    .moreThan(yup.ref("FromS"))
+    // .equals([yup.ref("FromS")])
     .required("To Year Required"),
 });
 
@@ -105,21 +109,18 @@ export const verificationNumberValidation = yup.object({
 export const DropdownValidation = yup.object().shape({
   location: yup.string().required(),
   city: yup.string().required(),
-  carModel: yup.string().matches(letterRegex, MUST_Letter).required(),
-  carMake: yup.string().required(),
+  model: yup.string().matches(letterRegex, MUST_Letter).required(),
+  make: yup.string().required(),
   year: yup.string().matches(numRegex, MUST_Number).required(),
   condition: yup.string().required(),
   registrationCity: yup.string().required(),
-  bodycolor: yup.string().required(),
+  bodyColor: yup.string().required(),
   bodyType: yup.string().required(),
   engineType: yup.string().required(),
   assembly: yup.string().required(),
   transmission: yup.string().required(),
   milage: yup.string().matches(numRegex, MUST_Number).required(milageRequire),
-  priceRange: yup
-    .string()
-    .matches(numRegex, MUST_Number)
-    .required(PriceRequire),
+  price: yup.string().matches(numRegex, MUST_Number).required(PriceRequire),
   features: yup.string().required(featureRequire),
   description: yup.string().required(descriptionRequire),
 });

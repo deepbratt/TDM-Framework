@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { allCarsByPrice } from "../../utils/api";
+import { allCarsByPrice } from "../../utils/api/CarsApi";
 import { Style } from "../HashBack/style";
 import { COLOR } from "../../Theme/Colors";
-
+import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
   title: string;
@@ -24,6 +24,9 @@ export default function AboveTenLakh() {
     main,
     flatListView,
     loadingView,
+    background,
+    emptyText,
+    emptyView,
     rate,
     rating,
     ratingView,
@@ -59,22 +62,33 @@ export default function AboveTenLakh() {
       });
   };
 
-   const renderFooter = () => {
-     return loading ? (
-       <View style={{ marginTop: 10, alignItems: "center" }}>
-         <ActivityIndicator size="large" />
-       </View>
-     ) : null;
-   };
+  const renderFooter = () => {
+    return loading ? (
+      <View style={{ marginTop: 10, alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    ) : null;
+  };
 
-   const handleLoadMore = () => {
-     if (!loading && status === "success") {
-       SetPage(page + 1);
-     }
-   };
-
+  const handleLoadMore = () => {
+    if (!loading && status === "success") {
+      SetPage(page + 1);
+    }
+  };
+  const ListEmptyView = () => {
+    return (
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
+      </View>
+    );
+  };
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
-    <View>
+    <View style={background}>
       {loading ? (
         <View style={loadingView}>
           <ActivityIndicator size="large" color={COLOR.primary} />
@@ -87,7 +101,10 @@ export default function AboveTenLakh() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={main}>
-                <TouchableOpacity style={container}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
                   <Image
                     style={images}
                     source={
@@ -112,6 +129,7 @@ export default function AboveTenLakh() {
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0.1}
+            ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

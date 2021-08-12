@@ -1,21 +1,11 @@
 import axios from "axios";
 import { fieldForm, postForm } from "../../../types";
 import { SomethingWrong } from "../constants/alertMsg";
+import { axiosInstance, config } from "./api";
 
 const BASE_URL = "https://api.tezdealz.com/v1";
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-});
-const config = {
-  headers: {
-    Accept: "multipart/form-data",
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    Authorization: "Bearer ",
-  },
-};
+
 const user = "/Users";
-const ads = "/ads";
 
 const USERS = {
   LOGIN: `${user}/login`,
@@ -26,11 +16,7 @@ const USERS = {
   Email_VRIFY: `${user}/send-verification-email`,
   Phone_VRIFY: `${user}/send-verification-phone`,
   Fb_Login: `${user}/facebook-auth`,
-};
-const CARS = {
-  all_Cars: `${ads}/cars?limit=10&page=`,
-  bodyType: `${ads}/cars?bodyType=`,
-  carsByPrice: `${ads}/cars?price`,
+  Google_Login: `${user}/google-auth`,
 };
 
 export const userSignUpApi = async (data: fieldForm) => {
@@ -44,6 +30,7 @@ export const userSignUpApi = async (data: fieldForm) => {
     return error.response.data;
   }
 };
+
 export const userSignUpwithPhone = async (data: fieldForm) => {
   try {
     let result = await axios.post(`${BASE_URL}${USERS.Phone_SIGNUP}`, data);
@@ -110,43 +97,10 @@ export const FbLogin = async () => {
     return error.response.data;
   }
 };
-export const allCars = async () => {
-  try {
-    let result = await axios.get(`${BASE_URL}${CARS.all_Cars}`);
-    return result.data;
-  } catch (error) {
-    if (error.response === undefined) {
-      return { status: 403, message: SomethingWrong };
-    }
-    return error.response.data;
-  }
-};
 
-export const allCarsByBody = async (queryparams:string) => {
+export const GoogleLogin = async () => {
   try {
-    let result = await axios.get(`${BASE_URL}${CARS.all_Cars}${queryparams}`);
-    return result.data;
-  } catch (error) {
-    if (error.response === undefined) {
-      return { status: 403, message: SomethingWrong };
-    }
-    return error.response.data;
-  }
-};
-export const allCarsByPrice = async (queryparams: string) => {
-  try {
-    let result = await axios.get(`${BASE_URL}${CARS.all_Cars}${queryparams}`);
-    return result.data;
-  } catch (error) {
-    if (error.response === undefined) {
-      return { status: 403, message: SomethingWrong };
-    }
-    return error.response.data;
-  }
-};
-export const createCars = async (data: postForm) => {
-  try {
-    let result = await axios.post(`${BASE_URL}${CARS.all_Cars}`, data);
+    let result = await axios.post(`${BASE_URL}${USERS.Google_Login}`);
     return result.data;
   } catch (error) {
     if (error.response === undefined) {

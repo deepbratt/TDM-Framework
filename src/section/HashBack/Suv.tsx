@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { allCarsByBody } from "../../utils/api";
+import { allCarsByBody } from "../../utils/api/CarsApi";
 import { Style } from "./style";
 import { COLOR } from "../../Theme/Colors";
-
+import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
   title: string;
@@ -23,6 +23,8 @@ export default function SUV() {
     main,
     flatListView,
     loadingView,
+    emptyView,
+    emptyText,
     rate,
     rating,
     ratingView,
@@ -31,7 +33,6 @@ export default function SUV() {
   const [loading, setLoading] = useState(false);
   const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-
   useEffect(() => {
     fetchAllCars();
   }, [page]);
@@ -44,12 +45,10 @@ export default function SUV() {
     setLoading(true);
     await allCarsByBody(url)
       .then((result) => {
-        // console.log(result);
         console.log(result.status);
         setStatus(result.status);
         if (result.status === "success") {
-          setLoading(false),
-            setCarList([...carlist, ...result.data.result]);
+          setLoading(false), setCarList([...carlist, ...result.data.result]);
           let temp = [...carlist, ...result.data.result];
           console.log(temp.length);
         } else {
@@ -74,7 +73,18 @@ export default function SUV() {
       SetPage(page + 1);
     }
   };
-
+  const ListEmptyView = () => {
+    return (
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
+      </View>
+    );
+  };
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
     <View>
       {loading ? (
@@ -89,7 +99,10 @@ export default function SUV() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={main}>
-                <TouchableOpacity style={container}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
                   <Image
                     style={images}
                     source={
@@ -114,6 +127,7 @@ export default function SUV() {
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0.1}
+            ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

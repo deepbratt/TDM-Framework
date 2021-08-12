@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { allCarsByBody } from "../../utils/api";
+import { allCarsByBody } from "../../utils/api/CarsApi";
 import { Style } from "./style";
 import { COLOR } from "../../Theme/Colors";
+import { useHistory } from "react-router-native";
 
 interface ItemProps {
   src: any;
@@ -23,6 +24,8 @@ export default function Sedan() {
     main,
     flatListView,
     loadingView,
+    emptyText,
+    emptyView,
     rate,
     rating,
     ratingView,
@@ -46,14 +49,13 @@ export default function Sedan() {
       .then((result) => {
         // console.log(result);
         // console.log(result.status)
-        console.log(url)
-        setStatus(result.status)
+        console.log(url);
+        setStatus(result.status);
         if (result.status === "success") {
           setLoading(false);
           setCarList([...carlist, ...result.data.result]);
           let temp = [...carlist, ...result.data.result];
-          console.log(temp.length)
-          
+          console.log(temp.length);
         } else {
           setLoading(false), alert(result.message);
         }
@@ -72,11 +74,22 @@ export default function Sedan() {
   };
 
   const handleLoadMore = () => {
-    if (!loading&&status==="success") {
+    if (!loading && status === "success") {
       SetPage(page + 1);
     }
   };
-
+  const ListEmptyView = () => {
+    return (
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
+      </View>
+    );
+  };
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
     <View>
       {loading ? (
@@ -88,10 +101,13 @@ export default function Sedan() {
           <FlatList
             style={flatListView}
             data={carlist}
-            keyExtractor={(item,index) => item._id+index}
+            keyExtractor={(item, index) => item._id + index}
             renderItem={({ item }) => (
               <View style={main} key={item._id}>
-                <TouchableOpacity style={container}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
                   <Image
                     style={images}
                     source={
@@ -115,7 +131,8 @@ export default function Sedan() {
             showsHorizontalScrollIndicator={false}
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.1}
+              onEndReachedThreshold={0.1}
+              ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

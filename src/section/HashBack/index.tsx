@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
 import { COLOR } from "../../Theme/Colors";
-import { allCarsByBody } from "../../utils/api";
+import { allCarsByBody } from "../../utils/api/CarsApi";
 import { Style } from "./style";
-
+import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
   title: string;
@@ -24,19 +24,21 @@ export default function Hashback() {
     main,
     flatListView,
     loadingView,
+    emptyView,
+    emptyText,
     rate,
     rating,
     ratingView,
   } = Style;
   const [carlist, setCarList] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-   const [page, SetPage] = useState(1);
+  const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-  
+
   useEffect(() => {
     fetchAllCars();
   }, [page]);
-  const bodyType = "Micro Van";
+  const bodyType = "Convertible";
   const fetchAllCars = async () => {
     let url = "" + page;
     if (bodyType) {
@@ -72,6 +74,19 @@ export default function Hashback() {
       SetPage(page + 1);
     }
   };
+  const ListEmptyView = () => {
+    return (
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
+      </View>
+    );
+  };
+
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
     <View>
       {loading ? (
@@ -83,10 +98,13 @@ export default function Hashback() {
           <FlatList
             style={flatListView}
             data={carlist}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
               <View style={main}>
-                <TouchableOpacity style={container}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
                   <Image
                     style={images}
                     source={
@@ -110,7 +128,8 @@ export default function Hashback() {
             showsHorizontalScrollIndicator={false}
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.1}
+              onEndReachedThreshold={0.1}
+              ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

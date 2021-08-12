@@ -4,6 +4,7 @@ export const Home = "Home";
 export const Notification = "Notification";
 export const Chat = "Chat";
 export const Favorites = "Favorites";
+export const FindCars = "Find Car";
 
 
 export const Browse="Browse Categories";
@@ -19,6 +20,8 @@ export const sellList = [
   { id: 3,onPress:"/", viewStyle: COLOR.MiddleGreen, ProductName: "Electronics", ProductImage: require("../../../assets/images/category/product.png") },
 
 ];
+export const Yourfavourite="Your favourite Cars"
+export const ShortListTitle="Your Shortlisted Cars";
 export const YourAdsTitle="Your Ads";
 export const Choosewhat="Choose what do you want to sell";
 export const SellYou="Sell You Car from Home";

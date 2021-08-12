@@ -4,7 +4,7 @@ import { COLOR } from "../../Theme/Colors";
 export const Style = StyleSheet.create({
     flatListView: {
         width: wp('100%'),
-        backgroundColor:COLOR.background
+        backgroundColor: COLOR.background,
     },
     main: {
         justifyContent: 'center',
@@ -82,5 +82,23 @@ rating:{
       height:hp('30%'),
       justifyContent:"center",
       alignItems:"center",
-  },
+    },
+    background: {
+        width: wp('100%'),
+        backgroundColor:COLOR.background,
+        justifyContent:'center'
+    },
+    emptyView: {
+        width: wp('100%'),
+        height: hp('30%'),
+        backgroundColor: COLOR.background,
+        justifyContent:"center"
+    },
+    emptyText: {
+        fontFamily: "IBMPlexSans-Bold",
+        fontSize: 18,
+        color: COLOR.GraniteGray,
+        alignSelf: 'center',
+        textAlign:'center'
+    }
 });

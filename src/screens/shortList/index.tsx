@@ -1,17 +1,17 @@
 import React, {FC, useEffect, useState } from 'react'
-import { View,Text } from 'react-native';
+import { View } from 'react-native';
 import { useHistory } from 'react-router-native';
-import CustomHeader from '../../../component/customHeader/CustomHeader';
-import CustomLoader from '../../../component/CustomLoader';
-import ProductBox from '../../../component/ProductBox';
-import { openDrawer } from '../../../navigation';
-import HeadingSection from '../../../section/CustomHeading/Heading';
-import { COLOR } from '../../../Theme/Colors';
-import { myCarsApi } from '../../../utils/api/CarsApi';
-import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
+import CustomHeader from '../../component/customHeader/CustomHeader';
+import CustomLoader from '../../component/CustomLoader';
+import ProductBox from '../../component/ProductBox';
+import { openDrawer } from '../../navigation';
+import HeadingSection from '../../section/CustomHeading/Heading';
+import { COLOR } from '../../Theme/Colors';
+import { myCarsApi } from '../../utils/api/CarsApi';
+import { ShortListTitle } from '../../utils/constants/HomeConstant';
 
 
- const YourAds:FC = () => {
+ const ShortList:FC = () => {
     const [Productss, setProducts] = useState<any>([]);
     const [Loader, setLoader] = useState(false);
      useEffect(() => {
@@ -21,7 +21,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
     const fetchData = async () => {
         setLoader(true)
         await myCarsApi().then((result) => {
-            console.log(result)
+            console.log(result,"my car")
             if (result.status === "success") {
                 setLoader(false),
             setProducts(result.data.result) 
@@ -44,7 +44,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
         <View style={{flex:1}}>
         <CustomHeader
           headerStyle={{ backgroundColor:COLOR.Cultured }}
-          color={COLOR.DarkCharcoal} isHome={true} title={YourAdsTitle}
+          color={COLOR.DarkCharcoal} isHome={true} title={ShortListTitle}
           onPress={() => openDrawer()} />
      {Loader ? (
      <CustomLoader/>) :
@@ -81,4 +81,4 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
           </View>
     )
 }
-export default YourAds;
+export default ShortList;
