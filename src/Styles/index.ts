@@ -129,5 +129,11 @@ forgetButton:{
     },
     draggableIcon: {
         backgroundColor: "transparent"
-      }
+      },
+      loadingView:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center",
+        marginTop:hp('6%')
+    }
 });

@@ -4,7 +4,7 @@ import { Link } from "react-router-native";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { tabStyles } from "./style";
-import {  Chat, Favorites, Home, Notification } from "../../utils/constants/HomeConstant";
+import {  Chat, Favorites, FindCars, Home, Notification } from "../../utils/constants/HomeConstant";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from "../../Theme/Colors";
  const CustomBottomTab = () => {
@@ -69,14 +69,14 @@ import { COLOR } from "../../Theme/Colors";
             justifyContent: "flex-end",
           }}
         >
-          <MaterialIcons
-            name="star"
-            size={24}
+          <MaterialCommunityIcons
+            name="magnify"
+            size={29}
             color={COLOR.White}
             style={{ marginHorizontal:wp('8%'), height: hp('4%')}}
-            containerStyle={{ marginHorizontal: 16 ,}}
+            containerStyle={{ marginHorizontal: 16 }}
           />
-          <Text style={textIcon}>{Favorites}</Text>
+          <Text style={textIcon}>{FindCars}</Text>
         </View>
       </Link>
     </LinearGradient>

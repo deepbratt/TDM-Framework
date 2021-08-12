@@ -3,24 +3,24 @@ import {  SafeAreaView,} from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 interface Props{
-  renderItems: any,
-  listItems: any,
-  layout:any,
-  layoutCardOffset:any,
-  autoplay:any,
-  loop:any,
-  enableMomentum:any,
-  enableSnap:any,
-  autoplayDelay:any,
-  sliderWidth:any,
-  activeAnimationType:any,
-  itemWidth:any,
-  inactiveSlideScale:any,
-  inactiveSlideOpacity:any,
-  autoplayInterval:any,
-  contentContainerCustomStyle:any,
-  containerCustomStyle: any,
-  ref: any;
+  renderItems?: any,
+  listItems?: any,
+  layout?:any,
+  layoutCardOffset?:any,
+  autoplay?:any,
+  loop?:any,
+  enableMomentum?:any,
+  enableSnap?:any,
+  autoplayDelay?:any,
+  sliderWidth?:any,
+  activeAnimationType?:any,
+  itemWidth?:any,
+  inactiveSlideScale?:any,
+  inactiveSlideOpacity?:any,
+  autoplayInterval?:any,
+  contentContainerCustomStyle?:any,
+  containerCustomStyle?: any,
+  ref?: any;
 }
 
 const CustomCarouselSaim40: FC<Props> = (Props) => {
