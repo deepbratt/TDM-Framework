@@ -5,6 +5,9 @@ import { axiosInstance, config } from "./api";
 
 const ads='/ads';
 const AND='&_id='
+const LIMIT='&limit='
+const PAGE='?page='
+
 const CARS={
     all_Cars: `${ads}/cars/`,
     ALL_Fav:`${ads}/cars/favourites/`,
@@ -14,9 +17,9 @@ const CARS={
     COMPARE_Cars:`${ads}/Cars?_id=`
 
 }
-  export const allCars = async()=>{
+  export const allCars = async(pno?:number,limit?:number)=>{
     try {
-    let result = await axiosInstance.get(`${CARS.all_Cars}`);
+    let result = await axiosInstance.get(`${CARS.all_Cars}${PAGE}${pno}${LIMIT}${limit}`);
     return result.data;
     }
     catch(error){
@@ -110,6 +113,6 @@ const CARS={
                                                 return error.response.data;
                                               }
                                             };
-
+                                           
                                   
                                   
