@@ -49,6 +49,10 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         marginLeft: wp('2%')
     },
+    editStyle: {
+        alignSelf: 'center',
+        marginTop: wp('1%'),
+    },
     buttonIcon: {
         padding: wp('2%'),
         alignSelf: 'center',
@@ -94,6 +98,7 @@ export const styles = StyleSheet.create({
     },
     infoText: {
         fontSize: 12,
+        textAlign:"center",
         fontFamily: 'IBMPlexSans-Medium',
         color: COLOR.secondary,
         paddingTop: hp('0.5%')
@@ -102,7 +107,7 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
         color: COLOR.DarkCharcoal,
-        paddingTop: hp('0.5%')
+        paddingTop: hp('0.5%'),
     },
     descriptionHeading: {
         width: wp('95%'),
