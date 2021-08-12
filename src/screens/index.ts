@@ -29,6 +29,7 @@ import SearchCompare from "./Compare";
 import CompareProduct from "./Compare/Compare";
 import YourAds from "./Seller/YourAdd";
 import Profile from "./Profile/index"
+import ShortList from "./shortList/index";
 export {
     Splash,
     SignInWithEmail,
@@ -61,4 +62,5 @@ export {
     ConfirmPayment,
     YourAds,
     Profile,
+    ShortList
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, ScrollView, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import DropDownSaim from "../../component/dropDownSaim";
@@ -46,7 +46,7 @@ import {
   cityLabel,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
-import { createCars } from "../../utils/api";
+import { createCars } from "../../utils/api/CarsApi";
 import { Field, Formik } from "formik";
 import { DropdownValidation, numeric } from "../../utils/form/validationForm";
 import CustomInput from "../../component/CustomInput/CustomInput";
@@ -66,25 +66,26 @@ import {
 } from "../../utils/constants/alertMsg";
 
 const PostDetails = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<Array<any>>([]);
   const [Loader, setLoader] = useState(false);
+  const [imageBlob, setImageBlob] = useState<Array<string | Blob>>([]);
   const [dropdown, setDropdown] = useState({
     description: "",
     location: "",
     city: "",
     province: "",
-    carModel: "",
-    carMake: "",
+    model: "",
+    make: "",
     year: "",
     condition: "",
     registrationCity: "",
-    bodycolor: "",
+    bodyColor: "",
     bodyType: "",
     engineType: "",
     assembly: "",
     transmission: "",
     milage: "",
-    priceRange: "",
+    price: "",
     features: "",
   });
   const refRBSheet = useRef<RBSheet>(null);
@@ -96,7 +97,9 @@ const PostDetails = () => {
     close: false,
   });
   const history = useHistory();
-
+  useEffect(() => {
+    console.log(selectedImage);
+  }, [selectedImage]);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
@@ -107,59 +110,93 @@ const PostDetails = () => {
     if (pickerResult.cancelled === true) {
       return;
     }
-    setSelectedImage({ localUri: pickerResult.uri });
-    console.log("image", selectedImage);
+    let localUri = pickerResult.uri;
+    let filename = localUri.split("/").pop();
+
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename ? filename : "");
+    let type = match ? `image/${match[1]}` : `image`;
+    //   setSelectedImage({ localUri: pickerResult.uri });
+    let response = await fetch(localUri);
+    let Blob = await response.blob();
+    let imageData = { uri: localUri, name: filename, type };
+    setImageBlob([...imageBlob, Blob]);
+    // let temp=selectedImage;
+    // temp.push(imageData);
+    setSelectedImage([...selectedImage, imageData]);
+    // console.log("image",temp);
   };
 
-  const handlePost = async (drop: postForm, { resetForm }) => {
+  const handlePost = async (drop: any, { resetForm }: any) => {
     const {
       description,
       location,
       city,
       province,
-      carModel,
-      carMake,
+      model,
+      make,
       year,
       condition,
       registrationCity,
-      bodycolor,
+      bodyColor,
       milage,
-      priceRange,
+      price,
       bodyType,
       engineType,
       assembly,
       transmission,
       features,
     } = drop;
-    const images = selectedImage.localUri;
+
+    const images = imageBlob;
 
     const body = {
       description: description,
       location: location,
       city: city,
       province: province,
-      carModel: carModel,
-      carMake: carMake,
+      model: model,
+      make: make,
       year: year,
       condition: condition,
       registrationCity: registrationCity,
-      bodycolor: bodycolor,
+      bodyColor: bodyColor,
       milage: milage,
-      priceRange: priceRange,
+      price: price,
       bodyType: bodyType,
       engineType: engineType,
       assembly: assembly,
       transmission: transmission,
       features: features,
-      Images: images,
+      images: images,
     };
+    let formData = new FormData();
+    formData.append("description", description),
+      formData.append("location", location);
+    formData.append("city", city);
+    formData.append("province", province);
+    formData.append("model", model);
+    formData.append("make", make);
+    formData.append("year", year);
+    formData.append("condition", condition);
+    formData.append("registrationCity", registrationCity);
+    formData.append("bodyColor", bodyColor);
+    formData.append("milage", milage);
+    formData.append("price", price);
+    formData.append("bodyType", bodyType);
+    formData.append("engineType", engineType);
+    formData.append("assembly", assembly);
+    formData.append("transmission", transmission);
+    formData.append("features", features);
+    formData.append("images", selectedImage as any);
+
     console.log("pic", images, "values", body);
     setLoader(true),
-      await createCars(body)
+      await createCars(formData)
         .then((response) => {
           console.log("res", response);
-          resetForm({ drop: "" });
-          setSelectedImage(null);
+          //   resetForm({ drop: "" });
+          //   setSelectedImage([]);
 
           if (response.status === "success") {
             setLoader(false),
@@ -197,7 +234,7 @@ const PostDetails = () => {
         color={COLOR.DarkCharcoal}
         onPress={() => history.goBack()}
       />
-      {selectedImage === null ? (
+      {selectedImage.length === 0 ? (
         <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
           <Image
             style={{ alignSelf: "center" }}
@@ -216,7 +253,7 @@ const PostDetails = () => {
       ) : (
         <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
           <Image
-            source={{ uri: selectedImage.localUri }}
+            source={{ uri: selectedImage[0].uri }}
             style={styles.thumbnail}
           />
         </TouchableOpacity>
@@ -306,10 +343,10 @@ const PostDetails = () => {
                   itemTextStyle={styles.itemTextDropDown}
                   data={CarMake}
                   disableSort={true}
-                  value={values.carMake}
-                  onChange={(value: any) => setFieldValue("carMake", value)}
+                  value={values.make}
+                  onChange={(value: any) => setFieldValue("make", value)}
                   required={true}
-                  error={errors.carMake ? true : false}
+                  error={errors.make ? true : false}
                   errorColor={COLOR.primary}
                   textInputStyle={styles.textInputDropDown}
                 />
@@ -327,10 +364,10 @@ const PostDetails = () => {
                   itemTextStyle={styles.itemTextDropDown}
                   data={CarModel}
                   disableSort={true}
-                  value={values.carModel}
-                  onChange={(value: any) => setFieldValue("carModel", value)}
+                  value={values.model}
+                  onChange={(value: any) => setFieldValue("model", value)}
                   required={true}
-                  error={errors.carModel ? true : false}
+                  error={errors.model ? true : false}
                   errorColor={COLOR.primary}
                   textInputStyle={styles.textInputDropDown}
                 />
@@ -409,10 +446,10 @@ const PostDetails = () => {
                   itemTextStyle={styles.itemTextDropDown}
                   data={bodyColor}
                   disableSort={true}
-                  value={values.bodycolor}
-                  onChange={(value: any) => setFieldValue("bodycolor", value)}
+                  value={values.bodyColor}
+                  onChange={(value: any) => setFieldValue("bodyColor", value)}
                   required={true}
-                  error={errors.bodycolor ? true : false}
+                  error={errors.bodyColor ? true : false}
                   errorColor={COLOR.primary}
                   textInputStyle={styles.textInputDropDown}
                 />
@@ -528,7 +565,7 @@ const PostDetails = () => {
                   inputFieldStyle={styles.Inputs}
                   activeFieldStyle={styles.error}
                   placeholder={PriceRangeLabel}
-                  name={"priceRange"}
+                  name={"price"}
                   keyboardType={numeric}
                   required
                   errorTextStyle={styles.errorText}

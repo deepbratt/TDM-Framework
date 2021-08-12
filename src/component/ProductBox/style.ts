@@ -29,7 +29,8 @@ main:{
           width:"100%",
           height:hp('13%'),
           borderTopLeftRadius:6,
-          borderBottomLeftRadius:6
+          borderBottomLeftRadius:6,
+          backgroundColor:COLOR.primary
         },
  div2: {
            width:wp('47%'),
