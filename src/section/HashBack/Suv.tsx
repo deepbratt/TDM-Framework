@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { COLOR } from "../../Theme/Colors";
 import { allCarsByBody } from "../../utils/api";
 import { Style } from "./style";
+import { COLOR } from "../../Theme/Colors";
 
 interface ItemProps {
   src: any;
@@ -15,7 +14,7 @@ interface RenderItemProps {
   item: ItemProps;
   index: number;
 }
-export default function Hashback() {
+export default function SUV() {
   const {
     container,
     images,
@@ -30,13 +29,13 @@ export default function Hashback() {
   } = Style;
   const [carlist, setCarList] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-   const [page, SetPage] = useState(1);
+  const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-  
+
   useEffect(() => {
     fetchAllCars();
   }, [page]);
-  const bodyType = "Micro Van";
+  const bodyType = "Suv";
   const fetchAllCars = async () => {
     let url = "" + page;
     if (bodyType) {
@@ -45,9 +44,12 @@ export default function Hashback() {
     setLoading(true);
     await allCarsByBody(url)
       .then((result) => {
+        // console.log(result);
+        console.log(result.status);
         setStatus(result.status);
         if (result.status === "success") {
-          setLoading(false), setCarList([...carlist, ...result.data.result]);
+          setLoading(false),
+            setCarList([...carlist, ...result.data.result]);
           let temp = [...carlist, ...result.data.result];
           console.log(temp.length);
         } else {
@@ -72,6 +74,7 @@ export default function Hashback() {
       SetPage(page + 1);
     }
   };
+
   return (
     <View>
       {loading ? (

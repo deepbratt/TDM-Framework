@@ -30,3 +30,15 @@ export const BodyType = [
     { id: 3, label: "April", value: "April" },
     { id: 4, label: "May", value: "May" },
 ];
+
+
+ const dateCreator=() => {
+     let currentDate = new Date();
+     let CurrentYear = currentDate.getFullYear()
+     let arr = []
+     for (let i = 1960; i <= CurrentYear; i++){
+         arr.push({ id: i.toString(), label: i.toString(), value: i.toString() })
+     }
+     return arr
+}
+export const dates=dateCreator()

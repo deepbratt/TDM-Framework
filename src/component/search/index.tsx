@@ -19,21 +19,20 @@ import {
   ButtonText,
   Year,
   KilometerText,
+  dates,
 } from "../../utils/constants/search";
 import { COLOR } from "../../Theme/Colors";
 import { Formik, Field } from "formik";
 import { SeacrhForm } from "../../../types";
 import CustomInput from "../CustomInput/CustomInput";
-
 const CustomFilter = () => {
   const [search, setSearch] = useState({
     sortBy: "",
     brand: "",
     body: "",
-    yearFrom: "",
-    yearTo: "",
+    FromS: "",
+    To:"",
     kilometerFrom: "",
-    kilometerTo: "",
   });
   const handleSearch = async (search: SeacrhForm) => {
     console.log("Work");
@@ -41,19 +40,17 @@ const CustomFilter = () => {
       sortBy,
       brand,
       body,
-      yearFrom,
-      yearTo,
+      FromS,
+      To,
       kilometerFrom,
-      kilometerTo,
     } = search;
     const bodySearch = {
-      sortBy: sortBy,
-      brand: brand,
-      body: body,
-      yearFrom: yearFrom,
-      yearTo: yearTo,
-      kilometerFrom: kilometerFrom,
-      kilometerTo: kilometerTo,
+      "sortBy": sortBy,
+      "brand": brand,
+      "body": body,
+      "kilometerFrom": kilometerFrom,
+      "FromS": FromS,
+      "To":To
     };
     console.log("values", bodySearch);
   };
@@ -104,8 +101,57 @@ const CustomFilter = () => {
               text={ModelHeading}
               textStyle={styles.kilometerHeadingText}
             />
+            {/* <View style={styles.MainViewDropDown}>
+              <DropDownSaim
+                itemContainerStyle={styles.itemContainerDropDrown}
+                label={FromText}
+                itemTextStyle={styles.itemTextDropDown}
+                enableSearch={true}
+                data={dates}
+                disableSort={true}
+                value={values.FromS}
+                onChange={(value: number) => setFieldValue("FromS", value)}
+                textInputStyle={styles.textInputDropDown}
+                required={true}
+                error={errors.FromS ? true : false}
+                errorColor={COLOR.primary}
+              />
+            </View> */}
+
             <View style={styles.toFromView}>
-              <View>
+              <View style={styles.MainViewDropDownOne}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={FromText}
+                  itemTextStyle={styles.itemTextDropDown}
+                  enableSearch={true}
+                  data={dates}
+                  disableSort={true}
+                  value={values.FromS}
+                  onChange={(value: number) => setFieldValue("FromS", value)}
+                  textInputStyle={styles.textInputDropDown}
+                  required={true}
+                  error={errors.FromS ? true : false}
+                  errorColor={COLOR.primary}
+                />
+              </View>
+              <View style={styles.MainViewDropDownOne}>
+                <DropDownSaim
+                  itemContainerStyle={styles.itemContainerDropDrown}
+                  label={ToText}
+                  itemTextStyle={styles.itemTextDropDown}
+                  enableSearch={true}
+                  data={dates}
+                  disableSort={true}
+                  value={values.To}
+                  onChange={(value: number) => setFieldValue("To", value)}
+                  textInputStyle={styles.textInputDropDown}
+                  required={true}
+                  error={errors.FromS ? true : false}
+                  errorColor={COLOR.primary}
+                />
+              </View>
+              {/* <View>
                 <Field
                   component={CustomInput}
                   inputFieldStyle={styles.Inputs}
@@ -128,7 +174,7 @@ const CustomFilter = () => {
                   errorTextStyle={styles.errorText}
                   keyboardType="numeric"
                 />
-              </View>
+              </View> */}
             </View>
             <View style={styles.MainViewDropDown}>
               <DropDownSaim

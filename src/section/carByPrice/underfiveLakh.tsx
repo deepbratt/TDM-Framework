@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
+import { allCarsByPrice } from "../../utils/api";
+import { Style } from "../HashBack/style";
 import { COLOR } from "../../Theme/Colors";
-import { allCarsByBody } from "../../utils/api";
-import { Style } from "./style";
-
 interface ItemProps {
   src: any;
   title: string;
@@ -15,7 +14,7 @@ interface RenderItemProps {
   item: ItemProps;
   index: number;
 }
-export default function Hashback() {
+export default function UnderFiveLakh() {
   const {
     container,
     images,
@@ -30,21 +29,23 @@ export default function Hashback() {
   } = Style;
   const [carlist, setCarList] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-   const [page, SetPage] = useState(1);
+  const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-  
   useEffect(() => {
-    fetchAllCars();
+    fetchCarByPrice();
   }, [page]);
-  const bodyType = "Micro Van";
-  const fetchAllCars = async () => {
+  const price = "[lt]=500000";
+  const fetchCarByPrice = async () => {
     let url = "" + page;
-    if (bodyType) {
-      url += "&bodyType=" + bodyType;
+    if (price) {
+      url += "&price" + price;
     }
     setLoading(true);
-    await allCarsByBody(url)
+    await allCarsByPrice(url)
+    
       .then((result) => {
+        console.log(result);
+        console.log(result.status);
         setStatus(result.status);
         if (result.status === "success") {
           setLoading(false), setCarList([...carlist, ...result.data.result]);
@@ -72,6 +73,7 @@ export default function Hashback() {
       SetPage(page + 1);
     }
   };
+
   return (
     <View>
       {loading ? (

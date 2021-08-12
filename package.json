@@ -14,6 +14,7 @@
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
     "@react-native-async-storage/async-storage": "^1.15.5",
+    "@react-native-community/datetimepicker": "^3.5.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-picker/picker": "^1.16.3",
     "@react-navigation/bottom-tabs": "5.11.2",
@@ -47,6 +48,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-common-date-picker": "^2.3.4",
     "react-native-confirmation-code-field": "^7.1.0",
     "react-native-datepicker": "^1.7.2",
     "react-native-dropdown-picker": "^5.1.21",
@@ -58,6 +60,7 @@
     "react-native-maps": "^0.28.0",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-modal-dropdown": "^1.0.1",
+    "react-native-month-year-picker": "^1.8.0",
     "react-native-multi-selectbox": "^1.5.0",
     "react-native-otp-inputs": "^7.0.3",
     "react-native-otp-textinput": "0.0.8",

@@ -48,11 +48,17 @@ export const Items = [
   },
   
 ];
-export const MostPopular="Most Popular Cars by Price";
+export const MostPopular = "Most Popular Cars by Price";
+
+export const SearchButton = [
+  { id: 1, title: "Hashback" },
+  { id: 2, title: "Suv" },
+  { id: 3, title: "Sedan" },
+];
 export const popularProduct = [
   { id: 1, title: "Cars Under 5lakh" },
-  { id: 2, title: "5lakh-10lakh" },
-  { id: 3, title: "more than" },
+  { id: 2, title: "5 lakh-10 lakh" },
+  { id: 3, title: "Above 10 Lakh" },
 
 ];
 export const compareProduct = [

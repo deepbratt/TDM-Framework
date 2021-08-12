@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { COLOR } from "../../Theme/Colors";
 import { allCarsByBody } from "../../utils/api";
 import { Style } from "./style";
+import { COLOR } from "../../Theme/Colors";
 
 interface ItemProps {
   src: any;
@@ -15,7 +14,7 @@ interface RenderItemProps {
   item: ItemProps;
   index: number;
 }
-export default function Hashback() {
+export default function Sedan() {
   const {
     container,
     images,
@@ -30,13 +29,13 @@ export default function Hashback() {
   } = Style;
   const [carlist, setCarList] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-   const [page, SetPage] = useState(1);
+  const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-  
+
   useEffect(() => {
     fetchAllCars();
   }, [page]);
-  const bodyType = "Micro Van";
+  const bodyType = "Sedan";
   const fetchAllCars = async () => {
     let url = "" + page;
     if (bodyType) {
@@ -45,11 +44,16 @@ export default function Hashback() {
     setLoading(true);
     await allCarsByBody(url)
       .then((result) => {
-        setStatus(result.status);
+        // console.log(result);
+        // console.log(result.status)
+        console.log(url)
+        setStatus(result.status)
         if (result.status === "success") {
-          setLoading(false), setCarList([...carlist, ...result.data.result]);
+          setLoading(false);
+          setCarList([...carlist, ...result.data.result]);
           let temp = [...carlist, ...result.data.result];
-          console.log(temp.length);
+          console.log(temp.length)
+          
         } else {
           setLoading(false), alert(result.message);
         }
@@ -68,10 +72,11 @@ export default function Hashback() {
   };
 
   const handleLoadMore = () => {
-    if (!loading && status === "success") {
+    if (!loading&&status==="success") {
       SetPage(page + 1);
     }
   };
+
   return (
     <View>
       {loading ? (
@@ -83,9 +88,9 @@ export default function Hashback() {
           <FlatList
             style={flatListView}
             data={carlist}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item,index) => item._id+index}
             renderItem={({ item }) => (
-              <View style={main}>
+              <View style={main} key={item._id}>
                 <TouchableOpacity style={container}>
                   <Image
                     style={images}

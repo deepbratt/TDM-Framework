@@ -40,6 +40,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: hp('1%')
     },
+    MainViewDropDownOne: {
+        width: wp('46.5%'),
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     itemTextDropDown: {
         fontSize: 14, 
         fontFamily: 'IBMPlexSans-Light',
@@ -48,7 +54,7 @@ export const styles = StyleSheet.create({
     textInputDropDown: {
         fontSize: 14,
         fontFamily: 'IBMPlexSans-Medium',
-        color: COLOR.DarkCharcoal
+        color: COLOR.DarkCharcoal,
     },
     kilometerHeadingText: {
         width: wp('95%'),
@@ -107,5 +113,22 @@ export const styles = StyleSheet.create({
     errorText: {
         fontSize: 12,
         color:COLOR.primary,
+    },
+    dateInput: {
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        textAlign:"left",
+        justifyContent:"center",
+        alignItems:"flex-start",
+        color:"black",
+        marginLeft:wp('4%')
+      },
+    inputView:{
+        width:wp('46.5%'),
+        // backgroundColor: COLOR.White,
+        borderBottomColor:COLOR.secondary,
+        borderBottomWidth:hp("0.1%"),
+        borderRadius: 2,
+        fontSize: 14,
     },
 })

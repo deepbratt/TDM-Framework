@@ -272,8 +272,7 @@ export type SeacrhForm = {
   sortBy?: string;
   brand?: string;
   body?: string;
-  yearFrom?: string;
-  yearTo?: string;
   kilometerFrom?: string;
-  kilometerTo?: string;
+  FromS?: number;
+  To?: string;
 };

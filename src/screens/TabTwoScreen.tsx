@@ -67,6 +67,7 @@ export default function TabTwoScreen() {
         location={true}
         onPress={() => openDrawer()}
       />
+
       <View style={styles.container}>
         <Text style={styles.title}>Screen Two</Text>
         <Button onPress={handle} title="Logout" />
@@ -95,6 +96,17 @@ export default function TabTwoScreen() {
         <CustomButton
           linkTo="/car-Details"
           text="car Detail"
+          buttonStyle={{
+            marginVertical: 10,
+            width: 100,
+            height: 30,
+            backgroundColor: "red",
+          }}
+          textStyle={{ color: "white" }}
+        />
+        <CustomButton
+          linkTo="/post-details"
+          text="Post Details"
           buttonStyle={{
             marginVertical: 10,
             width: 100,
