@@ -68,7 +68,7 @@ import {
 const PostDetails = () => {
   const [selectedImage, setSelectedImage] = useState<Array<any>>([]);
   const [Loader, setLoader] = useState(false);
-  const [imageBlob,setImageBlob]=useState<Array<string|Blob>>([]);
+  const [imageBlob, setImageBlob] = useState<Array<string | Blob>>([]);
   const [dropdown, setDropdown] = useState({
     description: "",
     location: "",
@@ -98,8 +98,8 @@ const PostDetails = () => {
   });
   const history = useHistory();
   useEffect(() => {
-     console.log(selectedImage)
-  }, [selectedImage])
+    console.log(selectedImage);
+  }, [selectedImage]);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
@@ -117,17 +117,17 @@ const PostDetails = () => {
     let match = /\.(\w+)$/.exec(filename ? filename : "");
     let type = match ? `image/${match[1]}` : `image`;
     //   setSelectedImage({ localUri: pickerResult.uri });
-    let response=await fetch(localUri)
-    let Blob=await response.blob()
-    let imageData = { uri: localUri, name: filename, type};
-    setImageBlob([...imageBlob,Blob])
+    let response = await fetch(localUri);
+    let Blob = await response.blob();
+    let imageData = { uri: localUri, name: filename, type };
+    setImageBlob([...imageBlob, Blob]);
     // let temp=selectedImage;
     // temp.push(imageData);
     setSelectedImage([...selectedImage, imageData]);
     // console.log("image",temp);
   };
 
-  const handlePost = async (drop:any, { resetForm }:any) => {
+  const handlePost = async (drop: any, { resetForm }: any) => {
     const {
       description,
       location,
@@ -170,35 +170,33 @@ const PostDetails = () => {
       features: features,
       images: images,
     };
-    let formData=new FormData();
-    formData.append("description",description),
-    formData.append("location",location)
-    formData.append("city",city)
-    formData.append("province",province)
-    formData.append("model",model)
-    formData.append("make",make)
-    formData.append("year",year)
-    formData.append("condition",condition)
-    formData.append("registrationCity",registrationCity)
-    formData.append("bodyColor",bodyColor)
-    formData.append("milage",milage)
-    formData.append("price",price)
-    formData.append("bodyType",bodyType)
-    formData.append("engineType",engineType)
-    formData.append("assembly",assembly)
-    formData.append("transmission",transmission)
-    formData.append("features",features)
-    formData.append("images",selectedImage as any)
-
-
+    let formData = new FormData();
+    formData.append("description", description),
+      formData.append("location", location);
+    formData.append("city", city);
+    formData.append("province", province);
+    formData.append("model", model);
+    formData.append("make", make);
+    formData.append("year", year);
+    formData.append("condition", condition);
+    formData.append("registrationCity", registrationCity);
+    formData.append("bodyColor", bodyColor);
+    formData.append("milage", milage);
+    formData.append("price", price);
+    formData.append("bodyType", bodyType);
+    formData.append("engineType", engineType);
+    formData.append("assembly", assembly);
+    formData.append("transmission", transmission);
+    formData.append("features", features);
+    formData.append("images", selectedImage as any);
 
     console.log("pic", images, "values", body);
     setLoader(true),
       await createCars(formData)
         .then((response) => {
           console.log("res", response);
-        //   resetForm({ drop: "" });
-        //   setSelectedImage([]);
+          //   resetForm({ drop: "" });
+          //   setSelectedImage([]);
 
           if (response.status === "success") {
             setLoader(false),
@@ -553,7 +551,6 @@ const PostDetails = () => {
                   keyboardType={numeric}
                   name={"milage"}
                   required
-                  
                   errorTextStyle={styles.errorText}
                 />
               </View>
