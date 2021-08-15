@@ -19,6 +19,10 @@ export const sellerText = "Seller: Indivisual Seller"
 export const userName = "Alice Smith"
 export const locationText = "Ad Posted At"
 export const FeatureProd="Feature Product"
+export const CarDetail="Car Details"
+export const AdsDetail="Ad Details"
+
+
 export const Items = [
     { src: require('../../../../assets/images/car.jpg'), },
     { src: require('../../../../assets/images/car1.jpeg'), },
@@ -31,6 +35,11 @@ export const FeatureItems=[
     { title: "Toyota Yaris iA", text: "Text 3", src: require('../../../../assets/images/car.jpg'), },
 ];
 
+export const ToggleItems=[
+    {id:1, title: "Specification",  },
+    { id:2,title: "Features", },
+  
+];
 export const featureproductStatus = 'used'
 export const featureProductAmount = "$1,50,000 "
 export const featureProductLocation = "Islamabad"

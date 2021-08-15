@@ -22,7 +22,7 @@ import {
 import SimpleLayout from "../../layout/simpleLayout";
 import { SignInProp } from "../../../types";
 import CustomButton from "../../component/CustomButton";
-import { handleGoogleSignin } from "../../utils/api";
+// import { handleGoogleSignin } from "../../utils/api";
 import * as Facebook from "expo-facebook";
 
 const LogComponent: FC<SignInProp> = ({ onPress, login, onClick }) => {

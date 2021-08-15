@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Image, TouchableOpacity, Text } from "react-native";
 import { styles } from "./styles";
-import DropDownSaim from "../../component/dropDownSaim";
-import CustomLinearGradient from "../../component/customLinearGradient";
+import DropDownSaim from "../../component/dropDownSaim/index";
+import CustomLinearGradient from "../../component/customLinearGradient/index";
 import CustomHeader from "../../component/customHeader/CustomHeader";
 import {
   bodyColor,
@@ -44,6 +44,8 @@ import {
   provinceList,
   provinceLabel,
   cityLabel,
+  regNumber,
+  engineCapacity,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
 import { createCars } from "../../utils/api/CarsApi";
@@ -51,12 +53,14 @@ import { Field, Formik } from "formik";
 import { DropdownValidation, numeric } from "../../utils/form/validationForm";
 import CustomInput from "../../component/CustomInput/CustomInput";
 import * as ImagePicker from "expo-image-picker";
-import CustomText from "../../component/customText";
+import CustomText from "../../component/customText/index";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { globalStyle } from "../../Styles";
+import { globalStyle } from "../../Styles/index";
 import CustomAlert from "../../component/customOTP/customAlert";
 import { useHistory } from "react-router";
+import { Switch } from 'react-native-paper';
 import { postForm } from "../../../types";
+
 import {
   FormSuccessfuL,
   GoToHome,
@@ -64,19 +68,22 @@ import {
   PermissionToAccess,
   SomethingWrong,
 } from "../../utils/constants/alertMsg";
+import CustomButton from "../../component/CustomButton/index";
 
 const PostDetails = () => {
   const [selectedImage, setSelectedImage] = useState<Array<any>>([]);
   const [Loader, setLoader] = useState(false);
-  const [imageBlob,setImageBlob]=useState<Array<string|Blob>>([]);
+  const [imageBlob, setImageBlob] = useState<Array<string | Blob>>([]);
+ 
+
   const [dropdown, setDropdown] = useState({
-    description: "",
+    description: "uuuu",
     location: "",
     city: "",
     province: "",
     model: "",
     make: "",
-    year: "",
+    modelYear: "2020",
     condition: "",
     registrationCity: "",
     bodyColor: "",
@@ -84,10 +91,13 @@ const PostDetails = () => {
     engineType: "",
     assembly: "",
     transmission: "",
-    milage: "",
-    price: "",
-    features: "",
+    milage: "666",
+    price: "777",
+    features: "hhhh",
+    regNumber: "W5RTF",
+    engineCapacity: "600",
   });
+  console.log("city", dropdown.city)
   const refRBSheet = useRef<RBSheet>(null);
   const [input, setInput] = useState({
     Msg: "",
@@ -98,8 +108,8 @@ const PostDetails = () => {
   });
   const history = useHistory();
   useEffect(() => {
-     console.log(selectedImage)
-  }, [selectedImage])
+    console.log(selectedImage);
+  }, [selectedImage]);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
@@ -117,17 +127,17 @@ const PostDetails = () => {
     let match = /\.(\w+)$/.exec(filename ? filename : "");
     let type = match ? `image/${match[1]}` : `image`;
     //   setSelectedImage({ localUri: pickerResult.uri });
-    let response=await fetch(localUri)
-    let Blob=await response.blob()
-    let imageData = { uri: localUri, name: filename, type};
-    setImageBlob([...imageBlob,Blob])
+    let response = await fetch(localUri);
+    let Blob = await response.blob();
+    let imageData = { uri: localUri, name: filename, type };
+    setImageBlob([...imageBlob, Blob]);
     // let temp=selectedImage;
     // temp.push(imageData);
     setSelectedImage([...selectedImage, imageData]);
     // console.log("image",temp);
   };
 
-  const handlePost = async (drop:any, { resetForm }:any) => {
+  const handlePost = async (drop: any, { resetForm }: any) => {
     const {
       description,
       location,
@@ -135,7 +145,7 @@ const PostDetails = () => {
       province,
       model,
       make,
-      year,
+      modelYear,
       condition,
       registrationCity,
       bodyColor,
@@ -146,88 +156,81 @@ const PostDetails = () => {
       assembly,
       transmission,
       features,
+      regNumber,
+      engineCapacity,
     } = drop;
 
     const images = imageBlob;
 
-    const body = {
-      description: description,
-      location: location,
-      city: city,
-      province: province,
-      model: model,
-      make: make,
-      year: year,
-      condition: condition,
-      registrationCity: registrationCity,
-      bodyColor: bodyColor,
-      milage: milage,
-      price: price,
-      bodyType: bodyType,
-      engineType: engineType,
-      assembly: assembly,
-      transmission: transmission,
-      features: features,
-      images: images,
-    };
-    let formData=new FormData();
-    formData.append("description",description),
-    formData.append("location",location)
-    formData.append("city",city)
-    formData.append("province",province)
-    formData.append("model",model)
-    formData.append("make",make)
-    formData.append("year",year)
-    formData.append("condition",condition)
-    formData.append("registrationCity",registrationCity)
-    formData.append("bodyColor",bodyColor)
-    formData.append("milage",milage)
-    formData.append("price",price)
-    formData.append("bodyType",bodyType)
-    formData.append("engineType",engineType)
-    formData.append("assembly",assembly)
-    formData.append("transmission",transmission)
-    formData.append("features",features)
-    formData.append("images",selectedImage as any)
+    
+    let formData = new FormData();
+    formData.append("description", description),
+      formData.append("location", location);
+    formData.append("city", city);
+    formData.append("province", province);
+    formData.append("model", model);
+    formData.append("make", make);
+    formData.append("modelYear", modelYear);
+    formData.append("condition", condition);
+    formData.append("registrationCity", registrationCity);
+    formData.append("bodyColor", bodyColor);
+    formData.append("milage", milage);
+    formData.append("price", price);
+    formData.append("bodyType", bodyType);
+    formData.append("engineType", engineType);
+    formData.append("assembly", assembly);
+    formData.append("transmission", transmission);
+    formData.append("engineCapacity", engineCapacity);
+    formData.append("regNumber", regNumber);
 
+    for (let i = 0; i < selectedImage.length; i++) {
+      formData.append("image", selectedImage[i]);
+    }
+    for (let i = 0; i < features.length; i++) {
+      formData.append("features", features[i]);
+    }
 
+    console.log("pic", images, "values", formData);
 
-    console.log("pic", images, "values", body);
     setLoader(true),
-      await createCars(formData)
-        .then((response) => {
-          console.log("res", response);
-        //   resetForm({ drop: "" });
-        //   setSelectedImage([]);
+    await createCars(formData)
+      .then((response) => {
+        console.log("res", response);
+          resetForm({ drop: "" });
+          setSelectedImage([]);
 
-          if (response.status === "success") {
-            setLoader(false),
-              console.log("res", response),
-              setInput((prev) => ({
-                ...prev,
-                MsgTitle: FormSuccessfuL,
-                Msg: ``,
-                path: "/car-Details/:id",
-                button: GoToHome,
-                close: true,
-              })),
-              refRBSheet.current?.open();
-          } else if (response.status === "fail") {
-            setLoader(false),
-              setInput((prev) => ({
-                ...prev,
-                MsgTitle: InvalidInput,
-                Msg: `${response.message}`,
-                button: "Ok",
-                close: false,
-              })),
-              refRBSheet.current?.open();
-          }
-        })
-        .catch((error) => {
-          if (error.status === 401) return alert(SomethingWrong);
-        });
+        if (response.status === "success") {
+          setLoader(false),
+          console.log("res", response),
+            setInput((prev) => ({
+              ...prev,
+              MsgTitle: FormSuccessfuL,
+              Msg: ``,
+              path: "/your-ads",
+              button: GoToHome,
+              close: true,
+            })),
+            refRBSheet.current?.open();
+        } else if (response.status === "fail") {
+          setLoader(false),
+            setInput((prev) => ({
+              ...prev,
+              MsgTitle: InvalidInput,
+              Msg: `${response.message}`,
+              button: "Ok",
+              close: false,
+            })),
+            refRBSheet.current?.open();
+        }
+      })
+      .catch((error) => {
+        if (error.status === 401) return alert(SomethingWrong);
+      });
   };
+ 
+
+  
+
   return (
     <ScrollView style={styles.container}>
       <CustomHeader
@@ -263,18 +266,18 @@ const PostDetails = () => {
       <View style={styles.borderView}></View>
       <Formik
         initialValues={dropdown}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values: any, { resetForm }: any) => {
           handlePost(values, { resetForm });
         }}
         validationSchema={DropdownValidation}
       >
-        {({ errors, handleSubmit, setFieldValue, values, isSubmitting }) => (
+        {({ errors, handleSubmit, setFieldValue, values }:any) => (
           <View>
             <View style={styles.dropdownContainer}>
               <View style={styles.iconView}>
                 <Image style={styles.buttonIcon} source={PlaceIcon} />
               </View>
-              <View style={styles.MainViewDropDown}>
+              <View style={[styles.MainViewDropDown,{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}]}>
                 <DropDownSaim
                   itemContainerStyle={styles.itemContainerDropDrown}
                   label={LocationLabel}
@@ -386,10 +389,10 @@ const PostDetails = () => {
                   itemTextStyle={styles.itemTextDropDown}
                   data={years}
                   disableSort={true}
-                  value={values.year}
-                  onChange={(value: any) => setFieldValue("year", value)}
+                  value={values.modelYear}
+                  onChange={(value: any) => setFieldValue("modelYear", value)}
                   required={true}
-                  error={errors.year ? true : false}
+                  error={errors.modelYear ? true : false}
                   errorColor={COLOR.primary}
                   textInputStyle={styles.textInputDropDown}
                 />
@@ -553,7 +556,39 @@ const PostDetails = () => {
                   keyboardType={numeric}
                   name={"milage"}
                   required
-                  
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={engineCapacity}
+                  keyboardType={numeric}
+                  name={"engineCapacity"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={regNumber}
+                  name={"regNumber"}
+                  required
                   errorTextStyle={styles.errorText}
                 />
               </View>

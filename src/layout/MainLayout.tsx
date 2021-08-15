@@ -10,7 +10,7 @@ interface layout{
 const MainLayout:FC<layout>=({children,navigation})=>{
     return(
         <>
-     <ScrollView>{children}</ScrollView>  
+     <ScrollView contentContainerStyle={{flexGrow: 1}}>{children}</ScrollView>  
         <CustomBottomTab/>
  </> )
 }

@@ -20,6 +20,7 @@ const SomethingWrong="Something Went Wrong!"
 const requiredEmail='Email is required'
 const validEmail='Please enter valid email'
 const requiredPassword='Password is required'
+const requiredCPassword='Current Password is required'
 const requiredPhone='Phone number is required'
 const First_Required='First name is required'
 const Last_Required='Last name is required'
@@ -35,6 +36,9 @@ const MUST_Number='Must be in number'
 const featureRequire="Features is required"
 const PriceRequire="Price Range is required"
 const milageRequire="Milage is required"
+const EngineCapictyRequire="Engine Capicty is required"
+const regNumberRequire="Registration Number is required"
+
 const descriptionRequire="Description is required"
 export const loginEmailValidation = yup.object().shape({
   email: yup
@@ -125,7 +129,7 @@ export const DropdownValidation = yup.object().shape({
   .matches(letterRegex,MUST_Letter)
   .required(),
   make: yup.string().required(),
-  year: yup
+  modelYear: yup
   .string() 
   .matches(numRegex,MUST_Number)
   .required(),
@@ -146,4 +150,26 @@ export const DropdownValidation = yup.object().shape({
   .required(PriceRequire),
   features: yup.string().required(featureRequire),
   description: yup.string().required(descriptionRequire),
+  regNumber:yup
+  .string() 
+  .required(regNumberRequire),
+  engineCapacity:yup
+  .string() 
+  .matches(numRegex,MUST_Number)
+  .required(EngineCapictyRequire),
 });
+export const updateMyPassValidate = yup.object().shape({
+  
+  passwordCurrent: yup
+      .string()
+      .min(8,  minRequired)
+      .required(requiredCPassword),
+      password: yup
+      .string()
+      .min(8,  minRequired)
+      .required(requiredPassword),
+      passwordConfirm: yup
+      .string()
+      .oneOf([yup.ref('password')], donotMatch)
+      .required(ConfirmMatch),
+  })

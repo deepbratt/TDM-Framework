@@ -9,6 +9,7 @@ import HeadingSection from '../../../section/CustomHeading/Heading';
 import { COLOR } from '../../../Theme/Colors';
 import { myCarsApi } from '../../../utils/api/CarsApi';
 import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
+import { KM } from '../../../utils/form/validationForm';
 
 
  const YourAds:FC = () => {
@@ -38,7 +39,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
     const history =useHistory();
     const selectItem = (id: any) => {
        console.log("id",id)
-       history.push(`/car-Details/${id}`)
+       history.push(`/add-Details/${id}`)
       };
     return (
         <View style={{flex:1}}>
@@ -52,7 +53,7 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
  {
      Productss.map((i:any)=>{
         const strDate =
-        new Date(i.date).toLocaleString("en", {day: "numeric",month: "short" });
+        new Date(i.createdAt).toLocaleString("en", {day: "numeric",month: "short" });
         const pr=`${i.price}`.toString();
         var lastThree = pr.substring(pr.length-3);
         var otherNumbers = pr.substring(0,pr.length-3);
@@ -64,11 +65,11 @@ import { YourAdsTitle } from '../../../utils/constants/HomeConstant';
           key={i._id} 
           Price={Price} 
           Title={i.model}
-          KMeter={i.milage}
-           year={i.year}
+          KMeter={`${i.milage}${KM}`}
+           year={i.modelYear}
            date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
            Location={`${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)}
-           src={{uri:`${i.images[0]}`}}
+           src={{uri:`${i.image[0]}`}}
            onSelect={()=>selectItem(i._id)}
           />
         );

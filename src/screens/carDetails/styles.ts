@@ -337,4 +337,90 @@ export const styles = StyleSheet.create({
         fontFamily: 'IBMPlexSans-Medium',
         color: COLOR.RaisinBlack
     },
+    subText: {
+        fontSize: 14,
+        fontFamily: 'IBMPlexSans-Light',
+        width:193,
+        color: COLOR.secondary,
+        paddingTop: hp('2%'),
+        alignSelf:'center',
+    },
+      tableStyle:{
+            backgroundColor:COLOR.White,
+           flexDirection:"row",
+           justifyContent:"space-around",
+           borderRadius:6,
+           alignItems:"center",
+           marginTop:5,
+           width:wp('99%'), 
+           height:hp('7%'), 
+        },
+         labelStyle:{
+            width:wp('25%'),
+            fontFamily: "IBMPlexSans-Medium",
+            fontSize: 14,
+            color:COLOR.DarkCharcoal, 
+            lineHeight:18,
+            textAlign:"center"
+         },
+         searchButtonView: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: wp('100%'),
+            backgroundColor: COLOR.White,
+            alignSelf:"center"
+        },
+        searchActiveButton: {
+            marginLeft:wp('0%'),  
+            width: wp('50%'),
+            justifyContent: "center",
+            borderBottomWidth: 2,
+            borderColor: COLOR.BlueJeans,
+        },
+        searchInActiveButton:{
+            marginLeft: wp('2%'),  
+            width:wp('50%'),  
+            justifyContent:"center"
+        },
+        searchActiveText: {
+            fontFamily: "IBMPlexSans-Regular",
+            fontSize: 14,
+            letterSpacing: .6,
+            lineHeight: 20,
+            textAlign: "center",
+            color: COLOR.DarkCharcoal,
+            paddingVertical:hp('1.5%')
+        },
+        searchInactiveText: {
+            fontFamily: "IBMPlexSans-Regular",
+            fontSize: 14,
+            letterSpacing: .6,
+            lineHeight: 20,
+            textAlign: "center",
+            color: COLOR.secondary,
+            paddingVertical:hp('1.5%')
+        },
+        inActiveText:{
+            fontFamily: "IBMPlexSans-Regular",
+            fontSize: 14,
+            letterSpacing: .6,
+            lineHeight: 20,
+            textAlign: "center",
+            color: COLOR.DarkCharcoal,
+          },
+          mainContaier: {
+            width: wp("95%"),
+            alignSelf: "center",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          },
+         
+          headingText: {
+            fontSize: 14,
+            width: 88,
+            fontFamily: "IBMPlexSans-Light",
+            color: COLOR.RaisinBlack,
+            marginTop: hp("2%"),
+          },
+        
 })

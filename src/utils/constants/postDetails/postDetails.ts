@@ -1,5 +1,5 @@
 export const locationList = [
-    { id: 1, label: "Current Location", value: "Current Location" },
+    { id: 1, label: "Faisalabad", value: "Faisalabad" },
     { id: 2, label: "Lahore", value: "Lahore" },
     { id: 3, label: "Islamabad", value: "Islamabad" },
     { id: 4, label: "Karachi", value: "Karachi" },
@@ -13,15 +13,17 @@ export const locationList = [
     { id: 12, label: "Gujrat", value: "Gujrat" },
     { id: 13, label: "Abbottabad", value: "Abbottabad" },
     { id: 14, label: "Bahawalpur", value: "Bahawalpur" },
-    { id: 15, label: "Faisalabad", value: "Faisalabad" },
+    { id: 15, label: "Sahiwa", value: "Sahiwa" },
     { id: 16, label: "Quetta", value: "Quetta" },
     { id: 17, label: "Wah cantt", value: "Wah cantt" },
     { id: 18, label: "Rahim Yar Khan", value: "Rahim Yar Khan" },
-    { id: 19, label: "Sahiwal", value: "Sahiwal" },
+    { id: 19, label: "Bahāwalnagar", value: "Bahāwalnagar" },
 
+    
+  
 ];
 export const registerList = [
-    { id: 1, label: "Current Location", value: "Current Location" },
+    { id: 1, label: "Sahiwal", value: "Sahiwal" },
     { id: 2, label: "Lahore", value: "Lahore" },
     { id: 3, label: "Islamabad", value: "Islamabad" },
     { id: 4, label: "Karachi", value: "Karachi" },
@@ -39,7 +41,8 @@ export const registerList = [
     { id: 16, label: "Quetta", value: "Quetta" },
     { id: 17, label: "Wah cantt", value: "Wah cantt" },
     { id: 18, label: "Rahim Yar Khan", value: "Rahim Yar Khan" },
-    { id: 19, label: "Sahiwal", value: "Sahiwal" },
+    
+
 
 ];
 export const provinceList = [
@@ -104,11 +107,16 @@ export const bodyColor = [
     { id: 1, label: "White", value: "White" },
     { id: 2, label: "Black", value: "Black" },
     { id: 3, label: "Silver", value: "Silver" },
+    { id: 3, label: "Red", value: "Red" },
+
 ];
 export const years = [
     { id: 1, label: "2019", value: "2019" },
     { id: 2, label: "2020", value: "2020" },
-    { id: 3, label: "2012", value: "Silver" },
+    { id: 3, label: "2012", value: "2012" },
+    { id: 4, label: "2015", value: "2015" },
+    { id: 5, label: "2017", value: "2017" },
+
 ];
 export const bodyType = [
     { id: 1, label: "Satation Wagon", value: "Satation Wagon" },
@@ -155,11 +163,14 @@ export const cityLabel = "City"
 export const provinceLabel = "Porvince"
 export const CarModelLabel = "Car Model"
 export const CarMakeLabel = "Car Make"
-export const YearLabel = "Year"
+export const YearLabel = "Model Year"
 export const ConditionLabel = "Condition"
 export const RegisterCityLabel = "Registration City"
 export const BodyColorLabel = "Body Color"
 export const MileageLabel = "Mileage"
+export const regNumber = "RegNumber"
+export const engineCapacity = "Engine Capacity"
+
 export const PriceRangeLabel = "Price Range"
 export const DescriptionLabel = "Description"
 export const AddPostButton="Post Your Add"

@@ -1,28 +1,40 @@
-import React,{FC} from 'react'
-import {Route ,useHistory} from "react-router-native";
-
+import React,{FC, useEffect, useState} from 'react'
+import {Route ,RouteProps,useHistory} from "react-router-native";
+import SignIn from "../screens/SignIn/SignIn"
 
 import { connect } from "react-redux";
-interface Private{
-    component:any;
-    isLoggedIn:any;
+import { getToken } from '../utils/general.utils';
+type Private={
+  component: React.ComponentType;
+} & RouteProps;
 
-}
- const PrivateRoute:FC<Private> = ({ component: Component, isLoggedIn, ...rest }) => {
+ const PrivateRoute:FC<Private> = ({ component: Component, ...rest }:Private) => {
     const history = useHistory();
-    console.log(isLoggedIn);
+    const [isLoggedIn, setIsLoggedIn] = useState<any>("");
+    useEffect(() => {
+      getToken().then((token) => {
+        setIsLoggedIn(token);
+        if(!token){
+          history.push("/SignIn")
+        }
+        console.log(token)
+
+      });
+    
+    }, []);
+    if (isLoggedIn === "") {
+      return null;
+    }
+
     return (
       <Route
         {...rest}
         render={(props) =>
-          isLoggedIn ?  <Component {...props}/> : history.push("/SignIn")
+          <Component {...props}/>
         }
       />
     );
   };
 
-const mapStateToProps = (state) => ({
-    isLoggedIn: state.rootReducer.auth.isLoggedIn,
-  });
-  
-  export default connect(mapStateToProps) (PrivateRoute);
+
+  export default PrivateRoute;

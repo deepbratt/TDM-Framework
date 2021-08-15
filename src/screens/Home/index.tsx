@@ -7,19 +7,19 @@ import {
 } from "react-native";
 import { Surface } from "react-native-paper";
 import CustomHeader from '../../component/customHeader/CustomHeader';
-import { openDrawer } from '../../navigation';
+import { openDrawer } from '../../navigation/index';
 import { BookNow, Browse, categotryList, MostPopular, Par1, popularProduct, SearchedCars, SellYou } from "../../utils/constants/HomeConstant";
 import { HomeStyle } from "./style";
-import Category from "../../component/CategoryBox";
-import CustomButton from "../../component/CustomButton";
-import MyTabs from "../../navigation/TopBar";
-import Hashback from "../../section/HashBack";
+import Category from "../../component/CategoryBox/index";
+import CustomButton from "../../component/CustomButton/index";
+import MyTabs from "../../navigation/TopBar/index";
+import Hashback from "../../section/HashBack/index";
 import { ScrollView } from "react-native-gesture-handler";
-import CustomFilter from "../../component/search";
-import { globalStyle } from "../../Styles";
+import CustomFilter from "../../component/search/index";
+import { globalStyle } from "../../Styles/index";
 import  HeadingSection  from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
-import CustomSearch from "../../component/CustomSearch";
+import CustomSearch from "../../component/CustomSearch/index";
 import RBSheet from "react-native-raw-bottom-sheet";
 
 const HomePage = () => {
