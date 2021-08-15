@@ -20,7 +20,7 @@ import {
   LocationLabel,
   CarModelLabel,
   CarMakeLabel,
-  YearLabel,
+  // YearLabel,
   ConditionLabel,
   RegisterCityLabel,
   BodyColorLabel,
@@ -38,12 +38,14 @@ import {
   registerList,
   TransmissionType,
   Assembly,
-  years,
+  // years,
   FeaturesLabel,
   EngineTypes,
   provinceList,
   provinceLabel,
   cityLabel,
+  YearLabel,
+  years,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
 import { createCars } from "../../utils/api/CarsApi";
@@ -77,7 +79,7 @@ const PostDetails = () => {
     province: "",
     model: "",
     make: "",
-    // year: "",
+    year: "",
     condition: "",
     registrationCity: "",
     bodyColor: "",
@@ -136,7 +138,7 @@ const PostDetails = () => {
       province,
       model,
       make,
-      // year,
+      year,
       condition,
       registrationCity,
       bodyColor,
@@ -158,7 +160,7 @@ const PostDetails = () => {
       province: province,
       model: model,
       make: make,
-      // year: year,
+      year: year,
       condition: condition,
       registrationCity: registrationCity,
       bodyColor: bodyColor,
@@ -178,7 +180,7 @@ const PostDetails = () => {
     formData.append("province", province);
     formData.append("model", model);
     formData.append("make", make);
-    // formData.append("year", year);
+    formData.append("year", year);
     formData.append("condition", condition);
     formData.append("registrationCity", registrationCity);
     formData.append("bodyColor", bodyColor);
@@ -310,14 +312,14 @@ const PostDetails = () => {
               onChange={(value: any) => setFieldValue("model", value)}
               error={errors.model ? true : false}
             />
-            {/* <DropDView
+            <DropDView
                   Icon={AmountIcon}
                   Label={YearLabel}
                   data={years}
                   value={values.year}
                   onChange={(value: any) => setFieldValue("year", value)}
                   error={errors.year ? true : false}
-                /> */}
+                />
             <DropDView
               Icon={ConditionIcon}
               Label={ConditionLabel}

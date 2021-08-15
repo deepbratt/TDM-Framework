@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     bottomNavigationView: {
         backgroundColor: COLOR.White,
         width: wp('100%'),
-        height: hp('67%'),
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
         justifyContent: 'flex-start',
@@ -31,10 +30,15 @@ export const styles = StyleSheet.create({
         marginTop: hp('1%')
     },
     itemContainerDropDrown: {
-        backgroundColor: COLOR.White
+        backgroundColor: COLOR.White,
+        
     },
     MainViewDropDown: {
-        width: wp('95%')
+        width: wp('95%'),
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: hp('1%')
     },
     itemTextDropDown: {
         fontSize: 14, 
@@ -59,15 +63,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: hp('0.5%')
-    },
-    fromText: {
-        width: wp('46.5%'),
-        paddingVertical: hp('0.5%'),
-        paddingLeft: wp('2%'),
-        fontSize: 14,
-        fontFamily: 'IBMPlexSans-Light',
-        color: COLOR.secondary
+        marginTop: hp('0.5%'),
     },
     gradientButtonStyle: {
         width: wp('80%'),
@@ -77,7 +73,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         paddingTop: hp('1.5%'),
         paddingBottom: hp('1.5%'),
-        marginVertical:hp('4%')
+        marginVertical:hp('2%')
     },
     gradientButtonText: {
         fontSize: 16,
@@ -85,5 +81,31 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         color: COLOR.White
+    },
+    Inputs: {
+        width: wp('46.5%'),
+        height:hp("3%"),
+        backgroundColor:"transparent",
+        fontSize: 14,
+        fontFamily: 'IBMPlexSans-Light',
+        paddingLeft: wp('2.5%'),
+        borderBottomColor:COLOR.secondary,
+        borderBottomWidth: hp('0.1%'),
+        color: COLOR.primary,
+    },
+    error: {
+        width: wp('46.5%'),
+        height:hp("3%"),
+        backgroundColor:"transparent",
+        fontSize: 14,
+        fontFamily: 'IBMPlexSans-Light',
+        paddingLeft: wp('2.5%'),
+        color:COLOR.primary,
+        borderBottomColor:COLOR.primary,
+        borderBottomWidth: hp('0.15%')        
+    },
+    errorText: {
+        fontSize: 12,
+        color:COLOR.primary,
     },
 })
