@@ -31,7 +31,7 @@ import {
 } from '../../utils/constants/carDetails/carDetails';
 import { COLOR } from '../../Theme/Colors';
 import { useHistory, useParams } from 'react-router-native';
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
 import CustomLoader from '../../component/CustomLoader';
 import { addToFav, allFavourites, carDetailsById, removeFromFav } from '../../utils/api/CarsApi';
 import Toast from 'react-native-simple-toast';
@@ -46,7 +46,7 @@ interface ItemProps {
   }
   interface RenderItemProps {
     item: ItemProps;
-    index: number;
+    
 }
   
 const CarDetails = () => {
@@ -159,11 +159,12 @@ const CarDetails = () => {
         }
         setfavorites([...array]);
       }
-    const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
+      console.log("image",IndexItems)
+    const ImagerenderItem = useCallback((item : any) => {
     return (
-      <View style={styles.imageRandomItemView}>
+      <View style={styles.imageRandomItemView} >
         <Image style={styles.RandomItemImage}
-          source={item.src}
+          source={{ uri: `${item.src}` }}
         />
       </View>
     );
@@ -201,6 +202,9 @@ const CarDetails = () => {
                         textStyle={styles.amountText}
                     />
                     <View style={styles.buttonContainer}>
+                       <TouchableOpacity style={styles.editStyle} onPress={()=>history.push(`/edit-details/${id}`)}>
+                                <FontAwesome name="edit" size={25} color={COLOR.secondary} />
+                        </TouchableOpacity>
                         <TouchableOpacity style={styles.shareTouchableStyle}>
                                 <Entypo name="share" size={27} color={COLOR.secondary} />
                         </TouchableOpacity>
@@ -251,7 +255,7 @@ const CarDetails = () => {
                     <View style={styles.productInfoSubView}>
                         <View style={styles.infoView}>
                             <CustomText
-                                text={company}
+                                text={IndexItems.make}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
@@ -261,7 +265,7 @@ const CarDetails = () => {
                         </View>
                         <View style={styles.infoView}>
                             <CustomText
-                                text= {subModel}
+                                text= {IndexItems.model}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
@@ -271,7 +275,7 @@ const CarDetails = () => {
                         </View>
                         <View style={styles.infoView}>
                             <CustomText
-                                text={year}
+                                text={IndexItems.year}
                                 textStyle={styles.infoText}
                             />
                             <CustomText
@@ -334,7 +338,8 @@ const CarDetails = () => {
                                 />
                             </View>
                             <CustomText
-                                text={`${User.firstName} ${User.lastName}`.charAt(0).toUpperCase() + `${User.firstName} ${User.lastName} `.slice(1)}
+                            text={"sds"}
+                                // text={`${User.firstName} ${User.lastName}`.charAt(0).toUpperCase() + `${User.firstName} ${User.lastName} `.slice(1)}
                                 textStyle={styles.userNameText}
                             />
                             <Image style={styles.buttonIcon}
