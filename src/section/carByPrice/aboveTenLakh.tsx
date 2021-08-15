@@ -54,7 +54,7 @@ export default function AboveTenLakh() {
           let temp = [...carlist, ...result.data.result];
           console.log(temp.length);
         } else {
-          setLoading(false), alert(result.message);
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -105,12 +105,7 @@ export default function AboveTenLakh() {
                   style={container}
                   onPress={() => selectItem(item.id)}
                 >
-                  <Image
-                    style={images}
-                    source={
-                      typeof item.images === "string" ? item.images : null
-                    }
-                  />
+                  <Image style={images} source={{ uri: `${item.image}` }} />
                   <Text style={detail}>{item.price}</Text>
                   <Text style={titleText}>{item.model}</Text>
                   {/* <View style={ratingView}>

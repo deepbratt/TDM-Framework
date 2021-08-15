@@ -19,10 +19,15 @@ export const sellerText = "Seller: Indivisual Seller"
 export const userName = "Alice Smith"
 export const locationText = "Ad Posted At"
 export const FeatureProd="Feature Product"
+export const CarDetail="Car Details"
+export const AdsDetail="Ad Details"
+
+
 export const Items = [
-    { src: require('../../../../assets/images/car.jpg'), },
-    { src: require('../../../../assets/images/car1.jpeg'), },
-    { src: require('../../../../assets/images/car.jpg'), },
+    { src: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.10.3-tezDealz-MobileApp/ImagePicker/050e7621-9933-47fa-83e2-db2c331d9642.jpg", },
+    { src: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.10.3-tezDealz-MobileApp/ImagePicker/050e7621-9933-47fa-83e2-db2c331d9642.jpg", },
+    { src: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.10.3-tezDealz-MobileApp/ImagePicker/050e7621-9933-47fa-83e2-db2c331d9642.jpg", },
+
 ];
 
 export const FeatureItems=[
@@ -31,6 +36,11 @@ export const FeatureItems=[
     { title: "Toyota Yaris iA", text: "Text 3", src: require('../../../../assets/images/car.jpg'), },
 ];
 
+export const ToggleItems=[
+    {id:1, title: "Specification",  },
+    { id:2,title: "Features", },
+  
+];
 export const featureproductStatus = 'used'
 export const featureProductAmount = "$1,50,000 "
 export const featureProductLocation = "Islamabad"

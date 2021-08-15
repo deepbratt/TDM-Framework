@@ -161,7 +161,7 @@ const CompareProduct = (SelectedItem: { SelectedItem: { _id: any }[] }) => {
                       <Image
                         fadeDuration={0}
                         style={bannerimage}
-                        source={{ uri: `${i.images[0]}` }}
+                        source={{ uri: `${i.image[0]}` }}
                       />
                       <View>
                         <Text style={carName}>{i.make}</Text>

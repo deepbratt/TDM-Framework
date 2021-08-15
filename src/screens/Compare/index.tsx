@@ -92,7 +92,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                       >
                         <Image
                           style={imageIcon}
-                          source={{ uri: `${i.images[0]}` }}
+                          source={{ uri: `${i.image}` }}
                         />
                         <MaterialIcons
                           name="cancel"
@@ -139,7 +139,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                     Location={
                       `${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)
                     }
-                    // src={{ uri: `${i.images[0]}` }}
+                    src={{ uri: `${i.image[0]}` }}
                     onSelect={() => addToCompare(i)}
                   />
                 );

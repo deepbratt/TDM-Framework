@@ -148,8 +148,8 @@ export type AvatarProps = {
   imageProps?: any;
 };
 export type TextProps = {
-  text: string;
-  textStyle: any;
+  text?: string;
+  textStyle?: any;
 };
 
 export type MapViewProps = {

@@ -17,6 +17,7 @@ const USERS = {
   Phone_VRIFY: `${user}/send-verification-phone`,
   Fb_Login: `${user}/facebook-auth`,
   Google_Login: `${user}/google-auth`,
+  CURRENT_USER: `${user}/currentUser`,
 };
 
 export const userSignUpApi = async (data: fieldForm) => {
@@ -31,6 +32,16 @@ export const userSignUpApi = async (data: fieldForm) => {
   }
 };
 
+export const GoogleLogin = async () => {
+  try {
+    let result = await axios.post(`${BASE_URL}${USERS.Google_Login}`);
+    return result.data;
+  } catch (error) {
+    if (error.response === undefined) {
+      return { status: 403, message: SomethingWrong };
+    }
+  }
+};
 export const userSignUpwithPhone = async (data: fieldForm) => {
   try {
     let result = await axios.post(`${BASE_URL}${USERS.Phone_SIGNUP}`, data);
@@ -97,15 +108,11 @@ export const FbLogin = async () => {
     return error.response.data;
   }
 };
-
-export const GoogleLogin = async () => {
+export const getcurrentUser = async () => {
   try {
-    let result = await axios.post(`${BASE_URL}${USERS.Google_Login}`);
+    let result = await axios.get(`${BASE_URL}${USERS.CURRENT_USER}`);
     return result.data;
   } catch (error) {
-    if (error.response === undefined) {
-      return { status: 403, message: SomethingWrong };
-    }
     return error.response.data;
   }
 };

@@ -30,6 +30,7 @@ import CompareProduct from "./Compare/Compare";
 import YourAds from "./Seller/YourAdd";
 import Profile from "./Profile/index"
 import ShortList from "./shortList/index";
+import EditPost from "./postDetails/editpost"
 export {
     Splash,
     SignInWithEmail,
@@ -62,5 +63,7 @@ export {
     ConfirmPayment,
     YourAds,
     Profile,
-    ShortList
+    ShortList,
+    EditPost
+
 }

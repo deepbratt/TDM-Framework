@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { postForm } from "../../../types";
 import { SomethingWrong } from "../constants/alertMsg";
 import { axiosInstance, config } from "./api";
@@ -152,6 +152,32 @@ export const allCarsByPrice = async (queryparams: string) => {
     return error.response.data;
   }
 };
+                                            
+                                            export const carUpdate= async(id:number,body: postForm)=>{
+                                              try {
+                                                  let result = await axiosInstance.patch(`${CARS.all_Cars}${id}`,body);
+                                                  return result.data;
+                                                  }
+                                                  catch(error){
+                                                      if (error.response === undefined) {
+                                                          return { status: 403, message: SomethingWrong };
+                                                        }
+                                                        return error.response.data;
+                                                      }
+                                                    };
+                                                    export const carDelete= async(id:any)=>{
+                                                      try {
+                                                          let result = await axiosInstance.delete(`${CARS.all_Cars}${id}`);
+                                                          return result.data;
+                                                          }
+                                                          catch(error){
+                                                              if (error.response === undefined) {
+                                                                  return { status: 403, message: SomethingWrong };
+                                                                }
+                                                                return error.response.data;
+                                                              }
+};
+                                                            
                                            
                                   
                                   

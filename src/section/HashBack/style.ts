@@ -20,7 +20,7 @@ export const Style = StyleSheet.create({
         justifyContent: 'flex-start'
     },
     images: {
-        backgroundColor:'lightblue',
+        // backgroundColor:'lightblue',
         width: hp('22%'),
         alignSelf: 'center',
         height: hp('20%'),

@@ -1,3 +1,6 @@
+export const regNumber = "RegNumber"
+export const engineCapacity = "Engine Capacity"
+
 export const locationList = [
     { id: 1, label: "Current Location", value: "Current Location" },
     { id: 2, label: "Lahore", value: "Lahore" },
@@ -115,20 +118,22 @@ export const bodyType = [
     { id: 2, label: "Convertible", value: "Convertible" },
     { id: 3, label: "Coupe", value: "Coupe" },
     { id: 4, label: "Micro Van", value: "Micro Van" },
-    { id: 5, label: "Crossover", value: "Crossover" },
+    { id: 5, label: "Hatchback", value: "Hatchback" },
     { id: 6, label: "Truck", value: "Truck" },
     { id: 7, label: "Mini Van", value: "Mini Van" },
-    { id: 8, label: "Compact sedan", value: "Compact sedan" },
-    { id: 9, label: "Off-Road Vehicles", value: "Off-Road Vehicles" },
-    { id: 10, label: "Pick Up", value: "Pick Up" },
-    { id: 11, label: "Single Cabin", value: "Single Cabin" },
+    { id: 8, label: "Sedan", value: "Sedan" },
+    { id: 9, label: "MPV", value: "MPV" },
+    { id: 10, label: "SUV", value: "SUV" },
+    { id: 11, label: "Van", value: "Van" },
 ];
 export const EngineTypes = [
     { id: 1, label: "Diesel", value: "Diesel" },
     { id: 2, label: "Petrol", value: "Petrol" },
     { id: 3, label: "CNG", value: "CNG" },
-    { id: 4, label: "Pick Up", value: "Pick Up" },
+    { id: 4, label: "Hybrid", value: "Hybrid" },
     { id: 5, label: "LPG", value: "LPG" },
+    { id: 6, label: "Electric", value: "Electric" },
+
 ];
 export const Assembly = [
     { id: 1, label: "Local", value: "Local" },
@@ -149,7 +154,9 @@ export const countryList = [
     { id: 4, label: "Canada", value: "Canada" },
     { id: 5, label: "U.A.E", value: "U.A.E" },
 ];
+
 export const PostAdhere="Post Your Ad Here"
+export const EditAdhere="Edit Your Ad"
 export const LocationLabel = "Location"
 export const cityLabel = "City"
 export const provinceLabel = "Porvince"
@@ -163,6 +170,8 @@ export const MileageLabel = "Mileage"
 export const PriceRangeLabel = "Price Range"
 export const DescriptionLabel = "Description"
 export const AddPostButton="Post Your Add"
+export const SaveButton="Save Changes"
+export const DeleteButton="Delete Ad"
 export const BodyTypeLabel = "Body Type"
 export const Transmission = "Transmission"
 export const assemblyLabel = "Assembly"

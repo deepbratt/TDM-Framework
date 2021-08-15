@@ -57,7 +57,7 @@ export default function Sedan() {
           let temp = [...carlist, ...result.data.result];
           console.log(temp.length);
         } else {
-          setLoading(false), alert(result.message);
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -110,9 +110,8 @@ export default function Sedan() {
                 >
                   <Image
                     style={images}
-                    source={
-                      typeof item.images === "string" ? item.images : null
-                    }
+                    source={{ uri: `${item.image}` }}
+                    
                   />
                   <Text style={detail}>{item.price}</Text>
                   <Text style={titleText}>{item.model}</Text>
