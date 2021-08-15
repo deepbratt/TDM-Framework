@@ -68,6 +68,12 @@ export const styles = StyleSheet.create({
       fontFamily: "IBMPlexSans-Regular",
   fontSize:18,
   lineHeight:26
-  
+
     },
+    loadingView:{
+      flex:1,
+      justifyContent:"center",
+      alignItems:"center",
+      marginTop:hp('6%')
+  }
   });

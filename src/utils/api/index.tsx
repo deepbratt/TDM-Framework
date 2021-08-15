@@ -16,7 +16,7 @@ const USERS = {
     Email_VRIFY: `${user}/send-verification-email`,
     Phone_VRIFY: `${user}/send-verification-phone`,
     Fb_Login:`${user}/facebook-auth`,
-   
+    CURRENT_USER:`${user}/currentUser`
 
   };
 
@@ -104,4 +104,13 @@ const USERS = {
                     return error.response.data;
                   }
                 };
-         
+                export const getcurrentUser = async()=>{
+                  try {
+                  let result = await axios.get(`${BASE_URL}${USERS.CURRENT_USER}`);
+                  return result.data;
+                  }
+                  catch(error){
+                        return error.response.data;
+                      }
+                    };
+          
