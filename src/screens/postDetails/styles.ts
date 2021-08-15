@@ -63,6 +63,17 @@ export const styles = StyleSheet.create({
         paddingBottom: hp('1.5%'),
         marginBottom:hp('2%')
     },
+    gradientStyle2: {
+        width:wp('80%'),
+        borderRadius: 6,
+        marginTop:hp('0%'),
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        paddingTop: hp('1.5%'),
+        paddingBottom: hp('1.5%'),
+        marginBottom:hp('2%')
+    },
     gradientTextStyle: {
         fontSize: 16,
         fontFamily: 'IBMPlexSans-Medium',

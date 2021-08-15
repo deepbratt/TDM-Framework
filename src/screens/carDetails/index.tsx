@@ -36,7 +36,7 @@ import {
 } from "../../utils/constants/carDetails/carDetails";
 import { COLOR } from "../../Theme/Colors";
 import { useHistory, useParams } from "react-router-native";
-import { AntDesign, Entypo } from "@expo/vector-icons";
+import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
 import CustomLoader from "../../component/CustomLoader";
 import {
   addToFav,
@@ -206,87 +206,87 @@ const CarDetails = () => {
           
             <CustomText text={`${RS}${getPrice()}`} textStyle={styles.amountText} />
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.shareTouchableStyle}>
-                <Entypo name="share" size={27} color={COLOR.secondary} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.shareTouchableStyle}
-                onPress={() => addFav(IndexItems)}
-              >
-                <AntDesign
-                  name="heart"
-                  size={25}
-                  color={
-                    fav === true
-                      ? COLOR.primary
-                      : favorites.includes(IndexItems._id) === true
-                      ? COLOR.primary
-                      : COLOR.secondary
-                  }
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.brandTextView}>
-            <CustomText
-              text={IndexItems.model}
-              textStyle={styles.brandNameText}
-            />
-            <View style={styles.brandStatusView}>
-              <CustomText
-                text={productStatus}
-                textStyle={styles.brandStatusText}
-              />
-            </View>
-          </View>
-          <View style={styles.productInfoMainView}>
-            <View style={styles.productInfoSubView}>
-              <View style={styles.infoView}>
-                <Image style={styles.buttonIcon} source={PlaceIcon} />
-                <CustomText
-                  text={
-                    `${IndexItems.city}`.charAt(0).toUpperCase() +
-                    `${IndexItems.city}`.slice(1)
-                  }
-                  textStyle={styles.infoText}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/road.png")}
-                />
-                <CustomText
-                  text={`${IndexItems.milage} ${KM}`}
-                  textStyle={styles.infoText}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/diesal.png")}
-                />
-                <CustomText
-                  text={IndexItems.engineType}
-                  textStyle={styles.infoText}
-                />
-              </View>
-            </View>
-            <View style={styles.productInfoSubView}>
-              <View style={styles.infoView}>
-                <CustomText text={company} textStyle={styles.infoText} />
-                <CustomText text={make} textStyle={styles.infoHeading} />
-              </View>
-              <View style={styles.infoView}>
-                <CustomText text={subModel} textStyle={styles.infoText} />
-                <CustomText
-                  text={modelHeading}
-                  textStyle={styles.infoHeading}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <CustomText text={year} textStyle={styles.infoText} />
-                <CustomText text={yearHeading} textStyle={styles.infoHeading} />
+                       <TouchableOpacity style={styles.editStyle} onPress={()=>history.push(`/edit-details/${id}`)}>
+                                <FontAwesome name="edit" size={25} color={COLOR.secondary} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.shareTouchableStyle}>
+                                <Entypo name="share" size={27} color={COLOR.secondary} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.shareTouchableStyle} onPress={()=>addFav(IndexItems)}>
+                                <AntDesign name="heart" size={25} color={fav ===true ?  COLOR.primary:favorites.includes(IndexItems._id) ===true ?  COLOR.primary : COLOR.secondary} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.brandTextView}>
+                    <CustomText
+                        text={IndexItems.model}
+                        textStyle={styles.brandNameText}
+                    />
+                    <View style={styles.brandStatusView}>
+                        <CustomText
+                            text={productStatus}
+                            textStyle={styles.brandStatusText}
+                        />
+                    </View>
+                </View>
+                <View style={styles.productInfoMainView}>
+                    <View style={styles.productInfoSubView}>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={PlaceIcon} />
+                            <CustomText
+                                text={`${IndexItems.city}`.charAt(0).toUpperCase() + `${IndexItems.city}`.slice(1)}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/road.png')} />
+                            <CustomText
+                                text={`${IndexItems.milage} ${KM}`}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/diesal.png')} />
+                            <CustomText
+                                text={IndexItems.engineType}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.productInfoSubView}>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text={IndexItems.make}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={make}
+                               textStyle={styles.infoHeading}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text= {IndexItems.model}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={modelHeading}
+                                textStyle={styles.infoHeading}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text={IndexItems.modelYear}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={yearHeading}
+                                textStyle={styles.infoHeading}
+                            />
+                    
               </View>
             </View>
           </View>
@@ -298,38 +298,38 @@ const CarDetails = () => {
             text={IndexItems.description}
             textStyle={styles.descriptionText}
           />
-          <View style={styles.dealMainContainer}>
-            <View style={styles.dealView}>
-              <CustomText text={payAmount} textStyle={styles.dealText} />
-            </View>
-            <View style={styles.comparisonButtonMainView}>
-              <TouchableOpacity style={styles.comparisonTouchable}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/layer.png")}
-                />
-                <CustomText
-                  text={compareText}
-                  textStyle={styles.comparisonButtonText}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.comparisonTouchable}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/safety-car.png")}
-                />
-                <CustomText
-                  text={shortListText}
-                  textStyle={styles.comparisonButtonText}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.profileBorderView}>
-            <View
-              style={{ flexDirection: "column", justifyContent: "flex-start" }}
-            >
-              <CustomText text={sellerText} textStyle={styles.profileHeading} />
+           <View style={styles.dealMainContainer}>
+                    <View style={styles.dealView}>
+                        <CustomText
+                            text={payAmount}
+                            textStyle={styles.dealText}
+                        />
+                    </View>
+                    <View style={styles.comparisonButtonMainView}>
+                        <TouchableOpacity style={styles.comparisonTouchable}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/layer.png')} />
+                            <CustomText
+                                text={compareText}
+                                textStyle={styles.comparisonButtonText}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.comparisonTouchable}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/safety-car.png')} />
+                            <CustomText
+                                text={shortListText}
+                                textStyle={styles.comparisonButtonText}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.profileBorderView}>
+                    <View style={{ flexDirection: 'column', justifyContent: 'flex-start' }}>
+                        <CustomText
+                            text={sellerText}
+                            textStyle={styles.profileHeading}
+                        />
               <View style={styles.profileMainView}>
                 <View style={styles.avatarView}>
                   <CustomAvatar

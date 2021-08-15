@@ -61,48 +61,57 @@ export const carDetailsById = async (id: any) => {
   }
 };
 export const allFavourites = async () => {
-    let jwtToken=await AsyncStorage.getItem("jwt")
-    let  headers={
-     Accept: 'application/json',
-   'Content-Type': 'application/json',
-   "Access-Control-Allow-Origin": "*",
-   'Authorization':'Bearer '+ jwtToken
-   }
-     console.log(jwtToken)
+  let jwtToken = await AsyncStorage.getItem("jwt");
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: "Bearer " + jwtToken,
+  };
+  console.log(jwtToken);
   try {
-    let result = await axios.get(`https://api.tezdealz.com/v1/ads/cars/favourites/`,{headers:headers});
+    let result = await axios.get(
+      `https://api.tezdealz.com/v1/ads/cars/favourites/`,
+      { headers: headers }
+    );
     return result.data;
   } catch (error) {
     return error.response.data;
   }
 };
 export const addToFav = async (id: any) => {
-    let jwtToken=await AsyncStorage.getItem("jwt")
-    let  headers={
-     Accept: 'application/json',
-   'Content-Type': 'application/json',
-   "Access-Control-Allow-Origin": "*",
-   'Authorization':'Bearer '+ jwtToken
-   }
-     console.log(jwtToken)
+  let jwtToken = await AsyncStorage.getItem("jwt");
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: "Bearer " + jwtToken,
+  };
+  console.log(jwtToken);
   try {
-    let result = await axios.patch(`https://api.tezdealz.com/v1/ads/cars/add-to-fav/${id}`,{headers:headers});
+    let result = await axios.patch(
+      `https://api.tezdealz.com/v1/ads/cars/add-to-fav/${id}`,
+      { headers: headers }
+    );
     return result.data;
   } catch (error) {
     return error.response.data;
   }
 };
 export const removeFromFav = async (id: any) => {
-  let jwtToken=await AsyncStorage.getItem("jwt")
-    let  headers={
-     Accept: 'application/json',
-   'Content-Type': 'application/json',
-   "Access-Control-Allow-Origin": "*",
-   'Authorization':'Bearer '+ jwtToken
-   }
-     console.log(jwtToken)
+  let jwtToken = await AsyncStorage.getItem("jwt");
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: "Bearer " + jwtToken,
+  };
+  console.log(jwtToken);
   try {
-    let result = await axios.patch(`https://api.tezdealz.com/v1/ads/cars/remove-from-fav/${id}`,{headers:headers});
+    let result = await axios.patch(
+      `https://api.tezdealz.com/v1/ads/cars/remove-from-fav/${id}`,
+      { headers: headers }
+    );
     return result.data;
   } catch (error) {
     return error.response.data;
@@ -133,6 +142,41 @@ export const carCompare = async (id1: number, id2: number) => {
     let result = await axiosInstance.get(
       `${CARS.COMPARE_Cars}${id1}${AND}${id2}`
     );
+    return result.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const carUpdate = async (id: number, body: any) => {
+  let token = await gettoken();
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "multipart/form-data",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: "Bearer " + token,
+  };
+  try {
+    let result = await axiosInstance.patch(`${CARS.all_Cars}${id}`, body, {
+      headers: headers,
+    });
+    return result.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+export const carDelete = async (id: any) => {
+  let token = await gettoken();
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "multipart/form-data",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: "Bearer " + token,
+  };
+  try {
+    let result = await axiosInstance.delete(`${CARS.all_Cars}${id}`, {
+      headers: headers,
+    });
     return result.data;
   } catch (error) {
     return error.response.data;

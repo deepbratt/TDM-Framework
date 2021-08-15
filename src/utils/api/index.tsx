@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-
 import { fieldForm, postForm } from "../../../types";
 import { setToken } from "../general.utils";
 import { axiosInstance, axiosInstanceForm } from "./api";
@@ -21,6 +20,7 @@ const USERS = {
   Fb_Login: `${user}/facebook-auth`,
   UPDATE_ME: `${user}/updateMe`,
   UPDATE_PASS: `${user}/updateMyPassword`,
+  CURRENT_USER: `${user}/currentUser`,
 };
 
 export const userSignUpApi = async (data: fieldForm) => {
@@ -31,7 +31,7 @@ export const userSignUpApi = async (data: fieldForm) => {
     );
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -40,7 +40,7 @@ export const userSignUpwithPhone = async (data: fieldForm) => {
     let result = await axiosInstance.post(`${USERS.Phone_SIGNUP}`, data);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -50,7 +50,7 @@ export const userLoginwithEmail = async (data: fieldForm) => {
     setToken("jwt", result.data.token);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -60,7 +60,7 @@ export const userLoginwithPhone = async (data: fieldForm) => {
     setToken("jwt", result.data.token);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -69,7 +69,7 @@ export const userVerifyEmail = async (data: fieldForm) => {
     let result = await axios.post(`${BASE_URL}${USERS.Email_VRIFY}`, data);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -78,7 +78,7 @@ export const userVerifyPhone = async (data: fieldForm) => {
     let result = await axios.post(`${BASE_URL}${USERS.Phone_VRIFY}`, data);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -87,7 +87,7 @@ export const FbLogin = async () => {
     let result = await axios.post(`${BASE_URL}${USERS.Fb_Login}`);
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -105,10 +105,14 @@ export const UpdateMe = async (data: any) => {
     Authorization: "Bearer " + token,
   };
   try {
-    let result = await axios.patch("https://api.tezdealz.com/v1/Users/updateMe", data,{headers:headers});
+    let result = await axios.patch(
+      "https://api.tezdealz.com/v1/Users/updateMe",
+      data,
+      { headers: headers }
+    );
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error.response.data;
   }
 };
@@ -121,10 +125,23 @@ export const UpdateMyPassword = async (body: any) => {
     Authorization: "Bearer " + token,
   };
   try {
-    let result = await axios.patch("https://api.tezdealz.com/v1​/Users​/updateMyPassword", body,{headers:headers});
+    let result = await axios.patch(
+      "https://api.tezdealz.com/v1​/Users​/updateMyPassword",
+      body,
+      { headers: headers }
+    );
     return result.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return error.response.data;
+  }
+};
+
+export const getcurrentUser = async () => {
+  try {
+    let result = await axios.get(`${BASE_URL}${USERS.CURRENT_USER}`);
+    return result.data;
+  } catch (error) {
     return error.response.data;
   }
 };

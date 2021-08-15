@@ -1,5 +1,5 @@
 
-import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount, YourAds, Profile, ShortList } from "../../screens";
+import { SignIn, FindCar,SignUp,YourFav,Orders, Inbox, PostAd, SearchCompare, CompareProduct,SignInWithEmail, VerifywithEmail,SignInWithPhone,SignUpwithPhone,VerifywithPhone, HomePage, PostDetails,ConfirmPayment, Notification, TokenAmount, CarDetails, AddDetails, ResetPassword, SuccessFullReset, RequestAccept, VerificationNumber, PaymentError, PayTokenAmount, YourAds, Profile, ShortList, EditPost } from "../../screens";
 import Chat from "../../screens/Chat/chat";
 
 
@@ -168,5 +168,10 @@ export const protectedroute=[
         id: 22,
         path: "/short-list",
         component:ShortList
-    }
+    },
+    {
+        id:23,
+        path:"/edit-details/:id",
+        component:EditPost,
+    },
 ];

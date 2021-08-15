@@ -36,7 +36,7 @@ import {
 } from "../../utils/constants/carDetails/carDetails";
 import { COLOR } from "../../Theme/Colors";
 import { useHistory, useParams } from "react-router-native";
-import { AntDesign, Entypo } from "@expo/vector-icons";
+import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
 import CustomLoader from "../../component/CustomLoader";
 import {
   addToFav,
@@ -201,6 +201,80 @@ const AdDetails = () => {
           <View style={styles.amountMainContainer}>
             <CustomText text={`${RS}${Price}`} textStyle={styles.amountText} />
             <View style={styles.buttonContainer}>
+                       <TouchableOpacity style={styles.editStyle} onPress={()=>history.push(`/edit-details/${id}`)}>
+                                <FontAwesome name="edit" size={25} color={COLOR.secondary} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.brandTextView}>
+                    <CustomText
+                        text={IndexItems.model}
+                        textStyle={styles.brandNameText}
+                    />
+                    <View style={styles.brandStatusView}>
+                        <CustomText
+                            text={productStatus}
+                            textStyle={styles.brandStatusText}
+                        />
+                    </View>
+                </View>
+                <View style={styles.productInfoMainView}>
+                    <View style={styles.productInfoSubView}>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={PlaceIcon} />
+                            <CustomText
+                                text={`${IndexItems.city}`.charAt(0).toUpperCase() + `${IndexItems.city}`.slice(1)}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/road.png')} />
+                            <CustomText
+                                text={`${IndexItems.milage} ${KM}`}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <Image style={styles.buttonIcon}
+                                source={require('../../../assets/images/diesal.png')} />
+                            <CustomText
+                                text={IndexItems.engineType}
+                                textStyle={styles.infoText}
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.productInfoSubView}>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text={IndexItems.make}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={make}
+                               textStyle={styles.infoHeading}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text= {IndexItems.model}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={modelHeading}
+                                textStyle={styles.infoHeading}
+                            />
+                        </View>
+                        <View style={styles.infoView}>
+                            <CustomText
+                                text={IndexItems.modelYear}
+                                textStyle={styles.infoText}
+                            />
+                            <CustomText
+                                text={yearHeading}
+                                textStyle={styles.infoHeading}
+                            />
               {/* <TouchableOpacity style={styles.shareTouchableStyle}>
                 <Entypo name="share" size={27} color={COLOR.secondary} />
               </TouchableOpacity> */}
@@ -220,68 +294,7 @@ const AdDetails = () => {
                   }
                 />
               </TouchableOpacity> */}
-            </View>
-          </View>
-          <View style={styles.brandTextView}>
-            <CustomText
-              text={IndexItems.model}
-              textStyle={styles.brandNameText}
-            />
-            <View style={styles.brandStatusView}>
-              <CustomText
-                text={productStatus}
-                textStyle={styles.brandStatusText}
-              />
-            </View>
-          </View>
-          <View style={styles.productInfoMainView}>
-            <View style={styles.productInfoSubView}>
-              <View style={styles.infoView}>
-                <Image style={styles.buttonIcon} source={PlaceIcon} />
-                <CustomText
-                  text={
-                    `${IndexItems.city}`.charAt(0).toUpperCase() +
-                    `${IndexItems.city}`.slice(1)
-                  }
-                  textStyle={styles.infoText}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/road.png")}
-                />
-                <CustomText
-                  text={`${IndexItems.milage} ${KM}`}
-                  textStyle={styles.infoText}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <Image
-                  style={styles.buttonIcon}
-                  source={require("../../../assets/images/diesal.png")}
-                />
-                <CustomText
-                  text={IndexItems.engineType}
-                  textStyle={styles.infoText}
-                />
-              </View>
-            </View>
-            <View style={styles.productInfoSubView}>
-              <View style={styles.infoView}>
-                <CustomText text={company} textStyle={styles.infoText} />
-                <CustomText text={make} textStyle={styles.infoHeading} />
-              </View>
-              <View style={styles.infoView}>
-                <CustomText text={subModel} textStyle={styles.infoText} />
-                <CustomText
-                  text={modelHeading}
-                  textStyle={styles.infoHeading}
-                />
-              </View>
-              <View style={styles.infoView}>
-                <CustomText text={year} textStyle={styles.infoText} />
-                <CustomText text={yearHeading} textStyle={styles.infoHeading} />
+            
               </View>
             </View>
           </View>
@@ -309,6 +322,7 @@ const AdDetails = () => {
                     source={{uri:`${User.image}`}}
                     imageProps={{ resizeMode: "contain", margin: 15 }}
                   />
+                 
                 </View>
                 <CustomText
                   text={`${User.firstName} ${User.lastName}`.charAt(0).toUpperCase() + `${User.firstName} ${User.lastName} `.slice(1)}
