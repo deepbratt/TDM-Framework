@@ -206,9 +206,6 @@ const CarDetails = () => {
           
             <CustomText text={`${RS}${getPrice()}`} textStyle={styles.amountText} />
             <View style={styles.buttonContainer}>
-                       <TouchableOpacity style={styles.editStyle} onPress={()=>history.push(`/edit-details/${id}`)}>
-                                <FontAwesome name="edit" size={25} color={COLOR.secondary} />
-                        </TouchableOpacity>
                         <TouchableOpacity style={styles.shareTouchableStyle}>
                                 <Entypo name="share" size={27} color={COLOR.secondary} />
                         </TouchableOpacity>
