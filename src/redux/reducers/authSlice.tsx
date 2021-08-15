@@ -23,14 +23,16 @@ const authSlice = createSlice({
        (state.SelectedItem.length === 2 || existingCartItem !== undefined )
         ? 
         null 
-        : ( state.SelectedItem=[...state.SelectedItem,payload]),
+        : 
+        ( state.SelectedItem=[...state.SelectedItem,payload]),
          
          (state.SelectedItem.length === 2) ? state.activeCompare=true :   state.activeCompare=false
-         console.warn("existingiTEM=",existingCartItem,"length=",state.SelectedItem.length,"activeCompare=",state.activeCompare,"Array=",state.SelectedItem) ;
+        //  console.log("existingiTEM=",existingCartItem,"selArray=",state.SelectedItem) ;
     },
-    remove: (state,{ payload }: PayloadAction) =>{    
+    remove: (state,{ payload }: PayloadAction) =>{  
+      // console.log("id",payload.id) ;  
      state.SelectedItem=state.SelectedItem.filter((item) => item.id!== payload.id);     
-      console.warn("remove",payload.id) ;
+      console.log("remove",payload.id) ;
     },
     accountSignUp: (state) => {
       state.alreadyVerify = true;

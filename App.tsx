@@ -1,17 +1,15 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import React, { Props } from 'react';
+import "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import React, { Props } from "react";
 import store from "./src/redux/store";
 import { Provider } from "react-redux";
 import AuthRoute from "./route";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import useCachedResources from './src/utils/constants/resources/useCachedResources';
-import { COLOR } from './src/Theme/Colors';
-
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import useCachedResources from "./src/utils/constants/resources/useCachedResources";
+import { COLOR } from "./src/Theme/Colors";
 
 export default function App() {
-
-    const isLoadingComplete = useCachedResources();
+  const isLoadingComplete = useCachedResources();
   if (!isLoadingComplete) {
     return null;
   } else {
@@ -19,7 +17,11 @@ export default function App() {
       <Provider store={store}>
         <SafeAreaProvider>
           <AuthRoute />
-          <StatusBar style="light" translucent={true} backgroundColor={COLOR.Black} />
+          <StatusBar
+            style="light"
+            translucent={true}
+            backgroundColor={COLOR.Black}
+          />
         </SafeAreaProvider>
       </Provider>
     );

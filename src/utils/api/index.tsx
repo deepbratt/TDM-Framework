@@ -1,20 +1,11 @@
 import axios from "axios";
 import { fieldForm, postForm } from "../../../types";
 import { SomethingWrong } from "../constants/alertMsg";
+import { axiosInstance, config } from "./api";
 
 const BASE_URL = "https://api.tezdealz.com/v1";
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-});
-const config=  {
-  headers: {
-      Accept: "multipart/form-data",
-    'Content-Type': 'application/json',
-    "Access-Control-Allow-Origin": "*",
-    'Authorization':'Bearer '
-    }};
+
 const user='/Users';
-const ads='/ads';
 
 const USERS = {
     LOGIN: `${user}/login`,
@@ -28,10 +19,7 @@ const USERS = {
     CURRENT_USER:`${user}/currentUser`
 
   };
-const CARS={
-  all_Cars: `${ads}/cars/`,
-}
-  
+
   export const userSignUpApi = async(data:fieldForm)=>{
     try {
     let result = await axios.post(`${BASE_URL}${USERS.Email_SIGNUP}`,data);
@@ -122,33 +110,7 @@ const CARS={
                   return result.data;
                   }
                   catch(error){
-                      if (error.response === undefined) {
-                          return { status: 403, message: "Something Went Wrong!" };
-                        }
                         return error.response.data;
                       }
                     };
-           export const allCars = async()=>{
-                try {
-                let result = await axios.get(`${BASE_URL}${CARS.all_Cars}`);
-                return result.data;
-                }
-                catch(error){
-                    if (error.response === undefined) {
-                        return { status: 403, message: SomethingWrong };
-                      }
-                      return error.response.data;
-                    }
-                  };
-                  export const createCars = async(data:postForm)=>{
-                    try {
-                    let result = await axios.post(`${BASE_URL}${CARS.all_Cars}`,data);
-                    return result.data;
-                    }
-                    catch(error){
-                        if (error.response === undefined) {
-                            return { status: 403, message: SomethingWrong };
-                          }
-                          return error.response.data;
-                        }
-                      };
+          

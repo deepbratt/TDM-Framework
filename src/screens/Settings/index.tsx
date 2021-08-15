@@ -68,6 +68,7 @@ const Settings = (props:any) => {
       if (error.status === 401) return alert(error); 
      })
    }
+   console.log("s",name)
   return (
     <View style={{ flex: 1, zIndex: 1 }}>
       <ScrollView>
@@ -87,7 +88,7 @@ const Settings = (props:any) => {
           <View style={section1}>
             <View style={Images}>
               <Avatar.Image
-                source={require('../../../assets/images/drawer/profile.png')}
+                source={{uri: `${name.image}`}}
               ></Avatar.Image>
             </View>
             <View style={Intro}>

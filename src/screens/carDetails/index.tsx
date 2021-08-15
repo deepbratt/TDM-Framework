@@ -1,5 +1,5 @@
-import React,{useCallback, useEffect} from 'react';
-import { View, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import React,{useCallback, useEffect, useState} from 'react';
+import { View, Image, TouchableOpacity } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
 import CustomText from '../../component/customText';
@@ -13,39 +13,31 @@ import CustomAvatar from '../../component/Avatar';
 import {styles} from './styles'
 import {
     PlaceIcon,
-    AmountVector,
-    carPrice,
     company,
     compareText,
     DescriptionHead, 
-    descriptionT, 
-    distance,
-    fuel,
     locationText,
     make,
     modelHeading,
-    modelName,
     payAmount,
-    productLocation,
     productStatus,
     sellerText,
     shortListText,
     subModel,
-    userName,
     year,
     yearHeading,
     Items,
-    FeatureItems,
-    featureproductStatus,
-    featureProductAmount,
-    featureProductLocation,
-    featureProductDistance,
-    featureProductFuelType,
+    FeatureProd,
 } from '../../utils/constants/carDetails/carDetails';
-import ResetPassword from '../resetPassword';
 import { COLOR } from '../../Theme/Colors';
-import axios from 'axios';
-import { useParams } from 'react-router-native';
+import { useHistory, useParams } from 'react-router-native';
+import { AntDesign, Entypo } from '@expo/vector-icons';
+import CustomLoader from '../../component/CustomLoader';
+import { addToFav, allFavourites, carDetailsById, removeFromFav } from '../../utils/api/CarsApi';
+import Toast from 'react-native-simple-toast';
+import { KM, PriceRegex, RS } from '../../utils/form/validationForm';
+import { Itemadded, Itemremoved } from '../../utils/constants/alertMsg';
+
 
 interface ItemProps {
     src: any;
@@ -58,17 +50,115 @@ interface ItemProps {
 }
   
 const CarDetails = () => {
-    const {ids}=useParams;
-       useEffect(() => {
-   fetchItem()
-     }, [])
+    const {id}=useParams();
+    const [IndexItems,setIndexItems]=useState<any>([]);
+    const [User,setUser]=useState<any>([]);
+    const [Loader,setLoader]=useState(false);
+    const [favorites, setfavorites] = useState([] as Array<number>);
+    const [fav, setfav] = useState(false);
+     const history=useHistory();
+     useEffect(() => {
+         AlreadyFav()
+        fetchItem()
+    }, [])
     const fetchItem=async()=>{
-       const id="610d2a07a96d7a001d6fac7e";
-      const resp=await axios.get(`http://api.tezdealz.com/v1/ads/cars/${id}`);
-      console.log("sss",ids);
-      console.log("fetch");
-      console.log("fetch",resp.data)
+        console.log("sss",id);
+        setLoader(true);
+        await carDetailsById(id).then(res=>{
+            // console.log("ressss",res.data.result)
+         if(res.status === "success"){
+            setLoader(false),
+            setIndexItems(res.data.result),
+             setUser(res.data.result.createdBy)
+           
+         }
+         else if (res.status === "fail"){
+            return (
+                alert(`${res.message}`)
+            )
+         }
+        }).catch(error=>{
+        if (error.status === 401) return alert(error);
+        });
     }
+    const AlreadyFav=async()=>{
+        await allFavourites().then(response=>{
+            setLoader(true);
+            let aa=response.data.result;
+         if(response.status === "success"){
+            setLoader(false);
+            aa.map((items: any)=>{
+                if(items._id === id) {
+                 setfav(true);
+                }
+              });
+         }
+         else if (response.status === "fail"){
+            return (
+                setLoader(false),
+                alert(`${response.message}`)
+            )
+         }
+        }).catch(error=>{
+        if (error.status === 401) return alert(error);
+        })
+    } 
+    const addFav=async(props:any)=>{
+        console.log("favvvv=",fav)
+       
+        let array=favorites;
+        let addArray=true;
+        fav===true ? (setfav(false), addArray=false)
+        :
+        addArray=true;
+        console.log(addArray,"arrayStatus",array,"array")
+       
+        array.map((item,key)=>{
+            if(item === props.id) {
+              array.splice(key,1);
+              addArray=false;
+            }
+          })
+        if(addArray){
+    await addToFav(props.id).then(response=>{
+        console.log("addfav")
+        setLoader(true);
+     if(response.status === "success"){
+        setLoader(false),
+        array.push(props.id),
+        Toast.show(Itemadded)
+     }
+     else if (response.status === "fail"){
+        return (
+            setLoader(false),
+            alert(`${response.message}`)
+        )
+     }
+    }).catch(error=>{
+    if (error.status === 401) return alert(error);
+    })
+       }
+        else{
+            await removeFromFav(props.id).then(response=>{
+                console.log("remofav",addArray,array)
+                setLoader(true);
+             if(response.status === "success"){
+                setLoader(false),
+                Toast.show(Itemremoved);
+             }
+             else if (response.status === "fail"){
+                return (
+                    setLoader(false),
+                    alert(`${response.message}`)
+                )
+             }
+            }).catch(error=>{
+            if (error.status === 401) return alert(error);
+            })
+         
+        }
+        setfavorites([...array]);
+      }
     const ImagerenderItem = useCallback(({ item, index }: RenderItemProps) => {
     return (
       <View style={styles.imageRandomItemView}>
@@ -78,76 +168,24 @@ const CarDetails = () => {
       </View>
     );
     }, []);
-
-    const FeaturerenderItem = useCallback(({ item, index }: RenderItemProps) => {
-    return (
-        <View style={styles.CarouselFeaturemainView}>
-            <Image style={styles.CarouselFeatureproductImage}
-                source={item.src}
-            />
-            <View style={styles.CarouselFeaturenameStatusContainer}>
-                <CustomText
-                    text={item.title}
-                    textStyle={styles.CarouselFeaturetitleText}
-                />
-                <View style={{flexDirection:'row'}}>
-                    <View style={styles.CarouselFeaturestatusSubView}>
-                    <CustomText
-                        text={featureproductStatus}
-                        textStyle={styles.CarouselFeaturestatusText}
-                    />
-                </View>
-                <TouchableOpacity style={styles.CarouselFeatureshareTouchableStyle}>
-                    <Image style={styles.CarouselFeaturefavouriteButton}
-                        source={require('../../../assets/images/like.png')} />
-                </TouchableOpacity>
-                </View>
-            </View>
-            <View style={styles.CarouselFeaturepriceContainer}>
-                <Image style={styles.CarouselFeaturepriceIcon}
-                    source={AmountVector}
-                />
-                <CustomText
-                    text={featureProductAmount}
-                    textStyle={styles.CarouselFeaturepriceText}
-                />
-            </View>
-            <View style={styles.CarouselFeatureproductInfoSubView}>
-                <View style={styles.CarouselFeatureinfoView}>
-                    <Image style={styles.CarouselFeaturebuttonIcon}
-                        source={PlaceIcon} />
-                    <CustomText
-                        text={featureProductLocation}
-                        textStyle={styles.CarouselFeatureinfoText}
-                    />
-                </View>
-                <View style={styles.CarouselFeatureinfoView}>
-                    <Image style={styles.CarouselFeaturebuttonIcon}
-                        source={require('../../../assets/images/road.png')} />
-                    <CustomText
-                        text={featureProductDistance}
-                        textStyle={styles.CarouselFeatureinfoText}
-                    />
-                </View>
-                <View style={styles.CarouselFeatureinfoView}>
-                    <Image style={styles.CarouselFeaturebuttonIcon}
-                        source={require('../../../assets/images/diesal.png')} />
-                    <CustomText
-                        text={featureProductFuelType}
-                        textStyle={styles.CarouselFeatureinfoText}
-                    />
-                </View>
-            </View>
-        </View>
-        );
-    }, []);
+    const pr=`${IndexItems.price}`.toString();
+    var lastThree = pr.substring(pr.length-3);
+    var otherNumbers = pr.substring(0,pr.length-3);
+    if(otherNumbers != '')
+        lastThree = ',' + lastThree;
+    const Price = otherNumbers.replace(PriceRegex, ",") + lastThree;
     return (
         <View style={styles.container}>
             <CustomHeader
                 headerStyle={{ backgroundColor: COLOR.Cultured }}
                 title="Car Details"
                 color={COLOR.DarkCharcoal}
+                onPress={()=>history.goBack()}
             />
+                     { Loader ? (
+                      <CustomLoader/>
+                               ) :(
+             <>
                 <View style={styles.imageCarouselView}>
                     <CustomCarouselSaim40
                         layout={"default"}
@@ -159,23 +197,21 @@ const CarDetails = () => {
                 </View>
                 <View style={styles.amountMainContainer}>
                     <CustomText
-                        text={carPrice}
+                        text={`${RS}${Price}`}
                         textStyle={styles.amountText}
                     />
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.shareTouchableStyle}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/share.png')} />
+                                <Entypo name="share" size={27} color={COLOR.secondary} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.shareTouchableStyle}>
-                            <Image style={styles.buttonIcon}
-                                source={require('../../../assets/images/like.png')} />
+                        <TouchableOpacity style={styles.shareTouchableStyle} onPress={()=>addFav(IndexItems)}>
+                                <AntDesign name="heart" size={25} color={fav ===true ?  COLOR.primary:favorites.includes(IndexItems._id) ===true ?  COLOR.primary : COLOR.secondary} />
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.brandTextView}>
                     <CustomText
-                        text={modelName}
+                        text={IndexItems.model}
                         textStyle={styles.brandNameText}
                     />
                     <View style={styles.brandStatusView}>
@@ -191,7 +227,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={PlaceIcon} />
                             <CustomText
-                                text={productLocation}
+                                text={`${IndexItems.city}`.charAt(0).toUpperCase() + `${IndexItems.city}`.slice(1)}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -199,7 +235,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/road.png')} />
                             <CustomText
-                                text={distance}
+                                text={`${IndexItems.milage} ${KM}`}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -207,7 +243,7 @@ const CarDetails = () => {
                             <Image style={styles.buttonIcon}
                                 source={require('../../../assets/images/diesal.png')} />
                             <CustomText
-                                text={fuel}
+                                text={IndexItems.engineType}
                                 textStyle={styles.infoText}
                             />
                         </View>
@@ -250,7 +286,7 @@ const CarDetails = () => {
                     textStyle={styles.descriptionHeading}
                 />
                 <CustomText
-                    text={descriptionT}
+                    text={IndexItems.description}
                     textStyle={styles.descriptionText}
                 />
                 <View style={styles.dealMainContainer}>
@@ -298,7 +334,7 @@ const CarDetails = () => {
                                 />
                             </View>
                             <CustomText
-                                text={userName}
+                                text={`${User.firstName} ${User.lastName}`.charAt(0).toUpperCase() + `${User.firstName} ${User.lastName} `.slice(1)}
                                 textStyle={styles.userNameText}
                             />
                             <Image style={styles.buttonIcon}
@@ -319,16 +355,12 @@ const CarDetails = () => {
                         <CustomTopBar/>
                     </View>
                 <CustomText
-                    text="Feature Product"
+                    text={FeatureProd}
                     textStyle={styles.FeatureProductText}
                     />
-                <CustomCarouselSaim40
-                    layout={"default"}
-                    listItems={FeatureItems}
-                    sliderWidth={wp("100%")}
-                    itemWidth={wp('70%')}
-                    renderItems={FeaturerenderItem}
-                />
+            <Features/>
+            </>
+        )}
             </View>
     )
 }

@@ -27,7 +27,7 @@ export const drawerItem=[
         name:"Shortlist Items",
         img: require('../../../assets/images/drawer/order.png'),
         color:"rgba(194, 0, 0, 1)",
-        link:"/shortlist",
+        link:"/short-list",
         width:"50%",height:"50%",
         onPress:()=>console.log("Drawer press")
     },
@@ -42,6 +42,15 @@ export const drawerItem=[
     },
     {
         id:5,
+        name:"Favourites",
+        img: require('../../../assets/images/drawer/like.png'),
+        color:"rgba(194, 0, 0, 1)",
+        link:"/favourite",
+        width:"50%",height:"50%",
+        onPress:()=>console.log("Drawer press")
+    },
+    {
+        id:6,
         name:"Booked Items",
         img:require('../../../assets/images/drawer/booked.png'),
         color:"rgba(194, 0, 0, 1)",
@@ -50,7 +59,7 @@ export const drawerItem=[
         onPress:()=>console.log("Booked Items")
     },
     {
-        id:6,
+        id:7,
         name:"Buyer Request",
         img:require('../../../assets/images/drawer/bellIcon.png'),
         width:"50%",height:"55%",
@@ -59,7 +68,7 @@ export const drawerItem=[
         onPress:()=>console.log("Drawer press")
     },
     {
-        id:7,
+        id:8,
         name:"Help",
         img:require('../../../assets/images/drawer/help.png'),
         width:"58%",height:"57%",
