@@ -131,7 +131,7 @@ export const protectedroute=[
     },
     {
         id:15,
-        path:"/add-Details",
+        path:"/add-Details/:id",
         component:AddDetails,
     },
     {

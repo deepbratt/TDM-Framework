@@ -12,6 +12,7 @@ import CustomLoader from "../../component/CustomLoader";
 import { allFavourites, removeFromFav } from "../../utils/api/CarsApi";
 import { Itemremoved, NoItems } from "../../utils/constants/alertMsg";
 import { Yourfavourite } from "../../utils/constants/HomeConstant";
+import { KM } from "../../utils/form/validationForm";
 const YourFav = () => {
   const [favorites, setfavorites] = useState([] as Array<number>);
   const [Items, setItems] = useState<any>([]);
@@ -26,11 +27,12 @@ const YourFav = () => {
     setLoader(true);
     await allFavourites()
       .then((result) => {
+        console.log(result, "res");
         console.log("result");
         if (result.status === "success") {
           setLoader(false), setItems(result.data.result);
         } else {
-          setLoader(false), alert(result.message);
+          setLoader(false), console.log(result.message);
         }
       })
       .catch((error) => {
@@ -44,7 +46,7 @@ const YourFav = () => {
   };
 
   const RemoveItem = async (props: any) => {
-    const newProduct = Items.filter((i) => i._id !== props.id);
+    const newProduct = Items.filter((i: { _id: any }) => i._id !== props.id);
     await removeFromFav(props.id)
       .then((response) => {
         setLoader(true);
@@ -86,7 +88,7 @@ const YourFav = () => {
         ) : (
           <>
             {Items.map((i: any) => {
-              const strDate = new Date(i.date).toLocaleString("en", {
+              const strDate = new Date(i.createdAt).toLocaleString("en", {
                 day: "numeric",
                 month: "short",
               });
@@ -95,12 +97,12 @@ const YourFav = () => {
                   key={i._id}
                   Price={i.price}
                   Title={i.model}
-                  KMeter={i.milage}
-                  year={i.year}
-                  date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                  KMeter={`${i.milage}${KM}`}
+                  year={i.modelYear}
+                  date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                   Location={i.location.address}
                   status={"like"}
-                  src={{ uri: `${i.images[0]}` }}
+                  src={{ uri: `${i.image[0]}` }}
                   onSelect={() => SelectItem(i._id)}
                   onPress={() => RemoveItem(i)}
                   color={

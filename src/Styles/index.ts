@@ -172,6 +172,44 @@ forgetButton:{
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        marginTop:hp('6%')
-    }
+        marginTop:hp('25%'),
+        marginBottom:hp('35%')
+    },
+    searchButtonView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: wp('100%'),
+        backgroundColor: COLOR.White,
+        alignSelf:"center"
+    },
+    searchActiveButton: {
+        marginLeft:wp('2%'),  
+        width: wp('30%'),
+        justifyContent: "center",
+        borderBottomWidth: 2,
+        borderColor: COLOR.primary,
+    },
+    searchInActiveButton:{
+        marginLeft: wp('2%'),  
+        width:wp('30%'),  
+        justifyContent:"center"
+    },
+    searchActiveText: {
+        fontFamily: "IBMPlexSans-Regular",
+        fontSize: 14,
+        letterSpacing: .6,
+        lineHeight: 20,
+        textAlign: "center",
+        color: COLOR.DarkCharcoal,
+        paddingVertical:hp('1.5%')
+    },
+    searchInactiveText: {
+        fontFamily: "IBMPlexSans-Regular",
+        fontSize: 14,
+        letterSpacing: .6,
+        lineHeight: 20,
+        textAlign: "center",
+        color: COLOR.secondary,
+        paddingVertical:hp('1.5%')
+    },
 });

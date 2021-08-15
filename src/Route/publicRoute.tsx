@@ -1,25 +1,36 @@
-import React,{FC} from 'react'
-import {Route ,useHistory,Redirect} from "react-router-native";
+import React,{FC, useEffect, useState} from 'react'
+import {Route ,useHistory,Redirect, RouteProps,} from "react-router-native";
 import { connect } from "react-redux";
-interface Public{
-    component:any;
-    isLoggedIn:any;
+import { getToken } from '../utils/general.utils';
+import { SignIn } from '../screens';
+import {Text} from "react-native"
+type Public={
+  component: React.ComponentType;
+} & RouteProps;
 
-}
- const PublicRoute:FC<Public> = ({ component: Component, isLoggedIn, ...rest }) => {
+ const PublicRoute:FC<Public> = ({ component: Component, ...rest}:Public) => {
     const history = useHistory();
-    console.log(isLoggedIn,"Pubicroute=",history.location.pathname);
+    console.log("Pubicroute=",history.location.pathname);
+    const [isLoggedIn, setIsLoggedIn] = useState<any>("");
+    useEffect(() => {
+      getToken().then((token) => {
+        setIsLoggedIn(token);
+        console.log(token)
+      });
+    
+    }, []);
+    if (isLoggedIn === "") {
+      return null;
+    }
+
     return (
       <Route
         {...rest}
         render={(props) =>
-          isLoggedIn ? <Redirect to="/SignIn" />   :  <Component {...props} /> 
+        <Component {...props} /> 
         }
       />
     );
   };
-const mapStateToProps = (state) => ({
-    isLoggedIn: state.rootReducer.auth.isLoggedIn,
-  });
-  
-  export default connect(mapStateToProps) (PublicRoute);
+
+  export default PublicRoute;

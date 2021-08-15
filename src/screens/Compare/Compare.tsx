@@ -29,6 +29,7 @@ import { compareProduct } from "../../utils/constants/HomeConstant";
 import {
   FeaturesLabel,
 } from "../../utils/constants/postDetails/postDetails";
+import { RS } from "../../utils/form/validationForm";
 import { compareStyle } from "./style";
 
 
@@ -82,6 +83,7 @@ const CompareProduct = (SelectedItem: { SelectedItem: { _id: any }[] }) => {
         if (error.status === 401) return alert(error);
       });
   };
+  
   return (
     <View>
       <CustomHeader
@@ -156,6 +158,13 @@ const CompareProduct = (SelectedItem: { SelectedItem: { _id: any }[] }) => {
                     | null
                     | undefined;
                 }) => {
+                  const pr = `${i.price}`.toString();
+                  var lastThree = pr.substring(pr.length - 3);
+                  var otherNumbers = pr.substring(0, pr.length - 3);
+                  if (otherNumbers != "") lastThree = "," + lastThree;
+                  const Price =
+                    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
+                    lastThree;
                   return (
                     <View style={view1} key={i._id}>
                       <Image
@@ -179,7 +188,7 @@ const CompareProduct = (SelectedItem: { SelectedItem: { _id: any }[] }) => {
                             size={16}
                             color={COLOR.primary}
                           />
-                          <Text style={pText}>{i.price} </Text>
+                          <Text style={pText}>{`${RS}${Price}`} </Text>
                         </View>
                         <View style={flexRow}>
                           <CustomButton

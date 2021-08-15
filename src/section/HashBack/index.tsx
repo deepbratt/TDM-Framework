@@ -53,7 +53,7 @@ export default function Hashback() {
           let temp = [...carlist, ...result.data.result];
           console.log(temp.length);
         } else {
-          setLoading(false), alert(result.message);
+          setLoading(false);
         }
       })
       .catch((error) => {

@@ -1,6 +1,6 @@
 import React,{FC} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Specification from '../../screens/carDetails/specification';
+import Specification from '../../section/Specifications/specification';
 import Features from '../../screens/carDetails/features';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from '../../Theme/Colors';

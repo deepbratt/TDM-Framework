@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, ScrollView, Image, TouchableOpacity, Text } from "react-native";
 import { styles } from "./styles";
-import DropDownSaim from "../../component/dropDownSaim";
-import CustomLinearGradient from "../../component/customLinearGradient";
+import DropDownSaim from "../../component/dropDownSaim/index";
+import CustomLinearGradient from "../../component/customLinearGradient/index";
 import CustomHeader from "../../component/customHeader/CustomHeader";
 import {
   bodyColor,
@@ -44,8 +44,10 @@ import {
   provinceList,
   provinceLabel,
   cityLabel,
-  YearLabel,
+  regNumber,
+  engineCapacity,
   years,
+  YearLabel,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
 import { createCars } from "../../utils/api/CarsApi";
@@ -53,12 +55,14 @@ import { Field, Formik } from "formik";
 import { DropdownValidation, numeric } from "../../utils/form/validationForm";
 import CustomInput from "../../component/CustomInput/CustomInput";
 import * as ImagePicker from "expo-image-picker";
-import CustomText from "../../component/customText";
+import CustomText from "../../component/customText/index";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { globalStyle } from "../../Styles";
+import { globalStyle } from "../../Styles/index";
 import CustomAlert from "../../component/customOTP/customAlert";
 import { useHistory } from "react-router";
+import { Switch } from "react-native-paper";
 import { postForm } from "../../../types";
+
 import {
   FormSuccessfuL,
   GoToHome,
@@ -66,6 +70,7 @@ import {
   PermissionToAccess,
   SomethingWrong,
 } from "../../utils/constants/alertMsg";
+import CustomButton from "../../component/CustomButton/index";
 import DropDView from "../../section/dropdownView";
 
 const PostDetails = () => {
@@ -79,7 +84,7 @@ const PostDetails = () => {
     province: "",
     model: "",
     make: "",
-    year: "",
+    modelYear: "",
     condition: "",
     registrationCity: "",
     bodyColor: "",
@@ -90,7 +95,10 @@ const PostDetails = () => {
     milage: "",
     price: "",
     features: "",
+    regNumber: "",
+    engineCapacity: "",
   });
+  console.log("city", dropdown.city);
   const refRBSheet = useRef<RBSheet>(null);
   const [input, setInput] = useState({
     Msg: "",
@@ -138,7 +146,7 @@ const PostDetails = () => {
       province,
       model,
       make,
-      year,
+      modelYear,
       condition,
       registrationCity,
       bodyColor,
@@ -149,30 +157,12 @@ const PostDetails = () => {
       assembly,
       transmission,
       features,
+      regNumber,
+      engineCapacity,
     } = drop;
 
     const images = imageBlob;
 
-    const body = {
-      description: description,
-      location: location,
-      city: city,
-      province: province,
-      model: model,
-      make: make,
-      year: year,
-      condition: condition,
-      registrationCity: registrationCity,
-      bodyColor: bodyColor,
-      milage: milage,
-      price: price,
-      bodyType: bodyType,
-      engineType: engineType,
-      assembly: assembly,
-      transmission: transmission,
-      features: features,
-      images: images,
-    };
     let formData = new FormData();
     formData.append("description", description),
       formData.append("location", location);
@@ -180,7 +170,7 @@ const PostDetails = () => {
     formData.append("province", province);
     formData.append("model", model);
     formData.append("make", make);
-    formData.append("year", year);
+    formData.append("modelYear", modelYear);
     formData.append("condition", condition);
     formData.append("registrationCity", registrationCity);
     formData.append("bodyColor", bodyColor);
@@ -190,25 +180,32 @@ const PostDetails = () => {
     formData.append("engineType", engineType);
     formData.append("assembly", assembly);
     formData.append("transmission", transmission);
-    formData.append("features", features);
-    formData.append("images", selectedImage as any);
+    formData.append("engineCapacity", engineCapacity);
+    formData.append("regNumber", regNumber);
 
-    // console.log("pic", images, "values", body);
+    for (let i = 0; i < selectedImage.length; i++) {
+      formData.append("image", selectedImage[i]);
+    }
+    for (let i = 0; i < features.length; i++) {
+      formData.append("features", features[i]);
+    }
+
+    console.log("pic", images, "values", formData);
+
     setLoader(true),
       await createCars(formData)
         .then((response) => {
           console.log("res", response);
-          //   resetForm({ drop: "" });
-          //   setSelectedImage([]);
-
+          resetForm({ drop: "" });
+          setSelectedImage([]);
           if (response.status === "success") {
             setLoader(false),
-              // console.log("res", response),
+              console.log("res", response),
               setInput((prev) => ({
                 ...prev,
                 MsgTitle: FormSuccessfuL,
                 Msg: ``,
-                path: "/car-Details/:id",
+                path: "/your-ads",
                 button: GoToHome,
                 close: true,
               })),
@@ -229,6 +226,7 @@ const PostDetails = () => {
           if (error.status === 401) return alert(SomethingWrong);
         });
   };
+
   return (
     <ScrollView style={styles.container}>
       <CustomHeader
@@ -264,12 +262,12 @@ const PostDetails = () => {
       <View style={styles.borderView}></View>
       <Formik
         initialValues={dropdown}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values: any, { resetForm }: any) => {
           handlePost(values, { resetForm });
         }}
         validationSchema={DropdownValidation}
       >
-        {({ errors, handleSubmit, setFieldValue, values, isSubmitting }) => (
+        {({ errors, handleSubmit, setFieldValue, values }: any) => (
           <View>
             <DropDView
               Icon={PlaceIcon}
@@ -316,9 +314,9 @@ const PostDetails = () => {
               Icon={AmountIcon}
               Label={YearLabel}
               data={years}
-              value={values.year}
-              onChange={(value: any) => setFieldValue("year", value)}
-              error={errors.year ? true : false}
+              value={values.modelYear}
+              onChange={(value: any) => setFieldValue("modelYear", value)}
+              error={errors.modelYear ? true : false}
             />
             <DropDView
               Icon={ConditionIcon}
@@ -392,6 +390,39 @@ const PostDetails = () => {
                   placeholder={MileageLabel}
                   keyboardType={numeric}
                   name={"milage"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={engineCapacity}
+                  keyboardType={numeric}
+                  name={"engineCapacity"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={regNumber}
+                  name={"regNumber"}
                   required
                   errorTextStyle={styles.errorText}
                 />
