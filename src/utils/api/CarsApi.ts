@@ -102,7 +102,7 @@ export const removeFromFav = async (id: any) => {
    }
      console.log(jwtToken)
   try {
-    let result = await axios.patch(`https://api.tezdealz.com/v1/ads/cars/remove-from-fav/${id}`);
+    let result = await axios.patch(`https://api.tezdealz.com/v1/ads/cars/remove-from-fav/${id}`,{headers:headers});
     return result.data;
   } catch (error) {
     return error.response.data;

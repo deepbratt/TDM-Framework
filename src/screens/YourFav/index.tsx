@@ -27,6 +27,7 @@ const YourFav = () => {
     setLoader(true);
     await allFavourites()
       .then((result) => {
+console.log(result,"res")
         console.log("result");
         if (result.status === "success") {
           setLoader(false), setItems(result.data.result);
