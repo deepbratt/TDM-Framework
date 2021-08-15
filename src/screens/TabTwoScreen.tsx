@@ -9,9 +9,49 @@ import CustomHeader from "../component/customHeader/CustomHeader";
 import { openDrawer } from "../navigation";
 import { COLOR } from "../Theme/Colors";
 import CustomButton from "../component/CustomButton";
-import { getToken } from "../utils/general.utils";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CustomModal from "../component/customModal";
+import CustomMessage from "../component/customMessage";
+import {
+  buttonText,
+  donePayment,
+  orderMessage,
+} from "../utils/constants/confirmPayment/confirmPayment";
+import {
+  contactButton,
+  detailErrorMessage,
+  ErrorMessage,
+  tryAgainButton,
+} from "../utils/constants/paymentError/paymentError";
+import {
+  payTokenConfirmButton,
+  payTokenLocationText,
+  payTokenModelText,
+} from "../utils/constants/tokenAmount/tokenAmount";
+import {
+  discountText,
+  paiedLocation,
+  payChatButton,
+  payNowButton,
+  payPriceText,
+} from "../utils/constants/payTokenAmount/PayTokenAmount";
 export default function TabTwoScreen() {
+  const [paymentErrorVisible, setpaymentErrorVisible] = useState(false);
+  const togglePaymentError = () => {
+    setpaymentErrorVisible(!paymentErrorVisible);
+  };
+  const [confirmPaymentVisible, setConfirmPaymentVisible] = useState(false);
+  const toggleConfirmPayment = () => {
+    setConfirmPaymentVisible(!confirmPaymentVisible);
+  };
+  const [payTokenAmountVisible, setPayTokenAmountVisible] = useState(false);
+  const togglePayTokenAmount = () => {
+    setPayTokenAmountVisible(!payTokenAmountVisible);
+  };
+  const [tokenAmountVisible, setTokenAmountVisible] = useState(false);
+  const toggleTokenAmount = () => {
+    setTokenAmountVisible(!tokenAmountVisible);
+  };
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -33,8 +73,8 @@ export default function TabTwoScreen() {
     await AsyncStorage.removeItem("jwt");
     dispatch(logout());
     history.push("/SignIn");
-    console.log("hello");
   };
+
   return (
     <View >
       <CustomHeader
@@ -61,28 +101,6 @@ export default function TabTwoScreen() {
         <CustomButton
           linkTo="/token-amount"
           text="token"
-          buttonStyle={{
-            marginVertical: 10,
-            width: 100,
-            height: 30,
-            backgroundColor: "red",
-          }}
-          textStyle={{ color: "white" }}
-        />
-        <CustomButton
-          linkTo="/car-Details/:id"
-          text="car Detail"
-          buttonStyle={{
-            marginVertical: 10,
-            width: 100,
-            height: 30,
-            backgroundColor: "red",
-          }}
-          textStyle={{ color: "white" }}
-        />
-        <CustomButton
-          linkTo="/add-Details"
-          text="ADD Detail"
           buttonStyle={{
             marginVertical: 10,
             width: 100,
@@ -146,6 +164,79 @@ export default function TabTwoScreen() {
           }}
           textStyle={{ color: "white" }}
         />
+        <TouchableOpacity onPress={toggleConfirmPayment}>
+          <Text>Confirm payment</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={togglePaymentError}>
+          <Text>payment error</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={togglePayTokenAmount}>
+          <Text>Pay Token Amount</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={toggleTokenAmount}>
+          <Text>Token Amount</Text>
+        </TouchableOpacity>
+        <CustomModal
+          isVisible={confirmPaymentVisible}
+          onBackButtonPress={() => setConfirmPaymentVisible(false)}
+        >
+          <CustomMessage
+            isBack={true}
+            confirmpayment
+            Title={donePayment}
+            subTitle={orderMessage}
+            singlebutton
+            ButtonText={buttonText}
+          />
+        </CustomModal>
+
+        <CustomModal
+          isVisible={paymentErrorVisible}
+          onBackButtonPress={() => setpaymentErrorVisible(false)}
+        >
+          <CustomMessage
+            isBack={false}
+            paymenterror
+            Title={ErrorMessage}
+            subTitle={detailErrorMessage}
+            doublebutton
+            ButtonText={tryAgainButton}
+            ButtonText1={contactButton}
+          />
+        </CustomModal>
+
+        <CustomModal
+          isVisible={tokenAmountVisible}
+          onBackButtonPress={() => setTokenAmountVisible(false)}
+        >
+          <CustomMessage
+            isBack={true}
+            tokenamount
+            src={require("../../assets/images/car.jpg")}
+            bName={"saim"}
+            amount={payTokenModelText}
+            location={payTokenLocationText}
+            singlebutton
+            ButtonText={payTokenConfirmButton}
+          />
+        </CustomModal>
+
+        <CustomModal
+          isVisible={payTokenAmountVisible}
+          onBackButtonPress={() => setPayTokenAmountVisible(false)}
+        >
+          <CustomMessage
+            isBack={true}
+            paytokenamount
+            src={require("../../assets/images/extra/Box.png")}
+            Title={discountText}
+            amount={payPriceText}
+            location={paiedLocation}
+            doublebutton
+            ButtonText1={payChatButton}
+            ButtonText={payNowButton}
+          />
+        </CustomModal>
       </View>
     </View>
   );

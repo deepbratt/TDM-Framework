@@ -74,8 +74,6 @@ const PostDetails = () => {
   const [selectedImage, setSelectedImage] = useState<Array<any>>([]);
   const [Loader, setLoader] = useState(false);
   const [imageBlob, setImageBlob] = useState<Array<string | Blob>>([]);
- 
-
   const [dropdown, setDropdown] = useState({
     description: "uuuu",
     location: "",
@@ -198,7 +196,6 @@ const PostDetails = () => {
         console.log("res", response);
           resetForm({ drop: "" });
           setSelectedImage([]);
-
         if (response.status === "success") {
           setLoader(false),
           console.log("res", response),

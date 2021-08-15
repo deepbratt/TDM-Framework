@@ -135,7 +135,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                     Title={i.model}
                     KMeter={i.milage}
                     year={i.modelYear}
-                    date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                    date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                     Location={
                       `${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)
                     }

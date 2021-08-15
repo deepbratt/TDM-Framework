@@ -15,7 +15,15 @@ export const axiosInstance = axios.create({
   'Authorization':'Bearer '+  gettoken()
   }
 });
-
+export const axiosInstances = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Accept: 'application/json',
+  'Content-Type': 'application/json',
+  "Access-Control-Allow-Origin": "*",
+  'Authorization':'Bearer '+  gettoken()
+  }
+});
 
     export const axiosInstanceForm = axios.create({
       baseURL: BASE_URL,

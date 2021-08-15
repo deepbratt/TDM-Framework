@@ -93,16 +93,16 @@ export const addToFav = async (id: any) => {
   }
 };
 export const removeFromFav = async (id: any) => {
-  //   let jwtToken=await AsyncStorage.getItem("jwt")
-  //   let  header={
-  //    Accept: 'application/json',
-  //  'Content-Type': 'application/json',
-  //  "Access-Control-Allow-Origin": "*",
-  //  'Authorization':'Bearer '+ jwtToken
-  //  }
-  //    console.log(jwtToken)
+  let jwtToken=await AsyncStorage.getItem("jwt")
+    let  headers={
+     Accept: 'application/json',
+   'Content-Type': 'application/json',
+   "Access-Control-Allow-Origin": "*",
+   'Authorization':'Bearer '+ jwtToken
+   }
+     console.log(jwtToken)
   try {
-    let result = await axiosInstance.patch(`${CARS.REMOVE_Fav}${id}`);
+    let result = await axios.patch(`https://api.tezdealz.com/v1/ads/cars/remove-from-fav/${id}`);
     return result.data;
   } catch (error) {
     return error.response.data;

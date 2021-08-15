@@ -98,7 +98,7 @@ const YourFav = () => {
                   Title={i.model}
                   KMeter={`${i.milage}${KM}`}
                   year={i.modelYear}
-                  date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                  date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                   Location={i.location.address}
                   status={"like"}
                   src={{ uri: `${i.image[0]}` }}

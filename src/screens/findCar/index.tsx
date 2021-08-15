@@ -135,9 +135,6 @@ const FindCar = (currentUser: { currentUser: any }) => {
       setfavorites([...array]);
     };
   const history = useHistory();
-  const back = () => {
-    history.goBack();
-  };
   const isCloseToBottom = ({
     layoutMeasurement,
     contentOffset,
@@ -160,8 +157,16 @@ const FindCar = (currentUser: { currentUser: any }) => {
   //   if (currentY == BOTTOM) {
   //   console.log("pagescroll")
   //   }
-  // };
+  // };2021-08-13T17:01:01.220Z
 // console.log(_User,"dd",Productss)
+const strDatex = new Date("2021-08-13T17:01:01.220Z").toLocaleString("en", {
+  day: "numeric",
+  month: "short",
+});
+console.log("dd",strDatex)
+const dd=strDatex.split(" ")[1] ;
+const ee=strDatex.split(" ")[2]
+console.log("dd",dd,ee)
   return (
     <View>
       <CustomHeader
@@ -207,14 +212,14 @@ const FindCar = (currentUser: { currentUser: any }) => {
               const Price =
                 otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
               return (
-                 _User._id === i.createdBy ? null :
+                 _User._id === i.createdBy ?  null :
                 <ProductBox
                   key={i._id}
                   Price={Price}
                   Title={i.model}
                   KMeter={`${i.milage}${KM}`}
                   year={i.modelYear}
-                  date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                  date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                   Location={
                     `${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)
                   }

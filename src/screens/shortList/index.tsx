@@ -67,7 +67,7 @@ import { KM } from '../../utils/form/validationForm';
           Title={i.model}
           KMeter={`${i.milage}${KM}`}
            year={i.modelYear}
-           date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
+           date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}` }
            Location={`${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)}
            src={{uri:`${i.image[0]}`}}
            onSelect={()=>selectItem(i._id)}
