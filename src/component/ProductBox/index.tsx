@@ -24,7 +24,7 @@ import { boxStyle } from './style'
              <View>
                <Text style={price}>Rs. {Price} </Text>
                <Text style={name}>{Title} </Text>
-               <Text style={KmText}>{year} <Text> {KMeter}</Text></Text>
+               <Text style={KmText}>{year} |<Text> {KMeter}</Text></Text>
             </View>
          <View >
              <Text  style={location}><Ionicons name="location-outline" size={14} color={COLOR.secondary} />{Location}</Text>

@@ -1,25 +1,30 @@
-
-import React, { FC, useRef, useState} from "react";
-import {
-  View,
-  Text,
-  Image,
-} from "react-native";
+import React, { FC, useRef, useState } from "react";
+import { View, Text, Image } from "react-native";
 import { Surface } from "react-native-paper";
-import CustomHeader from '../../component/customHeader/CustomHeader';
-import { openDrawer } from '../../navigation';
-import { BookNow, Browse, categotryList, MostPopular, Par1, popularProduct, SearchButton, SearchedCars, SellYou } from "../../utils/constants/HomeConstant";
+import CustomHeader from "../../component/customHeader/CustomHeader";
+import { openDrawer } from "../../navigation";
+import {
+  BookNow,
+  Browse,
+  categotryList,
+  MostPopular,
+  Par1,
+  popularProduct,
+  SearchButton,
+  SearchedCars,
+  SellYou,
+} from "../../utils/constants/HomeConstant";
 import { HomeStyle } from "./style";
-import Category from "../../component/CategoryBox";
-import CustomButton from "../../component/CustomButton";
-import MyTabs from "../../navigation/TopBar";
-import Hashback from "../../section/HashBack";
+import Category from "../../component/CategoryBox/index";
+import CustomButton from "../../component/CustomButton/index";
+import MyTabs from "../../navigation/TopBar/index";
+import Hashback from "../../section/HashBack/index";
 import { ScrollView } from "react-native-gesture-handler";
-import CustomFilter from "../../component/search";
-import { globalStyle } from "../../Styles";
-import  HeadingSection  from "../../section/CustomHeading/Heading";
+import CustomFilter from "../../component/search/index";
+import { globalStyle } from "../../Styles/index";
+import HeadingSection from "../../section/CustomHeading/Heading";
 import { COLOR } from "../../Theme/Colors";
-import CustomSearch from "../../component/CustomSearch";
+import CustomSearch from "../../component/CustomSearch/index";
 import RBSheet from "react-native-raw-bottom-sheet";
 import SUV from "../../section/HashBack/Suv";
 import Sedan from "../../section/HashBack/sedan";
@@ -28,11 +33,23 @@ import BetweenFiveToTenLakh from "../../section/carByPrice/fivetotenLakh";
 import AboveTenLakh from "../../section/carByPrice/aboveTenLakh";
 
 const HomePage = () => {
-  const { categoryBox, title, bannerimage, carsView, head,sellView, 
-    buttonView, button, buttonText, paragraph,surfaceMargin,VerticalMargin, 
-  divSize } = HomeStyle;
+  const {
+    categoryBox,
+    title,
+    bannerimage,
+    carsView,
+    head,
+    sellView,
+    buttonView,
+    button,
+    buttonText,
+    paragraph,
+    surfaceMargin,
+    VerticalMargin,
+    divSize,
+  } = HomeStyle;
   const refRBSheet = useRef<RBSheet>(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [SearchCarIndex, setSearchCarIndex] = useState(0);
   const [ActiveIndex, setActiveIndex] = useState(0);
 
@@ -40,11 +57,12 @@ const HomePage = () => {
     setSearchCarIndex(i);
     console.log(i, "some");
   };
-   const toggleButton=(i: React.SetStateAction<number>)=>{
-  setActiveIndex(i);
-      console.log(i,"some")
-     }
-  const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
+  const toggleButton = (i: React.SetStateAction<number>) => {
+    setActiveIndex(i);
+    console.log(i, "some");
+  };
+  const onChangeSearch = (query: React.SetStateAction<string>) =>
+    setSearchQuery(query);
   return (
     <View>
       <CustomHeader
@@ -131,11 +149,11 @@ const HomePage = () => {
             <Surface style={VerticalMargin}>
               <SUV />
             </Surface>
-            ) : SearchCarIndex == 2 ? (
-                <Surface style={VerticalMargin}>
-                  <Sedan/>
+          ) : SearchCarIndex == 2 ? (
+            <Surface style={VerticalMargin}>
+              <Sedan />
             </Surface>
-          ):null}
+          ) : null}
         </HeadingSection>
         {/* <HeadingSection Heading={SearchedCars}>
           <View style={surfaceMargin}>
@@ -171,16 +189,17 @@ const HomePage = () => {
           </ScrollView>
           {ActiveIndex == 0 ? (
             <Surface style={VerticalMargin}>
-              <UnderFiveLakh/>
+              <UnderFiveLakh />
             </Surface>
-          ) :  ActiveIndex == 1 ? (
-              <Surface style={VerticalMargin}>
-                <BetweenFiveToTenLakh/>
+          ) : ActiveIndex == 1 ? (
+            <Surface style={VerticalMargin}>
+              <BetweenFiveToTenLakh />
             </Surface>
-            ):  ActiveIndex == 2 ? (
-                <Surface style={VerticalMargin}>
-                  <AboveTenLakh/>
-            </Surface>):null}
+          ) : ActiveIndex == 2 ? (
+            <Surface style={VerticalMargin}>
+              <AboveTenLakh />
+            </Surface>
+          ) : null}
         </HeadingSection>
       </View>
       <RBSheet
@@ -197,5 +216,5 @@ const HomePage = () => {
       </RBSheet>
     </View>
   );
-}
+};
 export default HomePage;

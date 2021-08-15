@@ -1,11 +1,14 @@
 
-import React, { useState } from 'react'
-import LogComponent from '.';
+import React, { useEffect, useState } from 'react'
+import LogComponent from './LogComponent';
 
 
 export default function SignIn() {
-
+useEffect(() => {
+  console.log("signin")
+}, [])
   const [Flipped, setFlipped] = useState(true);
+  console.log("signin")
   return (   
     Flipped ? ( 
       <LogComponent login={true} 

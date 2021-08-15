@@ -6,7 +6,7 @@ import CustomText from '../../component/customText';
 import CustomMapView from '../../component/customMapView';
 import CustomTopBar from '../../component/customTopTab';
 import CustomHeader from '../../component/customHeader/CustomHeader';
-import Specification from '../carDetails/specification';
+import Specification from '../../section/Specifications/specification';
 import Features from '../carDetails/features';
 import CustomCarouselSaim40 from '../../component/customCarousel';
 import {styles} from './styles'

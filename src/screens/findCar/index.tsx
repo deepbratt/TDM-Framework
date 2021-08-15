@@ -1,5 +1,14 @@
 import React, { createRef, FC, useEffect, useRef, useState } from "react";
-import { Button, ScrollView, View,Text,ActivityIndicator,FlatList ,TouchableOpacity,Image} from "react-native";
+import {
+  Button,
+  ScrollView,
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import CustomHeader from "../../component/customHeader/CustomHeader";
 import { globalStyle } from "../../Styles";
 import HeadingSection from "../../section/CustomHeading/Heading";
@@ -21,84 +30,59 @@ import {
   addToFav,
   allCars,
   allFavourites,
-  Carfilter,
   myCarsApi,
   removeFromFav,
 } from "../../utils/api/CarsApi";
-
-const FindCar = (searchCar: any) => {
+import { KM } from "../../utils/form/validationForm";
+const FindCar = (currentUser: { currentUser: any }) => {
+  const _User = currentUser.currentUser;
   const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setfavorites] = useState([] as Array<number>);
+  const [favorites, setfavorites] = useState([] as Array<any>);
+  const [fav, setfav] = useState(false);
   const [Productss, setProducts] = useState<any>([]);
   const [Loader, setLoader] = useState(false);
   const [LoadMore, setLoadMore] = useState(false);
   const [pageNumber, setpageNumber] = useState(1);
-  const [carData, setCarData] = useState<any>([]);
+  const [totalCount, settotalCount] = useState(1);
+
   let limit = 10;
   useEffect(() => {
+    AlreadyFav();
     fetchData(limit, false);
   }, []);
-  useEffect(() => {
-    if(searchCar.searchCar){}
-  }, [])
-  const fetchFilterData = async () => {
-    if (searchCar.searchCar)
-    // setLoading(true);
-    await Carfilter(searchCar.searchCar)
-      .then((result) => {
-        console.log(result);
-        if (result.status === "success") {
-          // setLoading(false);
-          setCarData([...carData, ...result.data.result]);
-          let temp = [...carData, ...result.data.result];
-          console.log(temp.length);
-        } else {
-          // setLoading(false);
-          alert(result.message);
+
+  const AlreadyFav = async () => {
+    await allFavourites()
+      .then((response) => {
+        setLoader(true);
+        let aa = response.data.result;
+        if (response.status === "success") {
+          setLoader(false);
+          aa.map((items: any) => {
+            if (items._id === id) {
+              setfav(true);
+            }
+          });
+        } else if (response.status === "fail") {
+          return setLoader(false), alert(`${response.message}`);
         }
       })
       .catch((error) => {
         if (error.status === 401) return alert(error);
       });
   };
-
-  // const renderFooter = () => {
-  //   return loading ? (
-  //     <View style={{ marginTop: 10, alignItems: "center" }}>
-  //       <ActivityIndicator size="large" />
-  //     </View>
-  //   ) : null;
-  // };
-
-  // const handleLoadMore = () => {
-  //   if (!loading && status === "success") {
-  //     SetPage(page + 1);
-  //   }
-  // };
-  // const ListEmptyView = () => {
-  //   return (
-  //     <View style={styles.emptyView}>
-  //       <Text style={styles.emptyText}>No Cars Available</Text>
-  //     </View>
-  //   );
-  // };
-  // const history = useHistory();
-  // const selectItem = (id: any) => {
-  //   console.log("id", id);
-  //   history.push(`/car-Details/${id}`);
-  // };
-  
   const fetchData = async (limit: number, bool: boolean) => {
     setLoadMore(bool);
     setLoader(true);
     await allCars(pageNumber, limit)
       .then((result) => {
-        // console.log(result,result.length)
+        console.log(result.data, result.totalCount);
+        settotalCount(result.totalCount);
         if (result.status === "success") {
           setLoader(false),
             setProducts([...Productss, ...result.data.result]),
             setLoadMore(false);
-          console.warn("re", Productss.length, pageNumber);
+          console.log("re", Productss.totalCount, pageNumber);
         } else {
           setLoader(false), alert(result.message);
         }
@@ -108,22 +92,6 @@ const FindCar = (searchCar: any) => {
         if (error.status === 401) return alert(error);
       });
   };
-
-  // const fetchData = async () => {
-  //   setLoader(true);
-  //   await myCarsApi()
-  //     .then((result) => {
-  //       console.log(result, "my car");
-  //       if (result.status === "success") {
-  //         setLoader(false), setProducts(result.data.result);
-  //       } else {
-  //         setLoader(false), alert(result.message);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       if (error.status === 401) return alert(error);
-  //     });
-  // };
   const selectItem = (id: any) => {
     console.log("id", id);
     history.push(`/car-Details/${id}`);
@@ -132,10 +100,11 @@ const FindCar = (searchCar: any) => {
     setSearchQuery(query);
 
   const addFav = async (props: any) => {
+    console.log("favvvv=", fav);
+
     let array = favorites;
     let addArray = true;
-
-    addArray = true;
+    fav === true ? (setfav(false), (addArray = false)) : (addArray = true);
     console.log(addArray, "arrayStatus", array, "array");
 
     array.map((item, key) => {
@@ -203,9 +172,8 @@ const FindCar = (searchCar: any) => {
   //   console.log("pagescroll")
   //   }
   // };
-
+  // console.log(_User,"dd",Productss)
   return (
-
     <View>
       <CustomHeader
         headerStyle={{ backgroundColor: COLOR.primary }}
@@ -224,8 +192,11 @@ const FindCar = (searchCar: any) => {
         </View>
         {Loader && pageNumber == 1 ? (
           <CustomLoader />
-        )  : (
-          <HeadingSection Heading={DreamCar} SubHeading={Results}>
+        ) : (
+          <HeadingSection
+            Heading={DreamCar}
+            SubHeading={`${totalCount}${Results}`}
+          >
             <ScrollView
               scrollEventThrottle={16}
               // onScroll={handlePagination}
@@ -243,7 +214,7 @@ const FindCar = (searchCar: any) => {
               }}
             >
               {Productss.map((i: any) => {
-                const strDate = new Date(i.date).toLocaleString("en", {
+                const strDate = new Date(i.createdAt).toLocaleString("en", {
                   day: "numeric",
                   month: "short",
                 });
@@ -254,22 +225,26 @@ const FindCar = (searchCar: any) => {
                 const Price =
                   otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
                   lastThree;
-                return (
+                return _User._id === i.createdBy ? null : (
                   <ProductBox
                     key={i._id}
                     Price={Price}
                     Title={i.model}
-                    KMeter={i.milage}
-                    year={i.year}
-                    date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                    KMeter={`${i.milage}${KM}`}
+                    year={i.modelYear}
+                    date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                     Location={
                       `${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)
                     }
-                    // src={{ uri: `${i.images[0]}` }}
+                    src={{ uri: `${i.image[0]}` }}
                     onPress={() => addFav(i)}
                     onSelect={() => selectItem(i._id)}
                     color={
-                      favorites.includes(i.id) ? COLOR.primary : COLOR.secondary
+                      fav === true
+                        ? COLOR.primary
+                        : favorites.includes(i._id) === true
+                        ? COLOR.primary
+                        : COLOR.secondary
                     }
                     status={"like"}
                   />
@@ -283,7 +258,7 @@ const FindCar = (searchCar: any) => {
         ) : (
           <CustomButton
             text="loadMore"
-            onPress={() => console.log(searchCar.searchCar, "saim")}
+            onPress={() => console.log("saim")}
           />
         )}
       </View>
@@ -302,7 +277,9 @@ const FindCar = (searchCar: any) => {
     </View>
   );
 };
-const mapStateToProps = (state: any) => ({
-  searchCar: state.rootReducer.auth.searchCar,
+const mapStateToProps = (state: {
+  rootReducer: { auth: { currentUser: any } };
+}) => ({
+  currentUser: state.rootReducer.auth.currentUser,
 });
 export default connect(mapStateToProps)(FindCar);

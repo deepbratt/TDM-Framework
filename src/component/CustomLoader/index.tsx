@@ -5,8 +5,10 @@ import { COLOR } from '../../Theme/Colors';
 
  const CustomLoader = () => {
     return (
+        <View >
         <View style={globalStyle.loadingView}>
-        <ActivityIndicator size="large" color={COLOR.primary}/>
+        <ActivityIndicator size={50} color={COLOR.primary}/>
+     </View>
      </View>
     )
 }

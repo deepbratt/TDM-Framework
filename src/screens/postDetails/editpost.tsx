@@ -46,6 +46,8 @@ import {
   EditAdhere,
   SaveButton,
   DeleteButton,
+  regNumber,
+  engineCapacity,
 } from "../../utils/constants/postDetails/postDetails";
 import { COLOR } from "../../Theme/Colors";
 import { carDetailsById, createCars ,carUpdate, carDelete} from "../../utils/api/CarsApi";
@@ -77,8 +79,9 @@ import DropDView from "../../section/dropdownView";
 
 const EditPost = () => {
   const { id } = useParams();
-
+  const [selectedImage, setSelectedImage] = useState<Array<any>>([]);
   const [Loader, setLoader] = useState(false);
+  const [imageBlob, setImageBlob] = useState<Array<string | Blob>>([]);
   const [Delete, setDel] = useState(false);
 
   const [Loading, setLoading] = useState(false);
@@ -92,7 +95,9 @@ const EditPost = () => {
     close: false,
   });
   const history = useHistory();
-
+  useEffect(() => {
+    console.log(selectedImage);
+  }, [selectedImage]);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (permissionResult.granted === false) {
@@ -103,10 +108,22 @@ const EditPost = () => {
     if (pickerResult.cancelled === true) {
       return;
     }
-    setSelectedImage({ localUri: pickerResult.uri });
-    console.log("image", selectedImage);
+    let localUri = pickerResult.uri;
+    let filename = localUri.split("/").pop();
+
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename ? filename : "");
+    let type = match ? `image/${match[1]}` : `image`;
+    //   setSelectedImage({ localUri: pickerResult.uri });
+    let response = await fetch(localUri);
+    let Blob = await response.blob();
+    let imageData = { uri: localUri, name: filename, type };
+    setImageBlob([...imageBlob, Blob]);
+    // let temp=selectedImage;
+    // temp.push(imageData);
+    setSelectedImage([...selectedImage, imageData]);
+    // console.log("image",temp);
   };
-  console.log(id, "useparam");
   useEffect(() => {
     fetchItem();
   }, []);
@@ -125,8 +142,7 @@ const EditPost = () => {
         if (error.status === 401) return alert(error);
       });
   };
-  const [selectedImage, setSelectedImage] = useState(null);
-  const handlePost = async (drop: postForm, { resetForm }) => {
+  const handlePost = async (drop: any, { resetForm }:any) => {
     const {
       description,
       location,
@@ -134,7 +150,7 @@ const EditPost = () => {
       province,
       model,
       make,
-    //   year,
+      modelYear,
       condition,
       registrationCity,
       bodyColor,
@@ -145,36 +161,47 @@ const EditPost = () => {
       assembly,
       transmission,
       features,
+      regNumber,
+      engineCapacity,
     } = drop;
-    const images = selectedImage.localUri;
+    const images = imageBlob;
+    
+    let formData = new FormData();
+    formData.append("description", description),
+      formData.append("location", location);
+    formData.append("city", city);
+    formData.append("province", province);
+    formData.append("model", model);
+    formData.append("make", make);
+    formData.append("modelYear", modelYear);
+    formData.append("condition", condition);
+    formData.append("registrationCity", registrationCity);
+    formData.append("bodyColor", bodyColor);
+    formData.append("milage", milage);
+    formData.append("price", price);
+    formData.append("bodyType", bodyType);
+    formData.append("engineType", engineType);
+    formData.append("assembly", assembly);
+    formData.append("transmission", transmission);
+    formData.append("engineCapacity", engineCapacity);
+    formData.append("regNumber", regNumber);
 
-    const body = {
-      description: description,
-      location: location,
-      city: city,
-      province: province,
-      model: model,
-      make: make,
-    //   year: year,
-      condition: condition,
-      registrationCity: registrationCity,
-      bodyColor: bodyColor,
-      milage: milage,
-      price: price,
-      bodyType: bodyType,
-      engineType: engineType,
-      assembly: assembly,
-      transmission: transmission,
-      features: features,
-      images: images,
-    };
-    console.log("pic", images, "values", body);
+    for (let i = 0; i < selectedImage.length; i++) {
+      formData.append("image", selectedImage[i]);
+    }
+    for (let i = 0; i < features.length; i++) {
+      formData.append("features", features[i]);
+    }
+
+    console.log("pic", images, "values", formData);
+
+
     setLoader(true),
-      await carUpdate(id,body)
+      await carUpdate(id,formData)
         .then((response) => {
           console.log("res", response);
           resetForm({ drop: "" });
-          setSelectedImage(null);
+          setSelectedImage([]);
 
           if (response.status === "success") {
             setLoader(false),
@@ -204,7 +231,7 @@ const EditPost = () => {
           if (error.status === 401) return alert(SomethingWrong);
         });
   };
-console.log("pr",index)
+
   const deleteAd=async()=>{
     setDel(true),
     await carDelete(id)
@@ -250,36 +277,22 @@ console.log("pr",index)
         <CustomLoader />
       ) : (
         <>
-          {selectedImage === null ? (
-            <TouchableOpacity
-              style={styles.main}
-              onPress={openImagePickerAsync}
-            >
-              <Image
-                style={{ alignSelf: "center" }}
-                source={require("../../../assets/images/postDetails/camera.png")}
-              />
-              <CustomText
-                text="Add Photo"
-                textStyle={{
-                  fontSize: 12,
-                  textAlign: "center",
-                  fontFamily: "IBMPlexSans-Light",
-                  color: COLOR.GraniteGray,
-                }}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              style={styles.main}
-              onPress={openImagePickerAsync}
-            >
-              <Image
-                source={{ uri: selectedImage.localUri }}
-                style={styles.thumbnail}
-              />
-            </TouchableOpacity>
-          )}
+           {selectedImage.length === 0 ? (
+        <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
+          <Image
+            style={{ alignSelf: "center" }}
+            source={{ uri: index[0].uri }}
+          />
+         
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
+          <Image
+            source={{ uri: selectedImage[0].uri }}
+            style={styles.thumbnail}
+          />
+        </TouchableOpacity>
+      )}
           <View style={styles.borderView}></View>
           <Formik
             initialValues={{
@@ -289,7 +302,7 @@ console.log("pr",index)
                 province: index.province,
                 model: index.model,
                 make: index.make,
-                // year: index.year,
+                modelYear: index.modelYear,
                 condition: index.condition,
                 registrationCity: index.registrationCity,
                 bodyColor: index.bodyColor,
@@ -300,6 +313,9 @@ console.log("pr",index)
                 milage: index.milage,
                 price: index.price,
                 features: index.features,
+                regNumber: index.regNumber,
+               engineCapacity: index. engineCapacity,
+             
               }}
             onSubmit={(values, { resetForm }) => {
               handlePost(values, { resetForm });
@@ -355,14 +371,14 @@ console.log("pr",index)
                   onChange={(value: any) => setFieldValue("model", value)}
                   error={errors.model ? true : false}
                 />
-                {/* <DropDView
+                 <DropDView
                   Icon={AmountIcon}
                   Label={YearLabel}
                   data={years}
-                  value={values.year}
-                  onChange={(value: any) => setFieldValue("year", value)}
-                  error={errors.year ? true : false}
-                /> */}
+                  value={values.modelYear}
+                  onChange={(value: any) => setFieldValue("modelYear", value)}
+                  error={errors.modelYear ? true : false}
+                />
                 <DropDView
                   Icon={ConditionIcon}
                   Label={ConditionLabel}
@@ -443,22 +459,55 @@ console.log("pr",index)
                   </View>
                 </View>
                 <View style={styles.dropdownContainer}>
-                  <View style={styles.iconView}>
-                    <Image style={styles.buttonIcon} source={AmountIcon} />
-                  </View>
-                  <View style={styles.MainViewDropDown}>
-                    <Field
-                      component={CustomInput}
-                      inputFieldStyle={styles.Inputs}
-                      activeFieldStyle={styles.error}
-                      placeholder={PriceRangeLabel}
-                      name={"price"}
-                      keyboardType={numeric}
-                      required
-                      errorTextStyle={styles.errorText}
-                    />
-                  </View>
-                </View>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={engineCapacity}
+                  keyboardType={numeric}
+                  name={"engineCapacity"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={MilageIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={regNumber}
+                  name={"regNumber"}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
+            <View style={styles.dropdownContainer}>
+              <View style={styles.iconView}>
+                <Image style={styles.buttonIcon} source={AmountIcon} />
+              </View>
+              <View style={styles.MainViewDropDown}>
+                <Field
+                  component={CustomInput}
+                  inputFieldStyle={styles.Inputs}
+                  activeFieldStyle={styles.error}
+                  placeholder={PriceRangeLabel}
+                  name={"price"}
+                  keyboardType={numeric}
+                  required
+                  errorTextStyle={styles.errorText}
+                />
+              </View>
+            </View>
                 <View style={styles.dropdownContainer}>
                   <View style={styles.iconView}>
                     <Image style={styles.buttonIcon} source={AmountIcon} />

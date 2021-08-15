@@ -208,6 +208,12 @@ const CarDetails = () => {
               textStyle={styles.amountText}
             />
             <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.editStyle}
+                onPress={() => history.push(`/edit-details/${id}`)}
+              >
+                <FontAwesome name="edit" size={25} color={COLOR.secondary} />
+              </TouchableOpacity>
               <TouchableOpacity style={styles.shareTouchableStyle}>
                 <Entypo name="share" size={27} color={COLOR.secondary} />
               </TouchableOpacity>
@@ -374,7 +380,7 @@ const CarDetails = () => {
           <View style={styles.borderView}></View>
           <View>
             <View style={styles.searchButtonView}>
-              {ToggleItems.map((u: { title: string | undefined; id: React.Key | null | undefined; }, i: React.SetStateAction<number>) => {
+              {ToggleItems.map((u, i) => {
                 return (
                   <CustomButton
                     text={u.title}
