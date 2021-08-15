@@ -20,7 +20,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
   const { crossIcon, imageIcon, compareButton, compareText, chip, flexHeight } =
     compareStyle;
   const [searchQuery, setSearchQuery] = useState("");
-  const [Loader, setLoader] = useState(false);
+  const [Loader, setLoader] = useState(true);
   const [cars, setCars] = useState<any>([]);
   const onChangeSearch = (query: any) => {
     setSearchQuery(query);
@@ -92,7 +92,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                       >
                         <Image
                           style={imageIcon}
-                          source={{ uri: `${i.images[0]}` }}
+                          source={{ uri: `${i.image}` }}
                         />
                         <MaterialIcons
                           name="cancel"
@@ -117,7 +117,7 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                 </View>
               )}
               {cars.map((i: any, index: number) => {
-                const strDate = new Date(i.date).toLocaleString("en", {
+                const strDate = new Date(i.createdAt).toLocaleString("en", {
                   day: "numeric",
                   month: "short",
                 });
@@ -134,12 +134,12 @@ const SearchCompare = ({ SelectedItem, activeCompare }) => {
                     Price={Price}
                     Title={i.model}
                     KMeter={i.milage}
-                    year={i.year}
-                    date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}`}
+                    year={i.modelYear}
+                    date={`${strDate.split(" ")[2]} ${strDate.split(" ")[1]}`}
                     Location={
                       `${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)
                     }
-                    src={{ uri: `${i.images[0]}` }}
+                    src={{ uri: `${i.image[0]}` }}
                     onSelect={() => addToCompare(i)}
                   />
                 );

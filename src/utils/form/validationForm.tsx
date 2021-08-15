@@ -1,39 +1,45 @@
 import * as yup from "yup";
 import { EnterdigitCode, enterEmail } from "../constants/en";
 
-export const Fieldnames = {
-  firstName: "firstName",
-  lastName: "lastName",
-  email: "email",
-  password: "password",
-  confirmPassword: "confirmPassword",
-  phone: "phone",
-  code: "code",
-};
-export const RS = "Rs. ";
-export const KM = "KM";
-export const PriceRegex = /\B(?=(\d{2})+(?!\d))/g;
-export const numeric = "numeric";
-const SomethingWrong = "Something Went Wrong!";
-const requiredEmail = "Email is required";
-const validEmail = "Please enter valid email";
-const requiredPassword = "Password is required";
-const requiredPhone = "Phone number is required";
-const First_Required = "First name is required";
-const Last_Required = "Last name is required";
-const minRequired = `Password must be at least 8 characters`;
-const donotMatch = "Passwords do not match";
-const ConfirmMatch = "Confirm password is required";
-const THREEletters = "At least 3 characters";
-const regxTHREEletters = /(.*[a-z]){3}/;
-const numRegex = /^[0-9]{1,45}$/;
-const letterRegex = /^[a-zA-Z].*/;
-const MUST_Letter = "Must be in characters";
-const MUST_Number = "Must be in number";
-const featureRequire = "Features is required";
-const PriceRequire = "Price Range is required";
-const milageRequire = "Milage is required";
-const descriptionRequire = "Description is required";
+
+
+export const Fieldnames={
+    firstName:"firstName",
+    lastName:"lastName",
+    email:"email",
+    password:"password",
+    confirmPassword:"confirmPassword",
+    phone:"phone",
+    code:"code",
+}
+export const RS="Rs. "
+export const KM="KM"
+export const PriceRegex=/\B(?=(\d{2})+(?!\d))/g
+export const numeric="numeric"
+const SomethingWrong="Something Went Wrong!"
+const requiredEmail='Email is required'
+const validEmail='Please enter valid email'
+const requiredPassword='Password is required'
+const requiredCPassword='Current Password is required'
+const requiredPhone='Phone number is required'
+const First_Required='First name is required'
+const Last_Required='Last name is required'
+const minRequired=`Password must be at least 8 characters`
+const donotMatch='Passwords do not match'
+const ConfirmMatch='Confirm password is required'
+const THREEletters="At least 3 characters"
+const regxTHREEletters=/(.*[a-z]){3}/
+const numRegex=/^[0-9]{1,45}$/
+const letterRegex=/^[a-zA-Z].*/
+const MUST_Letter='Must be in characters'
+const MUST_Number='Must be in number'
+const featureRequire="Features is required"
+const PriceRequire="Price Range is required"
+const milageRequire="Milage is required"
+const EngineCapictyRequire="Engine Capicty is required"
+const regNumberRequire="Registration Number is required"
+
+const descriptionRequire="Description is required"
 export const loginEmailValidation = yup.object().shape({
   email: yup.string().email(validEmail).required(requiredEmail),
   password: yup.string().min(8, minRequired).required(requiredPassword),
@@ -114,7 +120,10 @@ export const DropdownValidation = yup.object().shape({
   city: yup.string().required(),
   model: yup.string().matches(letterRegex, MUST_Letter).required(),
   make: yup.string().required(),
-  year: yup.string().matches(numRegex, MUST_Number).required(),
+  modelYear: yup
+  .string() 
+  .matches(numRegex,MUST_Number)
+  .required(),
   condition: yup.string().required(),
   registrationCity: yup.string().required(),
   bodyColor: yup.string().required(),
@@ -126,4 +135,26 @@ export const DropdownValidation = yup.object().shape({
   price: yup.string().matches(numRegex, MUST_Number).required(PriceRequire),
   features: yup.string().required(featureRequire),
   description: yup.string().required(descriptionRequire),
+  regNumber:yup
+  .string() 
+  .required(regNumberRequire),
+  engineCapacity:yup
+  .string() 
+  .matches(numRegex,MUST_Number)
+  .required(EngineCapictyRequire),
 });
+export const updateMyPassValidate = yup.object().shape({
+  
+  passwordCurrent: yup
+      .string()
+      .min(8,  minRequired)
+      .required(requiredCPassword),
+      password: yup
+      .string()
+      .min(8,  minRequired)
+      .required(requiredPassword),
+      passwordConfirm: yup
+      .string()
+      .oneOf([yup.ref('password')], donotMatch)
+      .required(ConfirmMatch),
+  })

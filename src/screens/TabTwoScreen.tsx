@@ -1,4 +1,4 @@
-import React, { useState, FC, useCallback, useRef } from "react";
+import React, { useState, FC, useCallback, useRef, useEffect } from "react";
 
 import { Button, StyleSheet, Image } from "react-native";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ import CustomHeader from "../component/customHeader/CustomHeader";
 import { openDrawer } from "../navigation";
 import { COLOR } from "../Theme/Colors";
 import CustomButton from "../component/CustomButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomModal from "../component/customModal";
 import CustomMessage from "../component/customMessage";
 import {
@@ -53,13 +54,29 @@ export default function TabTwoScreen() {
   };
   let history = useHistory();
   const dispatch = useDispatch();
-  const handle = () => {
+
+  // const [isLoggedIn, setIsLoggedIn] = useState<string | undefined | null>(
+  //   undefined
+  // );
+  // useEffect(() => {
+  //   getToken().then((token) => {
+  //     setIsLoggedIn(token);
+  //     console.log(token)
+  //   });
+  
+  // }, []);
+  // if (isLoggedIn === undefined) {
+  //   return null;
+  // }
+  const handle =async() => {
+    console.log("hello");
+    await AsyncStorage.removeItem("jwt");
     dispatch(logout());
     history.push("/SignIn");
   };
 
   return (
-    <View>
+    <View >
       <CustomHeader
         headerStyle={{ backgroundColor: COLOR.primary }}
         color={COLOR.White}
@@ -93,8 +110,8 @@ export default function TabTwoScreen() {
           textStyle={{ color: "white" }}
         />
         <CustomButton
-          linkTo="/car-Details"
-          text="car Detail"
+          linkTo="/post-details"
+          text="Post Details"
           buttonStyle={{
             marginVertical: 10,
             width: 100,
@@ -103,18 +120,6 @@ export default function TabTwoScreen() {
           }}
           textStyle={{ color: "white" }}
         />
-        <CustomButton
-          linkTo="/add-Details"
-          text="ADD Detail"
-          buttonStyle={{
-            marginVertical: 10,
-            width: 100,
-            height: 30,
-            backgroundColor: "red",
-          }}
-          textStyle={{ color: "white" }}
-        />
-        {/* <CustomButton linkTo="/verify-num" text="verification" buttonStyle={{marginVertical:10,width:100,height:30,backgroundColor:"red"}} textStyle={{color:"white"}}/> */}
         <CustomButton
           linkTo="/request-accept"
           text="request Accept"

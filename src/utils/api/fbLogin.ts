@@ -9,7 +9,7 @@ export const loginWithfb=async()=>{
       });
       const {
         type,
-        token,
+        token,  
       } = await Facebook.logInWithReadPermissionsAsync({
         permissions: ['public_profile'],
       });

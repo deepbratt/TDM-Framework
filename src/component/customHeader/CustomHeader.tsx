@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import DropDown from "../customDropDown/CustomDropDown";
+import DropDown from "../CustomDropDown/CustomDropDown";
 import { styles } from "./style";
 import { HeaderProps } from "../../../types";
 import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";

@@ -1,7 +1,7 @@
 import { COLOR } from "../../Theme/Colors";
 
 export const DreamCar="Your Next Dream Car";
-export const Results="1005 results in Islamabad ";
+export const Results=" results";
 export const date="11 June";
 export const KiloMeter="2010,  4556Km";
 export const Products=[
