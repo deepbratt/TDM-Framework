@@ -13,7 +13,7 @@ export const KilometerText="Kilometer"
 
 export const BrandList = [
     { id: 1, label: "Toyota", value: "Toyota" },
-    { id: 2, label: "Suzuki", value: "Suzuki" },
+    { id: 2, label: "SUZUKI", value: "SUZUKI" },
     { id: 3, label: "Honda", value: "Honda" },
     { id: 4, label: "Mitsubishi", value: "Mitsubishi" },
     { id: 5, label: "MG", value: "MG" },
@@ -64,6 +64,7 @@ export const BodyType = [
     { id: 9, label: "Off-Road Vehicles", value: "Off-Road Vehicles" },
     { id: 10, label: "Pick Up", value: "Pick Up" },
     { id: 11, label: "Single Cabin", value: "Single Cabin" },
+    {id:12,label:"Sedan",value:"Sedan"},
 ];
 
 

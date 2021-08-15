@@ -273,6 +273,7 @@ export type SeacrhForm = {
   brand?: string;
   body?: string;
   kilometerFrom?: string;
+  kilometerTo?: string;
   FromS?: number;
   To?: string;
 };

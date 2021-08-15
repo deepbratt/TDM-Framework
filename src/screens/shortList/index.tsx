@@ -68,7 +68,7 @@ import { ShortListTitle } from '../../utils/constants/HomeConstant';
            year={i.year}
            date={`${strDate.split(" ")[3]} ${strDate.split(" ")[1]}` }
            Location={`${i.city}`.charAt(0).toUpperCase() + `${i.city}`.slice(1)}
-           src={{uri:`${i.images[0]}`}}
+        //    src={{uri:`${i.images[0]}`}}
            onSelect={()=>selectItem(i._id)}
           />
         );

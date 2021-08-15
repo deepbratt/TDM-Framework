@@ -46,7 +46,15 @@ export const loginNumberValidation = yup.object().shape({
 export const SearchValidationSchema = yup.object().shape({
   kilometerFrom: yup
     .string()
+    // .lessThan(yup.ref("KilometerTo"))
     .matches(/^[\d]{1,}$/, "atleast 1 number")
+
+    .max(6, ({ max }) => `Kilometer maximum range  ${max} number`)
+    .required("Kilometer required"),
+  kilometerTo: yup
+    .string()
+    .matches(/^[\d]{1,}$/, "atleast 1 number")
+    // .moreThan(yup.ref("KilometerFrom"))
     .max(6, ({ max }) => `Kilometer maximum range  ${max} number`)
     .required("Kilometer required"),
   sortBy: yup.string().required("Sortby required"),

@@ -5,7 +5,8 @@ const initialState = {
   isLoggedIn: true,
   SelectedItem:[]as Array<any>,
   activeCompare: false,
-  alreadyVerify:false,
+  alreadyVerify: false,
+  searchCar:[]as Array<any>,
 };
 
 const authSlice = createSlice({
@@ -40,9 +41,12 @@ const authSlice = createSlice({
     accountNotSignUp: (state) => {
       state.alreadyVerify = false;
     },
+    filterCars: (state, action) => {
+      state.searchCar = action.payload;
+    }
   },
 });
 
-export const { login, logout,compare ,remove,accountSignUp,accountNotSignUp} = authSlice.actions;
+export const { login, logout,compare ,remove,accountSignUp,accountNotSignUp,filterCars} = authSlice.actions;
 
 export default authSlice.reducer;

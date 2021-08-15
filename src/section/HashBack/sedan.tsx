@@ -47,7 +47,7 @@ export default function Sedan() {
     setLoading(true);
     await allCarsByBody(url)
       .then((result) => {
-        // console.log(result);
+        console.log(result);
         // console.log(result.status)
         console.log(url);
         setStatus(result.status);

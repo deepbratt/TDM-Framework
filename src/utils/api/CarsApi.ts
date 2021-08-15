@@ -18,6 +18,7 @@ const CARS={
     all_CarsHome: `${ads}/cars?limit=10&page=`,
   bodyType: `${ads}/cars?bodyType=`,
   carsByPrice: `${ads}/cars?price`,
+  allfilter:`${ads}/cars?limit=10`
 
 }
   export const allCars = async(pno?:number,limit?:number)=>{
@@ -119,7 +120,7 @@ const CARS={
 
 export const Carfilter = async (queryparams: any) => {
   try {
-    let result = await axiosInstance.get(`${CARS.all_Cars}${queryparams}`);
+    let result = await axiosInstance.get(`${CARS.allfilter}${queryparams}`);
     return result.data;
   } catch (error) {
     if (error.response === undefined) {
