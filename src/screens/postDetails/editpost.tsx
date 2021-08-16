@@ -281,7 +281,7 @@ const EditPost = () => {
         <TouchableOpacity style={styles.main} onPress={openImagePickerAsync}>
           <Image
             style={{ alignSelf: "center" }}
-            source={{ uri: index[0].uri }}
+            source={{ uri: index[0] }}
           />
          
         </TouchableOpacity>
@@ -314,7 +314,7 @@ const EditPost = () => {
                 price: index.price,
                 features: index.features,
                 regNumber: index.regNumber,
-               engineCapacity: index. engineCapacity,
+               engineCapacity: index. engineCapacity
              
               }}
             onSubmit={(values, { resetForm }) => {

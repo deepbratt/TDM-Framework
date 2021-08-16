@@ -161,7 +161,6 @@ const FindCar = (currentUser: { currentUser: any }) => {
   //   console.log("pagescroll")
   //   }
   // };
-// console.log(_User,"dd",Productss)
   return (
     <View>
       <CustomHeader
