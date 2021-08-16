@@ -1,3 +1,4 @@
+
 export const locationList = [
     { id: 1, label: "Faisalabad", value: "Faisalabad" },
     { id: 2, label: "Lahore", value: "Lahore" },
@@ -159,6 +160,7 @@ export const countryList = [
     { id: 4, label: "Canada", value: "Canada" },
     { id: 5, label: "U.A.E", value: "U.A.E" },
 ];
+
 export const PostAdhere="Post Your Ad Here"
 export const EditAdhere="Edit Your Ad"
 export const LocationLabel = "Location"

@@ -1,5 +1,9 @@
 import React,{FC} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import TabTwoScreen from '../../screens/TabTwoScreen';
 import { tabProps } from '../../../types';
 import { Link } from '@react-navigation/native';
@@ -26,8 +30,8 @@ interface Props{
     <Tab.Navigator
    initialRouteName="one"
    tabBarOptions={{
-    style: { backgroundColor: COLOR.White , height:HEIGHT/12.1,elevation:5,
-    width:WIDTH /1.02,},
+    style: { backgroundColor: COLOR.White , elevation:5,
+    width:wp('100%')},
     indicatorStyle:{ backgroundColor: COLOR.primary,textAlign:"center",alignSelf:"center"},
     activeTintColor:COLOR.DarkCharcoal,
     inactiveTintColor:COLOR.secondary,
@@ -38,9 +42,7 @@ interface Props{
     lineHeight:16
 },
  } }
-  
     >
-      
       <Tab.Screen
         name="one"
         component={Hashback}
@@ -54,10 +56,8 @@ interface Props{
       <Tab.Screen
         name="sedan"
         component={TabTwoScreen}
-
         options={{ tabBarLabel: 'sedan' }}
       />
-      
     </Tab.Navigator>
   );
 }

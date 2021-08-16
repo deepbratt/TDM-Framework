@@ -16,6 +16,8 @@ const CARS = {
   REMOVE_Fav: `${ads}/cars/remove-from-fav/`,
   my_Cars: `${ads}/cars/myCars`,
   COMPARE_Cars: `${ads}/Cars?_id=`,
+  all_CarsHome: `${ads}/cars?limit=10&page=`,
+  allfilter:`${ads}/cars?limit=10`
 };
 export const allCars = async (pno?: number, limit?: number) => {
   try {
@@ -26,6 +28,40 @@ export const allCars = async (pno?: number, limit?: number) => {
   } catch (error) {
     if (error.response) {
       return error.response;
+    }
+    return error.response.data;
+  }
+};
+export const Carfilter = async (queryparams: any) => {
+  try {
+    let result = await axiosInstance.get(`${CARS.allfilter}${queryparams}`);
+    return result.data;
+  } catch (error) {
+    if (error.response === undefined) {
+      return { status: 403, message: SomethingWrong };
+    }
+    return error.response.data;
+  }
+};
+
+export const allCarsByBody = async (queryparams: string) => {
+  try {
+    let result = await axiosInstance.get(`${CARS.all_CarsHome}${queryparams}`);
+    return result.data;
+  } catch (error) {
+    if (error.response === undefined) {
+      return { status: 403, message: SomethingWrong };
+    }
+    return error.response.data;
+  }
+};
+export const allCarsByPrice = async (queryparams: string) => {
+  try {
+    let result = await axiosInstance.get(`${CARS.all_CarsHome}${queryparams}`);
+    return result.data;
+  } catch (error) {
+    if (error.response === undefined) {
+      return { status: 403, message: SomethingWrong };
     }
     return error.response.data;
   }

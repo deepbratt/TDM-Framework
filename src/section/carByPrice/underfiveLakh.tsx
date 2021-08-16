@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
+import { allCarsByPrice } from "../../utils/api/CarsApi";
+import { Style } from "../HashBack/style";
 import { COLOR } from "../../Theme/Colors";
-import { allCarsByBody } from "../../utils/api/CarsApi";
-import { Style } from "./style";
 import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
@@ -15,7 +15,7 @@ interface RenderItemProps {
   item: ItemProps;
   index: number;
 }
-export default function Hashback() {
+export default function UnderFiveLakh() {
   const {
     container,
     images,
@@ -24,6 +24,7 @@ export default function Hashback() {
     main,
     flatListView,
     loadingView,
+    background,
     emptyView,
     emptyText,
     rate,
@@ -34,19 +35,20 @@ export default function Hashback() {
   const [loading, setLoading] = useState(false);
   const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-
   useEffect(() => {
-    fetchAllCars();
+    fetchCarByPrice();
   }, [page]);
-  const bodyType = "Convertible";
-  const fetchAllCars = async () => {
+  const price = "[lt]=500000";
+  const fetchCarByPrice = async () => {
     let url = "" + page;
-    if (bodyType) {
-      url += "&bodyType=" + bodyType;
+    if (price) {
+      url += "&price" + price;
     }
     setLoading(true);
-    await allCarsByBody(url)
+    await allCarsByPrice(url)
       .then((result) => {
+        console.log(result);
+        console.log(result.status);
         setStatus(result.status);
         if (result.status === "success") {
           setLoading(false), setCarList([...carlist, ...result.data.result]);
@@ -81,14 +83,13 @@ export default function Hashback() {
       </View>
     );
   };
-
   const history = useHistory();
   const selectItem = (id: any) => {
     console.log("id", id);
     history.push(`/car-Details/${id}`);
   };
   return (
-    <View>
+    <View style={background}>
       {loading ? (
         <View style={loadingView}>
           <ActivityIndicator size="large" color={COLOR.primary} />
@@ -98,19 +99,14 @@ export default function Hashback() {
           <FlatList
             style={flatListView}
             data={carlist}
-            keyExtractor={({ id }, index) => id}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={main}>
                 <TouchableOpacity
                   style={container}
                   onPress={() => selectItem(item.id)}
                 >
-                  <Image
-                    style={images}
-                    source={
-                      typeof item.images === "string" ? item.images : null
-                    }
-                  />
+                  <Image style={images} source={{ uri: `${item.image}` }} />
                   <Text style={detail}>{item.price}</Text>
                   <Text style={titleText}>{item.model}</Text>
                   {/* <View style={ratingView}>
@@ -128,8 +124,8 @@ export default function Hashback() {
             showsHorizontalScrollIndicator={false}
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
-              onEndReachedThreshold={0.1}
-              ListEmptyComponent={ListEmptyView}
+            onEndReachedThreshold={0.1}
+            ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

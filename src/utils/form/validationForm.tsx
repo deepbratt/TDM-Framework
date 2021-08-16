@@ -50,27 +50,32 @@ export const loginNumberValidation = yup.object().shape({
 });
 
 export const SearchValidationSchema = yup.object().shape({
-  yearFrom: yup
-    .string()
-    .matches(/^(19|20)\d{2}$/, " Provide Valid year")
-    .required("Year From required"),
-  yearTo: yup
-    .string()
-    .matches(/^(19|20)\d{2}$/, " Provide Valid year")
-    .required("Year To required"),
   kilometerFrom: yup
     .string()
+    // .lessThan(yup.ref("KilometerTo"))
     .matches(/^[\d]{1,}$/, "atleast 1 number")
+
     .max(6, ({ max }) => `Kilometer maximum range  ${max} number`)
     .required("Kilometer required"),
   kilometerTo: yup
     .string()
-    .max(5, ({ max }) => `KilometerTo maximum range  ${max} characters`)
-    .min(1, ({ min }) => `KilometerTo minimum range ${min} characters`)
-    .required("Kilometer To required"),
+    .matches(/^[\d]{1,}$/, "atleast 1 number")
+    // .moreThan(yup.ref("KilometerFrom"))
+    .max(6, ({ max }) => `Kilometer maximum range  ${max} number`)
+    .required("Kilometer required"),
   sortBy: yup.string().required("Sortby required"),
   brand: yup.string().required("Brand name required"),
   body: yup.string().required("Body type required"),
+  FromS: yup
+    .number()
+    .lessThan(yup.ref("To"))
+    // .equals([yup.ref("To")])
+    .required("From Year Required"),
+  To: yup
+    .number()
+    .moreThan(yup.ref("FromS"))
+    // .equals([yup.ref("FromS")])
+    .required("To Year Required"),
 });
 
 export const signUpValidationSchema = yup.object().shape({

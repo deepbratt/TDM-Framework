@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import { FlatList, Image } from "react-native";
 import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
-import { COLOR } from "../../Theme/Colors";
 import { allCarsByBody } from "../../utils/api/CarsApi";
 import { Style } from "./style";
+import { COLOR } from "../../Theme/Colors";
 import { useHistory } from "react-router-native";
 interface ItemProps {
   src: any;
@@ -15,7 +14,7 @@ interface RenderItemProps {
   item: ItemProps;
   index: number;
 }
-export default function Hashback() {
+export default function SUV() {
   const {
     container,
     images,
@@ -34,11 +33,10 @@ export default function Hashback() {
   const [loading, setLoading] = useState(false);
   const [page, SetPage] = useState(1);
   const [status, setStatus] = useState("success");
-
   useEffect(() => {
     fetchAllCars();
   }, [page]);
-  const bodyType = "Convertible";
+  const bodyType = "Suv";
   const fetchAllCars = async () => {
     let url = "" + page;
     if (bodyType) {
@@ -47,6 +45,7 @@ export default function Hashback() {
     setLoading(true);
     await allCarsByBody(url)
       .then((result) => {
+        console.log(result.status);
         setStatus(result.status);
         if (result.status === "success") {
           setLoading(false), setCarList([...carlist, ...result.data.result]);
@@ -81,7 +80,6 @@ export default function Hashback() {
       </View>
     );
   };
-
   const history = useHistory();
   const selectItem = (id: any) => {
     console.log("id", id);
@@ -98,7 +96,7 @@ export default function Hashback() {
           <FlatList
             style={flatListView}
             data={carlist}
-            keyExtractor={({ id }, index) => id}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <View style={main}>
                 <TouchableOpacity
@@ -128,8 +126,8 @@ export default function Hashback() {
             showsHorizontalScrollIndicator={false}
             ListFooterComponent={renderFooter}
             onEndReached={handleLoadMore}
-              onEndReachedThreshold={0.1}
-              ListEmptyComponent={ListEmptyView}
+            onEndReachedThreshold={0.1}
+            ListEmptyComponent={ListEmptyView}
           />
         </View>
       )}

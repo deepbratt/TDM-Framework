@@ -60,7 +60,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { globalStyle } from "../../Styles/index";
 import CustomAlert from "../../component/customOTP/customAlert";
 import { useHistory } from "react-router";
-import { Switch } from 'react-native-paper';
+import { Switch } from "react-native-paper";
 import { postForm } from "../../../types";
 
 import {
@@ -98,7 +98,7 @@ const PostDetails = () => {
     regNumber: "",
     engineCapacity: "",
   });
-  console.log("city", dropdown.city)
+  console.log("city", dropdown.city);
   const refRBSheet = useRef<RBSheet>(null);
   const [input, setInput] = useState({
     Msg: "",
@@ -163,7 +163,6 @@ const PostDetails = () => {
 
     const images = imageBlob;
 
-    
     let formData = new FormData();
     formData.append("description", description),
       formData.append("location", location);
@@ -194,42 +193,39 @@ const PostDetails = () => {
     console.log("pic", images, "values", formData);
 
     setLoader(true),
-    await createCars(formData)
-      .then((response) => {
-        console.log("res", response);
+      await createCars(formData)
+        .then((response) => {
+          console.log("res", response);
           resetForm({ drop: "" });
           setSelectedImage([]);
-        if (response.status === "success") {
-          setLoader(false),
-          console.log("res", response),
-            setInput((prev) => ({
-              ...prev,
-              MsgTitle: FormSuccessfuL,
-              Msg: ``,
-              path: "/your-ads",
-              button: GoToHome,
-              close: true,
-            })),
-            refRBSheet.current?.open();
-        } else if (response.status === "fail") {
-          setLoader(false),
-            setInput((prev) => ({
-              ...prev,
-              MsgTitle: InvalidInput,
-              Msg: `${response.message}`,
-              button: "Ok",
-              close: false,
-            })),
-            refRBSheet.current?.open();
-        }
-      })
-      .catch((error) => {
-        if (error.status === 401) return alert(SomethingWrong);
-      });
+          if (response.status === "success") {
+            setLoader(false),
+              console.log("res", response),
+              setInput((prev) => ({
+                ...prev,
+                MsgTitle: FormSuccessfuL,
+                Msg: ``,
+                path: "/your-ads",
+                button: GoToHome,
+                close: true,
+              })),
+              refRBSheet.current?.open();
+          } else if (response.status === "fail") {
+            setLoader(false),
+              setInput((prev) => ({
+                ...prev,
+                MsgTitle: InvalidInput,
+                Msg: `${response.message}`,
+                button: "Ok",
+                close: false,
+              })),
+              refRBSheet.current?.open();
+          }
+        })
+        .catch((error) => {
+          if (error.status === 401) return alert(SomethingWrong);
+        });
   };
- 
-
-  
 
   return (
     <ScrollView style={styles.container}>
@@ -271,7 +267,7 @@ const PostDetails = () => {
         }}
         validationSchema={DropdownValidation}
       >
-        {({ errors, handleSubmit, setFieldValue, values }:any) => (
+        {({ errors, handleSubmit, setFieldValue, values }: any) => (
           <View>
             <DropDView
               Icon={PlaceIcon}
@@ -315,13 +311,13 @@ const PostDetails = () => {
               error={errors.model ? true : false}
             />
             <DropDView
-                  Icon={AmountIcon}
-                  Label={YearLabel}
-                  data={years}
-                  value={values.modelYear}
-                  onChange={(value: any) => setFieldValue("modelYear", value)}
-                  error={errors.modelYear ? true : false}
-                />
+              Icon={AmountIcon}
+              Label={YearLabel}
+              data={years}
+              value={values.modelYear}
+              onChange={(value: any) => setFieldValue("modelYear", value)}
+              error={errors.modelYear ? true : false}
+            />
             <DropDView
               Icon={ConditionIcon}
               Label={ConditionLabel}
