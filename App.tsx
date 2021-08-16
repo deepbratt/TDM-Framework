@@ -1,12 +1,14 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import React, { Props } from "react";
+import React from "react";
 import store from "./src/redux/store";
 import { Provider } from "react-redux";
-import AuthRoute from "./route";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import useCachedResources from "./src/utils/constants/resources/useCachedResources";
+import useCachedResources from "./useCachedResources";
 import { COLOR } from "./src/Theme/Colors";
+import { Route } from "react-router";
+import { BackButton, NativeRouter } from "react-router-native";
+import SignIn from "./src/screens/SignIn/SignIn";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -16,7 +18,11 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
-          <AuthRoute />
+          <NativeRouter>
+            <BackButton>
+              <Route exact path="/" component={SignIn} />
+            </BackButton>
+          </NativeRouter>
           <StatusBar
             style="light"
             translucent={true}

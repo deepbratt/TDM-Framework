@@ -1,49 +1,49 @@
 interface ColorTheme {
-  primary: string;
-  onPrimary: string;
-  surface: string;
-  onSurface: string;
-  background: string;
-  secondary:string;
-  GraniteGray:string;
-  KellyGreen:string;
-  RaisinBlack:string;
-  DarkCharcoal:string;
-  Silver:string;
-  ChineseSilver:string;
-  BlueCrayola:string;
-  White:string;
-  CadetGrey:string;
-  DeepSpace:string;
-  SilverSand:string;
-  Eucalyptus:string;
-  MorningBlue:string;
-  SunsetOrange:string;
-  DodgerBlue:string;
-  BlueJeans:string;
-  MayaBlue:string;
-  LightSilver:string;
-  PaleCyan:string;
-  Maize:string;
-  MiddleGreen:string;
-  GhostWhite:string;
-  Nickel:string;
-  Cultured:string;
-  LightGrey:string;
-  BlueDodge:string;
-  Black:string;
-  SIGNBlue:string
-  YellowOrange:string
-  Bubbles:string
-  TuftsBlue:string
-  SilverBlue:string
-  AntiFlashWhite:string
-  BlackOlive:string
-  WhiteOlive:string
-  RedOlive:string
-  GoogleRed:string
-  CarminePink:string
-  red:string
+  primary?: string;
+  onPrimary?: string;
+  surface?: string;
+  onSurface?: string;
+  background?: string;
+  secondary?:string;
+  GraniteGray?:string;
+  KellyGreen?:string;
+  RaisinBlack?:string;
+  DarkCharcoal?:string;
+  Silver?:string;
+  ChineseSilver?:string;
+  BlueCrayola?:string;
+  White?:string;
+  CadetGrey?:string;
+  DeepSpace?:string;
+  SilverSand?:string;
+  Eucalyptus?:string;
+  MorningBlue?:string;
+  SunsetOrange?:string;
+  DodgerBlue?:string;
+  BlueJeans?:string;
+  MayaBlue?:string;
+  LightSilver?:string;
+  PaleCyan?:string;
+  Maize?:string;
+  MiddleGreen?:string;
+  GhostWhite?:string;
+  Nickel?:string;
+  Cultured?:string;
+  LightGrey?:string;
+  BlueDodge?:string;
+  Black?:string;
+  SIGNBlue?:string
+  YellowOrange?:string
+  Bubbles?:string
+  TuftsBlue?:string
+  SilverBlue?:string
+  AntiFlashWhite?:string
+  BlackOlive?:string
+  WhiteOlive?:string
+  RedOlive?:string
+  GoogleRed?:string
+  CarminePink?:string
+  red?:string
 }
 export const COLOR: ColorTheme = {
   red:"red",
