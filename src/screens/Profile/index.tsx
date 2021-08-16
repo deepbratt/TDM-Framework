@@ -288,7 +288,7 @@ const Profile = (currentUser: { currentUser: any }) => {
           {selectedImage.length === 0 ? (
             <CustomAvatar
               rounded
-              source={require("../../../assets/images/drawer/profile.png")}
+              source={{uri:_User.image}}
               size={84}
               onPress={openImagePickerAsync}
             />
