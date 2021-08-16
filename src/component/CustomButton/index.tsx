@@ -16,7 +16,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
     size
     })=>{
     return (
-        <Link onPress={onPress} to={linkTo} underlayColor="none" component={TouchableOpacity}   
+        <Link onPress={onPress} to={`${linkTo}`} underlayColor="none" component={TouchableOpacity}   
         style={buttonStyle}>
       
       {leftImg &&
@@ -25,7 +25,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
       >
      <TextInput.Icon size={size} 
      style={{height:"100%"}}
-      name={Img} color={colorIcon} />
+      name={`${Img}`} color={colorIcon} />
      </View>    }
         <Text style={textStyle}>{text}</Text>
       </Link>

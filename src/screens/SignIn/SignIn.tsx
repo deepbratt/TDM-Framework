@@ -1,22 +1,28 @@
 
-import React, { useEffect, useState } from 'react'
-import LogComponent from './LogComponent';
+import React from 'react'
+import {View,Text} from "react-native"
+import { useDispatch } from 'react-redux';
+import CustomButton from '../../component/customButton'
+import { login } from '../../redux/reducers/authSlice';
 
 
-export default function SignIn() {
-useEffect(() => {
-  console.log("signin")
-}, [])
-  const [Flipped, setFlipped] = useState(true);
-  console.log("signin")
-  return (   
-    Flipped ? ( 
-      <LogComponent login={true} 
-      onPress={() => console.log("hellox")} onClick={()=>setFlipped(false)}/>
-  ) : (
-    <LogComponent login={false} 
-    onPress={() => console.log("hellox")} onClick={()=>setFlipped(true)}/>
-
-  )
-  );
-}
+function SignIn() {
+ const dispatch = useDispatch();
+  return ( 
+    <View>
+      <Text>
+        Signin
+      </Text>
+      <Text>
+        Signin
+      </Text> 
+      <Text>
+        Signin
+      </Text>
+       <Text>
+        Signin
+      </Text>
+      <CustomButton text="login" onPress={()=>dispatch(login())}/>
+    </View>  
+  )}
+  export default SignIn;

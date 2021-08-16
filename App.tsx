@@ -1,12 +1,12 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import React, { Props } from "react";
+import React from "react";
 import store from "./src/redux/store";
 import { Provider } from "react-redux";
-import AuthRoute from "./route";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import useCachedResources from "./src/utils/constants/resources/useCachedResources";
-import { COLOR } from "./src/Theme/Colors";
+import useCachedResources from "./index";
+import { COLOR } from "./src/Theme/Colors";;
+import Routes from "./route";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -16,7 +16,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
-          <AuthRoute />
+          <Routes />
           <StatusBar
             style="light"
             translucent={true}
