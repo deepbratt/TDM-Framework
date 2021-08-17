@@ -6,10 +6,8 @@ import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./index";
 import { COLOR } from "./src/Theme/Colors";
-import { Route } from "react-router";
-import { BackButton, NativeRouter } from "react-router-native";
-import SignIn from "./src/screens/SignIn/SignIn";
 import Splash from "./src/screens/Splash/index";
+import Routes from "./route";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -19,11 +17,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
-          <NativeRouter>
-            <BackButton>
-              <Route exact path="/" component={SignIn} />
-            </BackButton>
-          </NativeRouter>
+          <Routes />
           <StatusBar
             style="light"
             translucent={true}
