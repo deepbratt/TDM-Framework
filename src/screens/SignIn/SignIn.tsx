@@ -1,15 +1,14 @@
-
-import React from 'react'
-import {View,Text} from "react-native"
-
+import React from "react";
+import { View, Text } from "react-native";
 
 function SignIn() {
-
-  return ( 
+  return (
     <View>
-      <Text>
-        Signin
-      </Text>
-    </View>  
-  )}
-  export default SignIn;
+      <Text>Signin</Text>
+      <Text>Signin</Text>
+      <Text>Signin</Text>
+      <Text>Signin</Text>
+    </View>
+  );
+}
+export default SignIn;
