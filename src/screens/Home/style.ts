@@ -68,13 +68,14 @@ paragraph:{
 },
 surfaceMargin:{
           marginVertical: 7,
-          height:300, 
+          height:hp('35%'), 
           justifyContent: "center",
          alignItems: "center",
-         width:"100%",
-         backgroundColor:"white" 
+         width:wp("100%"),
+         backgroundColor:COLOR.background 
         },
 VerticalMargin:{
      marginVertical:hp('2%'), 
-},
+    },
+
 });

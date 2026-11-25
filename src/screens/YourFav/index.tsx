@@ -27,7 +27,7 @@ const YourFav = () => {
     setLoader(true);
     await allFavourites()
       .then((result) => {
-console.log(result,"res")
+        console.log(result, "res");
         console.log("result");
         if (result.status === "success") {
           setLoader(false), setItems(result.data.result);
@@ -46,7 +46,7 @@ console.log(result,"res")
   };
 
   const RemoveItem = async (props: any) => {
-    const newProduct = Items.filter((i: { _id: any; }) => i._id !== props.id);
+    const newProduct = Items.filter((i: { _id: any }) => i._id !== props.id);
     await removeFromFav(props.id)
       .then((response) => {
         setLoader(true);

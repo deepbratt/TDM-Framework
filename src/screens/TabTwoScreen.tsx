@@ -63,12 +63,12 @@ export default function TabTwoScreen() {
   //     setIsLoggedIn(token);
   //     console.log(token)
   //   });
-  
+
   // }, []);
   // if (isLoggedIn === undefined) {
   //   return null;
   // }
-  const handle =async() => {
+  const handle = async () => {
     console.log("hello");
     await AsyncStorage.removeItem("jwt");
     dispatch(logout());
@@ -76,7 +76,7 @@ export default function TabTwoScreen() {
   };
 
   return (
-    <View >
+    <View>
       <CustomHeader
         headerStyle={{ backgroundColor: COLOR.primary }}
         color={COLOR.White}
@@ -84,6 +84,7 @@ export default function TabTwoScreen() {
         location={true}
         onPress={() => openDrawer()}
       />
+
       <View style={styles.container}>
         <Text style={styles.title}>Screen Two</Text>
         <Button onPress={handle} title="Logout" />

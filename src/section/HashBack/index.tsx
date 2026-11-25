@@ -1,57 +1,138 @@
-import React, {  useCallback } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Image} from 'react-native';
-import { Text, View } from 'react-native';
-import CustomCarousel from "../../component/CustomTabs/carousel";
-import { Items } from "../../utils/constants/HomeConstant";
+import { FlatList, Image } from "react-native";
+import { Text, View, TouchableOpacity, ActivityIndicator } from "react-native";
+import { COLOR } from "../../Theme/Colors";
+import { allCarsByBody } from "../../utils/api/CarsApi";
 import { Style } from "./style";
-
-
-
-
+import { useHistory } from "react-router-native";
 interface ItemProps {
-    src: any;
-    title: string;
-    text: string;
-
-  }
-  interface RenderItemProps {
-    item: ItemProps;
-    index: number;
-  }
+  src: any;
+  title: string;
+  text: string;
+}
+interface RenderItemProps {
+  item: ItemProps;
+  index: number;
+}
 export default function Hashback() {
-const { container,images,titleText,detail,rate,rating}=Style;
-  const renderItem =useCallback(({ item, index }: RenderItemProps) => {
+  const {
+    container,
+    images,
+    titleText,
+    detail,
+    main,
+    flatListView,
+    loadingView,
+    emptyView,
+    emptyText,
+    rate,
+    rating,
+    ratingView,
+  } = Style;
+  const [carlist, setCarList] = useState<any>([]);
+  const [loading, setLoading] = useState(false);
+  const [page, SetPage] = useState(1);
+  const [status, setStatus] = useState("success");
+
+  useEffect(() => {
+    fetchAllCars();
+  }, [page]);
+  const bodyType = "Convertible";
+  const fetchAllCars = async () => {
+    let url = "" + page;
+    if (bodyType) {
+      url += "&bodyType=" + bodyType;
+    }
+    setLoading(true);
+    await allCarsByBody(url)
+      .then((result) => {
+        setStatus(result.status);
+        if (result.status === "success") {
+          setLoading(false), setCarList([...carlist, ...result.data.result]);
+          let temp = [...carlist, ...result.data.result];
+          console.log(temp.length);
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        if (error.status === 401) return alert(error);
+      });
+  };
+
+  const renderFooter = () => {
+    return loading ? (
+      <View style={{ marginTop: 10, alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    ) : null;
+  };
+
+  const handleLoadMore = () => {
+    if (!loading && status === "success") {
+      SetPage(page + 1);
+    }
+  };
+  const ListEmptyView = () => {
     return (
-      <View
-        style={container}
-      >
-        <Image style={images}
-          source={item.src} />
-        <Text style={titleText}>{item.title}</Text>
-        <Text style={detail}>{item.text}</Text>
-        {/* <View style={{flexDirection:"row",alignItems:"center",marginVertical:2}}>
-          <Image style={rate} fadeDuration={0} source={require('../../../assets/images/slider/stars.png')}/>
-          <Text style={rating}>(3.8)</Text>
-        </View> */}
+      <View style={emptyView}>
+        <Text style={emptyText}>No Cars Available</Text>
       </View>
     );
-  }, []);
+  };
+
+  const history = useHistory();
+  const selectItem = (id: any) => {
+    console.log("id", id);
+    history.push(`/car-Details/${id}`);
+  };
   return (
-   
-      <CustomCarousel 
-       layout="default"
-       autoplay={true}
-       loop={true}
-       autoplayDelay={2000}
-       listItems={Items}
-       sliderWidth={ 532}
-       itemWidth={177}
-       inactiveSlideOpacity={1}
-       inactiveSlideScale={1}
-       renderItems={renderItem}      
-      />
-    
-  )}
-
-
+    <View>
+      {loading ? (
+        <View style={loadingView}>
+          <ActivityIndicator size="large" color={COLOR.primary} />
+        </View>
+      ) : (
+        <View>
+          <FlatList
+            style={flatListView}
+            data={carlist}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => (
+              <View style={main}>
+                <TouchableOpacity
+                  style={container}
+                  onPress={() => selectItem(item.id)}
+                >
+                  <Image
+                    style={images}
+                    source={
+                      typeof item.images === "string" ? item.images : null
+                    }
+                  />
+                  <Text style={detail}>{item.price}</Text>
+                  <Text style={titleText}>{item.model}</Text>
+                  {/* <View style={ratingView}>
+              <Image
+                style={rate}
+                fadeDuration={0}
+                source={require("../../../assets/images/slider/stars.png")}
+              />
+              <Text style={rating}>(3.8)</Text>
+            </View> */}
+                </TouchableOpacity>
+              </View>
+            )}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            ListFooterComponent={renderFooter}
+            onEndReached={handleLoadMore}
+              onEndReachedThreshold={0.1}
+              ListEmptyComponent={ListEmptyView}
+          />
+        </View>
+      )}
+    </View>
+  );
+}
